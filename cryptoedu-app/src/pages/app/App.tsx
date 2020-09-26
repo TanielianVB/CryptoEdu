@@ -1,6 +1,5 @@
 import React from "react";
 import AppTopBar from "../../components/AppTopBar/AppTopBar";
-import "./App.css";
 
 function App() {
   return (
