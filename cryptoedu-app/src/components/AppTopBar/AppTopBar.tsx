@@ -1,7 +1,7 @@
 import React from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Tooltip, Typography } from "@material-ui/core";
-import LanguageSelector from "../LanguageSelector/LanguageSelector";
+import ToggleButtons from "../ToggleButtons/ToggleButtons";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,11 +18,24 @@ const useStyles = makeStyles((theme: Theme) =>
 function AppTopBar() {
   const classes = useStyles();
 
+  const languages = [
+    { value: "c", text: "C", supported: true },
+    { value: "cs", text: "C#", supported: true },
+    { value: "java", text: "Java", supported: true },
+    { value: "javascript", text: "Javacript", supported: true },
+  ];
+
+  const types = [
+    { value: "des", text: "DES", supported: true },
+    { value: "tripledes", text: "3DES", supported: true },
+    { value: "rijndael", text: "Rijndael", supported: true },
+  ];
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar variant="dense" className={classes.bar} disableGutters>
-          <LanguageSelector />
+          <ToggleButtons initialSelectedOption="cs" options={languages} />
           <Tooltip
             title="Simulador de Algoritmos de Criptografia com Finalidade
               Educacional"
@@ -31,7 +44,7 @@ function AppTopBar() {
               CryptoEdu
             </Typography>
           </Tooltip>
-          <LanguageSelector />
+          <ToggleButtons initialSelectedOption="des" options={types}/>
         </Toolbar>
       </AppBar>
     </div>
