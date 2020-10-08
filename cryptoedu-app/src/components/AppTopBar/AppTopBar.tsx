@@ -3,6 +3,23 @@ import { AppBar, Toolbar, Tooltip, Typography } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import ToggleButtons from "../ToggleButtons/ToggleButtons";
 
+interface AppTopBarProps {
+  languages: {
+    id: string;
+    text: string;
+    supported: boolean;
+  }[];
+  selectedLanguage: string;
+  setSelectedLanguage: (value: React.SetStateAction<string>) => void;
+  algorithms: {
+    id: string;
+    text: string;
+    supported: boolean;
+  }[];
+  selectedAlgorithm: string;
+  setSelectedAlgorithm: (value: React.SetStateAction<string>) => void;
+}
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appBar: {
@@ -15,26 +32,25 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-function AppTopBar() {
+function AppTopBar(props: AppTopBarProps) {
+  const {
+    languages,
+    selectedLanguage,
+    setSelectedLanguage,
+    algorithms,
+    selectedAlgorithm,
+    setSelectedAlgorithm,
+  } = props;
+
   const classes = useStyles();
-
-  const languages = [
-    { value: "c", text: "C", supported: true },
-    { value: "cs", text: "C#", supported: true },
-    { value: "java", text: "Java", supported: true },
-    { value: "javascript", text: "Javacript", supported: true },
-  ];
-
-  const types = [
-    { value: "des", text: "DES", supported: true },
-    { value: "tripledes", text: "3DES", supported: true },
-    { value: "rijndael", text: "Rijndael", supported: true },
-  ];
-
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar variant="dense" className={classes.bar} disableGutters>
-        <ToggleButtons initialSelectedOption="cs" options={languages} />
+        <ToggleButtons
+          options={languages}
+          selectedOption={selectedLanguage}
+          setSelectedOption={setSelectedLanguage}
+        />
         <Tooltip
           title="Simulador de Algoritmos de Criptografia com Finalidade
               Educacional"
@@ -43,7 +59,11 @@ function AppTopBar() {
             CryptoEdu
           </Typography>
         </Tooltip>
-        <ToggleButtons initialSelectedOption="des" options={types} />
+        <ToggleButtons
+          options={algorithms}
+          selectedOption={selectedAlgorithm}
+          setSelectedOption={setSelectedAlgorithm}
+        />
       </Toolbar>
     </AppBar>
   );

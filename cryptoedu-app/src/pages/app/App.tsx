@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import AppTopBar from "../../components/AppTopBar/AppTopBar";
 import AppDrawer from "../../components/AppDrawer/AppDrawer";
 import { Toolbar, Typography } from "@material-ui/core";
-
-const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,10 +17,32 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function App() {
+  const languages = [
+    { id: "c", text: "C", supported: true },
+    { id: "cs", text: "C#", supported: true },
+    { id: "java", text: "Java", supported: true },
+    { id: "javascript", text: "Javacript", supported: true },
+  ];
+  const [selectedLanguage, setSelectedLanguage] = useState<string>("cs");
+
+  const algorithms = [
+    { id: "des", text: "DES", supported: true },
+    { id: "tripledes", text: "3DES", supported: true },
+    { id: "rijndael", text: "Rijndael", supported: true },
+  ];
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState<string>("des");
+
   const classes = useStyles();
   return (
     <div className={classes.appRoot}>
-      <AppTopBar />
+      <AppTopBar
+        languages={languages}
+        selectedLanguage={selectedLanguage}
+        setSelectedLanguage={setSelectedLanguage}
+        algorithms={algorithms}
+        selectedAlgorithm={selectedAlgorithm}
+        setSelectedAlgorithm={setSelectedAlgorithm}
+      />
       <AppDrawer anchor="left">
         <div className={classes.content}>
           <Typography variant="h6" color="secondary">
@@ -30,6 +50,21 @@ function App() {
           </Typography>
           <Typography variant="body2" color="textPrimary">
             Dados de execução do algorítimo.
+          </Typography>
+          <Typography variant="body2" color="textPrimary">
+            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+            ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
+            elementum integer enim neque volutpat ac tincidunt. Ornare
+            suspendisse sed nisi lacus sed viverra tellus. Purus sit amet
+            volutpat consequat mauris. Elementum eu facilisis sed odio morbi.
+            Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt
+            ornare massa eget egestas purus viverra accumsan in. In hendrerit
+            gravida rutrum quisque non tellus orci ac. Pellentesque nec nam
+            aliquam sem et tortor. Habitant morbi tristique senectus et.
+            Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
+            euismod elementum nisi quis eleifend. Commodo viverra maecenas
+            accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
+            ultrices sagittis orci a.
           </Typography>
         </div>
       </AppDrawer>
@@ -75,6 +110,21 @@ function App() {
           </Typography>
           <Typography variant="body2" color="textPrimary">
             Descrição e características do algorítimo.
+          </Typography>
+          <Typography variant="body2" color="textPrimary">
+            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+            ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
+            elementum integer enim neque volutpat ac tincidunt. Ornare
+            suspendisse sed nisi lacus sed viverra tellus. Purus sit amet
+            volutpat consequat mauris. Elementum eu facilisis sed odio morbi.
+            Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt
+            ornare massa eget egestas purus viverra accumsan in. In hendrerit
+            gravida rutrum quisque non tellus orci ac. Pellentesque nec nam
+            aliquam sem et tortor. Habitant morbi tristique senectus et.
+            Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
+            euismod elementum nisi quis eleifend. Commodo viverra maecenas
+            accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
+            ultrices sagittis orci a.
           </Typography>
         </div>
       </AppDrawer>

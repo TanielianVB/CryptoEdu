@@ -3,18 +3,17 @@ import { Typography } from "@material-ui/core";
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab";
 
 interface ToggleButtonsProps {
-  initialSelectedOption: string;
   options: {
-    value: string;
+    id: string;
     text: string;
     supported: boolean;
   }[];
+  selectedOption: string;
+  setSelectedOption: (value: React.SetStateAction<string>) => void;
 }
 
 function ToggleButtons(props: ToggleButtonsProps) {
-  const { initialSelectedOption, options } = props;
-
-  const [selectedOption, setSelectedOption] = useState<string>(initialSelectedOption);
+  const { options, selectedOption, setSelectedOption } = props;
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -29,11 +28,9 @@ function ToggleButtons(props: ToggleButtonsProps) {
     <ToggleButtonGroup exclusive value={selectedOption} onChange={handleChange}>
       {options.map((option) => {
         let button = (
-          <ToggleButton value={option.value} disabled={!option.supported}>
+          <ToggleButton value={option.id} disabled={!option.supported}>
             <Typography
-              color={
-                option.value === selectedOption ? "secondary" : "textPrimary"
-              }
+              color={option.id === selectedOption ? "secondary" : "textPrimary"}
             >
               {option.text}
             </Typography>
