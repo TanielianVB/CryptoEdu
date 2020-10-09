@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawerPaper: {
       width: drawerWidth,
-      backgroundColor: theme.palette.primary.main,
     },
     drawerContainer: {
       overflow: "auto",

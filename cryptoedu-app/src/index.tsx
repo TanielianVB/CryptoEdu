@@ -3,21 +3,24 @@ import ReactDOM from "react-dom";
 import App from "./pages/app/App";
 import * as serviceWorker from "./serviceWorker";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { createMuiTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
   palette: {
+    type: "dark",
+    background: {
+      default: "#040404",
+      paper: "#040404",
+    },
     primary: {
-      // light, dark, contrastText: will be calculated from palette.primary.main,
-      main: "#323232",
+      main: "#040404",
     },
     secondary: {
-      // light, dark, contrastText: will be calculated from palette.secondary.main,
       main: "#03a9f4",
     },
-    background: {
-      default: "#323232",
+    text: {
+      // primary: "#999999",
+      disabled: "#757575",
     },
   },
 });

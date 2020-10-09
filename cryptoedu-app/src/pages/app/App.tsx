@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import AppTopBar from "../../components/AppTopBar/AppTopBar";
 import { Toolbar, Typography } from "@material-ui/core";
+import AppTopBar from "../../components/AppTopBar/AppTopBar";
 import CodeSideBar from "../../components/CodeSideBar/CodeSideBar";
 import AlgorithmSideBar from "../../components/AlgorithmSideBar/AlgorithmSideBar";
 
@@ -21,15 +21,15 @@ function App() {
   const languages = [
     { id: "c", text: "C", supported: true },
     { id: "cs", text: "C#", supported: true },
-    { id: "java", text: "Java", supported: true },
-    { id: "javascript", text: "Javacript", supported: true },
+    { id: "java", text: "Java", supported: false },
+    { id: "javascript", text: "Javacript", supported: false },
   ];
   const [selectedLanguage, setSelectedLanguage] = useState<string>("cs");
 
   const algorithms = [
     { id: "des", text: "DES", supported: true },
     { id: "tripledes", text: "3DES", supported: true },
-    { id: "rijndael", text: "Rijndael", supported: true },
+    { id: "rijndael", text: "Rijndael", supported: false },
   ];
   const [selectedAlgorithm, setSelectedAlgorithm] = useState<string>("des");
 
