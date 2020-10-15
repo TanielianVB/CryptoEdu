@@ -1,43 +1,157 @@
-import React from "react";
+import React, { useState } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Button,
+  Grid,
+  TextField,
+  Typography,
+} from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 import AppDrawer from "../AppDrawer/AppDrawer";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
+      // flexGrow: 1,
+      // padding: theme.spacing(0),
+      // // "& .MuiTextField-root": {
+      // //   padding: theme.spacing(1),
+      // // },
+      // // "& > .MuiButton-root": {
+      // //   margin: theme.spacing(1),
+      // // },
     },
   })
 );
 
 function CodeSideBar() {
+  const [expanded, setExpanded] = useState<string>("encryptPanel");
+
+  const handleChange = (panel: string) => (
+    event: React.ChangeEvent<{}>,
+    isExpanded: boolean
+  ) => {
+    setExpanded(panel);
+  };
+
   const classes = useStyles();
   return (
     <AppDrawer anchor="left">
       <div className={classes.content}>
-        <Typography variant="h6" color="secondary">
-          C#
-        </Typography>
-        <Typography variant="body2" color="textPrimary">
-          Dados de execução do algorítimo.
-        </Typography>
-        <Typography variant="body2" color="textPrimary">
-          Dados de execução do algorítimo. Consequat mauris nunc congue nisi
-          vitae suscipit. Fringilla est ullamcorper eget nulla facilisi etiam
-          dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-          tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus
-          sit amet volutpat consequat mauris. Elementum eu facilisis sed odio
-          morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In
-          hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec
-          nam aliquam sem et tortor. Habitant morbi tristique senectus et.
-          Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
-          euismod elementum nisi quis eleifend. Commodo viverra maecenas
-          accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
-          ultrices sagittis orci a.
-        </Typography>
+        <Accordion
+          expanded={expanded === "encryptPanel"}
+          onChange={handleChange("encryptPanel")}
+        >
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="h6" color="secondary">
+              Criptografar
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Grid
+              container
+              direction="column"
+              justify="flex-start"
+              alignItems="stretch"
+              spacing={1}
+            >
+              <Grid item>
+                <TextField
+                  label="Mensagem"
+                  variant="outlined"
+                  color="secondary"
+                  fullWidth
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  label="Chave"
+                  variant="outlined"
+                  color="secondary"
+                  fullWidth
+                />
+              </Grid>
+              <Grid item>
+                <Button
+                  endIcon={<PlayArrowRoundedIcon />}
+                  variant="outlined"
+                  color="secondary"
+                  size="large"
+                  fullWidth
+                >
+                  Executar
+                </Button>
+              </Grid>
+              <Grid item>
+                <TextField
+                  label="Resultado"
+                  variant="outlined"
+                  color="secondary"
+                  fullWidth
+                />
+              </Grid>
+            </Grid>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion
+          expanded={expanded === "decryptPanel"}
+          onChange={handleChange("decryptPanel")}
+        >
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="h6" color="secondary">
+              Decriptografar
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Grid
+              container
+              direction="column"
+              justify="flex-start"
+              alignItems="stretch"
+              spacing={1}
+            >
+              <Grid item>
+                <TextField
+                  label="Men. criptografada"
+                  variant="outlined"
+                  color="secondary"
+                  fullWidth
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  label="Chave"
+                  variant="outlined"
+                  color="secondary"
+                  fullWidth
+                />
+              </Grid>
+              <Grid item>
+                <Button
+                  endIcon={<PlayArrowRoundedIcon />}
+                  variant="outlined"
+                  color="secondary"
+                  size="large"
+                  fullWidth
+                >
+                  Executar
+                </Button>
+              </Grid>
+              <Grid item>
+                <TextField
+                  label="Resultado"
+                  variant="outlined"
+                  color="secondary"
+                  fullWidth
+                />
+              </Grid>
+            </Grid>
+          </AccordionDetails>
+        </Accordion>
       </div>
     </AppDrawer>
   );

@@ -20,7 +20,7 @@ const theme = createMuiTheme({
     },
     text: {
       // primary: "#999999",
-      disabled: "#757575",
+      //disabled: "#757575",
     },
   },
 });

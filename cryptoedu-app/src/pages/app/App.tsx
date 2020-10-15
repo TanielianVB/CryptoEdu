@@ -27,6 +27,7 @@ function App() {
   const [selectedLanguage, setSelectedLanguage] = useState<string>("cs");
 
   const algorithms = [
+    { id: "sdes", text: "S-DES", supported: true },
     { id: "des", text: "DES", supported: true },
     { id: "tripledes", text: "3DES", supported: true },
     { id: "rijndael", text: "Rijndael", supported: false },
