@@ -32,7 +32,7 @@ function App() {
     { id: "tripledes", text: "3DES", supported: true },
     { id: "rijndael", text: "Rijndael", supported: false },
   ];
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState<string>("des");
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState<string>("sdes");
 
   const classes = useStyles();
   return (
