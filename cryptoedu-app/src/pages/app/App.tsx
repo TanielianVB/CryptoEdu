@@ -58,25 +58,33 @@ const formatArray = (array: number[]) => {
 };
 
 const getSteps = () => {
-  return ["Entradas", "P10", "LS-1", "P8", "PI", "PF", "Resultado"];
+  return ["Entradas", "P10", "LS-1", "P8", "K1 & K2", "PI", "PF", "Resultado"];
 };
 
 function App() {
-  const [activeStep, setActiveStep] = useState(3);
+  const [activeStep, setActiveStep] = useState(4);
   const [selectedTab, setSelectedTab] = useState(0);
   const [message, setMessage] = useState("01110010");
   const [messageBits, setMessageBits] = useState([0, 1, 1, 1, 0, 0, 1, 0]);
   const [key, setKey] = useState("1010000010");
   const [keyBits, setKeyBits] = useState([1, 0, 1, 0, 0, 0, 0, 0, 1, 0]);
-  const [p10KeyBits, setP10KeyBits] = useState<number[]>([]);
+  const [p10Bits, setP10Bits] = useState<number[]>([]);
   const [ls1Bits, setLs1Bits] = useState<number[]>([]);
-  const [p8KeyBits, setP8KeyBits] = useState<number[]>([]);
+  const [k1Bits, setK1Bits] = useState<number[]>([]);
   const [ls2Bits, setLs2Bits] = useState<number[]>([]);
+  const [k2Bits, setK2Bits] = useState<number[]>([]);
 
   useEffect(() => {
-    setP10KeyBits(SDES.generateP10Key(keyBits));
-    setLs1Bits(SDES.generateLS1(keyBits));
-    setP8KeyBits(SDES.generateP8Key(keyBits));
+    const p10 = SDES.permutate10(keyBits);
+    setP10Bits(p10);
+    const ls1 = SDES.generateLS1(p10);
+    setLs1Bits(ls1);
+    const k1 = SDES.generateKey1(ls1);
+    setK1Bits(k1);
+    const ls2 = SDES.generateLS2(ls1);
+    setLs2Bits(ls2);
+    const k2 = SDES.generateKey2(ls2);
+    setK2Bits(k2);
   }, [keyBits]);
 
   const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -242,8 +250,14 @@ function App() {
                 P10
               </Typography>
               <Typography variant="body2" component="p" gutterBottom>
-                O primeiro passo é a permutação da chave criptográfica de 10
-                bits provida no passo anterior.
+                São geradas a partir da chave criptográfica de 10 bits provida
+                no passo anterior duas chaves de 8 bits que serão utilizadas em
+                momentos específicos durante o processo de criptografia e
+                descriptografia.
+              </Typography>
+              <Typography variant="body2" component="p" gutterBottom>
+                O primeiro passo para a obtenção dessas chaves é a permutação da
+                chave criptográfica de 10 bits recebida.
                 <br />A permutação ocorrerá através da aplicação de uma função
                 de permutação. A função de permutação P10 é definida por:
               </Typography>
@@ -295,7 +309,7 @@ function App() {
                 <Typography variant="subtitle2" color="primary" gutterBottom>
                   P10 obtida através da aplicação da função de permutação P10:
                 </Typography>
-                <BitsField bits={p10KeyBits} justify="center" />
+                <BitsField bits={p10Bits} justify="center" />
               </Grid>
             </CardContent>
             <CardActions>
@@ -324,20 +338,20 @@ function App() {
                 <Typography variant="subtitle2" color="primary" gutterBottom>
                   P10:
                 </Typography>
-                <BitsField bits={p10KeyBits} justify="center" />
+                <BitsField bits={p10Bits} justify="center" />
               </Grid>
               <Grid container justify="center" spacing={5}>
                 <Grid item justify="center">
                   <Typography variant="subtitle2" color="primary" gutterBottom>
                     Esquerda de P10:
                   </Typography>
-                  <BitsField bits={p10KeyBits.slice(0, 5)} justify="center" />
+                  <BitsField bits={p10Bits.slice(0, 5)} justify="center" />
                 </Grid>
                 <Grid item justify="center">
                   <Typography variant="subtitle2" color="primary" gutterBottom>
                     Direita de P10:
                   </Typography>
-                  <BitsField bits={p10KeyBits.slice(5, 10)} justify="center" />
+                  <BitsField bits={p10Bits.slice(5, 10)} justify="center" />
                 </Grid>
               </Grid>
               <Typography variant="body2" component="p" gutterBottom>
@@ -355,17 +369,14 @@ function App() {
                   <Typography variant="subtitle2" color="primary" gutterBottom>
                     Esquerda de P10:
                   </Typography>
-                  <BitsField bits={p10KeyBits.slice(0, 5)} justify="center" />
+                  <BitsField bits={p10Bits.slice(0, 5)} justify="center" />
                 </Grid>
                 <Grid item justify="center">
                   <Typography variant="subtitle2" color="primary" gutterBottom>
                     Esquerda após a rotação LS-1:
                   </Typography>
                   <BitsField
-                    bits={SDES.circularLeftShiftNTimes(
-                      p10KeyBits.slice(0, 5),
-                      1
-                    )}
+                    bits={SDES.circularLeftShiftNTimes(p10Bits.slice(0, 5), 1)}
                     justify="center"
                   />
                 </Grid>
@@ -378,17 +389,14 @@ function App() {
                   <Typography variant="subtitle2" color="primary" gutterBottom>
                     Direita da chave P10:
                   </Typography>
-                  <BitsField bits={p10KeyBits.slice(5, 10)} justify="center" />
+                  <BitsField bits={p10Bits.slice(5, 10)} justify="center" />
                 </Grid>
                 <Grid item justify="center">
                   <Typography variant="subtitle2" color="primary" gutterBottom>
                     Direita após a rotação LS-1:
                   </Typography>
                   <BitsField
-                    bits={SDES.circularLeftShiftNTimes(
-                      p10KeyBits.slice(5, 10),
-                      1
-                    )}
+                    bits={SDES.circularLeftShiftNTimes(p10Bits.slice(5, 10), 1)}
                     justify="center"
                   />
                 </Grid>
@@ -442,7 +450,8 @@ function App() {
               </Grid>
               <Typography variant="body2" component="p" gutterBottom>
                 É interessante observar que, diferente da função de permuutação
-                P10, essa função de permutação irá gerar somente 8 bits no seu resultado.
+                P10, essa função de permutação irá gerar somente 8 bits no seu
+                resultado.
               </Typography>
               <Typography variant="body2" component="p" gutterBottom>
                 Sendo assim, aplicando a função P8 sobre LS-1 temos:
@@ -463,7 +472,100 @@ function App() {
                 <Typography variant="subtitle2" color="primary" gutterBottom>
                   P8 obtida através da aplicação da função de permutação P8:
                 </Typography>
-                <BitsField bits={p8KeyBits} justify="center" />
+                <BitsField bits={k1Bits} justify="center" />
+              </Grid>
+            </CardContent>
+            <CardActions>
+              <StepperNavigation
+                setActiveStep={setActiveStep}
+                previousStep={stepIndex - 1}
+                nextStep={stepIndex + 1}
+              />
+            </CardActions>
+          </Card>
+        );
+      case 4:
+        return (
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography variant="h5" color="primary" gutterBottom>
+                K<sub>1</sub> & K<sub>2</sub>
+              </Typography>
+              <Typography variant="body2" component="p" gutterBottom>
+                Munidos do conhecimento obtido até o momento podemos enfim obter
+                as duas chaves que serão utilizadas durante o processo de
+                criptografia e descriptografia.
+              </Typography>
+              <Typography variant="body2" component="p" gutterBottom>
+                A primeira chave (K<sub>1</sub>) é exatamente o resultado que
+                obtivemos ao aplicar a função F8.
+              </Typography>
+              <Grid container justify="center">
+                <Typography variant="subtitle2" color="primary" gutterBottom>
+                  K<sub>1</sub>:
+                </Typography>
+                <BitsField bits={k1Bits} justify="center" />
+              </Grid>
+              <Typography variant="body2" component="p" gutterBottom>
+                A segunda chave (K<sub>2</sub>) por sua vez será obtida através
+                da repetição de passos agora já conhecidos por nós.
+              </Typography>
+              <Typography variant="body2" component="p" gutterBottom>
+                Primeiramente, divide-se LS-1 em duas metades:
+              </Typography>
+              <Grid container justify="center">
+                <Typography variant="subtitle2" color="primary" gutterBottom>
+                  LS-1:
+                </Typography>
+                <BitsField bits={ls1Bits} justify="center" />
+              </Grid>
+              <Grid container justify="center" spacing={5}>
+                <Grid item justify="center">
+                  <Typography variant="subtitle2" color="primary" gutterBottom>
+                    Esquerda de LS-1:
+                  </Typography>
+                  <BitsField bits={ls1Bits.slice(0, 5)} justify="center" />
+                </Grid>
+                <Grid item justify="center">
+                  <Typography variant="subtitle2" color="primary" gutterBottom>
+                    Direita de LS-1:
+                  </Typography>
+                  <BitsField bits={ls1Bits.slice(5, 10)} justify="center" />
+                </Grid>
+              </Grid>
+              <Typography variant="body2" component="p" gutterBottom>
+                Aplica-se então a rotação de 2 posições para esquerda, circular
+                left shift (LS-2) nas metades de LS-1.
+              </Typography>
+              <Grid container justify="center" spacing={5}>
+                <Grid item justify="center">
+                  <Typography variant="subtitle2" color="primary" gutterBottom>
+                    Esquerda após a rotação LS-2:
+                  </Typography>
+                  <BitsField
+                    bits={SDES.circularLeftShiftNTimes(ls1Bits.slice(0, 5), 2)}
+                    justify="center"
+                  />
+                </Grid>
+                <Grid item justify="center">
+                  <Typography variant="subtitle2" color="primary" gutterBottom>
+                    Direita após a rotação LS-2:
+                  </Typography>
+                  <BitsField
+                    bits={SDES.circularLeftShiftNTimes(ls1Bits.slice(5, 10), 2)}
+                    justify="center"
+                  />
+                </Grid>
+              </Grid>
+              <Typography variant="body2" component="p" gutterBottom>
+                Finalmente, se aplica P8 sobre a junção das metades alteradas
+                pela rotação LS-2. Obtendo-se assim a chave K<sub>2</sub>.
+              </Typography>
+              <Grid container justify="center">
+                <Typography variant="subtitle2" color="primary" gutterBottom>
+                  K<sub>2</sub>:
+                </Typography>
+                <BitsField bits={k2Bits} justify="center" />
               </Grid>
             </CardContent>
             <CardActions>
