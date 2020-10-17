@@ -65,7 +65,7 @@ const getSteps = () => {
     "P8",
     "K1 & K2",
     //"PI", "PF", "Resultado"
-    "Em desenvolvimento..."
+    "Em desenvolvimento...",
   ];
 };
 
@@ -100,7 +100,7 @@ function App() {
 
     if (m.length <= 8) {
       setMessage(m);
-      if (m.length == 1) {
+      if (m.length === 1) {
         // Convert e letter to binary
         m = m.charCodeAt(0).toString(2).padStart(8, "0");
       }
@@ -383,10 +383,7 @@ function App() {
                   <Typography variant="subtitle2" color="primary" gutterBottom>
                     Esquerda após a rotação LS-1:
                   </Typography>
-                  <BitsField
-                    bits={SDES.circularLeftShiftNTimes(p10Bits.slice(0, 5), 1)}
-                    justify="center"
-                  />
+                  <BitsField bits={ls1Bits.slice(0, 5)} justify="center" />
                 </Grid>
               </Grid>
               <Typography variant="body2" component="p" gutterBottom>
@@ -403,10 +400,7 @@ function App() {
                   <Typography variant="subtitle2" color="primary" gutterBottom>
                     Direita após a rotação LS-1:
                   </Typography>
-                  <BitsField
-                    bits={SDES.circularLeftShiftNTimes(p10Bits.slice(5, 10), 1)}
-                    justify="center"
-                  />
+                  <BitsField bits={ls1Bits.slice(5, 10)} justify="center" />
                 </Grid>
               </Grid>
               <Typography variant="body2" component="p" gutterBottom>
@@ -550,19 +544,13 @@ function App() {
                   <Typography variant="subtitle2" color="primary" gutterBottom>
                     Esquerda após a rotação LS-2:
                   </Typography>
-                  <BitsField
-                    bits={SDES.circularLeftShiftNTimes(ls1Bits.slice(0, 5), 2)}
-                    justify="center"
-                  />
+                  <BitsField bits={ls2Bits.slice(0, 5)} justify="center" />
                 </Grid>
                 <Grid item justify="center">
                   <Typography variant="subtitle2" color="primary" gutterBottom>
                     Direita após a rotação LS-2:
                   </Typography>
-                  <BitsField
-                    bits={SDES.circularLeftShiftNTimes(ls1Bits.slice(5, 10), 2)}
-                    justify="center"
-                  />
+                  <BitsField bits={ls2Bits.slice(5, 10)} justify="center" />
                 </Grid>
               </Grid>
               <Typography variant="body2" component="p" gutterBottom>
