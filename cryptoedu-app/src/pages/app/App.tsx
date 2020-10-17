@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   Box,
@@ -22,6 +22,8 @@ import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 import AppTopBar from "../../components/AppTopBar/AppTopBar";
 import BitsField from "../../components/BitsField/BitsField";
 import StepperNavigation from "../../components/StepperNavigation/StepperNavigation";
+import Utils from "../../utils/Utils";
+import SDES from "../../utils/SDES";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -61,31 +63,18 @@ const getSteps = () => {
   ];
 };
 
-const getBits = (text: string, size: number) => {
-  var bits = new Array(size);
-
-  for (let index = 0; index < bits.length; index++) {
-    var letter = text[index];
-    var number = 0;
-    if (letter !== undefined) {
-      number = Number(letter);
-      if (isNaN(number) || number > 0) {
-        number = 1;
-      }
-    }
-    bits[index] = number || 0;
-  }
-
-  return bits;
-};
-
 function App() {
+  const [activeStep, setActiveStep] = useState(0);
   const [selectedTab, setSelectedTab] = useState(0);
   const [message, setMessage] = useState("01110010");
   const [messageBits, setMessageBits] = useState([0, 1, 1, 1, 0, 0, 1, 0]);
   const [key, setKey] = useState("1010000010");
   const [keyBits, setKeyBits] = useState([1, 0, 1, 0, 0, 0, 0, 0, 1, 0]);
-  const [activeStep, setActiveStep] = useState(0);
+  const [p10KeyBits, setP10KeyBits] = useState<number[]>([]);
+
+  useEffect(() => {
+    setP10KeyBits(SDES.generateP10Key(keyBits));
+  }, [keyBits]);
 
   const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     var m = event.target.value;
@@ -96,7 +85,7 @@ function App() {
         // Convert e letter to binary
         m = m.charCodeAt(0).toString(2).padStart(8, "0");
       }
-      setMessageBits(getBits(m, 8));
+      setMessageBits(Utils.getBits(m, 8));
     }
   };
 
@@ -105,7 +94,7 @@ function App() {
 
     if (k.length <= 10) {
       setKey(k);
-      setKeyBits(getBits(k, 10));
+      setKeyBits(Utils.getBits(k, 10));
     }
   };
 
@@ -117,7 +106,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <Typography variant="h6" color="primary" gutterBottom>
+              <Typography variant="h5" color="primary" gutterBottom>
                 S-DES
               </Typography>
               <Typography variant="body2" component="p" gutterBottom>
@@ -241,7 +230,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <Typography variant="h6" color="primary" gutterBottom>
+              <Typography variant="h5" color="primary" gutterBottom>
                 Geração da chave P10
               </Typography>
               <Typography variant="body2" component="p" gutterBottom>
@@ -268,6 +257,26 @@ function App() {
                     </Typography>
                     <BitsField bits={keyBits} />
                   </Grid>
+                  <Grid item xs={12}>
+                    <Typography
+                      variant="subtitle2"
+                      color="primary"
+                      gutterBottom
+                    >
+                      Função P10:
+                    </Typography>
+                    <BitsField bits={[3, 5, 2, 7, 4, 10, 1, 9, 8, 6]} />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography
+                      variant="subtitle2"
+                      color="primary"
+                      gutterBottom
+                    >
+                      Bits da chave P10:
+                    </Typography>
+                    <BitsField bits={p10KeyBits} />
+                  </Grid>
                 </Grid>
               </Box>
             </CardContent>
@@ -284,7 +293,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <Typography variant="h6" color="primary" gutterBottom>
+              <Typography variant="h5" color="primary" gutterBottom>
                 Geração da chave P8
               </Typography>
               <Typography variant="body2" component="p" gutterBottom>

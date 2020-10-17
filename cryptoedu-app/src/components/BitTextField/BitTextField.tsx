@@ -2,20 +2,20 @@ import React from "react";
 import { TextField } from "@material-ui/core";
 
 interface BitTextFieldProps {
-  index: number;
+  position: number;
   value: number;
 }
 
 function BitTextField(props: BitTextFieldProps) {
-  const { index, value } = props;
+  const { position, value } = props;
 
   return (
     <TextField
-      label={index.toString()}
+      label={position.toString()}
       value={value.toString()}
       variant="outlined"
       size="small"
-      style={{ width: "37px" }}
+      style={{ width: value.toString().length === 1 ? "37px" : "46px" }}
     />
   );
 }

@@ -13,7 +13,7 @@ function BitsField(props: BitsFieldProps) {
       {bits.map((b, i) => {
         return (
           <Grid item>
-            <BitTextField index={i} value={b} />
+            <BitTextField position={i + 1} value={b} />
           </Grid>
         );
       })}
