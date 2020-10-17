@@ -47,8 +47,9 @@ class SDES {
   };
 
   static generateP8Key = (key: number[]): number[] => {
+    const ls1 = SDES.generateLS1(key);
     var permutation8NewPositions = [6, 3, 7, 4, 8, 5, 10, 9];
-    return SDES.permutate(key, permutation8NewPositions);
+    return SDES.permutate(ls1, permutation8NewPositions);
   };
 }
 
