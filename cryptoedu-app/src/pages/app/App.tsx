@@ -132,7 +132,7 @@ function App() {
                 O S-DES é uma versão simplificada do algorítimo DES (Data
                 Encryption Standard).
                 <br />
-                Este se utiliza uma chave de 10 bits que deve ser compartilha
+                Este se utiliza de uma chave de 10 bits que deve ser compartilhada
                 entre o emissor e o receptor da mensagem para que a mensagem
                 possa ser criptografada e descriptografada.
                 <br />
