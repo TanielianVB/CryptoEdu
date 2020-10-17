@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 import Brightness4RoundedIcon from "@material-ui/icons/Brightness4Rounded";
@@ -27,6 +28,9 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       justifyContent: "space-between",
     },
+    name: {
+      paddingRight: theme.spacing(1),
+    },
     title: {
       padding: theme.spacing(1),
       // flexGrow: 1,
@@ -41,13 +45,22 @@ function AppTopBar(props: AppTopBarProps) {
   return (
     <AppBar position="static" className={classes.header}>
       <Toolbar className={classes.bar}>
-        <div>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <Tooltip
             title="Simulador de Algoritmos de Criptografia com Finalidade
               Educacional"
           >
-            <Typography variant="h6">CryptoEdu</Typography>
+            <Typography variant="h6" className={classes.name}>
+              CryptoEdu
+            </Typography>
           </Tooltip>
+          <IconButton
+            color="inherit"
+            href="https://github.com/TanielianVB/CryptoEdu"
+            target="_blank"
+          >
+            <GitHubIcon />
+          </IconButton>
         </div>
         <div className={classes.title}>
           <Typography variant="subtitle2">{title}</Typography>

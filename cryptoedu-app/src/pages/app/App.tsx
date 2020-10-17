@@ -58,11 +58,19 @@ const formatArray = (array: number[]) => {
 };
 
 const getSteps = () => {
-  return ["Entradas", "P10", "LS-1", "P8", "K1 & K2", "PI", "PF", "Resultado"];
+  return [
+    "Entradas",
+    "P10",
+    "LS-1",
+    "P8",
+    "K1 & K2",
+    //"PI", "PF", "Resultado"
+    "Em desenvolvimento..."
+  ];
 };
 
 function App() {
-  const [activeStep, setActiveStep] = useState(4);
+  const [activeStep, setActiveStep] = useState(0);
   const [selectedTab, setSelectedTab] = useState(0);
   const [message, setMessage] = useState("01110010");
   const [messageBits, setMessageBits] = useState([0, 1, 1, 1, 0, 0, 1, 0]);
@@ -580,7 +588,7 @@ function App() {
       default:
         return (
           <Typography variant="h3" color="secondary">
-            You are not prepared...
+            Próximos passos em desenvolvimento...
             <StepperNavigation
               setActiveStep={setActiveStep}
               previousStep={activeStep - 1}
