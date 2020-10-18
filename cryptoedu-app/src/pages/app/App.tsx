@@ -42,6 +42,11 @@ const useStyles = makeStyles((theme: Theme) =>
     card: {
       maxWidth: "1000px",
     },
+    char: {
+      display: "inline-block",
+      paddingLeft: theme.spacing(1),
+      width: "62px",
+    },
     footer: {
       flex: "0 1 auto",
       display: "flex",
@@ -54,19 +59,14 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const formatArray = (array: number[]) => {
   // return "[ " + array.join(", ") + " ]";
-  return "[" + array.join("") + "]";
+  // return "[" + array.join("") + "]";
+  // return array.join("");
+  const char = Utils.getChar(array);
+  return (char ? "'" + char + "' " : "") + array.join("");
 };
 
 const getSteps = () => {
-  return [
-    "Inicio",
-    "P10",
-    "LS-1",
-    "P8",
-    "K1 & K2",
-    //"PI", "PF", "Fim"
-    "Em desenvolvimento...",
-  ];
+  return ["Inicio", "P10", "LS-1", "P8", "K1 & K2", "PI", "PF", "Fim"];
 };
 
 function App() {
@@ -186,6 +186,14 @@ function App() {
                       value={message}
                       onChange={handleMessageChange}
                     />
+                    <div className={classes.char}>
+                      <TextField
+                        label="Char"
+                        variant="outlined"
+                        size="medium"
+                        value={Utils.getChar(messageBits)}
+                      />
+                    </div>
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
@@ -501,7 +509,7 @@ function App() {
               </Typography>
               <Typography variant="body2" component="p" gutterBottom>
                 A primeira chave (K<sub>1</sub>) é exatamente o resultado que
-                obtivemos ao aplicar a função F8.
+                obtivemos ao aplicar a função P8.
               </Typography>
               <Grid container justify="center">
                 <Typography variant="subtitle2" color="primary" gutterBottom>

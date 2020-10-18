@@ -16,6 +16,11 @@ class Utils {
 
     return bits;
   };
+  static getChar = (binaryArray: number[]) => {
+    return binaryArray.length === 8
+      ? String.fromCharCode(parseInt(binaryArray.join(""), 2))
+      : "";
+  };
 }
 
 export default Utils;
