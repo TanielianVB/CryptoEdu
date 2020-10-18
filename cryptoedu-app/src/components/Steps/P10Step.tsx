@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
+import SDES from "../../utils/SDES";
 
 interface P10StepProps {
   keyBits: number[];
@@ -41,7 +42,7 @@ function P10Step(props: P10StepProps) {
         <Typography variant="subtitle2" color="primary" gutterBottom>
           Função de permutação P10:
         </Typography>
-        <BitsField bits={[3, 5, 2, 7, 4, 10, 1, 9, 8, 6]} justify="center" />
+        <BitsField bits={SDES.getP10Positions()} justify="center" />
       </Grid>
       <Typography variant="body2" component="p" gutterBottom>
         Lê-se: Na 1ª posição agora ficará o bit que estava na 3ª posição, na 2ª
@@ -61,7 +62,7 @@ function P10Step(props: P10StepProps) {
         <Typography variant="subtitle2" color="primary" gutterBottom>
           Função de permutação P10 à ser aplicada sobre a chave:
         </Typography>
-        <BitsField bits={[3, 5, 2, 7, 4, 10, 1, 9, 8, 6]} justify="center" />
+        <BitsField bits={SDES.getP10Positions()} justify="center" />
       </Grid>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>

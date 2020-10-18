@@ -8,10 +8,10 @@ class SDES {
     return permutatedArray;
   };
 
-  static permutate10 = (key: number[]): number[] => {
-    const permutation10NewPositions = [3, 5, 2, 7, 4, 10, 1, 9, 8, 6];
-    return SDES.permutate(key, permutation10NewPositions);
-  };
+  static getP10Positions = (): number[] => [3, 5, 2, 7, 4, 10, 1, 9, 8, 6];
+
+  static permutate10 = (key: number[]): number[] =>
+    SDES.permutate(key, SDES.getP10Positions());
 
   static circularLeftShift = (array: number[]): number[] => {
     var shiftedArray: number[] = [];
@@ -45,10 +45,10 @@ class SDES {
     );
   };
 
-  static permutateP8 = (ls: number[]): number[] => {
-    const permutation8NewPositions = [6, 3, 7, 4, 8, 5, 10, 9];
-    return SDES.permutate(ls, permutation8NewPositions);
-  };
+  static getP8Positions = (): number[] => [6, 3, 7, 4, 8, 5, 10, 9];
+
+  static permutateP8 = (ls: number[]): number[] =>
+    SDES.permutate(ls, SDES.getP8Positions());
 
   static generateKey1 = (ls1: number[]): number[] => SDES.permutateP8(ls1);
 
@@ -62,10 +62,10 @@ class SDES {
 
   static generateKey2 = (ls2: number[]): number[] => SDES.permutateP8(ls2);
 
-  static permutateIP = (message: number[]): number[] => {
-    const initialPermutationNewPositions = [2, 6, 3, 1, 4, 8, 5, 7];
-    return SDES.permutate(message, initialPermutationNewPositions);
-  };
+  static getIPPositions = (): number[] => [2, 6, 3, 1, 4, 8, 5, 7];
+
+  static permutateIP = (message: number[]): number[] =>
+    SDES.permutate(message, SDES.getIPPositions());
 }
 
 export default SDES;

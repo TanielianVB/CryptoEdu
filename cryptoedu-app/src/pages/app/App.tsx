@@ -81,7 +81,7 @@ const getSteps = (): React.ReactNode[] => {
 };
 
 function App() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(6);
   const [selectedTab, setSelectedTab] = useState(0);
   const [message, setMessage] = useState("01110010");
   const [messageBits, setMessageBits] = useState([0, 1, 1, 1, 0, 0, 1, 0]);
@@ -325,7 +325,7 @@ function App() {
                 <Typography variant="subtitle2" color="primary" gutterBottom>
                   Função de permutação P8:
                 </Typography>
-                <BitsField bits={[6, 3, 7, 4, 8, 5, 10, 9]} justify="center" />
+                <BitsField bits={SDES.getP8Positions()} justify="center" />
               </Grid>
               <Typography variant="body2" component="p" gutterBottom>
                 É interessante observar que, diferente da função de permuutação
@@ -345,7 +345,7 @@ function App() {
                 <Typography variant="subtitle2" color="primary" gutterBottom>
                   Função de permutação P8 à ser aplicada sobre LS-1:
                 </Typography>
-                <BitsField bits={[6, 3, 7, 4, 8, 5, 10, 9]} justify="center" />
+                <BitsField bits={SDES.getP8Positions()} justify="center" />
               </Grid>
               <Grid container justify="center">
                 <Typography variant="subtitle2" color="primary" gutterBottom>
@@ -465,6 +465,26 @@ function App() {
             </CardActions>
           </Card>
         );
+      // case 6:
+      //   return (
+      //     <Card className={classes.card}>
+      //       <CardContent>
+      //         <Typography variant="h5" color="primary" gutterBottom>
+      //           E/P - Expansion / Permutation - Permutação de expansão
+      //         </Typography>
+      //         <Typography variant="body2" component="p" gutterBottom>
+      //           Agora
+      //         </Typography>
+      //       </CardContent>
+      //       <CardActions>
+      //         <StepperNavigation
+      //           setActiveStep={setActiveStep}
+      //           previousStep={stepIndex - 1}
+      //           nextStep={stepIndex + 1}
+      //         />
+      //       </CardActions>
+      //     </Card>
+      //   );
       default:
         return (
           <Typography variant="h3" color="secondary">

@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
+import SDES from "../../utils/SDES";
 
 interface IPStepProps {
   messageBits: number[];
@@ -28,7 +29,7 @@ function IPStep(props: IPStepProps) {
         <Typography variant="subtitle2" color="primary" gutterBottom>
           Função de permutação IP:
         </Typography>
-        <BitsField bits={[2, 6, 3, 1, 4, 8, 5, 7]} justify="center" />
+        <BitsField bits={SDES.getIPPositions()} justify="center" />
       </Grid>
       <Typography variant="body2" component="p" gutterBottom>
         Sendo assim, aplicando a função IP sobre a mensagem temos:
@@ -43,7 +44,7 @@ function IPStep(props: IPStepProps) {
         <Typography variant="subtitle2" color="primary" gutterBottom>
           Função de permutação IP:
         </Typography>
-        <BitsField bits={[2, 6, 3, 1, 4, 8, 5, 7]} justify="center" />
+        <BitsField bits={SDES.getIPPositions()} justify="center" />
       </Grid>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
