@@ -9,7 +9,7 @@ import {
   Grid,
   InputAdornment,
   Step,
-  StepLabel,
+  StepButton,
   Stepper,
   Tab,
   Tabs,
@@ -95,7 +95,7 @@ const getSteps = (): React.ReactNode[] => {
 };
 
 function App() {
-  const [activeStep, setActiveStep] = useState(6);
+  const [activeStep, setActiveStep] = useState(0);
   const [selectedTab, setSelectedTab] = useState(0);
   const [message, setMessage] = useState("01110010");
   const [messageBits, setMessageBits] = useState([0, 1, 1, 1, 0, 0, 1, 0]);
@@ -506,6 +506,9 @@ function App() {
                 component="p"
                 gutterBottom
               ></Typography>
+              <Typography variant="h6" color="secondary">
+                Em desenvolvimento...
+              </Typography>
             </CardContent>
             <CardActions>
               <StepperNavigation
@@ -518,13 +521,19 @@ function App() {
         );
       default:
         return (
-          <Typography variant="h3" color="secondary">
-            Próximos passos em desenvolvimento...
-            <StepperNavigation
-              setActiveStep={setActiveStep}
-              previousStep={activeStep - 1}
-            />
-          </Typography>
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography variant="h3" color="secondary">
+                Em desenvolvimento...
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <StepperNavigation
+                setActiveStep={setActiveStep}
+                previousStep={activeStep - 1}
+              />
+            </CardActions>
+          </Card>
         );
     }
   };
@@ -545,10 +554,16 @@ function App() {
           activeStep={activeStep}
           alternativeLabel
           className={classes.stepper}
+          nonLinear
         >
           {getSteps().map((label, index) => (
             <Step key={index}>
-              <StepLabel>{label}</StepLabel>
+              <StepButton
+                completed={index < activeStep}
+                onClick={(event) => setActiveStep(index)}
+              >
+                {label}
+              </StepButton>
             </Step>
           ))}
         </Stepper>
