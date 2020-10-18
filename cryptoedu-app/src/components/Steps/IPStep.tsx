@@ -19,10 +19,10 @@ function IPStep(props: IPStepProps) {
       <Typography variant="body2" component="p" gutterBottom>
         Uma vez tendo-se obtidas as chaves que serão utilizadas na criptografia
         (K<sub>1</sub> & K<sub>2</sub>) iremos finalmente começar a criptografar
-        a mensagem.
+        a mensagem. A mensagem também é referida como P (plaintext).
       </Typography>
       <Typography variant="body2" component="p" gutterBottom>
-        A primeira alteração a ser aplicada à mensgem é a permutação inicial que
+        A primeira alteração a ser aplicada à mensagem (P) é a permutação inicial que
         é definida por:
       </Typography>
       <Grid container justify="center">
@@ -36,7 +36,7 @@ function IPStep(props: IPStepProps) {
       </Typography>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
-          Mensagem:
+          P:
         </Typography>
         <BitsField bits={messageBits} justify="center" addChar />
       </Grid>

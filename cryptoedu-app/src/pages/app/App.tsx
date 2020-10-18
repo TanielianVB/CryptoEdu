@@ -75,7 +75,12 @@ const getSteps = (): React.ReactNode[] => {
     "IP",
     "E/P",
     "FP",
-    "Fim",
+    <>
+      K<sub>1</sub> & K<sub>2</sub>
+    </>,
+    <>
+      IP<sup>-1</sup>
+    </>,
     "Revisão",
   ];
 };
@@ -465,26 +470,26 @@ function App() {
             </CardActions>
           </Card>
         );
-      // case 6:
-      //   return (
-      //     <Card className={classes.card}>
-      //       <CardContent>
-      //         <Typography variant="h5" color="primary" gutterBottom>
-      //           E/P - Expansion / Permutation - Permutação de expansão
-      //         </Typography>
-      //         <Typography variant="body2" component="p" gutterBottom>
-      //           Agora
-      //         </Typography>
-      //       </CardContent>
-      //       <CardActions>
-      //         <StepperNavigation
-      //           setActiveStep={setActiveStep}
-      //           previousStep={stepIndex - 1}
-      //           nextStep={stepIndex + 1}
-      //         />
-      //       </CardActions>
-      //     </Card>
-      //   );
+      case 6:
+        return (
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography variant="h5" color="primary" gutterBottom>
+                E/P - Expansion / Permutation - Permutação de expansão
+              </Typography>
+              <Typography variant="body2" component="p" gutterBottom>
+                Agora
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <StepperNavigation
+                setActiveStep={setActiveStep}
+                previousStep={stepIndex - 1}
+                nextStep={stepIndex + 1}
+              />
+            </CardActions>
+          </Card>
+        );
       default:
         return (
           <Typography variant="h3" color="secondary">

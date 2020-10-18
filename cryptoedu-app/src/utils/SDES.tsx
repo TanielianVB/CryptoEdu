@@ -66,6 +66,16 @@ class SDES {
 
   static permutateIP = (message: number[]): number[] =>
     SDES.permutate(message, SDES.getIPPositions());
+
+  static getEPPositions = (): number[] => [4, 1, 2, 3, 2, 3, 4, 1];
+
+  static permutateEP = (message: number[]): number[] =>
+    SDES.permutate(message, SDES.getEPPositions());
+
+  static getInverseIPPositions = (): number[] => [4, 1, 3, 5, 7, 2, 8, 6];
+
+  static permutateInverseIP = (message: number[]): number[] =>
+    SDES.permutate(message, SDES.getInverseIPPositions());
 }
 
 export default SDES;
