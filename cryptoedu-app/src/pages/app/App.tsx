@@ -26,6 +26,7 @@ import Utils from "../../utils/Utils";
 import SDES from "../../utils/SDES";
 import P10Step from "../../components/Steps/P10Step";
 import LS1Step from "../../components/Steps/LS1Step";
+import IPStep from "../../components/Steps/IPStep";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -43,11 +44,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     card: {
       maxWidth: "1000px",
-    },
-    char: {
-      display: "inline-block",
-      paddingLeft: theme.spacing(1),
-      width: "62px",
     },
     footer: {
       flex: "0 1 auto",
@@ -68,11 +64,11 @@ const formatArray = (array: number[]) => {
 };
 
 const getSteps = () => {
-  return ["Inicio", "P10", "LS-1", "P8", "K1 & K2", "PI", "PF", "Fim"];
+  return ["Inicio", "P10", "LS-1", "P8", "K1 & K2", "IP", "E/P", "FP", "Fim"];
 };
 
 function App() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(5);
   const [selectedTab, setSelectedTab] = useState(0);
   const [message, setMessage] = useState("01110010");
   const [messageBits, setMessageBits] = useState([0, 1, 1, 1, 0, 0, 1, 0]);
@@ -83,6 +79,7 @@ function App() {
   const [k1Bits, setK1Bits] = useState<number[]>([]);
   const [ls2Bits, setLs2Bits] = useState<number[]>([]);
   const [k2Bits, setK2Bits] = useState<number[]>([]);
+  const [ipBits, setIpBits] = useState<number[]>([]);
 
   useEffect(() => {
     const p10 = SDES.permutate10(keyBits);
@@ -96,6 +93,11 @@ function App() {
     const k2 = SDES.generateKey2(ls2);
     setK2Bits(k2);
   }, [keyBits]);
+
+  useEffect(() => {
+    const ip = SDES.permutateIP(messageBits);
+    setIpBits(ip);
+  }, [messageBits]);
 
   const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     var m = event.target.value;
@@ -188,14 +190,6 @@ function App() {
                       value={message}
                       onChange={handleMessageChange}
                     />
-                    <div className={classes.char}>
-                      <TextField
-                        label="Char"
-                        variant="outlined"
-                        size="medium"
-                        value={Utils.getChar(messageBits)}
-                      />
-                    </div>
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
@@ -224,7 +218,7 @@ function App() {
                     >
                       Bits da mensagem:
                     </Typography>
-                    <BitsField bits={messageBits} />
+                    <BitsField bits={messageBits} addChar />
                   </Grid>
                   <Grid item xs={6}>
                     <Typography
@@ -433,6 +427,21 @@ function App() {
                 </Typography>
                 <BitsField bits={k2Bits} justify="center" />
               </Grid>
+            </CardContent>
+            <CardActions>
+              <StepperNavigation
+                setActiveStep={setActiveStep}
+                previousStep={stepIndex - 1}
+                nextStep={stepIndex + 1}
+              />
+            </CardActions>
+          </Card>
+        );
+      case 5:
+        return (
+          <Card className={classes.card}>
+            <CardContent>
+              <IPStep messageBits={messageBits} ipBits={ipBits} />
             </CardContent>
             <CardActions>
               <StepperNavigation

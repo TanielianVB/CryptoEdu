@@ -61,6 +61,11 @@ class SDES {
   };
 
   static generateKey2 = (ls2: number[]): number[] => SDES.permutateP8(ls2);
+
+  static permutateIP = (message: number[]): number[] => {
+    const initialPermutationNewPositions = [2, 6, 3, 1, 4, 8, 5, 7];
+    return SDES.permutate(message, initialPermutationNewPositions);
+  };
 }
 
 export default SDES;
