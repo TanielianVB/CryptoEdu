@@ -22,8 +22,8 @@ function IPStep(props: IPStepProps) {
         a mensagem. A mensagem também é referida como P (plaintext).
       </Typography>
       <Typography variant="body2" component="p" gutterBottom>
-        A primeira alteração a ser aplicada à mensagem (P) é a permutação inicial que
-        é definida por:
+        A primeira alteração a ser aplicada à mensagem (P) é a permutação
+        inicial que é definida por:
       </Typography>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
@@ -51,6 +51,25 @@ function IPStep(props: IPStepProps) {
           Mensagem permutada obtida através da aplicação da função de IP:
         </Typography>
         <BitsField bits={ipBits} justify="center" addChar />
+      </Grid>
+      <Typography variant="body2" component="p" gutterBottom>
+        A saída da função de permutação inicial IP é então divida em na metade.
+        São elas L (left) e R (right). Estas serão utilizadas como parâmetros
+        que serão passados para a f <sub>k</sub>.
+      </Typography>
+      <Grid container justify="center" spacing={5}>
+        <Grid item justify="center">
+          <Typography variant="subtitle2" color="primary" gutterBottom>
+            L (left):
+          </Typography>
+          <BitsField bits={ipBits.slice(0, 4)} justify="center" />
+        </Grid>
+        <Grid item justify="center">
+          <Typography variant="subtitle2" color="primary" gutterBottom>
+            R (right):
+          </Typography>
+          <BitsField bits={ipBits.slice(4, 8)} justify="center" />
+        </Grid>
       </Grid>
     </>
   );

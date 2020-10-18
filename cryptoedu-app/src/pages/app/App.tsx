@@ -73,10 +73,19 @@ const getSteps = (): React.ReactNode[] => {
       K<sub>1</sub> & K<sub>2</sub>
     </>,
     "IP",
-    "E/P",
-    "FP",
     <>
-      K<sub>1</sub> & K<sub>2</sub>
+      f
+      <sub>
+        k<sub>1</sub>
+      </sub>{" "}
+      & E/P
+    </>,
+    "S0 & S1 & P4",
+    <>
+      SW & f
+      <sub>
+        k<sub>2</sub>
+      </sub>
     </>,
     <>
       IP<sup>-1</sup>
@@ -475,11 +484,28 @@ function App() {
           <Card className={classes.card}>
             <CardContent>
               <Typography variant="h5" color="primary" gutterBottom>
-                E/P - Expansion / Permutation - Permutação de expansão
+                f
+                <sub>
+                  k<sub>1</sub>
+                </sub>{" "}
+                & E/P (Expansion / Permutation - Permutação de expansão)
               </Typography>
               <Typography variant="body2" component="p" gutterBottom>
-                Agora
+                A função f<sub>k</sub> é o componente mais complexo da execução
+                do algoritmo e consiste de uma combinação de permutações e
+                substituições e será chamada duas vezes durante o fluxo de
+                execução, sendo uma vez para cada chave (K<sub>1</sub> e K
+                <sub>2</sub>). A função f<sub>k</sub> é definida por:
               </Typography>
+              <Grid container justify="center">
+                {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression: P10(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{3}, k_{5}, k_{2}, k_{7}, k_{4}, k_{10}, k_{1}, k_{9}, k_{8}, k_{6}) */}
+                <img src="sdes\fk.svg" alt="fk" />
+              </Grid>
+              <Typography
+                variant="body2"
+                component="p"
+                gutterBottom
+              ></Typography>
             </CardContent>
             <CardActions>
               <StepperNavigation
