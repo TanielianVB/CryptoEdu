@@ -59,12 +59,12 @@ const formatArray = (array: number[]) => {
 
 const getSteps = () => {
   return [
-    "Entradas",
+    "Inicio",
     "P10",
     "LS-1",
     "P8",
     "K1 & K2",
-    //"PI", "PF", "Resultado"
+    //"PI", "PF", "Fim"
     "Em desenvolvimento...",
   ];
 };
@@ -132,14 +132,16 @@ function App() {
                 O S-DES é uma versão simplificada do algorítimo DES (Data
                 Encryption Standard).
                 <br />
-                Este se utiliza de uma chave de 10 bits que deve ser compartilhada
-                entre o emissor e o receptor da mensagem para que a mensagem
-                possa ser criptografada e descriptografada.
+                Este se utiliza de uma chave de 10 bits que deve ser
+                compartilhada entre o emissor e o receptor da mensagem para que
+                a mensagem possa ser criptografada e descriptografada.
                 <br />
                 Nesta execução (que possui objetivo educacional) podemos
-                informar uma mensagem e uma chave para assim melhor
-                visualizarmos como a criptografia ocorre quando os valores
-                desejados são utilizados.
+                escolher se desejamos criptografar ou descriptografar a mensagem
+                e informar uma mensagem e uma chave que irão ser utilizadas
+                durante a execução do algoritmo para assim melhor visualizarmos
+                como a ocorre o processo quando os valores desejados são
+                utilizados.
               </Typography>
               <Tabs
                 indicatorColor="primary"
@@ -338,9 +340,8 @@ function App() {
               </Typography>
               <Typography variant="body2" component="p" gutterBottom>
                 O próximo passo é a rotação de P10, que ocorre em cada uma das
-                metades de P10 obtida no passo anterior.
-                <br />
-                Então o primeiro passo dessa etapa é dividir P10 em 2 metades:
+                metades de P10 obtida no passo anterior. Então o primeiro passo
+                dessa etapa é dividir P10 em 2 metades:
               </Typography>
               <Grid container justify="center">
                 <Typography variant="subtitle2" color="primary" gutterBottom>
