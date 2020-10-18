@@ -63,8 +63,21 @@ const formatArray = (array: number[]) => {
   return (char ? "'" + char + "' " : "") + array.join("");
 };
 
-const getSteps = () => {
-  return ["Inicio", "P10", "LS-1", "P8", "K1 & K2", "IP", "E/P", "FP", "Fim"];
+const getSteps = (): React.ReactNode[] => {
+  return [
+    "Inicio",
+    "P10",
+    "LS-1",
+    "P8",
+    <>
+      K<sub>1</sub> & K<sub>2</sub>
+    </>,
+    "IP",
+    "E/P",
+    "FP",
+    "Fim",
+    "Revisão",
+  ];
 };
 
 function App() {
@@ -482,8 +495,8 @@ function App() {
           alternativeLabel
           className={classes.stepper}
         >
-          {getSteps().map((label) => (
-            <Step key={label}>
+          {getSteps().map((label, index) => (
+            <Step key={index}>
               <StepLabel>{label}</StepLabel>
             </Step>
           ))}
