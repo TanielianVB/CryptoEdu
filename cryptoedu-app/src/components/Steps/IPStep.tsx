@@ -53,7 +53,7 @@ function IPStep(props: IPStepProps) {
         <BitsField bits={ipBits} justify="center" addChar />
       </Grid>
       <Typography variant="body2" component="p" gutterBottom>
-        A saída da função de permutação inicial IP é então divida em na metade.
+        A saída da função de permutação inicial IP é então divida na metade.
         São elas L (left) e R (right). Estas serão utilizadas como parâmetros
         que serão passados para a f <sub>k</sub>.
       </Typography>

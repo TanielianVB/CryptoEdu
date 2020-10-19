@@ -8,6 +8,14 @@ class SDES {
     return permutatedArray;
   };
 
+  static xor = (a: number[], b: number[]): number[] => {
+    let result: number[] = new Array(a.length);
+    for (let index = 0; index < a.length; index++) {
+      result[index] = a[index] ^ b[index];
+    }
+    return result;
+  };
+
   static getP10Positions = (): number[] => [3, 5, 2, 7, 4, 10, 1, 9, 8, 6];
 
   static permutate10 = (key: number[]): number[] =>
@@ -127,6 +135,9 @@ class SDES {
   ];
 
   static getP4Positions = (): number[] => [2, 4, 3, 1];
+
+  static permutateP4 = (message: number[]): number[] =>
+    SDES.permutate(message, SDES.getP4Positions());
 
   static getInverseIPPositions = (): number[] => [4, 1, 3, 5, 7, 2, 8, 6];
 
