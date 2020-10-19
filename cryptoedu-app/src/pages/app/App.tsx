@@ -364,7 +364,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <EPStep ipBits={ipBits} ep1Bits={ep1Bits} />
+              <EPStep ipBits={ipBits} ep1Bits={ep1Bits} k1Bits={k1Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation

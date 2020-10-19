@@ -10,10 +10,11 @@ import UnderDevelopmentTag from "../UnderDevelopmentTag/UnderDevelopmentTag";
 interface EPStepProps {
   ipBits: number[];
   ep1Bits: number[];
+  k1Bits: number[];
 }
 
 function EPStep(props: EPStepProps) {
-  const { ipBits, ep1Bits } = props;
+  const { ipBits, ep1Bits, k1Bits } = props;
 
   return (
     <>
@@ -84,6 +85,26 @@ function EPStep(props: EPStepProps) {
           E/P obtida através da aplicação da função de permutação E/P sobre R:
         </BitsFieldLabel>
         <BitsField bits={ep1Bits} justify="center" />
+      </Grid>
+      <ExplanationText>
+        Com a saída da função E/P por sua vez será feito um OU exclusivo com a
+        chave K<sub>1</sub> já obtida.
+      </ExplanationText>
+      <Grid container justify="center">
+        <BitsFieldLabel>
+          E/P obtida através da aplicação da função de permutação E/P sobre R:
+        </BitsFieldLabel>
+        <BitsField bits={ep1Bits} justify="center" />
+      </Grid>
+      <Grid container justify="center">
+        <BitsFieldLabel>
+          Chave K<sub>1</sub>:
+        </BitsFieldLabel>
+        <BitsField bits={k1Bits} justify="center" />
+      </Grid>
+      <Grid container justify="center">
+        <BitsFieldLabel>XOR (OU exclusivo) entre E/P e K1:</BitsFieldLabel>
+        <BitsField bits={SDES.xor(ep1Bits, k1Bits)} justify="center" />
       </Grid>
 
       <UnderDevelopmentTag />
