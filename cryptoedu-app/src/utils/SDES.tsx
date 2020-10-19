@@ -126,6 +126,8 @@ class SDES {
     ],
   ];
 
+  static getP4Positions = (): number[] => [2, 4, 3, 1];
+
   static getInverseIPPositions = (): number[] => [4, 1, 3, 5, 7, 2, 8, 6];
 
   static permutateInverseIP = (message: number[]): number[] =>
