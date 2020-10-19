@@ -1,12 +1,12 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 
 interface SWStepProps {
   //   ls1Bits: number[];
   //   k1Bits: number[];
 }
 
-function SWStep(props: SWStepProps) {
+function SWStep() {
   return (
     <>
       <Typography variant="h5" color="primary" gutterBottom>
