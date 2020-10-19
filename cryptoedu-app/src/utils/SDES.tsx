@@ -72,6 +72,60 @@ class SDES {
   static permutateEP = (message: number[]): number[] =>
     SDES.permutate(message, SDES.getEPPositions());
 
+  static getSubstitution0Positions = (): number[][][] => [
+    [
+      [0, 1],
+      [0, 0],
+      [1, 1],
+      [1, 0],
+    ],
+    [
+      [1, 1],
+      [1, 0],
+      [0, 1],
+      [0, 0],
+    ],
+    [
+      [0, 0],
+      [1, 0],
+      [0, 1],
+      [1, 1],
+    ],
+    [
+      [1, 1],
+      [0, 1],
+      [1, 1],
+      [1, 0],
+    ],
+  ];
+
+  static getSubstitution1Positions = (): number[][][] => [
+    [
+      [0, 0],
+      [0, 1],
+      [1, 0],
+      [1, 1],
+    ],
+    [
+      [1, 0],
+      [0, 0],
+      [0, 1],
+      [1, 1],
+    ],
+    [
+      [1, 1],
+      [0, 0],
+      [0, 1],
+      [0, 0],
+    ],
+    [
+      [1, 0],
+      [0, 1],
+      [0, 0],
+      [1, 1],
+    ],
+  ];
+
   static getInverseIPPositions = (): number[] => [4, 1, 3, 5, 7, 2, 8, 6];
 
   static permutateInverseIP = (message: number[]): number[] =>

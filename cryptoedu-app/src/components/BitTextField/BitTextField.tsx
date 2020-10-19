@@ -2,8 +2,8 @@ import React from "react";
 import { TextField } from "@material-ui/core";
 
 interface BitTextFieldProps {
-  position: number;
-  value: number;
+  position: string;
+  value: string;
 }
 
 function BitTextField(props: BitTextFieldProps) {
@@ -11,11 +11,11 @@ function BitTextField(props: BitTextFieldProps) {
 
   return (
     <TextField
-      label={position.toString()}
-      value={value.toString()}
+      label={position}
+      value={value}
       variant="outlined"
       size="small"
-      style={{ width: value.toString().length === 1 ? "37px" : "46px" }}
+      style={{ width: value.length === 1 ? "37px" : "46px" }}
     />
   );
 }
