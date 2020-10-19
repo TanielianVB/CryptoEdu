@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
+import ExplanationText from "../ExplanationText/ExplanationText";
 
 interface LS1StepProps {
   p10Bits: number[];
@@ -13,14 +14,12 @@ function LS1Step(props: LS1StepProps) {
 
   return (
     <>
-      <StepContentTitle>
-        LS-1
-      </StepContentTitle>
-      <Typography variant="body2" component="p" gutterBottom>
+      <StepContentTitle>LS-1</StepContentTitle>
+      <ExplanationText>
         O próximo passo é a rotação de P10, que ocorre em cada uma das metades
         de P10 obtida no passo anterior. Então o primeiro passo dessa etapa é
         dividir P10 em 2 metades:
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
           P10:
@@ -41,15 +40,15 @@ function LS1Step(props: LS1StepProps) {
           <BitsField bits={p10Bits.slice(5, 10)} justify="center" />
         </Grid>
       </Grid>
-      <Typography variant="body2" component="p" gutterBottom>
+      <ExplanationText>
         O próximo passo é a rotação das metades. A rotação nada mais é do que a
         movimentação de todos os bits. No caso do S-DES essa rotação inicial
         será de 1 posição para esquerda, circular left shift (LS-1). O bit na
         primeira posição irá então para a última posição.
-      </Typography>
-      <Typography variant="body2" component="p" gutterBottom>
+      </ExplanationText>
+      <ExplanationText>
         Aplicando a rotação LS-1 na metade da esquerda temos:
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
           <Typography variant="subtitle2" color="primary" gutterBottom>
@@ -64,9 +63,9 @@ function LS1Step(props: LS1StepProps) {
           <BitsField bits={ls1Bits.slice(0, 5)} justify="center" />
         </Grid>
       </Grid>
-      <Typography variant="body2" component="p" gutterBottom>
+      <ExplanationText>
         Aplicando a rotação LS-1 na metade da direita temos:
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
           <Typography variant="subtitle2" color="primary" gutterBottom>
@@ -81,9 +80,9 @@ function LS1Step(props: LS1StepProps) {
           <BitsField bits={ls1Bits.slice(5, 10)} justify="center" />
         </Grid>
       </Grid>
-      <Typography variant="body2" component="p" gutterBottom>
+      <ExplanationText>
         Juntando as metades após a rotação temos:
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
           Resultado da rotação LS-1 nas metades de P10:

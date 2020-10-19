@@ -3,6 +3,7 @@ import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
+import ExplanationText from "../ExplanationText/ExplanationText";
 
 interface IPStepProps {
   messageBits: number[];
@@ -14,27 +15,25 @@ function IPStep(props: IPStepProps) {
 
   return (
     <>
-      <StepContentTitle>
-        IP (Initial Permutation)
-      </StepContentTitle>
-      <Typography variant="body2" component="p" gutterBottom>
+      <StepContentTitle>IP (Initial Permutation)</StepContentTitle>
+      <ExplanationText>
         Uma vez tendo-se obtidas as chaves que serão utilizadas na criptografia
         (K<sub>1</sub> & K<sub>2</sub>) iremos finalmente começar a criptografar
         a mensagem. A mensagem também é referida como P (plaintext).
-      </Typography>
-      <Typography variant="body2" component="p" gutterBottom>
+      </ExplanationText>
+      <ExplanationText>
         A primeira alteração a ser aplicada à mensagem (P) é a permutação
         inicial que é definida por:
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
           Função de permutação IP:
         </Typography>
         <BitsField bits={SDES.getIPPositions()} justify="center" />
       </Grid>
-      <Typography variant="body2" component="p" gutterBottom>
+      <ExplanationText>
         Sendo assim, aplicando a função IP sobre a mensagem temos:
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
           P:
@@ -53,11 +52,11 @@ function IPStep(props: IPStepProps) {
         </Typography>
         <BitsField bits={ipBits} justify="center" addChar />
       </Grid>
-      <Typography variant="body2" component="p" gutterBottom>
-        A saída da função de permutação inicial IP é então divida na metade.
-        São elas L (left) e R (right). Estas serão utilizadas como parâmetros
-        que serão passados para a f <sub>k</sub>.
-      </Typography>
+      <ExplanationText>
+        A saída da função de permutação inicial IP é então divida na metade. São
+        elas L (left) e R (right). Estas serão utilizadas como parâmetros que
+        serão passados para a f <sub>k</sub>.
+      </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
           <Typography variant="subtitle2" color="primary" gutterBottom>

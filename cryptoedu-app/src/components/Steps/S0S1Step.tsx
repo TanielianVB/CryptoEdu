@@ -4,6 +4,7 @@ import SDES from "../../utils/SDES";
 import MatrixField from "../MatrixField/MatrixField";
 import BitsField from "../BitsField/BitsField";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
+import ExplanationText from "../ExplanationText/ExplanationText";
 
 interface S0S1StepProps {
   //   ls1Bits: number[];
@@ -13,13 +14,11 @@ interface S0S1StepProps {
 function S0S1Step(props: S0S1StepProps) {
   return (
     <>
-      <StepContentTitle>
-        S0 & S1 & P4
-      </StepContentTitle>
-      <Typography variant="body2" component="p" gutterBottom>
+      <StepContentTitle>S0 & S1 & P4</StepContentTitle>
+      <ExplanationText>
         A função de substituição S0 é na realidade uma matrix com pares de
         bits...
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
           <Typography variant="subtitle2" color="primary" gutterBottom>

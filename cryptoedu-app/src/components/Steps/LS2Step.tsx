@@ -3,6 +3,7 @@ import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
+import ExplanationText from "../ExplanationText/ExplanationText";
 
 interface LS2StepProps {
   ls1Bits: number[];
@@ -18,18 +19,18 @@ function LS2Step(props: LS2StepProps) {
       <StepContentTitle>
         LS-2 & K<sub>2</sub>
       </StepContentTitle>
-      <Typography variant="body2" component="p" gutterBottom>
+      <ExplanationText>
         Munidos do conhecimento obtido até o momento podemos enfim obter a
         segunda chave (K<sub>2</sub>) que será utilizada, juntamente com K
         <sub>1</sub>, durante o processo de criptografia e descriptografia.
-      </Typography>
-      <Typography variant="body2" component="p" gutterBottom>
+      </ExplanationText>
+      <ExplanationText>
         A segunda chave (K<sub>2</sub>) será obtida através da repetição de
         alguns passos agora já conhecidos por nós.
-      </Typography>
-      <Typography variant="body2" component="p" gutterBottom>
+      </ExplanationText>
+      <ExplanationText>
         Primeiramente, divide-se LS-1 em duas metades:
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
           LS-1:
@@ -50,10 +51,10 @@ function LS2Step(props: LS2StepProps) {
           <BitsField bits={ls1Bits.slice(5, 10)} justify="center" />
         </Grid>
       </Grid>
-      <Typography variant="body2" component="p" gutterBottom>
+      <ExplanationText>
         Aplica-se então a rotação de 2 posições para esquerda, circular left
         shift (LS-2), nas metades de LS-1.
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
           <Typography variant="subtitle2" color="primary" gutterBottom>
@@ -68,10 +69,10 @@ function LS2Step(props: LS2StepProps) {
           <BitsField bits={ls2Bits.slice(5, 10)} justify="center" />
         </Grid>
       </Grid>
-      <Typography variant="body2" component="p" gutterBottom>
+      <ExplanationText>
         Finalmente, se aplica P8 sobre a junção das metades alteradas pela
         rotação LS-2. Obtendo-se assim a chave K<sub>2</sub>.
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
           LS-2:

@@ -3,6 +3,7 @@ import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
+import ExplanationText from "../ExplanationText/ExplanationText";
 
 interface P8StepProps {
   ls1Bits: number[];
@@ -17,39 +18,39 @@ function P8Step(props: P8StepProps) {
       <StepContentTitle>
         P8 & K<sub>1</sub>
       </StepContentTitle>
-      <Typography variant="body2" component="p" gutterBottom>
+      <ExplanationText>
         O próximo passo é uma nova permutação a ser aplicada dessa vez sobre
         LS-1 obtida no passo anterior.
-      </Typography>
-      <Typography variant="body2" component="p" gutterBottom>
+      </ExplanationText>
+      <ExplanationText>
         A permutação ocorrerá através da aplicação de uma função de permutação.
         A função de permutação P8 é definida por:
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center">
         {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression: P8(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{6}, k_{3}, k_{7}, k_{4}, k_{8}, k_{5}, k_{10}, k_{9}) */}
         <img src="sdes\p8.svg" alt="P8" />
       </Grid>
-      <Typography variant="body2" component="p" gutterBottom>
+      <ExplanationText>
         Como já aprendemos a interpretar uma função de permutação, extraímos da
         função acima que os 10 bits da chave devem ser reordenados nas seguintes
         posições:
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
           Função de permutação P8:
         </Typography>
         <BitsField bits={SDES.getP8Positions()} justify="center" />
       </Grid>
-      <Typography variant="body2" component="p" gutterBottom>
+      <ExplanationText>
         É interessante observar que, diferente da função de permutação P10, essa
         função de permutação P8 irá gerar somente 8 bits no seu resultado.
-      </Typography>
-      <Typography variant="body2" component="p" gutterBottom>
+      </ExplanationText>
+      <ExplanationText>
         O resultado dessa função será a nossa primeira chave K<sub>1</sub>.
-      </Typography>
-      <Typography variant="body2" component="p" gutterBottom>
+      </ExplanationText>
+      <ExplanationText>
         Sendo assim, aplicando a função P8 sobre LS-1 temos:
-      </Typography>
+      </ExplanationText>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
           LS-1:

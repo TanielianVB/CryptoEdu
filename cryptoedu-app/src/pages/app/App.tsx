@@ -34,6 +34,7 @@ import S0S1Step from "../../components/Steps/S0S1Step";
 import SWStep from "../../components/Steps/SWStep";
 import InverseIPStep from "../../components/Steps/InverseIPStep";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
+import ExplanationText from "../../components/ExplanationText/ExplanationText";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -166,21 +167,23 @@ function App() {
           <Card className={classes.card}>
             <CardContent>
               <StepContentTitle>S-DES</StepContentTitle>
-              <Typography variant="body2" component="p" gutterBottom>
+              <ExplanationText>
                 O S-DES é uma versão simplificada do algorítimo DES (Data
                 Encryption Standard).
-                <br />
+              </ExplanationText>
+              <ExplanationText>
                 Este se utiliza de uma chave de 10 bits que deve ser
                 compartilhada entre o emissor e o receptor da mensagem para que
                 a mensagem possa ser criptografada e descriptografada.
-                <br />
+              </ExplanationText>
+              <ExplanationText>
                 Nesta execução (que possui objetivo educacional) podemos
                 escolher se desejamos criptografar ou descriptografar a mensagem
                 e informar uma mensagem e uma chave que irão ser utilizadas
                 durante a execução do algoritmo para assim melhor visualizarmos
                 como a ocorre o processo quando os valores desejados são
                 utilizados.
-              </Typography>
+              </ExplanationText>
               <Tabs
                 indicatorColor="primary"
                 textColor="primary"
