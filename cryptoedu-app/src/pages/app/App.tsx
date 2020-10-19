@@ -118,6 +118,7 @@ function App() {
   const [ls2Bits, setLs2Bits] = useState<number[]>([]);
   const [k2Bits, setK2Bits] = useState<number[]>([]);
   const [ipBits, setIpBits] = useState<number[]>([]);
+  const [ep1Bits, setEp1Bits] = useState<number[]>([]);
 
   useEffect(() => {
     const p10 = SDES.permutate10(keyBits);
@@ -135,6 +136,8 @@ function App() {
   useEffect(() => {
     const ip = SDES.permutateIP(messageBits);
     setIpBits(ip);
+    const ep1 = SDES.permutateEP(ip.slice(4, 8));
+    setEp1Bits(ep1);
   }, [messageBits]);
 
   const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -361,7 +364,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <EPStep />
+              <EPStep ipBits={ipBits} ep1Bits={ep1Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation

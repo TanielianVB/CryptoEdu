@@ -8,11 +8,13 @@ import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
 import UnderDevelopmentTag from "../UnderDevelopmentTag/UnderDevelopmentTag";
 
 interface EPStepProps {
-  //   ls1Bits: number[];
-  //   k1Bits: number[];
+  ipBits: number[];
+  ep1Bits: number[];
 }
 
 function EPStep(props: EPStepProps) {
+  const { ipBits, ep1Bits } = props;
+
   return (
     <>
       <StepContentTitle>
@@ -30,32 +32,58 @@ function EPStep(props: EPStepProps) {
         definida por:
       </ExplanationText>
       <Grid container justify="center">
-        {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression: P10(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{3}, k_{5}, k_{2}, k_{7}, k_{4}, k_{10}, k_{1}, k_{9}, k_{8}, k_{6}) */}
+        {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
+         f_{K}(L, R) = (L \oplus F(R, SK), R) */}
         <img src="sdes\fk.svg" alt="fk" />
       </Grid>
       <ExplanationText>
         A função f<sub>k</sub> se utiliza da função F que por sua vez é definida
-        por:
+        por uma sequencia de passos. Apesar de parecer complicado vamos executar
+        da função mais interna até a mais externa e compreender cada parte assim
+        como viemos fazendo até o momento.
       </ExplanationText>
       <ExplanationText>
-        Apesar de parecer complicado vamos executar da função mais interna até a
-        mais externa e compreender cada parte assim como viemos fazendo até o
-        momento.
+        Iniciamos então pelo primeiro passo de F, que é a aplicação da função
+        E/P (permutação de expansão), que é assim chamada pois recebe 4 bits e
+        retorna 8 bits. Esta é definida por:
+      </ExplanationText>
+      <Grid container justify="center">
+        {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
+         EP(k_{1}, k_{2}, k_{3}, k_{4}) = (k_{4}, k_{1}, k_{2}, k_{3}, k_{2}, k_{3}, k_{4}, k_{1}) */}
+        <img src="sdes\ep.svg" alt="ep" />
+      </Grid>
+      <ExplanationText>
+        Pode-se observar que, ao contrário da função F8, esta função retorna
+        mais bits do que esta recebeu por parâmetro.
       </ExplanationText>
       <ExplanationText>
-        Iniciamos então pela aplicação da função E/P (permutação de expansão),
-        assim chamada pois recebe 4 bits e retorna 8 bits. Esta é definida por:
-      </ExplanationText>
-      <ExplanationText>
-        Como podemos ver na função F, a função E/P recebe R (right) que já foi
-        obtida no passo anterior. É a metade direita do resultado da permutação
-        inicial. Como já aprendemos a interpretar uma função de permutação,
-        extraímos da função acima que os 4 bits de devem ser reordenados nas
-        seguintes posições:
+        A função E/P recebe R (right) que já foi obtida no passo anterior. É a
+        metade direita do resultado da permutação inicial. Como já aprendemos a
+        interpretar uma função de permutação, extraímos da função acima que os 4
+        bits de R devem ser reordenados nas seguintes posições:
       </ExplanationText>
       <Grid container justify="center">
         <BitsFieldLabel>Função de permutação E/P:</BitsFieldLabel>
         <BitsField bits={SDES.getEPPositions()} justify="center" />
+      </Grid>
+      <ExplanationText>
+        Sendo assim, aplicando a função E/P sobre R temos:
+      </ExplanationText>
+      <Grid container justify="center">
+        <BitsFieldLabel>R (right):</BitsFieldLabel>
+        <BitsField bits={ipBits.slice(4, 8)} justify="center" />
+      </Grid>
+      <Grid container justify="center">
+        <BitsFieldLabel>
+          Função de permutação E/P à ser aplicada sobre R:
+        </BitsFieldLabel>
+        <BitsField bits={SDES.getEPPositions()} justify="center" />
+      </Grid>
+      <Grid container justify="center">
+        <BitsFieldLabel>
+          E/P obtida através da aplicação da função de permutação E/P sobre R:
+        </BitsFieldLabel>
+        <BitsField bits={ep1Bits} justify="center" />
       </Grid>
 
       <UnderDevelopmentTag />

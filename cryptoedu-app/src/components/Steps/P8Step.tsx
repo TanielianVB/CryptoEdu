@@ -28,7 +28,8 @@ function P8Step(props: P8StepProps) {
         A função de permutação P8 é definida por:
       </ExplanationText>
       <Grid container justify="center">
-        {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression: P8(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{6}, k_{3}, k_{7}, k_{4}, k_{8}, k_{5}, k_{10}, k_{9}) */}
+        {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
+         P8(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{6}, k_{3}, k_{7}, k_{4}, k_{8}, k_{5}, k_{10}, k_{9}) */}
         <img src="sdes\p8.svg" alt="P8" />
       </Grid>
       <ExplanationText>
