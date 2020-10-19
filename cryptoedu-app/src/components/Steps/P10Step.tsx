@@ -1,9 +1,10 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
 import ExplanationText from "../ExplanationText/ExplanationText";
+import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
 
 interface P10StepProps {
   keyBits: number[];
@@ -39,9 +40,7 @@ function P10Step(props: P10StepProps) {
         serão então reordenados na seguinte ordem:
       </ExplanationText>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
-          Função de permutação P10:
-        </Typography>
+        <BitsFieldLabel>Função de permutação P10:</BitsFieldLabel>
         <BitsField bits={SDES.getP10Positions()} justify="center" />
       </Grid>
       <ExplanationText>
@@ -53,21 +52,19 @@ function P10Step(props: P10StepProps) {
         Sendo assim, aplicando a função P10 sobre a chave temos:
       </ExplanationText>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
-          Chave:
-        </Typography>
+        <BitsFieldLabel>Chave:</BitsFieldLabel>
         <BitsField bits={keyBits} justify="center" />
       </Grid>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
+        <BitsFieldLabel>
           Função de permutação P10 à ser aplicada sobre a chave:
-        </Typography>
+        </BitsFieldLabel>
         <BitsField bits={SDES.getP10Positions()} justify="center" />
       </Grid>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
+        <BitsFieldLabel>
           P10 obtida através da aplicação da função de permutação P10:
-        </Typography>
+        </BitsFieldLabel>
         <BitsField bits={p10Bits} justify="center" />
       </Grid>
     </>

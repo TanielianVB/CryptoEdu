@@ -35,6 +35,7 @@ import SWStep from "../../components/Steps/SWStep";
 import InverseIPStep from "../../components/Steps/InverseIPStep";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
+import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -248,23 +249,11 @@ function App() {
                     />
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography
-                      variant="subtitle2"
-                      color="primary"
-                      gutterBottom
-                    >
-                      Bits da mensagem:
-                    </Typography>
+                    <BitsFieldLabel>Bits da mensagem:</BitsFieldLabel>
                     <BitsField bits={messageBits} addChar />
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography
-                      variant="subtitle2"
-                      color="primary"
-                      gutterBottom
-                    >
-                      Bits da chave:
-                    </Typography>
+                    <BitsFieldLabel>Bits da chave:</BitsFieldLabel>
                     <BitsField bits={keyBits} />
                   </Grid>
                 </Grid>

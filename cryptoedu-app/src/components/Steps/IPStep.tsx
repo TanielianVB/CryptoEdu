@@ -1,9 +1,10 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
 import ExplanationText from "../ExplanationText/ExplanationText";
+import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
 
 interface IPStepProps {
   messageBits: number[];
@@ -26,30 +27,24 @@ function IPStep(props: IPStepProps) {
         inicial que é definida por:
       </ExplanationText>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
-          Função de permutação IP:
-        </Typography>
+        <BitsFieldLabel>Função de permutação IP:</BitsFieldLabel>
         <BitsField bits={SDES.getIPPositions()} justify="center" />
       </Grid>
       <ExplanationText>
         Sendo assim, aplicando a função IP sobre a mensagem temos:
       </ExplanationText>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
-          P:
-        </Typography>
+        <BitsFieldLabel>P:</BitsFieldLabel>
         <BitsField bits={messageBits} justify="center" addChar />
       </Grid>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
-          Função de permutação IP:
-        </Typography>
+        <BitsFieldLabel>Função de permutação IP:</BitsFieldLabel>
         <BitsField bits={SDES.getIPPositions()} justify="center" />
       </Grid>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
+        <BitsFieldLabel>
           Mensagem permutada obtida através da aplicação da função de IP:
-        </Typography>
+        </BitsFieldLabel>
         <BitsField bits={ipBits} justify="center" addChar />
       </Grid>
       <ExplanationText>
@@ -59,15 +54,11 @@ function IPStep(props: IPStepProps) {
       </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
-          <Typography variant="subtitle2" color="primary" gutterBottom>
-            L (left):
-          </Typography>
+          <BitsFieldLabel>L (left):</BitsFieldLabel>
           <BitsField bits={ipBits.slice(0, 4)} justify="center" />
         </Grid>
         <Grid item justify="center">
-          <Typography variant="subtitle2" color="primary" gutterBottom>
-            R (right):
-          </Typography>
+          <BitsFieldLabel>R (right):</BitsFieldLabel>
           <BitsField bits={ipBits.slice(4, 8)} justify="center" />
         </Grid>
       </Grid>

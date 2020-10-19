@@ -1,10 +1,12 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import SDES from "../../utils/SDES";
 import MatrixField from "../MatrixField/MatrixField";
 import BitsField from "../BitsField/BitsField";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
 import ExplanationText from "../ExplanationText/ExplanationText";
+import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
+import UnderDevelopmentTag from "../UnderDevelopmentTag/UnderDevelopmentTag";
 
 interface S0S1StepProps {
   //   ls1Bits: number[];
@@ -21,18 +23,14 @@ function S0S1Step(props: S0S1StepProps) {
       </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
-          <Typography variant="subtitle2" color="primary" gutterBottom>
-            Função de substituição S0:
-          </Typography>
+          <BitsFieldLabel>Função de substituição S0:</BitsFieldLabel>
           <MatrixField
             bits={SDES.getSubstitution0Positions()}
             justify="center"
           />
         </Grid>
         <Grid item justify="center">
-          <Typography variant="subtitle2" color="primary" gutterBottom>
-            Função de substituição S1:
-          </Typography>
+          <BitsFieldLabel>Função de substituição S1:</BitsFieldLabel>
           <MatrixField
             bits={SDES.getSubstitution1Positions()}
             justify="center"
@@ -40,14 +38,10 @@ function S0S1Step(props: S0S1StepProps) {
         </Grid>
       </Grid>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
-          Função de permutação P4:
-        </Typography>
+        <BitsFieldLabel>Função de permutação P4:</BitsFieldLabel>
         <BitsField bits={SDES.getP4Positions()} justify="center" />
       </Grid>
-      <Typography variant="h6" color="secondary">
-        Em desenvolvimento...
-      </Typography>
+      <UnderDevelopmentTag />
     </>
   );
 }

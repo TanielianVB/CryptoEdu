@@ -1,9 +1,10 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
 import ExplanationText from "../ExplanationText/ExplanationText";
+import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
 
 interface P8StepProps {
   ls1Bits: number[];
@@ -36,9 +37,7 @@ function P8Step(props: P8StepProps) {
         posições:
       </ExplanationText>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
-          Função de permutação P8:
-        </Typography>
+        <BitsFieldLabel>Função de permutação P8:</BitsFieldLabel>
         <BitsField bits={SDES.getP8Positions()} justify="center" />
       </Grid>
       <ExplanationText>
@@ -52,22 +51,20 @@ function P8Step(props: P8StepProps) {
         Sendo assim, aplicando a função P8 sobre LS-1 temos:
       </ExplanationText>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
-          LS-1:
-        </Typography>
+        <BitsFieldLabel>LS-1:</BitsFieldLabel>
         <BitsField bits={ls1Bits} justify="center" />
       </Grid>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
+        <BitsFieldLabel>
           Função de permutação P8 à ser aplicada sobre LS-1:
-        </Typography>
+        </BitsFieldLabel>
         <BitsField bits={SDES.getP8Positions()} justify="center" />
       </Grid>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
+        <BitsFieldLabel>
           K<sub>1</sub> obtida através da aplicação da função de permutação P8
           sobre LS-1:
-        </Typography>
+        </BitsFieldLabel>
         <BitsField bits={k1Bits} justify="center" />
       </Grid>
     </>

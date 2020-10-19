@@ -1,9 +1,10 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
 import ExplanationText from "../ExplanationText/ExplanationText";
+import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
 
 interface LS2StepProps {
   ls1Bits: number[];
@@ -32,22 +33,16 @@ function LS2Step(props: LS2StepProps) {
         Primeiramente, divide-se LS-1 em duas metades:
       </ExplanationText>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
-          LS-1:
-        </Typography>
+        <BitsFieldLabel>LS-1:</BitsFieldLabel>
         <BitsField bits={ls1Bits} justify="center" />
       </Grid>
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
-          <Typography variant="subtitle2" color="primary" gutterBottom>
-            Esquerda de LS-1:
-          </Typography>
+          <BitsFieldLabel>Esquerda de LS-1:</BitsFieldLabel>
           <BitsField bits={ls1Bits.slice(0, 5)} justify="center" />
         </Grid>
         <Grid item justify="center">
-          <Typography variant="subtitle2" color="primary" gutterBottom>
-            Direita de LS-1:
-          </Typography>
+          <BitsFieldLabel>Direita de LS-1:</BitsFieldLabel>
           <BitsField bits={ls1Bits.slice(5, 10)} justify="center" />
         </Grid>
       </Grid>
@@ -57,15 +52,11 @@ function LS2Step(props: LS2StepProps) {
       </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
-          <Typography variant="subtitle2" color="primary" gutterBottom>
-            Esquerda após a rotação LS-2:
-          </Typography>
+          <BitsFieldLabel>Esquerda após a rotação LS-2:</BitsFieldLabel>
           <BitsField bits={ls2Bits.slice(0, 5)} justify="center" />
         </Grid>
         <Grid item justify="center">
-          <Typography variant="subtitle2" color="primary" gutterBottom>
-            Direita após a rotação LS-2:
-          </Typography>
+          <BitsFieldLabel>Direita após a rotação LS-2:</BitsFieldLabel>
           <BitsField bits={ls2Bits.slice(5, 10)} justify="center" />
         </Grid>
       </Grid>
@@ -74,22 +65,20 @@ function LS2Step(props: LS2StepProps) {
         rotação LS-2. Obtendo-se assim a chave K<sub>2</sub>.
       </ExplanationText>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
-          LS-2:
-        </Typography>
+        <BitsFieldLabel>LS-2:</BitsFieldLabel>
         <BitsField bits={ls2Bits} justify="center" />
       </Grid>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
+        <BitsFieldLabel>
           Função de permutação P8 à ser aplicada sobre LS-2:
-        </Typography>
+        </BitsFieldLabel>
         <BitsField bits={SDES.getP8Positions()} justify="center" />
       </Grid>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
+        <BitsFieldLabel>
           K<sub>2</sub> obtida através da aplicação da função de permutação P8
           sobre LS-2:
-        </Typography>
+        </BitsFieldLabel>
         <BitsField bits={k2Bits} justify="center" />
       </Grid>
     </>

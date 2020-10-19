@@ -1,9 +1,11 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
 import ExplanationText from "../ExplanationText/ExplanationText";
+import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
+import UnderDevelopmentTag from "../UnderDevelopmentTag/UnderDevelopmentTag";
 
 interface EPStepProps {
   //   ls1Bits: number[];
@@ -52,15 +54,11 @@ function EPStep(props: EPStepProps) {
         seguintes posições:
       </ExplanationText>
       <Grid container justify="center">
-        <Typography variant="subtitle2" color="primary" gutterBottom>
-          Função de permutação E/P:
-        </Typography>
+        <BitsFieldLabel>Função de permutação E/P:</BitsFieldLabel>
         <BitsField bits={SDES.getEPPositions()} justify="center" />
       </Grid>
 
-      <Typography variant="h6" color="secondary">
-        Em desenvolvimento...
-      </Typography>
+      <UnderDevelopmentTag />
     </>
   );
 }
