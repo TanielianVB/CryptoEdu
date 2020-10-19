@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
+import StepContentTitle from "../StepContentTitle/StepContentTitle";
 
 interface P8StepProps {
   ls1Bits: number[];
@@ -13,9 +14,9 @@ function P8Step(props: P8StepProps) {
 
   return (
     <>
-      <Typography variant="h5" color="primary" gutterBottom>
+      <StepContentTitle>
         P8 & K<sub>1</sub>
-      </Typography>
+      </StepContentTitle>
       <Typography variant="body2" component="p" gutterBottom>
         O próximo passo é uma nova permutação a ser aplicada dessa vez sobre
         LS-1 obtida no passo anterior.

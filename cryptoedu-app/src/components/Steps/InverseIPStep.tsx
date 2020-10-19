@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
+import StepContentTitle from "../StepContentTitle/StepContentTitle";
 
 interface InverseIPStepProps {
   //   ls1Bits: number[];
@@ -11,9 +12,9 @@ interface InverseIPStepProps {
 function InverseIPStep(props: InverseIPStepProps) {
   return (
     <>
-      <Typography variant="h5" color="primary" gutterBottom>
+      <StepContentTitle>
         IP<sup>-1</sup> (Inverse Initial Permutation)
-      </Typography>
+      </StepContentTitle>
       <Grid container justify="center">
         <Typography variant="subtitle2" color="primary" gutterBottom>
           Função de permutação IP<sup>-1</sup>:

@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
+import StepContentTitle from "../StepContentTitle/StepContentTitle";
 
 interface LS2StepProps {
   ls1Bits: number[];
@@ -14,9 +15,9 @@ function LS2Step(props: LS2StepProps) {
 
   return (
     <>
-      <Typography variant="h5" color="primary" gutterBottom>
+      <StepContentTitle>
         LS-2 & K<sub>2</sub>
-      </Typography>
+      </StepContentTitle>
       <Typography variant="body2" component="p" gutterBottom>
         Munidos do conhecimento obtido até o momento podemos enfim obter a
         segunda chave (K<sub>2</sub>) que será utilizada, juntamente com K

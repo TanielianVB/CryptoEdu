@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
+import StepContentTitle from "../StepContentTitle/StepContentTitle";
 
 interface P10StepProps {
   keyBits: number[];
@@ -13,9 +14,9 @@ function P10Step(props: P10StepProps) {
 
   return (
     <>
-      <Typography variant="h5" color="primary" gutterBottom>
+      <StepContentTitle>
         P10
-      </Typography>
+      </StepContentTitle>
       <Typography variant="body2" component="p" gutterBottom>
         São geradas a partir da chave criptográfica de 10 bits provida no passo
         anterior duas chaves de 8 bits que serão utilizadas em momentos

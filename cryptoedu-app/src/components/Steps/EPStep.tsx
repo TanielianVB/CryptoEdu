@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
+import StepContentTitle from "../StepContentTitle/StepContentTitle";
 
 interface EPStepProps {
   //   ls1Bits: number[];
@@ -11,13 +12,13 @@ interface EPStepProps {
 function EPStep(props: EPStepProps) {
   return (
     <>
-      <Typography variant="h5" color="primary" gutterBottom>
+      <StepContentTitle>
         f
         <sub>
           k<sub>1</sub>
         </sub>{" "}
         & E/P (Expansion / Permutation - Permutação de expansão)
-      </Typography>
+      </StepContentTitle>
       <Typography variant="body2" component="p" gutterBottom>
         A função f<sub>k</sub> é o componente mais complexo da execução do
         algoritmo e consiste de uma combinação de permutações e substituições e

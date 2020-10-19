@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
 import SDES from "../../utils/SDES";
+import StepContentTitle from "../StepContentTitle/StepContentTitle";
 
 interface IPStepProps {
   messageBits: number[];
@@ -13,9 +14,9 @@ function IPStep(props: IPStepProps) {
 
   return (
     <>
-      <Typography variant="h5" color="primary" gutterBottom>
+      <StepContentTitle>
         IP (Initial Permutation)
-      </Typography>
+      </StepContentTitle>
       <Typography variant="body2" component="p" gutterBottom>
         Uma vez tendo-se obtidas as chaves que serão utilizadas na criptografia
         (K<sub>1</sub> & K<sub>2</sub>) iremos finalmente começar a criptografar

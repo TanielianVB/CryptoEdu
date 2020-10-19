@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
+import StepContentTitle from "../StepContentTitle/StepContentTitle";
 
 interface LS1StepProps {
   p10Bits: number[];
@@ -12,9 +13,9 @@ function LS1Step(props: LS1StepProps) {
 
   return (
     <>
-      <Typography variant="h5" color="primary" gutterBottom>
+      <StepContentTitle>
         LS-1
-      </Typography>
+      </StepContentTitle>
       <Typography variant="body2" component="p" gutterBottom>
         O próximo passo é a rotação de P10, que ocorre em cada uma das metades
         de P10 obtida no passo anterior. Então o primeiro passo dessa etapa é

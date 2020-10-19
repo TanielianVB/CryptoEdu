@@ -3,6 +3,7 @@ import { Grid, Typography } from "@material-ui/core";
 import SDES from "../../utils/SDES";
 import MatrixField from "../MatrixField/MatrixField";
 import BitsField from "../BitsField/BitsField";
+import StepContentTitle from "../StepContentTitle/StepContentTitle";
 
 interface S0S1StepProps {
   //   ls1Bits: number[];
@@ -12,9 +13,9 @@ interface S0S1StepProps {
 function S0S1Step(props: S0S1StepProps) {
   return (
     <>
-      <Typography variant="h5" color="primary" gutterBottom>
+      <StepContentTitle>
         S0 & S1 & P4
-      </Typography>
+      </StepContentTitle>
       <Typography variant="body2" component="p" gutterBottom>
         A função de substituição S0 é na realidade uma matrix com pares de
         bits...

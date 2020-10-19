@@ -33,6 +33,7 @@ import EPStep from "../../components/Steps/EPStep";
 import S0S1Step from "../../components/Steps/S0S1Step";
 import SWStep from "../../components/Steps/SWStep";
 import InverseIPStep from "../../components/Steps/InverseIPStep";
+import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -164,9 +165,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <Typography variant="h5" color="primary" gutterBottom>
-                S-DES
-              </Typography>
+              <StepContentTitle>S-DES</StepContentTitle>
               <Typography variant="body2" component="p" gutterBottom>
                 O S-DES é uma versão simplificada do algorítimo DES (Data
                 Encryption Standard).
