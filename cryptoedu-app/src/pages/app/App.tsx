@@ -27,6 +27,12 @@ import SDES from "../../utils/SDES";
 import P10Step from "../../components/Steps/P10Step";
 import LS1Step from "../../components/Steps/LS1Step";
 import IPStep from "../../components/Steps/IPStep";
+import P8Step from "../../components/Steps/P8Step";
+import LS2Step from "../../components/Steps/LS2Step";
+import EPStep from "../../components/Steps/EPStep";
+import S0S1Step from "../../components/Steps/S0S1Step";
+import SWStep from "../../components/Steps/SWStep";
+import InverseIPStep from "../../components/Steps/InverseIPStep";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -68,9 +74,11 @@ const getSteps = (): React.ReactNode[] => {
     "Inicio",
     "P10",
     "LS-1",
-    "P8",
     <>
-      K<sub>1</sub> & K<sub>2</sub>
+      P8 & K<sub>1</sub>
+    </>,
+    <>
+      LS-2 & K<sub>2</sub>
     </>,
     "IP",
     <>
@@ -317,56 +325,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <Typography variant="h5" color="primary" gutterBottom>
-                P8
-              </Typography>
-              <Typography variant="body2" component="p" gutterBottom>
-                O próximo passo é uma nova permutação a ser aplicada dessa vez
-                sobre LS-1 obtida no passo anterior.
-                <br />A permutação ocorrerá através da aplicação de uma função
-                de permutação. A função de permutação P8 é definida por:
-              </Typography>
-              <Grid container justify="center">
-                {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression: P8(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{6}, k_{3}, k_{7}, k_{4}, k_{8}, k_{5}, k_{10}, k_{9}) */}
-                <img src="sdes\p8.svg" alt="P8" />
-              </Grid>
-              <Typography variant="body2" component="p" gutterBottom>
-                Como já aprendemos a interppretar uma função de permutação,
-                extraímos da função acima que os 10 bits da chave devem ser
-                reordenados nas seguintes posições:
-              </Typography>
-              <Grid container justify="center">
-                <Typography variant="subtitle2" color="primary" gutterBottom>
-                  Função de permutação P8:
-                </Typography>
-                <BitsField bits={SDES.getP8Positions()} justify="center" />
-              </Grid>
-              <Typography variant="body2" component="p" gutterBottom>
-                É interessante observar que, diferente da função de permuutação
-                P10, essa função de permutação irá gerar somente 8 bits no seu
-                resultado.
-              </Typography>
-              <Typography variant="body2" component="p" gutterBottom>
-                Sendo assim, aplicando a função P8 sobre LS-1 temos:
-              </Typography>
-              <Grid container justify="center">
-                <Typography variant="subtitle2" color="primary" gutterBottom>
-                  LS-1:
-                </Typography>
-                <BitsField bits={ls1Bits} justify="center" />
-              </Grid>
-              <Grid container justify="center">
-                <Typography variant="subtitle2" color="primary" gutterBottom>
-                  Função de permutação P8 à ser aplicada sobre LS-1:
-                </Typography>
-                <BitsField bits={SDES.getP8Positions()} justify="center" />
-              </Grid>
-              <Grid container justify="center">
-                <Typography variant="subtitle2" color="primary" gutterBottom>
-                  P8 obtida através da aplicação da função de permutação P8:
-                </Typography>
-                <BitsField bits={k1Bits} justify="center" />
-              </Grid>
+              <P8Step ls1Bits={ls1Bits} k1Bits={k1Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation
@@ -381,79 +340,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <Typography variant="h5" color="primary" gutterBottom>
-                K<sub>1</sub> & K<sub>2</sub>
-              </Typography>
-              <Typography variant="body2" component="p" gutterBottom>
-                Munidos do conhecimento obtido até o momento podemos enfim obter
-                as duas chaves que serão utilizadas durante o processo de
-                criptografia e descriptografia.
-              </Typography>
-              <Typography variant="body2" component="p" gutterBottom>
-                A primeira chave (K<sub>1</sub>) é exatamente o resultado que
-                obtivemos ao aplicar a função P8.
-              </Typography>
-              <Grid container justify="center">
-                <Typography variant="subtitle2" color="primary" gutterBottom>
-                  K<sub>1</sub>:
-                </Typography>
-                <BitsField bits={k1Bits} justify="center" />
-              </Grid>
-              <Typography variant="body2" component="p" gutterBottom>
-                A segunda chave (K<sub>2</sub>) por sua vez será obtida através
-                da repetição de passos agora já conhecidos por nós.
-              </Typography>
-              <Typography variant="body2" component="p" gutterBottom>
-                Primeiramente, divide-se LS-1 em duas metades:
-              </Typography>
-              <Grid container justify="center">
-                <Typography variant="subtitle2" color="primary" gutterBottom>
-                  LS-1:
-                </Typography>
-                <BitsField bits={ls1Bits} justify="center" />
-              </Grid>
-              <Grid container justify="center" spacing={5}>
-                <Grid item justify="center">
-                  <Typography variant="subtitle2" color="primary" gutterBottom>
-                    Esquerda de LS-1:
-                  </Typography>
-                  <BitsField bits={ls1Bits.slice(0, 5)} justify="center" />
-                </Grid>
-                <Grid item justify="center">
-                  <Typography variant="subtitle2" color="primary" gutterBottom>
-                    Direita de LS-1:
-                  </Typography>
-                  <BitsField bits={ls1Bits.slice(5, 10)} justify="center" />
-                </Grid>
-              </Grid>
-              <Typography variant="body2" component="p" gutterBottom>
-                Aplica-se então a rotação de 2 posições para esquerda, circular
-                left shift (LS-2) nas metades de LS-1.
-              </Typography>
-              <Grid container justify="center" spacing={5}>
-                <Grid item justify="center">
-                  <Typography variant="subtitle2" color="primary" gutterBottom>
-                    Esquerda após a rotação LS-2:
-                  </Typography>
-                  <BitsField bits={ls2Bits.slice(0, 5)} justify="center" />
-                </Grid>
-                <Grid item justify="center">
-                  <Typography variant="subtitle2" color="primary" gutterBottom>
-                    Direita após a rotação LS-2:
-                  </Typography>
-                  <BitsField bits={ls2Bits.slice(5, 10)} justify="center" />
-                </Grid>
-              </Grid>
-              <Typography variant="body2" component="p" gutterBottom>
-                Finalmente, se aplica P8 sobre a junção das metades alteradas
-                pela rotação LS-2. Obtendo-se assim a chave K<sub>2</sub>.
-              </Typography>
-              <Grid container justify="center">
-                <Typography variant="subtitle2" color="primary" gutterBottom>
-                  K<sub>2</sub>:
-                </Typography>
-                <BitsField bits={k2Bits} justify="center" />
-              </Grid>
+              <LS2Step ls1Bits={ls1Bits} ls2Bits={ls2Bits} k2Bits={k2Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation
@@ -483,32 +370,52 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <Typography variant="h5" color="primary" gutterBottom>
-                f
-                <sub>
-                  k<sub>1</sub>
-                </sub>{" "}
-                & E/P (Expansion / Permutation - Permutação de expansão)
-              </Typography>
-              <Typography variant="body2" component="p" gutterBottom>
-                A função f<sub>k</sub> é o componente mais complexo da execução
-                do algoritmo e consiste de uma combinação de permutações e
-                substituições e será chamada duas vezes durante o fluxo de
-                execução, sendo uma vez para cada chave (K<sub>1</sub> e K
-                <sub>2</sub>). A função f<sub>k</sub> é definida por:
-              </Typography>
-              <Grid container justify="center">
-                {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression: P10(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{3}, k_{5}, k_{2}, k_{7}, k_{4}, k_{10}, k_{1}, k_{9}, k_{8}, k_{6}) */}
-                <img src="sdes\fk.svg" alt="fk" />
-              </Grid>
-              <Typography
-                variant="body2"
-                component="p"
-                gutterBottom
-              ></Typography>
-              <Typography variant="h6" color="secondary">
-                Em desenvolvimento...
-              </Typography>
+              <EPStep />
+            </CardContent>
+            <CardActions>
+              <StepperNavigation
+                setActiveStep={setActiveStep}
+                previousStep={stepIndex - 1}
+                nextStep={stepIndex + 1}
+              />
+            </CardActions>
+          </Card>
+        );
+      case 7:
+        return (
+          <Card className={classes.card}>
+            <CardContent>
+              <S0S1Step />
+            </CardContent>
+            <CardActions>
+              <StepperNavigation
+                setActiveStep={setActiveStep}
+                previousStep={stepIndex - 1}
+                nextStep={stepIndex + 1}
+              />
+            </CardActions>
+          </Card>
+        );
+      case 8:
+        return (
+          <Card className={classes.card}>
+            <CardContent>
+              <SWStep />
+            </CardContent>
+            <CardActions>
+              <StepperNavigation
+                setActiveStep={setActiveStep}
+                previousStep={stepIndex - 1}
+                nextStep={stepIndex + 1}
+              />
+            </CardActions>
+          </Card>
+        );
+      case 9:
+        return (
+          <Card className={classes.card}>
+            <CardContent>
+              <InverseIPStep />
             </CardContent>
             <CardActions>
               <StepperNavigation
@@ -523,7 +430,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <Typography variant="h3" color="secondary">
+              <Typography variant="h5" color="secondary">
                 Em desenvolvimento...
               </Typography>
             </CardContent>

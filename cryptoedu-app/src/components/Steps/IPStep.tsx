@@ -14,7 +14,7 @@ function IPStep(props: IPStepProps) {
   return (
     <>
       <Typography variant="h5" color="primary" gutterBottom>
-        IP - Initial Permutation - Permutação Inicial
+        IP (Initial Permutation)
       </Typography>
       <Typography variant="body2" component="p" gutterBottom>
         Uma vez tendo-se obtidas as chaves que serão utilizadas na criptografia
