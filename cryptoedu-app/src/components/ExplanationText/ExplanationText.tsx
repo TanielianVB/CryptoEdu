@@ -7,7 +7,7 @@ interface ExplanationTextProps {
 
 function ExplanationText(props: ExplanationTextProps) {
   return (
-    <Typography variant="body2" component="p" gutterBottom>
+    <Typography variant="body2" component="p" paragraph align="justify">
       {props.children}
     </Typography>
   );
