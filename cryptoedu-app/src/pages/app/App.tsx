@@ -202,62 +202,67 @@ function App() {
               </Tabs>
               <Box paddingTop={3}>
                 <Grid
-                  item
                   container
                   direction="row"
                   justify="center"
                   alignItems="center"
                   spacing={2}
                 >
-                  <Grid item xs={6}>
-                    <TextField
-                      label={"Mensagem" + (selectedTab === 0 ? "" : " cifrada")}
-                      placeholder={
-                        "mensagem" +
-                        (selectedTab === 0 ? "" : " cifrada") +
-                        "..."
-                      }
-                      helperText="1 char ou 8 bits"
-                      required
-                      variant="outlined"
-                      size="medium"
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <EmailRoundedIcon color="primary" />
-                          </InputAdornment>
-                        ),
-                      }}
-                      value={message}
-                      onChange={handleMessageChange}
-                    />
+                  <Grid item container sm={12} md={6}>
+                    <Grid item xs={12}>
+                      <TextField
+                        label={
+                          "Mensagem" + (selectedTab === 0 ? "" : " cifrada")
+                        }
+                        placeholder={
+                          "mensagem" +
+                          (selectedTab === 0 ? "" : " cifrada") +
+                          "..."
+                        }
+                        helperText="1 char ou 8 bits"
+                        required
+                        variant="outlined"
+                        size="medium"
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <EmailRoundedIcon color="primary" />
+                            </InputAdornment>
+                          ),
+                        }}
+                        value={message}
+                        onChange={handleMessageChange}
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <BitsFieldLabel>Bits da mensagem:</BitsFieldLabel>
+                      <BitsField bits={messageBits} addChar />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      label="Chave"
-                      placeholder="chave secreta..."
-                      helperText="10 bits"
-                      required
-                      variant="outlined"
-                      size="medium"
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <VpnKeyRoundedIcon color="primary" />
-                          </InputAdornment>
-                        ),
-                      }}
-                      value={key}
-                      onChange={handleKeyChange}
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <BitsFieldLabel>Bits da mensagem:</BitsFieldLabel>
-                    <BitsField bits={messageBits} addChar />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <BitsFieldLabel>Bits da chave:</BitsFieldLabel>
-                    <BitsField bits={keyBits} />
+                  <Grid item container sm={12} md={6}>
+                    <Grid item xs={12}>
+                      <TextField
+                        label="Chave"
+                        placeholder="chave secreta..."
+                        helperText="10 bits"
+                        required
+                        variant="outlined"
+                        size="medium"
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <VpnKeyRoundedIcon color="primary" />
+                            </InputAdornment>
+                          ),
+                        }}
+                        value={key}
+                        onChange={handleKeyChange}
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <BitsFieldLabel>Bits da chave:</BitsFieldLabel>
+                      <BitsField bits={keyBits} />
+                    </Grid>
                   </Grid>
                 </Grid>
               </Box>
