@@ -5,6 +5,7 @@ import SDES from "../../utils/SDES";
 import StepContentTitle from "../StepContentTitle/StepContentTitle";
 import ExplanationText from "../ExplanationText/ExplanationText";
 import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
+import MathImg from "../MathImg/MathImg";
 
 interface P8StepProps {
   ls1Bits: number[];
@@ -30,7 +31,7 @@ function P8Step(props: P8StepProps) {
       <Grid container justify="center">
         {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
          P8(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{6}, k_{3}, k_{7}, k_{4}, k_{8}, k_{5}, k_{10}, k_{9}) */}
-        <img src="sdes\p8.svg" alt="P8" />
+        <MathImg src="sdes\p8.svg" alt="P8" />
       </Grid>
       <ExplanationText>
         Como já aprendemos a interpretar uma função de permutação, extraímos da

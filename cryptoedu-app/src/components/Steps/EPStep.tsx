@@ -6,6 +6,7 @@ import StepContentTitle from "../StepContentTitle/StepContentTitle";
 import ExplanationText from "../ExplanationText/ExplanationText";
 import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
 import UnderDevelopmentTag from "../UnderDevelopmentTag/UnderDevelopmentTag";
+import MathImg from "../MathImg/MathImg";
 
 interface EPStepProps {
   ipBits: number[];
@@ -35,7 +36,7 @@ function EPStep(props: EPStepProps) {
       <Grid container justify="center">
         {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
          f_{K}(L, R) = (L \oplus F(R, SK), R) */}
-        <img src="sdes\fk.svg" alt="fk" />
+        <MathImg src="sdes\fk.svg" alt="fk" />
       </Grid>
       <ExplanationText>
         A função f<sub>k</sub> se utiliza da função F que por sua vez é definida
@@ -51,7 +52,7 @@ function EPStep(props: EPStepProps) {
       <Grid container justify="center">
         {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
          EP(k_{1}, k_{2}, k_{3}, k_{4}) = (k_{4}, k_{1}, k_{2}, k_{3}, k_{2}, k_{3}, k_{4}, k_{1}) */}
-        <img src="sdes\ep.svg" alt="ep" />
+        <MathImg src="sdes\ep.svg" alt="ep" />
       </Grid>
       <ExplanationText>
         Pode-se observar que, ao contrário da função F8, esta função retorna
