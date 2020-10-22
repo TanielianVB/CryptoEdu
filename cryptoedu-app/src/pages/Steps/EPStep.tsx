@@ -1,12 +1,11 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
-import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 import UnderDevelopmentTag from "../../components/UnderDevelopmentTag/UnderDevelopmentTag";
 import MathImg from "../../components/MathImg/MathImg";
+import BitsField from "../../components/BitsField/BitsField";
 
 interface EPStepProps {
   ipBits: number[];
@@ -65,49 +64,34 @@ function EPStep(props: EPStepProps) {
         interpretar uma função de permutação, extraímos da função acima que os 4
         bits de R devem ser reordenados nas seguintes posições:
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>Função de permutação E/P:</BitsFieldLabel>
-        <BitArrayField bits={SDES.getEPPositions()} justify="center" />
-      </Grid>
+      <BitsField label="E/P:" bits={SDES.getEPPositions()} />
       <ExplanationText>
         Sendo assim, aplicando a função E/P sobre R temos:
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>R (right):</BitsFieldLabel>
-        <BitArrayField bits={ipBits.slice(4, 8)} justify="center" />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          Função de permutação E/P à ser aplicada sobre R:
-        </BitsFieldLabel>
-        <BitArrayField bits={SDES.getEPPositions()} justify="center" />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          E/P obtida através da aplicação da função de permutação E/P sobre R:
-        </BitsFieldLabel>
-        <BitArrayField bits={ep1Bits} justify="center" />
-      </Grid>
+      <BitsField label="R (right):" bits={ipBits.slice(4, 8)} />
+      <BitsField label="E/P:" bits={SDES.getEPPositions()} />
+      <BitsField label="R permutada:" bits={ep1Bits} />
       <ExplanationText>
         Com a saída da função E/P por sua vez será feito um OU exclusivo com a
         chave K<sub>1</sub> já obtida.
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          E/P obtida através da aplicação da função de permutação E/P sobre R:
-        </BitsFieldLabel>
-        <BitArrayField bits={ep1Bits} justify="center" />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          Chave K<sub>1</sub>:
-        </BitsFieldLabel>
-        <BitArrayField bits={k1Bits} justify="center" />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>XOR (OU exclusivo) entre E/P e K1:</BitsFieldLabel>
-        <BitArrayField bits={SDES.xor(ep1Bits, k1Bits)} justify="center" />
-      </Grid>
+      <BitsField label="R permutada:" bits={ep1Bits} />
+      <BitsField
+        label={
+          <>
+            Chave K<sub>1</sub>:
+          </>
+        }
+        bits={k1Bits}
+      />
+      <BitsField
+        label={
+          <>
+            R permutada XOR K<sub>1</sub>:
+          </>
+        }
+        bits={SDES.xor(ep1Bits, k1Bits)}
+      />
 
       <UnderDevelopmentTag />
     </>

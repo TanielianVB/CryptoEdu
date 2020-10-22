@@ -2,18 +2,18 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 import SDES from "../../utils/SDES";
 import MatrixField from "../../components/MatrixField/MatrixField";
-import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 import UnderDevelopmentTag from "../../components/UnderDevelopmentTag/UnderDevelopmentTag";
+import BitsField from "../../components/BitsField/BitsField";
 
 interface S0S1StepProps {
   //   ls1Bits: number[];
   //   k1Bits: number[];
 }
 
-function S0S1Step(props: S0S1StepProps) {
+function S0S1Step() {
   return (
     <>
       <StepContentTitle>
@@ -39,10 +39,7 @@ function S0S1Step(props: S0S1StepProps) {
           />
         </Grid>
       </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>Função de permutação P4:</BitsFieldLabel>
-        <BitArrayField bits={SDES.getP4Positions()} justify="center" />
-      </Grid>
+      <BitsField label="P4:" bits={SDES.getP4Positions()} />
       <UnderDevelopmentTag />
     </>
   );

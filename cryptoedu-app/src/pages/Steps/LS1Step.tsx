@@ -4,6 +4,7 @@ import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
+import BitsField from "../../components/BitsField/BitsField";
 
 interface LS1StepProps {
   p10Bits: number[];
@@ -23,10 +24,7 @@ function LS1Step(props: LS1StepProps) {
         de P10 obtida no passo anterior. Então o primeiro passo dessa etapa é
         dividir P10 em 2 metades:
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>P10:</BitsFieldLabel>
-        <BitArrayField bits={p10Bits} justify="center" />
-      </Grid>
+      <BitsField label="Chave após P10:" bits={p10Bits} />
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
           <BitsFieldLabel>Esquerda de P10:</BitsFieldLabel>
@@ -72,12 +70,7 @@ function LS1Step(props: LS1StepProps) {
       <ExplanationText>
         Juntando as metades após a rotação temos:
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          Resultado da rotação LS-1 nas metades de P10:
-        </BitsFieldLabel>
-        <BitArrayField bits={ls1Bits} justify="center" />
-      </Grid>
+      <BitsField label="Chave rotacionada:" bits={ls1Bits} />
     </>
   );
 }

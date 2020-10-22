@@ -13,10 +13,12 @@ interface BitsFieldProps {
   justify?: GridJustification;
   addChar?: boolean;
   gridItem?: boolean;
+  className?: string | undefined;
+  style?: React.CSSProperties | undefined;
 }
 
 function BitArrayField(props: BitsFieldProps) {
-  const { bits, justify, addChar, gridItem } = props;
+  const { bits, justify, addChar, gridItem, className, style } = props;
   return (
     <Grid
       item={gridItem}
@@ -24,6 +26,8 @@ function BitArrayField(props: BitsFieldProps) {
       spacing={1}
       justify={justify}
       alignItems="center"
+      className={className}
+      style={style}
     >
       {bits.map((b, i) => {
         return (

@@ -5,6 +5,7 @@ import SDES from "../../utils/SDES";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
+import BitsField from "../../components/BitsField/BitsField";
 
 interface LS2StepProps {
   ls1Bits: number[];
@@ -33,10 +34,7 @@ function LS2Step(props: LS2StepProps) {
       <ExplanationText>
         Primeiramente, divide-se LS-1 em duas metades:
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>LS-1:</BitsFieldLabel>
-        <BitArrayField bits={ls1Bits} justify="center" />
-      </Grid>
+      <BitsField label="LS-1:" bits={ls1Bits} />
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
           <BitsFieldLabel>Esquerda de LS-1:</BitsFieldLabel>
@@ -65,23 +63,9 @@ function LS2Step(props: LS2StepProps) {
         Finalmente, se aplica P8 sobre a junção das metades alteradas pela
         rotação LS-2. Obtendo-se assim a chave K<sub>2</sub>.
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>LS-2:</BitsFieldLabel>
-        <BitArrayField bits={ls2Bits} justify="center" />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          Função de permutação P8 à ser aplicada sobre LS-2:
-        </BitsFieldLabel>
-        <BitArrayField bits={SDES.getP8Positions()} justify="center" />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          K<sub>2</sub> obtida através da aplicação da função de permutação P8
-          sobre LS-2:
-        </BitsFieldLabel>
-        <BitArrayField bits={k2Bits} justify="center" />
-      </Grid>
+      <BitsField label="LS-2:" bits={ls2Bits} />
+      <BitsField label="P8:" bits={SDES.getP8Positions()} />
+      <BitsField label="LS-2 permutada:" bits={k2Bits} />
     </>
   );
 }

@@ -1,11 +1,10 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
-import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 import MathImg from "../../components/MathImg/MathImg";
+import BitsField from "../../components/BitsField/BitsField";
 
 interface P8StepProps {
   ls1Bits: number[];
@@ -39,10 +38,7 @@ function P8Step(props: P8StepProps) {
         função acima que os 10 bits da chave devem ser reordenados nas seguintes
         posições:
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>Função de permutação P8:</BitsFieldLabel>
-        <BitArrayField bits={SDES.getP8Positions()} justify="center" />
-      </Grid>
+      <BitsField label="P8:" bits={SDES.getP8Positions()} />
       <ExplanationText>
         É interessante observar que, diferente da função de permutação P10, essa
         função de permutação P8 irá gerar somente 8 bits no seu resultado.
@@ -53,23 +49,9 @@ function P8Step(props: P8StepProps) {
       <ExplanationText>
         Sendo assim, aplicando a função P8 sobre LS-1 temos:
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>LS-1:</BitsFieldLabel>
-        <BitArrayField bits={ls1Bits} justify="center" />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          Função de permutação P8 à ser aplicada sobre LS-1:
-        </BitsFieldLabel>
-        <BitArrayField bits={SDES.getP8Positions()} justify="center" />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          K<sub>1</sub> obtida através da aplicação da função de permutação P8
-          sobre LS-1:
-        </BitsFieldLabel>
-        <BitArrayField bits={k1Bits} justify="center" />
-      </Grid>
+      <BitsField label="LS-1:" bits={ls1Bits} />
+      <BitsField label="P8:" bits={SDES.getP8Positions()} />
+      <BitsField label="LS-1 permutada:" bits={k1Bits} />
     </>
   );
 }

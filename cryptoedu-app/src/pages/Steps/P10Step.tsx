@@ -1,11 +1,10 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
-import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 import MathImg from "../../components/MathImg/MathImg";
+import BitsField from "../../components/BitsField/BitsField";
 
 interface P10StepProps {
   keyBits: number[];
@@ -41,10 +40,7 @@ function P10Step(props: P10StepProps) {
         recebe por parâmetro 10 bits K ordenados das posições 1 à 10 e estes
         serão então reordenados na seguinte ordem:
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>Função de permutação P10:</BitsFieldLabel>
-        <BitArrayField bits={SDES.getP10Positions()} justify="center" />
-      </Grid>
+      <BitsField label="P10:" bits={SDES.getP10Positions()} />
       <ExplanationText>
         Lê-se: Na 1ª posição agora ficará o bit que estava na 3ª posição, na 2ª
         posição ficará o bit que estava na 5ª posição, na 3ª posição ficará o
@@ -53,22 +49,9 @@ function P10Step(props: P10StepProps) {
       <ExplanationText>
         Sendo assim, aplicando a função P10 sobre a chave temos:
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>Chave:</BitsFieldLabel>
-        <BitArrayField bits={keyBits} justify="center" />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          Função de permutação P10 à ser aplicada sobre a chave:
-        </BitsFieldLabel>
-        <BitArrayField bits={SDES.getP10Positions()} justify="center" />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          P10 obtida através da aplicação da função de permutação P10:
-        </BitsFieldLabel>
-        <BitArrayField bits={p10Bits} justify="center" />
-      </Grid>
+      <BitsField label="Chave:" bits={keyBits} />
+      <BitsField label="P10:" bits={SDES.getP10Positions()} />
+      <BitsField label="Chave permutada:" bits={p10Bits} />
     </>
   );
 }

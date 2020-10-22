@@ -5,6 +5,7 @@ import SDES from "../../utils/SDES";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
+import BitsField from "../../components/BitsField/BitsField";
 
 interface IPStepProps {
   messageBits: number[];
@@ -26,27 +27,13 @@ function IPStep(props: IPStepProps) {
         A primeira alteração a ser aplicada à mensagem (P) é a permutação
         inicial que é definida por:
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>Função de permutação IP:</BitsFieldLabel>
-        <BitArrayField bits={SDES.getIPPositions()} justify="center" />
-      </Grid>
+      <BitsField label="IP:" bits={SDES.getIPPositions()} />
       <ExplanationText>
         Sendo assim, aplicando a função IP sobre a mensagem temos:
       </ExplanationText>
-      <Grid container justify="center">
-        <BitsFieldLabel>P:</BitsFieldLabel>
-        <BitArrayField bits={messageBits} justify="center" addChar />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>Função de permutação IP:</BitsFieldLabel>
-        <BitArrayField bits={SDES.getIPPositions()} justify="center" />
-      </Grid>
-      <Grid container justify="center">
-        <BitsFieldLabel>
-          Mensagem permutada obtida através da aplicação da função de IP:
-        </BitsFieldLabel>
-        <BitArrayField bits={ipBits} justify="center" addChar />
-      </Grid>
+      <BitsField label="P:" bits={messageBits} addChar />
+      <BitsField label="IP:" bits={SDES.getIPPositions()} />
+      <BitsField label="P permutada:" bits={ipBits} addChar />
       <ExplanationText>
         A saída da função de permutação inicial IP é então divida na metade. São
         elas L (left) e R (right). Estas serão utilizadas como parâmetros que
