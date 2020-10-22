@@ -1,10 +1,10 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import BitsField from "../BitsField/BitsField";
+import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import SDES from "../../utils/SDES";
-import StepContentTitle from "../StepContentTitle/StepContentTitle";
-import ExplanationText from "../ExplanationText/ExplanationText";
-import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
+import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
+import ExplanationText from "../../components/ExplanationText/ExplanationText";
+import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 
 interface IPStepProps {
   messageBits: number[];
@@ -28,24 +28,24 @@ function IPStep(props: IPStepProps) {
       </ExplanationText>
       <Grid container justify="center">
         <BitsFieldLabel>Função de permutação IP:</BitsFieldLabel>
-        <BitsField bits={SDES.getIPPositions()} justify="center" />
+        <BitArrayField bits={SDES.getIPPositions()} justify="center" />
       </Grid>
       <ExplanationText>
         Sendo assim, aplicando a função IP sobre a mensagem temos:
       </ExplanationText>
       <Grid container justify="center">
         <BitsFieldLabel>P:</BitsFieldLabel>
-        <BitsField bits={messageBits} justify="center" addChar />
+        <BitArrayField bits={messageBits} justify="center" addChar />
       </Grid>
       <Grid container justify="center">
         <BitsFieldLabel>Função de permutação IP:</BitsFieldLabel>
-        <BitsField bits={SDES.getIPPositions()} justify="center" />
+        <BitArrayField bits={SDES.getIPPositions()} justify="center" />
       </Grid>
       <Grid container justify="center">
         <BitsFieldLabel>
           Mensagem permutada obtida através da aplicação da função de IP:
         </BitsFieldLabel>
-        <BitsField bits={ipBits} justify="center" addChar />
+        <BitArrayField bits={ipBits} justify="center" addChar />
       </Grid>
       <ExplanationText>
         A saída da função de permutação inicial IP é então divida na metade. São
@@ -55,11 +55,11 @@ function IPStep(props: IPStepProps) {
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
           <BitsFieldLabel>L (left):</BitsFieldLabel>
-          <BitsField bits={ipBits.slice(0, 4)} justify="center" />
+          <BitArrayField bits={ipBits.slice(0, 4)} justify="center" />
         </Grid>
         <Grid item justify="center">
           <BitsFieldLabel>R (right):</BitsFieldLabel>
-          <BitsField bits={ipBits.slice(4, 8)} justify="center" />
+          <BitArrayField bits={ipBits.slice(4, 8)} justify="center" />
         </Grid>
       </Grid>
     </>

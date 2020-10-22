@@ -1,6 +1,6 @@
 import React from "react";
-import StepContentTitle from "../StepContentTitle/StepContentTitle";
-import UnderDevelopmentTag from "../UnderDevelopmentTag/UnderDevelopmentTag";
+import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
+import UnderDevelopmentTag from "../../components/UnderDevelopmentTag/UnderDevelopmentTag";
 
 interface SWStepProps {
   //   ls1Bits: number[];

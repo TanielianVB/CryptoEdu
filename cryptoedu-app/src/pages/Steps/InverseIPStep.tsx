@@ -1,10 +1,10 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import BitsField from "../BitsField/BitsField";
+import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import SDES from "../../utils/SDES";
-import StepContentTitle from "../StepContentTitle/StepContentTitle";
-import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
-import UnderDevelopmentTag from "../UnderDevelopmentTag/UnderDevelopmentTag";
+import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
+import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
+import UnderDevelopmentTag from "../../components/UnderDevelopmentTag/UnderDevelopmentTag";
 
 interface InverseIPStepProps {
   //   ls1Bits: number[];
@@ -21,7 +21,7 @@ function InverseIPStep(props: InverseIPStepProps) {
         <BitsFieldLabel>
           Função de permutação IP<sup>-1</sup>:
         </BitsFieldLabel>
-        <BitsField bits={SDES.getInverseIPPositions()} justify="center" />
+        <BitArrayField bits={SDES.getInverseIPPositions()} justify="center" />
       </Grid>
       <UnderDevelopmentTag />
     </>

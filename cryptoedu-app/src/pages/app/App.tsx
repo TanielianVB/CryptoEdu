@@ -20,19 +20,19 @@ import EmailRoundedIcon from "@material-ui/icons/EmailRounded";
 import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 import AppTopBar from "../../components/AppTopBar/AppTopBar";
-import BitsField from "../../components/BitsField/BitsField";
+import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import StepperNavigation from "../../components/StepperNavigation/StepperNavigation";
 import Utils from "../../utils/Utils";
 import SDES from "../../utils/SDES";
-import P10Step from "../../components/Steps/P10Step";
-import LS1Step from "../../components/Steps/LS1Step";
-import IPStep from "../../components/Steps/IPStep";
-import P8Step from "../../components/Steps/P8Step";
-import LS2Step from "../../components/Steps/LS2Step";
-import EPStep from "../../components/Steps/EPStep";
-import S0S1Step from "../../components/Steps/S0S1Step";
-import SWStep from "../../components/Steps/SWStep";
-import InverseIPStep from "../../components/Steps/InverseIPStep";
+import P10Step from "../Steps/P10Step";
+import LS1Step from "../Steps/LS1Step";
+import IPStep from "../Steps/IPStep";
+import P8Step from "../Steps/P8Step";
+import LS2Step from "../Steps/LS2Step";
+import EPStep from "../Steps/EPStep";
+import S0S1Step from "../Steps/S0S1Step";
+import SWStep from "../Steps/SWStep";
+import InverseIPStep from "../Steps/InverseIPStep";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
@@ -246,7 +246,7 @@ function App() {
                     </Grid>
                     <Grid item>
                       <BitsFieldLabel>Bits da mensagem:</BitsFieldLabel>
-                      <BitsField bits={messageBits} addChar />
+                      <BitArrayField bits={messageBits} addChar />
                     </Grid>
                   </Grid>
                   <Grid
@@ -279,7 +279,7 @@ function App() {
                     </Grid>
                     <Grid item>
                       <BitsFieldLabel>Bits da chave:</BitsFieldLabel>
-                      <BitsField bits={keyBits} />
+                      <BitArrayField bits={keyBits} />
                     </Grid>
                   </Grid>
                 </Grid>

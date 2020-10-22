@@ -1,11 +1,11 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import BitsField from "../BitsField/BitsField";
+import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import SDES from "../../utils/SDES";
-import StepContentTitle from "../StepContentTitle/StepContentTitle";
-import ExplanationText from "../ExplanationText/ExplanationText";
-import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
-import MathImg from "../MathImg/MathImg";
+import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
+import ExplanationText from "../../components/ExplanationText/ExplanationText";
+import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
+import MathImg from "../../components/MathImg/MathImg";
 
 interface P8StepProps {
   ls1Bits: number[];
@@ -41,7 +41,7 @@ function P8Step(props: P8StepProps) {
       </ExplanationText>
       <Grid container justify="center">
         <BitsFieldLabel>Função de permutação P8:</BitsFieldLabel>
-        <BitsField bits={SDES.getP8Positions()} justify="center" />
+        <BitArrayField bits={SDES.getP8Positions()} justify="center" />
       </Grid>
       <ExplanationText>
         É interessante observar que, diferente da função de permutação P10, essa
@@ -55,20 +55,20 @@ function P8Step(props: P8StepProps) {
       </ExplanationText>
       <Grid container justify="center">
         <BitsFieldLabel>LS-1:</BitsFieldLabel>
-        <BitsField bits={ls1Bits} justify="center" />
+        <BitArrayField bits={ls1Bits} justify="center" />
       </Grid>
       <Grid container justify="center">
         <BitsFieldLabel>
           Função de permutação P8 à ser aplicada sobre LS-1:
         </BitsFieldLabel>
-        <BitsField bits={SDES.getP8Positions()} justify="center" />
+        <BitArrayField bits={SDES.getP8Positions()} justify="center" />
       </Grid>
       <Grid container justify="center">
         <BitsFieldLabel>
           K<sub>1</sub> obtida através da aplicação da função de permutação P8
           sobre LS-1:
         </BitsFieldLabel>
-        <BitsField bits={k1Bits} justify="center" />
+        <BitArrayField bits={k1Bits} justify="center" />
       </Grid>
     </>
   );

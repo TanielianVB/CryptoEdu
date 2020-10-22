@@ -1,12 +1,12 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import BitsField from "../BitsField/BitsField";
+import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import SDES from "../../utils/SDES";
-import StepContentTitle from "../StepContentTitle/StepContentTitle";
-import ExplanationText from "../ExplanationText/ExplanationText";
-import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
-import UnderDevelopmentTag from "../UnderDevelopmentTag/UnderDevelopmentTag";
-import MathImg from "../MathImg/MathImg";
+import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
+import ExplanationText from "../../components/ExplanationText/ExplanationText";
+import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
+import UnderDevelopmentTag from "../../components/UnderDevelopmentTag/UnderDevelopmentTag";
+import MathImg from "../../components/MathImg/MathImg";
 
 interface EPStepProps {
   ipBits: number[];
@@ -67,26 +67,26 @@ function EPStep(props: EPStepProps) {
       </ExplanationText>
       <Grid container justify="center">
         <BitsFieldLabel>Função de permutação E/P:</BitsFieldLabel>
-        <BitsField bits={SDES.getEPPositions()} justify="center" />
+        <BitArrayField bits={SDES.getEPPositions()} justify="center" />
       </Grid>
       <ExplanationText>
         Sendo assim, aplicando a função E/P sobre R temos:
       </ExplanationText>
       <Grid container justify="center">
         <BitsFieldLabel>R (right):</BitsFieldLabel>
-        <BitsField bits={ipBits.slice(4, 8)} justify="center" />
+        <BitArrayField bits={ipBits.slice(4, 8)} justify="center" />
       </Grid>
       <Grid container justify="center">
         <BitsFieldLabel>
           Função de permutação E/P à ser aplicada sobre R:
         </BitsFieldLabel>
-        <BitsField bits={SDES.getEPPositions()} justify="center" />
+        <BitArrayField bits={SDES.getEPPositions()} justify="center" />
       </Grid>
       <Grid container justify="center">
         <BitsFieldLabel>
           E/P obtida através da aplicação da função de permutação E/P sobre R:
         </BitsFieldLabel>
-        <BitsField bits={ep1Bits} justify="center" />
+        <BitArrayField bits={ep1Bits} justify="center" />
       </Grid>
       <ExplanationText>
         Com a saída da função E/P por sua vez será feito um OU exclusivo com a
@@ -96,17 +96,17 @@ function EPStep(props: EPStepProps) {
         <BitsFieldLabel>
           E/P obtida através da aplicação da função de permutação E/P sobre R:
         </BitsFieldLabel>
-        <BitsField bits={ep1Bits} justify="center" />
+        <BitArrayField bits={ep1Bits} justify="center" />
       </Grid>
       <Grid container justify="center">
         <BitsFieldLabel>
           Chave K<sub>1</sub>:
         </BitsFieldLabel>
-        <BitsField bits={k1Bits} justify="center" />
+        <BitArrayField bits={k1Bits} justify="center" />
       </Grid>
       <Grid container justify="center">
         <BitsFieldLabel>XOR (OU exclusivo) entre E/P e K1:</BitsFieldLabel>
-        <BitsField bits={SDES.xor(ep1Bits, k1Bits)} justify="center" />
+        <BitArrayField bits={SDES.xor(ep1Bits, k1Bits)} justify="center" />
       </Grid>
 
       <UnderDevelopmentTag />

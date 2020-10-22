@@ -1,11 +1,11 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import BitsField from "../BitsField/BitsField";
+import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import SDES from "../../utils/SDES";
-import StepContentTitle from "../StepContentTitle/StepContentTitle";
-import ExplanationText from "../ExplanationText/ExplanationText";
-import BitsFieldLabel from "../BitsFieldLabel/BitsFieldLabel";
-import MathImg from "../MathImg/MathImg";
+import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
+import ExplanationText from "../../components/ExplanationText/ExplanationText";
+import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
+import MathImg from "../../components/MathImg/MathImg";
 
 interface P10StepProps {
   keyBits: number[];
@@ -43,7 +43,7 @@ function P10Step(props: P10StepProps) {
       </ExplanationText>
       <Grid container justify="center">
         <BitsFieldLabel>Função de permutação P10:</BitsFieldLabel>
-        <BitsField bits={SDES.getP10Positions()} justify="center" />
+        <BitArrayField bits={SDES.getP10Positions()} justify="center" />
       </Grid>
       <ExplanationText>
         Lê-se: Na 1ª posição agora ficará o bit que estava na 3ª posição, na 2ª
@@ -55,19 +55,19 @@ function P10Step(props: P10StepProps) {
       </ExplanationText>
       <Grid container justify="center">
         <BitsFieldLabel>Chave:</BitsFieldLabel>
-        <BitsField bits={keyBits} justify="center" />
+        <BitArrayField bits={keyBits} justify="center" />
       </Grid>
       <Grid container justify="center">
         <BitsFieldLabel>
           Função de permutação P10 à ser aplicada sobre a chave:
         </BitsFieldLabel>
-        <BitsField bits={SDES.getP10Positions()} justify="center" />
+        <BitArrayField bits={SDES.getP10Positions()} justify="center" />
       </Grid>
       <Grid container justify="center">
         <BitsFieldLabel>
           P10 obtida através da aplicação da função de permutação P10:
         </BitsFieldLabel>
-        <BitsField bits={p10Bits} justify="center" />
+        <BitArrayField bits={p10Bits} justify="center" />
       </Grid>
     </>
   );

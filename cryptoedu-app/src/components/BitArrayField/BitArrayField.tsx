@@ -12,12 +12,19 @@ interface BitsFieldProps {
   bits: number[];
   justify?: GridJustification;
   addChar?: boolean;
+  gridItem?: boolean;
 }
 
-function BitsField(props: BitsFieldProps) {
-  const { bits, justify, addChar } = props;
+function BitArrayField(props: BitsFieldProps) {
+  const { bits, justify, addChar, gridItem } = props;
   return (
-    <Grid container spacing={1} justify={justify} alignItems="center">
+    <Grid
+      item={gridItem}
+      container
+      spacing={1}
+      justify={justify}
+      alignItems="center"
+    >
       {bits.map((b, i) => {
         return (
           <Grid item>
@@ -47,4 +54,4 @@ function BitsField(props: BitsFieldProps) {
   );
 }
 
-export default BitsField;
+export default BitArrayField;
