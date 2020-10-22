@@ -17,7 +17,7 @@ function P10Step(props: P10StepProps) {
 
   return (
     <>
-      <StepContentTitle>P10</StepContentTitle>
+      <StepContentTitle>P10 - Permutação de 10 bits</StepContentTitle>
       <ExplanationText>
         São geradas a partir da chave criptográfica de 10 bits provida no passo
         anterior duas chaves de 8 bits que serão utilizadas em momentos

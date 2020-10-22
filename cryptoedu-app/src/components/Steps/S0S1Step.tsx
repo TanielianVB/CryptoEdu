@@ -16,7 +16,9 @@ interface S0S1StepProps {
 function S0S1Step(props: S0S1StepProps) {
   return (
     <>
-      <StepContentTitle>S0 & S1 & P4</StepContentTitle>
+      <StepContentTitle>
+        S0 & S1 & P4 - Substituições S0 e S1 e permutação de 4 bits
+      </StepContentTitle>
       <ExplanationText>
         A função de substituição S0 é na realidade uma matrix com pares de
         bits...

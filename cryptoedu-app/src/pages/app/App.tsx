@@ -170,7 +170,9 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <StepContentTitle>S-DES</StepContentTitle>
+              <StepContentTitle>
+                S-DES - Simplified Data Encryption Standard
+              </StepContentTitle>
               <ExplanationText>
                 O S-DES é uma versão simplificada do algorítimo DES (Data
                 Encryption Standard).
@@ -208,8 +210,16 @@ function App() {
                   alignItems="center"
                   spacing={2}
                 >
-                  <Grid item container sm={12} md={6}>
-                    <Grid item xs={12}>
+                  <Grid
+                    item
+                    container
+                    direction="column"
+                    justify="center"
+                    alignItems="center"
+                    sm={12}
+                    md={6}
+                  >
+                    <Grid item>
                       <TextField
                         label={
                           "Mensagem" + (selectedTab === 0 ? "" : " cifrada")
@@ -234,13 +244,21 @@ function App() {
                         onChange={handleMessageChange}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item>
                       <BitsFieldLabel>Bits da mensagem:</BitsFieldLabel>
                       <BitsField bits={messageBits} addChar />
                     </Grid>
                   </Grid>
-                  <Grid item container sm={12} md={6}>
-                    <Grid item xs={12}>
+                  <Grid
+                    item
+                    container
+                    direction="column"
+                    justify="center"
+                    alignItems="center"
+                    sm={12}
+                    md={6}
+                  >
+                    <Grid item>
                       <TextField
                         label="Chave"
                         placeholder="chave secreta..."
@@ -259,7 +277,7 @@ function App() {
                         onChange={handleKeyChange}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item>
                       <BitsFieldLabel>Bits da chave:</BitsFieldLabel>
                       <BitsField bits={keyBits} />
                     </Grid>

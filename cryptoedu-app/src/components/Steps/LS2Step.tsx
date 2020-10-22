@@ -18,7 +18,8 @@ function LS2Step(props: LS2StepProps) {
   return (
     <>
       <StepContentTitle>
-        LS-2 & K<sub>2</sub>
+        LS-2 & K<sub>2</sub> - Circular Left Shift de 2 posições e obtenção da
+        chave K<sub>2</sub>
       </StepContentTitle>
       <ExplanationText>
         Munidos do conhecimento obtido até o momento podemos enfim obter a

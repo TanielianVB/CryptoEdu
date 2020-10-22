@@ -18,7 +18,8 @@ function P8Step(props: P8StepProps) {
   return (
     <>
       <StepContentTitle>
-        P8 & K<sub>1</sub>
+        P8 & K<sub>1</sub> - Permutação de 8 bits e geração da primeira chave K
+        <sub>1</sub>
       </StepContentTitle>
       <ExplanationText>
         O próximo passo é uma nova permutação a ser aplicada dessa vez sobre

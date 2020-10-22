@@ -24,7 +24,8 @@ function EPStep(props: EPStepProps) {
         <sub>
           k<sub>1</sub>
         </sub>{" "}
-        & E/P (Expansion / Permutation - Permutação de expansão)
+        & E/P - Função que usa a chave e permutação de expansão (Expansion /
+        Permutation)
       </StepContentTitle>
       <ExplanationText>
         A função f<sub>k</sub> é o componente mais complexo da execução do

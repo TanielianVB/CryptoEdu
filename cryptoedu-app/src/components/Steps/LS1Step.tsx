@@ -15,7 +15,9 @@ function LS1Step(props: LS1StepProps) {
 
   return (
     <>
-      <StepContentTitle>LS-1</StepContentTitle>
+      <StepContentTitle>
+        LS-1 - Circular Left Shift de 1 posição
+      </StepContentTitle>
       <ExplanationText>
         O próximo passo é a rotação de P10, que ocorre em cada uma das metades
         de P10 obtida no passo anterior. Então o primeiro passo dessa etapa é
