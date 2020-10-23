@@ -63,8 +63,12 @@ function LS2Step(props: LS2StepProps) {
         Finalmente, se aplica P8 sobre a junção das metades alteradas pela
         rotação LS-2. Obtendo-se assim a chave K<sub>2</sub>.
       </ExplanationText>
-      <BitsField label="LS-2:" bits={ls2Bits} />
-      <BitsField label="P8:" bits={SDES.getP8Positions()} />
+      <BitsField label="LS-2:" bits={ls2Bits} paragraphMargin={false} />
+      <BitsField
+        label="P8:"
+        bits={SDES.getP8Positions()}
+        paragraphMargin={false}
+      />
       <BitsField label="LS-2 permutada:" bits={k2Bits} />
     </>
   );

@@ -68,14 +68,22 @@ function EPStep(props: EPStepProps) {
       <ExplanationText>
         Sendo assim, aplicando a função E/P sobre R temos:
       </ExplanationText>
-      <BitsField label="R (right):" bits={ipBits.slice(4, 8)} />
-      <BitsField label="E/P:" bits={SDES.getEPPositions()} />
+      <BitsField
+        label="R (right):"
+        bits={ipBits.slice(4, 8)}
+        paragraphMargin={false}
+      />
+      <BitsField
+        label="E/P:"
+        bits={SDES.getEPPositions()}
+        paragraphMargin={false}
+      />
       <BitsField label="R permutada:" bits={ep1Bits} />
       <ExplanationText>
         Com a saída da função E/P por sua vez será feito um OU exclusivo com a
         chave K<sub>1</sub> já obtida.
       </ExplanationText>
-      <BitsField label="R permutada:" bits={ep1Bits} />
+      <BitsField label="R permutada:" bits={ep1Bits} paragraphMargin={false} />
       <BitsField
         label={
           <>
@@ -83,6 +91,7 @@ function EPStep(props: EPStepProps) {
           </>
         }
         bits={k1Bits}
+        paragraphMargin={false}
       />
       <BitsField
         label={

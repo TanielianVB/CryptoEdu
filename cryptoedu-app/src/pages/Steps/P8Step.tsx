@@ -49,8 +49,12 @@ function P8Step(props: P8StepProps) {
       <ExplanationText>
         Sendo assim, aplicando a função P8 sobre LS-1 temos:
       </ExplanationText>
-      <BitsField label="LS-1:" bits={ls1Bits} />
-      <BitsField label="P8:" bits={SDES.getP8Positions()} />
+      <BitsField label="LS-1:" bits={ls1Bits} paragraphMargin={false} />
+      <BitsField
+        label="P8:"
+        bits={SDES.getP8Positions()}
+        paragraphMargin={false}
+      />
       <BitsField label="LS-1 permutada:" bits={k1Bits} />
     </>
   );

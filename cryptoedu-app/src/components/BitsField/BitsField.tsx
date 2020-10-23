@@ -8,26 +8,31 @@ interface BitsFieldProps {
   label: React.ReactNode;
   bits: number[];
   addChar?: boolean;
+  paragraphMargin?: boolean;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    grid: {
+    paragraphMargin: {
       marginBottom: theme.spacing(2),
     },
+    margin: {
+      marginBottom: theme.spacing(1),
+    },
     label: {
-      [theme.breakpoints.down("sm")]: {
+      display: "flex",
+      [theme.breakpoints.down("xs")]: {
         justifyContent: "center",
       },
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up("sm")]: {
         justifyContent: "flex-end",
       },
     },
     bits: {
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("xs")]: {
         justifyContent: "center",
       },
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up("sm")]: {
         justifyContent: "flex-start",
       },
     },
@@ -35,9 +40,15 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function BitsField(props: BitsFieldProps) {
-  const { label, bits, addChar } = props;
+  const { label, bits, addChar, paragraphMargin } = props;
 
   const classes = useStyles();
+
+  const gridClassName =
+    paragraphMargin === true || paragraphMargin === undefined
+      ? classes.paragraphMargin
+      : classes.margin;
+
   return (
     <Grid
       container
@@ -45,18 +56,13 @@ function BitsField(props: BitsFieldProps) {
       justify="center"
       alignItems="center"
       spacing={1}
-      className={classes.grid}
+      className={gridClassName}
     >
-      <Grid item container xs={12} md={3} className={classes.label}>
+      <Grid item xs={12} sm={3} className={classes.label}>
         <BitsFieldLabel>{label}</BitsFieldLabel>
       </Grid>
-      <Grid item container xs={12} md={9} className={classes.bits}>
-        <BitArrayField
-          gridItem={true}
-          bits={bits}
-          className={classes.bits}
-          addChar={addChar}
-        />
+      <Grid item xs={12} sm={9} className={classes.bits}>
+        <BitArrayField bits={bits} className={classes.bits} addChar={addChar} />
       </Grid>
     </Grid>
   );

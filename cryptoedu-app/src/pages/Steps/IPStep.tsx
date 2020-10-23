@@ -31,8 +31,17 @@ function IPStep(props: IPStepProps) {
       <ExplanationText>
         Sendo assim, aplicando a função IP sobre a mensagem temos:
       </ExplanationText>
-      <BitsField label="P:" bits={messageBits} addChar />
-      <BitsField label="IP:" bits={SDES.getIPPositions()} />
+      <BitsField
+        label="P:"
+        bits={messageBits}
+        addChar
+        paragraphMargin={false}
+      />
+      <BitsField
+        label="IP:"
+        bits={SDES.getIPPositions()}
+        paragraphMargin={false}
+      />
       <BitsField label="P permutada:" bits={ipBits} addChar />
       <ExplanationText>
         A saída da função de permutação inicial IP é então divida na metade. São

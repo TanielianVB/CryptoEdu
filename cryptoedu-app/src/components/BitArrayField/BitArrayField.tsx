@@ -23,9 +23,9 @@ function BitArrayField(props: BitsFieldProps) {
     <Grid
       item={gridItem}
       container
-      spacing={1}
       justify={justify}
       alignItems="center"
+      spacing={1}
       className={className}
       style={style}
     >

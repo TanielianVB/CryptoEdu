@@ -49,8 +49,12 @@ function P10Step(props: P10StepProps) {
       <ExplanationText>
         Sendo assim, aplicando a função P10 sobre a chave temos:
       </ExplanationText>
-      <BitsField label="Chave:" bits={keyBits} />
-      <BitsField label="P10:" bits={SDES.getP10Positions()} />
+      <BitsField label="Chave:" bits={keyBits} paragraphMargin={false} />
+      <BitsField
+        label="P10:"
+        bits={SDES.getP10Positions()}
+        paragraphMargin={false}
+      />
       <BitsField label="Chave permutada:" bits={p10Bits} />
     </>
   );
