@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Button,
   Card,
@@ -16,6 +19,7 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import EmailRoundedIcon from "@material-ui/icons/EmailRounded";
 import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
@@ -170,26 +174,35 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <StepContentTitle>
-                S-DES - Simplified Data Encryption Standard
-              </StepContentTitle>
-              <ExplanationText>
-                O S-DES é uma versão simplificada do algorítimo DES (Data
-                Encryption Standard).
-              </ExplanationText>
-              <ExplanationText>
-                Este se utiliza de uma chave de 10 bits que deve ser
-                compartilhada entre o emissor e o receptor da mensagem para que
-                a mensagem possa ser criptografada e descriptografada.
-              </ExplanationText>
-              <ExplanationText>
-                Nesta execução (que possui objetivo educacional) podemos
-                escolher se desejamos criptografar ou descriptografar a mensagem
-                e informar uma mensagem e uma chave que irão ser utilizadas
-                durante a execução do algoritmo para assim melhor visualizarmos
-                como a ocorre o processo quando os valores desejados são
-                utilizados.
-              </ExplanationText>
+              <Accordion square elevation={0}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <StepContentTitle>
+                    S-DES - Simplified Data Encryption Standard
+                  </StepContentTitle>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <div>
+                    <ExplanationText>
+                      O S-DES é uma versão simplificada do algorítimo DES (Data
+                      Encryption Standard).
+                    </ExplanationText>
+                    <ExplanationText>
+                      Este se utiliza de uma chave de 10 bits que deve ser
+                      compartilhada entre o emissor e o receptor da mensagem
+                      para que a mensagem possa ser criptografada e
+                      descriptografada.
+                    </ExplanationText>
+                    <ExplanationText>
+                      Nesta execução (que possui objetivo educacional) podemos
+                      escolher se desejamos criptografar ou descriptografar a
+                      mensagem e informar uma mensagem e uma chave que irão ser
+                      utilizadas durante a execução do algoritmo para assim
+                      melhor visualizarmos como a ocorre o processo quando os
+                      valores desejados são utilizados.
+                    </ExplanationText>
+                  </div>
+                </AccordionDetails>
+              </Accordion>
               <Tabs
                 indicatorColor="primary"
                 textColor="primary"
