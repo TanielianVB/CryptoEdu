@@ -3,8 +3,7 @@ import { Grid, IconButton, Tooltip, Typography } from "@material-ui/core";
 import NavigateBeforeRoundedIcon from "@material-ui/icons/NavigateBeforeRounded";
 import NavigateNextRoundedIcon from "@material-ui/icons/NavigateNextRounded";
 import BitsField from "../BitsField/BitsField";
-import ExecutionExplanationText from "../ExecutionExplanationText/ExecutionExplanationText";
-import ExecutionExplanationAccentTextText from "../ExecutionExplanationText/ExecutionExplanationAccentText";
+import StepByStepPermutationExplanation from "./StepByStepPermutationExplanation";
 
 interface StepByStepPermutationProps {
   permutationLabel: string;
@@ -80,7 +79,8 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
     step: "permutation",
   });
 
-  const inputAccentPosition = permutation[executionState.position - 1];
+  const inputPosition = permutation[executionState.position - 1];
+  const outputValue = output[executionState.position - 1];
   const outputBits: number[] = new Array(output.length);
 
   for (let index = 0; index < executionState.position; index++) {
@@ -89,74 +89,6 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
       executionState.step === "output"
     ) {
       outputBits[index] = output[index];
-    }
-  }
-
-  let executionExplanation = (
-    <>
-      Inicie a execução da permutação clicando na seta à
-      <ExecutionExplanationAccentTextText>
-        {" "}
-        direita
-      </ExecutionExplanationAccentTextText>
-    </>
-  );
-
-  if (executionState.position > 0) {
-    switch (executionState.step) {
-      case "permutation":
-        executionExplanation = (
-          <>
-            Posição
-            <ExecutionExplanationAccentTextText>
-              {" " + executionState.position + " "}
-            </ExecutionExplanationAccentTextText>
-            de{" " + permutationLabel + " "}indica que a posição que irá ser
-            utilizada de
-            {" " + inputLabel + " "} é a
-            <ExecutionExplanationAccentTextText>
-              {" " + inputAccentPosition + " "}
-            </ExecutionExplanationAccentTextText>
-          </>
-        );
-        break;
-      case "input":
-        executionExplanation = (
-          <>
-            A posição
-            <ExecutionExplanationAccentTextText>
-              {" " + inputAccentPosition + " "}
-            </ExecutionExplanationAccentTextText>
-            de {" " + inputLabel + " "} possui valor
-            <ExecutionExplanationAccentTextText>
-              {" " + output[executionState.position - 1] + " "}
-            </ExecutionExplanationAccentTextText>
-            que será o valor da posição
-            <ExecutionExplanationAccentTextText>
-              {" " + executionState.position + " "}
-            </ExecutionExplanationAccentTextText>
-            de
-            {" " + outputLabel + " "}
-          </>
-        );
-        break;
-      case "output":
-        executionExplanation = (
-          <>
-            Posição
-            <ExecutionExplanationAccentTextText>
-              {" " + executionState.position + " "}
-            </ExecutionExplanationAccentTextText>
-            de
-            {" " + outputLabel + " "} é então
-            <ExecutionExplanationAccentTextText>
-              {" " + output[executionState.position - 1] + " "}
-            </ExecutionExplanationAccentTextText>
-          </>
-        );
-        break;
-      default:
-        throw new Error();
     }
   }
 
@@ -193,12 +125,12 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
               accent={
                 executionState.step === "input" ||
                 executionState.step === "output"
-                  ? inputAccentPosition
+                  ? inputPosition
                   : undefined
               }
               focus={
                 executionState.step === "input"
-                  ? inputAccentPosition
+                  ? inputPosition
                   : undefined
               }
             />
@@ -231,9 +163,15 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
         </Grid>
         <Grid item xs={12} container justify="center" alignItems="center">
           <Grid item>
-            <ExecutionExplanationText>
-              {executionExplanation}
-            </ExecutionExplanationText>
+            <StepByStepPermutationExplanation
+              position={executionState.position}
+              step={executionState.step}
+              inputPosition={inputPosition}
+              outputValue={outputValue}
+              permutationLabel={permutationLabel}
+              inputLabel={inputLabel}
+              outputLabel={outputLabel}
+            />
           </Grid>
         </Grid>
       </Grid>
