@@ -3,6 +3,8 @@ import { Grid, IconButton, Tooltip, Typography } from "@material-ui/core";
 import NavigateBeforeRoundedIcon from "@material-ui/icons/NavigateBeforeRounded";
 import NavigateNextRoundedIcon from "@material-ui/icons/NavigateNextRounded";
 import BitsField from "../BitsField/BitsField";
+import ExecutionExplanationText from "../ExecutionExplanationText/ExecutionExplanationText";
+import ExecutionExplanationAccentTextText from "../ExecutionExplanationText/ExecutionExplanationAccentText";
 
 interface StepByStepPermutationProps {
   permutationLabel: string;
@@ -93,10 +95,10 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
   let executionExplanation = (
     <>
       Inicie a execução da permutação clicando na seta à
-      <Typography variant="caption" color="secondary" display="inline">
+      <ExecutionExplanationAccentTextText>
         {" "}
         direita
-      </Typography>
+      </ExecutionExplanationAccentTextText>
     </>
   );
 
@@ -106,15 +108,15 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
         executionExplanation = (
           <>
             Posição
-            <Typography variant="caption" color="secondary" display="inline">
+            <ExecutionExplanationAccentTextText>
               {" " + executionState.position + " "}
-            </Typography>
+            </ExecutionExplanationAccentTextText>
             de{" " + permutationLabel + " "}indica que a posição que irá ser
             utilizada de
             {" " + inputLabel + " "} é a
-            <Typography variant="caption" color="secondary" display="inline">
+            <ExecutionExplanationAccentTextText>
               {" " + inputAccentPosition + " "}
-            </Typography>
+            </ExecutionExplanationAccentTextText>
           </>
         );
         break;
@@ -122,17 +124,17 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
         executionExplanation = (
           <>
             A posição
-            <Typography variant="caption" color="secondary" display="inline">
+            <ExecutionExplanationAccentTextText>
               {" " + inputAccentPosition + " "}
-            </Typography>
+            </ExecutionExplanationAccentTextText>
             de {" " + inputLabel + " "} possui valor
-            <Typography variant="caption" color="secondary" display="inline">
+            <ExecutionExplanationAccentTextText>
               {" " + output[executionState.position - 1] + " "}
-            </Typography>
+            </ExecutionExplanationAccentTextText>
             que será o valor da posição
-            <Typography variant="caption" color="secondary" display="inline">
+            <ExecutionExplanationAccentTextText>
               {" " + executionState.position + " "}
-            </Typography>
+            </ExecutionExplanationAccentTextText>
             de
             {" " + outputLabel + " "}
           </>
@@ -142,14 +144,14 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
         executionExplanation = (
           <>
             Posição
-            <Typography variant="caption" color="secondary" display="inline">
+            <ExecutionExplanationAccentTextText>
               {" " + executionState.position + " "}
-            </Typography>
+            </ExecutionExplanationAccentTextText>
             de
             {" " + outputLabel + " "} é então
-            <Typography variant="caption" color="secondary" display="inline">
+            <ExecutionExplanationAccentTextText>
               {" " + output[executionState.position - 1] + " "}
-            </Typography>
+            </ExecutionExplanationAccentTextText>
           </>
         );
         break;
@@ -229,9 +231,9 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
         </Grid>
         <Grid item xs={12} container justify="center" alignItems="center">
           <Grid item>
-            <Typography variant="caption" display="block">
+            <ExecutionExplanationText>
               {executionExplanation}
-            </Typography>
+            </ExecutionExplanationText>
           </Grid>
         </Grid>
       </Grid>
