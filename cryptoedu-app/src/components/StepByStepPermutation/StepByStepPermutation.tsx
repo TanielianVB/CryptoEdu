@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { Grid, IconButton, Tooltip } from "@material-ui/core";
+import { Grid, IconButton, Tooltip, Typography } from "@material-ui/core";
 import NavigateBeforeRoundedIcon from "@material-ui/icons/NavigateBeforeRounded";
 import NavigateNextRoundedIcon from "@material-ui/icons/NavigateNextRounded";
 import BitsField from "../BitsField/BitsField";
@@ -78,7 +78,7 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
     step: "permutation",
   });
 
-  const inputAccent = permutation[executionState.position - 1];
+  const inputAccentPosition = permutation[executionState.position - 1];
   const outputBits: number[] = new Array(output.length);
 
   for (let index = 0; index < executionState.position; index++) {
@@ -87,6 +87,74 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
       executionState.step === "output"
     ) {
       outputBits[index] = output[index];
+    }
+  }
+
+  let executionExplanation = (
+    <>
+      Inicie a execução da permutação clicando na seta à
+      <Typography variant="caption" color="secondary" display="inline">
+        {" "}
+        direita
+      </Typography>
+    </>
+  );
+
+  if (executionState.position > 0) {
+    switch (executionState.step) {
+      case "permutation":
+        executionExplanation = (
+          <>
+            Posição
+            <Typography variant="caption" color="secondary" display="inline">
+              {" " + executionState.position + " "}
+            </Typography>
+            de{" " + permutationLabel + " "}indica que a posição que irá ser
+            utilizada de
+            {" " + inputLabel + " "} é a
+            <Typography variant="caption" color="secondary" display="inline">
+              {" " + inputAccentPosition + " "}
+            </Typography>
+          </>
+        );
+        break;
+      case "input":
+        executionExplanation = (
+          <>
+            A posição
+            <Typography variant="caption" color="secondary" display="inline">
+              {" " + inputAccentPosition + " "}
+            </Typography>
+            de {" " + inputLabel + " "} possui valor
+            <Typography variant="caption" color="secondary" display="inline">
+              {" " + output[executionState.position - 1] + " "}
+            </Typography>
+            que será o valor da posição
+            <Typography variant="caption" color="secondary" display="inline">
+              {" " + executionState.position + " "}
+            </Typography>
+            de
+            {" " + outputLabel + " "}
+          </>
+        );
+        break;
+      case "output":
+        executionExplanation = (
+          <>
+            Posição
+            <Typography variant="caption" color="secondary" display="inline">
+              {" " + executionState.position + " "}
+            </Typography>
+            de
+            {" " + outputLabel + " "} é então
+            <Typography variant="caption" color="secondary" display="inline">
+              {" " + output[executionState.position - 1] + " "}
+            </Typography>
+          </>
+        );
+        break;
+      default:
+        throw new Error();
     }
   }
 
@@ -106,7 +174,7 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
         <Grid item xs={10}>
           <div>
             <BitsField
-              label={permutationLabel}
+              label={permutationLabel + ":"}
               bits={permutation}
               paragraphMargin={false}
               accent={executionState.position}
@@ -117,20 +185,25 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
               }
             />
             <BitsField
-              label={inputLabel}
+              label={inputLabel + ":"}
               bits={input}
               paragraphMargin={false}
               accent={
                 executionState.step === "input" ||
                 executionState.step === "output"
-                  ? inputAccent
+                  ? inputAccentPosition
                   : undefined
               }
-              focus={executionState.step === "input" ? inputAccent : undefined}
+              focus={
+                executionState.step === "input"
+                  ? inputAccentPosition
+                  : undefined
+              }
             />
             <BitsField
-              label={outputLabel}
+              label={outputLabel + ":"}
               bits={outputBits}
+              paragraphMargin={false}
               accent={
                 executionState.step === "output"
                   ? executionState.position
@@ -153,6 +226,13 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
               <NavigateNextRoundedIcon />
             </IconButton>
           </Tooltip>
+        </Grid>
+        <Grid item xs={12} container justify="center" alignItems="center">
+          <Grid item>
+            <Typography variant="caption" display="block">
+              {executionExplanation}
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
     </>

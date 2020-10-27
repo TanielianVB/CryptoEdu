@@ -51,11 +51,11 @@ function P10Step(props: P10StepProps) {
         Sendo assim, aplicando a função P10 sobre a chave temos:
       </ExplanationText>
       <StepByStepPermutation
-        permutationLabel="P10:"
+        permutationLabel="P10"
         permutation={SDES.getP10Positions()}
-        inputLabel="Chave:"
+        inputLabel="Chave"
         input={keyBits}
-        outputLabel="Chave permutada:"
+        outputLabel="Chave permutada"
         output={p10Bits}
       />
     </>
