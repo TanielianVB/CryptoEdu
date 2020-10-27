@@ -9,6 +9,8 @@ interface BitsFieldProps {
   bits: number[];
   addChar?: boolean;
   paragraphMargin?: boolean;
+  accent?: number;
+  focus?: number;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -40,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function BitsField(props: BitsFieldProps) {
-  const { label, bits, addChar, paragraphMargin } = props;
+  const { label, bits, addChar, paragraphMargin, accent, focus } = props;
 
   const classes = useStyles();
 
@@ -62,7 +64,13 @@ function BitsField(props: BitsFieldProps) {
         <BitsFieldLabel>{label}</BitsFieldLabel>
       </Grid>
       <Grid item xs={12} sm={9} className={classes.bits}>
-        <BitArrayField bits={bits} className={classes.bits} addChar={addChar} />
+        <BitArrayField
+          bits={bits}
+          className={classes.bits}
+          addChar={addChar}
+          accent={accent}
+          focus={focus}
+        />
       </Grid>
     </Grid>
   );

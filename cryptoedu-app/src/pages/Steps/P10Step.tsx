@@ -5,6 +5,7 @@ import StepContentTitle from "../../components/StepContentTitle/StepContentTitle
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import MathImg from "../../components/MathImg/MathImg";
 import BitsField from "../../components/BitsField/BitsField";
+import StepByStepPermutation from "../../components/StepByStepPermutation/StepByStepPermutation";
 
 interface P10StepProps {
   keyBits: number[];
@@ -49,13 +50,14 @@ function P10Step(props: P10StepProps) {
       <ExplanationText>
         Sendo assim, aplicando a função P10 sobre a chave temos:
       </ExplanationText>
-      <BitsField label="Chave:" bits={keyBits} paragraphMargin={false} />
-      <BitsField
-        label="P10:"
-        bits={SDES.getP10Positions()}
-        paragraphMargin={false}
+      <StepByStepPermutation
+        permutationLabel="P10:"
+        permutation={SDES.getP10Positions()}
+        inputLabel="Chave:"
+        input={keyBits}
+        outputLabel="Chave permutada:"
+        output={p10Bits}
       />
-      <BitsField label="Chave permutada:" bits={p10Bits} />
     </>
   );
 }

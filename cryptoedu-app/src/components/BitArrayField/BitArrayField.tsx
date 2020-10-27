@@ -13,12 +13,31 @@ interface BitsFieldProps {
   justify?: GridJustification;
   addChar?: boolean;
   gridItem?: boolean;
-  className?: string | undefined;
-  style?: React.CSSProperties | undefined;
+  className?: string;
+  style?: React.CSSProperties;
+  accent?: number;
+  focus?: number;
 }
 
 function BitArrayField(props: BitsFieldProps) {
-  const { bits, justify, addChar, gridItem, className, style } = props;
+  const {
+    bits,
+    justify,
+    addChar,
+    gridItem,
+    className,
+    style,
+    accent,
+    focus,
+  } = props;
+
+  let values: string[] = new Array(bits.length);
+
+  for (let index = 0; index < bits.length; index++) {
+    const element = bits[index];
+    values[index] = element !== undefined ? element.toString() : " ";
+  }
+
   return (
     <Grid
       item={gridItem}
@@ -29,10 +48,16 @@ function BitArrayField(props: BitsFieldProps) {
       className={className}
       style={style}
     >
-      {bits.map((b, i) => {
+      {values.map((b, i) => {
+        const position = i + 1;
         return (
-          <Grid item>
-            <BitTextField position={(i + 1).toString()} value={b.toString()} />
+          <Grid item key={position}>
+            <BitTextField
+              position={position.toString()}
+              value={b.toString()}
+              accent={position === accent}
+              focus={position === focus}
+            />
           </Grid>
         );
       })}
