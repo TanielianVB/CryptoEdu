@@ -25,6 +25,13 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     focus: {
+      "& label": {
+        color: theme.palette.secondary.main,
+      },
+      "& input": {
+        color: theme.palette.secondary.main,
+        fontWeight: "bold",
+      },
       "& .MuiOutlinedInput-root": {
         "& fieldset": {
           borderWidth: "2px",

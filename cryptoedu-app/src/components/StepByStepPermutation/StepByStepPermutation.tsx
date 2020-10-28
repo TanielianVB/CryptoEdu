@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { Grid, IconButton, Tooltip, Typography } from "@material-ui/core";
+import { Grid, IconButton, Tooltip } from "@material-ui/core";
 import NavigateBeforeRoundedIcon from "@material-ui/icons/NavigateBeforeRounded";
 import NavigateNextRoundedIcon from "@material-ui/icons/NavigateNextRounded";
 import BitsField from "../BitsField/BitsField";
