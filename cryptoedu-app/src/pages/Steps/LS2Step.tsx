@@ -6,6 +6,7 @@ import StepContentTitle from "../../components/StepContentTitle/StepContentTitle
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 import BitsField from "../../components/BitsField/BitsField";
+import StepByStepPermutation from "../../components/StepByStepPermutation/StepByStepPermutation";
 
 interface LS2StepProps {
   ls1Bits: number[];
@@ -63,13 +64,14 @@ function LS2Step(props: LS2StepProps) {
         Finalmente, se aplica P8 sobre a junção das metades alteradas pela
         rotação LS-2. Obtendo-se assim a chave K<sub>2</sub>.
       </ExplanationText>
-      <BitsField label="LS-2:" bits={ls2Bits} paragraphMargin={false} />
-      <BitsField
-        label="P8:"
-        bits={SDES.getP8Positions()}
-        paragraphMargin={false}
+      <StepByStepPermutation
+        permutationLabel="P8"
+        permutation={SDES.getP8Positions()}
+        inputLabel="LS-2"
+        input={ls2Bits}
+        outputLabel="LS-2 permutada"
+        output={k2Bits}
       />
-      <BitsField label="LS-2 permutada:" bits={k2Bits} />
     </>
   );
 }
