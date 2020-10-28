@@ -2,6 +2,8 @@ import React, { useReducer } from "react";
 import { Grid, IconButton, Tooltip } from "@material-ui/core";
 import NavigateBeforeRoundedIcon from "@material-ui/icons/NavigateBeforeRounded";
 import NavigateNextRoundedIcon from "@material-ui/icons/NavigateNextRounded";
+import FirstPageRoundedIcon from "@material-ui/icons/FirstPageRounded";
+import LastPageRoundedIcon from "@material-ui/icons/LastPageRounded";
 import BitsField from "../BitsField/BitsField";
 import StepByStepPermutationExplanation from "./StepByStepPermutationExplanation";
 
@@ -17,7 +19,7 @@ interface StepByStepPermutationProps {
 
 interface ExecutionState {
   position: number;
-  step: "permutation" | "input" | "output";
+  step: "start" | "permutation" | "input" | "output" | "finish";
 }
 
 function StepByStepPermutation(props: StepByStepPermutationProps) {
@@ -33,44 +35,52 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
 
   const executionReducer = (
     state: ExecutionState,
-    action: "prevStep" | "nextStep"
+    action: "prev" | "next" | "first" | "last"
   ): ExecutionState => {
     switch (action) {
-      case "prevStep":
-        if (state.position === 0) {
-          return state;
-        } else {
-          switch (state.step) {
-            case "permutation":
-              return { position: state.position - 1, step: "output" };
-            case "input":
-              return { position: state.position, step: "permutation" };
-            case "output":
-              return { position: state.position, step: "input" };
-            default:
-              throw new Error();
-          }
+      case "first":
+        return { position: 0, step: "start" };
+      case "prev":
+        switch (state.step) {
+          case "start":
+            return { position: 0, step: "start" };
+          case "permutation":
+            const position = state.position - 1;
+            if (position === 0) {
+              return { position: 0, step: "start" };
+            } else {
+              return { position: position, step: "output" };
+            }
+          case "input":
+            return { position: state.position, step: "permutation" };
+          case "output":
+            return { position: state.position, step: "input" };
+          case "finish":
+            return { position: permutation.length, step: "output" };
+          default:
+            throw new Error();
         }
-      case "nextStep":
-        if (state.position === 0) {
-          return { position: 1, step: "permutation" };
-        } else if (
-          state.position >= permutation.length &&
-          state.step === "output"
-        ) {
-          return { position: 0, step: "permutation" };
-        } else {
-          switch (state.step) {
-            case "permutation":
-              return { position: state.position, step: "input" };
-            case "input":
-              return { position: state.position, step: "output" };
-            case "output":
+      case "next":
+        switch (state.step) {
+          case "start":
+            return { position: 1, step: "permutation" };
+          case "permutation":
+            return { position: state.position, step: "input" };
+          case "input":
+            return { position: state.position, step: "output" };
+          case "output":
+            if (state.position === permutation.length) {
+              return { position: 0, step: "finish" };
+            } else {
               return { position: state.position + 1, step: "permutation" };
-            default:
-              throw new Error();
-          }
+            }
+          case "finish":
+            return { position: 0, step: "start" };
+          default:
+            throw new Error();
         }
+      case "last":
+        return { position: 0, step: "finish" };
       default:
         throw new Error();
     }
@@ -78,12 +88,13 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
 
   const [executionState, executionDispatch] = useReducer(executionReducer, {
     position: 0,
-    step: "permutation",
+    step: "start",
   });
 
   const inputPosition = permutation[executionState.position - 1];
   const outputValue = output[executionState.position - 1];
-  const outputBits: number[] = new Array(output.length);
+  const outputBits: number[] =
+    executionState.step === "finish" ? output : new Array(output.length);
 
   for (let index = 0; index < executionState.position; index++) {
     if (
@@ -101,9 +112,17 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
           <Tooltip title="Passo anterior na permutação">
             <IconButton
               color="secondary"
-              onClick={(event) => executionDispatch("prevStep")}
+              onClick={(event) => executionDispatch("prev")}
             >
               <NavigateBeforeRoundedIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Primeiro passo na permutação">
+            <IconButton
+              color="secondary"
+              onClick={(event) => executionDispatch("first")}
+            >
+              <FirstPageRoundedIcon />
             </IconButton>
           </Tooltip>
         </Grid>
@@ -149,6 +168,7 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
                   ? executionState.position
                   : undefined
               }
+              accentNumbers={executionState.step === "finish"}
               addChar={addChar}
             />
           </div>
@@ -157,9 +177,17 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
           <Tooltip title="Próximo passo na permutação">
             <IconButton
               color="secondary"
-              onClick={(event) => executionDispatch("nextStep")}
+              onClick={(event) => executionDispatch("next")}
             >
               <NavigateNextRoundedIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Último passo na permutação">
+            <IconButton
+              color="secondary"
+              onClick={(event) => executionDispatch("last")}
+            >
+              <LastPageRoundedIcon />
             </IconButton>
           </Tooltip>
         </Grid>
@@ -170,6 +198,7 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
               step={executionState.step}
               inputPosition={inputPosition}
               outputValue={outputValue}
+              fullOutput={output}
               permutationLabel={permutationLabel}
               inputLabel={inputLabel}
               outputLabel={outputLabel}

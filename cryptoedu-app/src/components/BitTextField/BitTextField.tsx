@@ -7,6 +7,7 @@ interface BitTextFieldProps {
   value: string;
   accent?: boolean;
   focus?: boolean;
+  accentNumber?: boolean;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -38,16 +39,23 @@ const useStyles = makeStyles((theme: Theme) =>
         },
       },
     },
+    accentNumber: {
+      "& input": {
+        color: theme.palette.secondary.main,
+        fontWeight: "bold",
+      },
+    },
   })
 );
 
 function BitTextField(props: BitTextFieldProps) {
-  const { position, value, accent, focus } = props;
+  const { position, value, accent, focus, accentNumber } = props;
 
   const classes = useStyles();
 
   let className = accent ? classes.accent : "";
   className = focus ? className + " " + classes.focus : className;
+  className = accentNumber ? className + " " + classes.accentNumber : className;
 
   return (
     <TextField

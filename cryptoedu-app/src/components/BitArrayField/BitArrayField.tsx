@@ -17,6 +17,7 @@ interface BitsFieldProps {
   style?: React.CSSProperties;
   accent?: number;
   focus?: number;
+  accentNumbers?: boolean;
 }
 
 function BitArrayField(props: BitsFieldProps) {
@@ -29,6 +30,7 @@ function BitArrayField(props: BitsFieldProps) {
     style,
     accent,
     focus,
+    accentNumbers,
   } = props;
 
   let values: string[] = new Array(bits.length);
@@ -57,6 +59,7 @@ function BitArrayField(props: BitsFieldProps) {
               value={b.toString()}
               accent={position === accent}
               focus={position === focus}
+              accentNumber={accentNumbers}
             />
           </Grid>
         );
