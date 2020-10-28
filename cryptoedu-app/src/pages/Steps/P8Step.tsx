@@ -5,6 +5,7 @@ import StepContentTitle from "../../components/StepContentTitle/StepContentTitle
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import MathImg from "../../components/MathImg/MathImg";
 import BitsField from "../../components/BitsField/BitsField";
+import StepByStepPermutation from "../../components/StepByStepPermutation/StepByStepPermutation";
 
 interface P8StepProps {
   ls1Bits: number[];
@@ -49,13 +50,14 @@ function P8Step(props: P8StepProps) {
       <ExplanationText>
         Sendo assim, aplicando a função P8 sobre LS-1 temos:
       </ExplanationText>
-      <BitsField label="LS-1:" bits={ls1Bits} paragraphMargin={false} />
-      <BitsField
-        label="P8:"
-        bits={SDES.getP8Positions()}
-        paragraphMargin={false}
+      <StepByStepPermutation
+        permutationLabel="P8"
+        permutation={SDES.getP8Positions()}
+        inputLabel="LS-1"
+        input={ls1Bits}
+        outputLabel="LS-1 permutada"
+        output={k1Bits}
       />
-      <BitsField label="LS-1 permutada:" bits={k1Bits} />
     </>
   );
 }
