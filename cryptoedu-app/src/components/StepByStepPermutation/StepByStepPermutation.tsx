@@ -12,6 +12,7 @@ interface StepByStepPermutationProps {
   input: number[];
   outputLabel: string;
   output: number[];
+  addChar?: boolean;
 }
 
 interface ExecutionState {
@@ -27,6 +28,7 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
     input,
     outputLabel,
     output,
+    addChar,
   } = props;
 
   const executionReducer = (
@@ -129,10 +131,9 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
                   : undefined
               }
               focus={
-                executionState.step === "input"
-                  ? inputPosition
-                  : undefined
+                executionState.step === "input" ? inputPosition : undefined
               }
+              addChar={addChar}
             />
             <BitsField
               label={outputLabel + ":"}
@@ -148,6 +149,7 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
                   ? executionState.position
                   : undefined
               }
+              addChar={addChar}
             />
           </div>
         </Grid>

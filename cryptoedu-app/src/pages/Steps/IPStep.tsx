@@ -6,6 +6,7 @@ import StepContentTitle from "../../components/StepContentTitle/StepContentTitle
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 import BitsField from "../../components/BitsField/BitsField";
+import StepByStepPermutation from "../../components/StepByStepPermutation/StepByStepPermutation";
 
 interface IPStepProps {
   messageBits: number[];
@@ -31,18 +32,15 @@ function IPStep(props: IPStepProps) {
       <ExplanationText>
         Sendo assim, aplicando a função IP sobre a mensagem temos:
       </ExplanationText>
-      <BitsField
-        label="P:"
-        bits={messageBits}
+      <StepByStepPermutation
+        permutationLabel="IP"
+        permutation={SDES.getIPPositions()}
+        inputLabel="P"
+        input={messageBits}
+        outputLabel="P permutada"
+        output={ipBits}
         addChar
-        paragraphMargin={false}
       />
-      <BitsField
-        label="IP:"
-        bits={SDES.getIPPositions()}
-        paragraphMargin={false}
-      />
-      <BitsField label="P permutada:" bits={ipBits} addChar />
       <ExplanationText>
         A saída da função de permutação inicial IP é então divida na metade. São
         elas L (left) e R (right). Estas serão utilizadas como parâmetros que
