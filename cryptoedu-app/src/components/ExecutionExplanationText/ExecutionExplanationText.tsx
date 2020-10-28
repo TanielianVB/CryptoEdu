@@ -7,7 +7,7 @@ interface ExecutionExplanationTextProps {
 
 function ExecutionExplanationText(props: ExecutionExplanationTextProps) {
   return (
-    <Typography variant="caption" display="block" align="justify">
+    <Typography variant="caption" display="block" align="justify" gutterBottom>
       {props.children}
     </Typography>
   );

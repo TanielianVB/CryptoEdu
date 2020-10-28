@@ -1,6 +1,7 @@
 import React from "react";
 import ExecutionExplanationText from "../ExecutionExplanationText/ExecutionExplanationText";
-import ExecutionExplanationAccentTextText from "../ExecutionExplanationText/ExecutionExplanationAccentText";
+import Accent from "../ExecutionExplanationText/ExecutionExplanationAccentText";
+import Relevant from "../ExecutionExplanationText/ExecutionExplanationRelevantText";
 
 interface StepByStepPermutationExplanationProps {
   position: number;
@@ -28,10 +29,7 @@ function StepByStepPermutationExplanation(
   let executionExplanation = (
     <>
       Inicie a execução da permutação clicando na seta à
-      <ExecutionExplanationAccentTextText>
-        {" "}
-        direita
-      </ExecutionExplanationAccentTextText>
+      <Accent> direita</Accent>
     </>
   );
 
@@ -41,15 +39,12 @@ function StepByStepPermutationExplanation(
         executionExplanation = (
           <>
             Posição
-            <ExecutionExplanationAccentTextText>
-              {" " + position + " "}
-            </ExecutionExplanationAccentTextText>
-            de{" " + permutationLabel + " "}indica que a posição que irá ser
-            utilizada de
-            {" " + inputLabel + " "} é a
-            <ExecutionExplanationAccentTextText>
-              {" " + inputPosition + " "}
-            </ExecutionExplanationAccentTextText>
+            <Accent>{" " + position + " "}</Accent>
+            de
+            <Relevant>{" " + permutationLabel + " "}</Relevant>
+            indica que a posição que irá ser utilizada de
+            <Relevant>{" " + inputLabel + " "}</Relevant> é a
+            <Accent>{" " + inputPosition + " "}</Accent>
           </>
         );
         break;
@@ -57,19 +52,13 @@ function StepByStepPermutationExplanation(
         executionExplanation = (
           <>
             A posição
-            <ExecutionExplanationAccentTextText>
-              {" " + inputPosition + " "}
-            </ExecutionExplanationAccentTextText>
-            de {" " + inputLabel + " "} possui valor
-            <ExecutionExplanationAccentTextText>
-              {" " + outputValue + " "}
-            </ExecutionExplanationAccentTextText>
+            <Accent>{" " + inputPosition + " "}</Accent>
+            de <Relevant>{" " + inputLabel + " "}</Relevant> possui valor
+            <Accent>{" " + outputValue + " "}</Accent>
             que será o valor da posição
-            <ExecutionExplanationAccentTextText>
-              {" " + position + " "}
-            </ExecutionExplanationAccentTextText>
+            <Accent>{" " + position + " "}</Accent>
             de
-            {" " + outputLabel + " "}
+            <Relevant>{" " + outputLabel + " "}</Relevant>
           </>
         );
         break;
@@ -77,14 +66,10 @@ function StepByStepPermutationExplanation(
         executionExplanation = (
           <>
             Posição
-            <ExecutionExplanationAccentTextText>
-              {" " + position + " "}
-            </ExecutionExplanationAccentTextText>
+            <Accent>{" " + position + " "}</Accent>
             de
-            {" " + outputLabel + " "} é então
-            <ExecutionExplanationAccentTextText>
-              {" " + outputValue + " "}
-            </ExecutionExplanationAccentTextText>
+            <Relevant>{" " + outputLabel + " "}</Relevant> é então
+            <Accent>{" " + outputValue + " "}</Accent>
           </>
         );
         break;

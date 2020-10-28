@@ -47,11 +47,11 @@ function IPStep(props: IPStepProps) {
         serão passados para a f <sub>k</sub>.
       </ExplanationText>
       <Grid container justify="center" spacing={5}>
-        <Grid item justify="center">
+        <Grid item>
           <BitsFieldLabel>L (left):</BitsFieldLabel>
           <BitArrayField bits={ipBits.slice(0, 4)} justify="center" />
         </Grid>
-        <Grid item justify="center">
+        <Grid item>
           <BitsFieldLabel>R (right):</BitsFieldLabel>
           <BitArrayField bits={ipBits.slice(4, 8)} justify="center" />
         </Grid>

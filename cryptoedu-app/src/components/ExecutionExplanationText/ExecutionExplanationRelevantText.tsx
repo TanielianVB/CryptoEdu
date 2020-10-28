@@ -2,33 +2,33 @@ import React from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 
-interface ExecutionExplanationAccentTextProps {
+interface ExecutionExplanationRelevantTextProps {
   children: React.ReactNode;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    accent: {
+    relevant: {
       fontWeight: "bold",
     },
   })
 );
 
-function ExecutionExplanationAccentText(
-  props: ExecutionExplanationAccentTextProps
+function ExecutionExplanationRelevantText(
+  props: ExecutionExplanationRelevantTextProps
 ) {
   const classes = useStyles();
   return (
     <Typography
       variant="caption"
-      color="secondary"
+      color="primary"
       display="inline"
       align="justify"
-      className={classes.accent}
+      className={classes.relevant}
     >
       {props.children}
     </Typography>
   );
 }
 
-export default ExecutionExplanationAccentText;
+export default ExecutionExplanationRelevantText;
