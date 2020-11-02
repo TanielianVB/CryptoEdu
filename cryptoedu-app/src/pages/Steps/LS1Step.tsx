@@ -5,6 +5,7 @@ import StepContentTitle from "../../components/StepContentTitle/StepContentTitle
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 import BitsField from "../../components/BitsField/BitsField";
+import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
 
 interface LS1StepProps {
   p10Bits: number[];
@@ -25,16 +26,11 @@ function LS1Step(props: LS1StepProps) {
         dividir P10 em 2 metades:
       </ExplanationText>
       <BitsField label="Chave após P10:" bits={p10Bits} />
-      <Grid container justify="center" spacing={5}>
-        <Grid item>
-          <BitsFieldLabel>Esquerda de P10:</BitsFieldLabel>
-          <BitArrayField bits={p10Bits.slice(0, 5)} justify="center" />
-        </Grid>
-        <Grid item>
-          <BitsFieldLabel>Direita de P10:</BitsFieldLabel>
-          <BitArrayField bits={p10Bits.slice(5, 10)} justify="center" />
-        </Grid>
-      </Grid>
+      <SplitBitsField
+        leftLabel="Esquerda de P10"
+        rightLabel="Direita de P10"
+        bits={p10Bits}
+      />
       <ExplanationText>
         O próximo passo é a rotação das metades. A rotação nada mais é do que a
         movimentação de todos os bits. No caso do S-DES essa rotação inicial
