@@ -1,5 +1,4 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
@@ -29,11 +28,9 @@ function P8Step(props: P8StepProps) {
         A permutação ocorrerá através da aplicação de uma função de permutação.
         A função de permutação P8 é definida por:
       </ExplanationText>
-      <Grid container justify="center">
-        {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
-         P8(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{6}, k_{3}, k_{7}, k_{4}, k_{8}, k_{5}, k_{10}, k_{9}) */}
-        <MathImg src="sdes\p8.svg" alt="P8" />
-      </Grid>
+      {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
+          P8(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{6}, k_{3}, k_{7}, k_{4}, k_{8}, k_{5}, k_{10}, k_{9}) */}
+      <MathImg src="sdes\p8.svg" alt="P8" />
       <ExplanationText>
         Como já aprendemos a interpretar uma função de permutação, extraímos da
         função acima que os 10 bits da chave devem ser reordenados nas seguintes

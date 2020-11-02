@@ -1,5 +1,4 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
 import SDES from "../../utils/SDES";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
@@ -30,10 +29,8 @@ function P10Step(props: P10StepProps) {
           permutação. A função de permutação P10 é definida por:
         </ExplanationText>
         {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
-              P10(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{3}, k_{5}, k_{2}, k_{7}, k_{4}, k_{10}, k_{1}, k_{9}, k_{8}, k_{6}) */}
-        <Grid container justify="center">
-          <MathImg src="sdes\p10.svg" alt="P10" />
-        </Grid>
+            P10(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{3}, k_{5}, k_{2}, k_{7}, k_{4}, k_{10}, k_{1}, k_{9}, k_{8}, k_{6}) */}
+        <MathImg src="sdes\p10.svg" alt="P10" />
         <ExplanationText>
           Pode parecer complicado mas a permutação nada mais é do que uma
           reorganiação dos bits presentes na chave passada por parâmetro para a

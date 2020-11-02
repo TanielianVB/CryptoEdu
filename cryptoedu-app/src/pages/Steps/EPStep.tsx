@@ -1,5 +1,4 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
 import SDES from "../../utils/SDES";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
@@ -34,11 +33,9 @@ function EPStep(props: EPStepProps) {
         cada chave (K<sub>1</sub> e K<sub>2</sub>). A função f<sub>k</sub> é
         definida por:
       </ExplanationText>
-      <Grid container justify="center">
-        {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
-         f_{K}(L, R) = (L \oplus F(R, SK), R) */}
-        <MathImg src="sdes\fk.svg" alt="fk" />
-      </Grid>
+      {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
+          f_{K}(L, R) = (L \oplus F(R, SK), R) */}
+      <MathImg src="sdes\fk.svg" alt="fk" />
       <ExplanationText>
         A função f<sub>k</sub> se utiliza da função F que por sua vez é definida
         por uma sequencia de passos. Apesar de parecer complicado vamos executar
@@ -50,11 +47,9 @@ function EPStep(props: EPStepProps) {
         E/P (permutação de expansão), que é assim chamada pois recebe 4 bits e
         retorna 8 bits. Esta é definida por:
       </ExplanationText>
-      <Grid container justify="center">
-        {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
-         EP(k_{1}, k_{2}, k_{3}, k_{4}) = (k_{4}, k_{1}, k_{2}, k_{3}, k_{2}, k_{3}, k_{4}, k_{1}) */}
-        <MathImg src="sdes\ep.svg" alt="ep" />
-      </Grid>
+      {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
+          EP(k_{1}, k_{2}, k_{3}, k_{4}) = (k_{4}, k_{1}, k_{2}, k_{3}, k_{2}, k_{3}, k_{4}, k_{1}) */}
+      <MathImg src="sdes\ep.svg" alt="ep" />
       <ExplanationText>
         Pode-se observar que, ao contrário da função F8, esta função retorna
         mais bits do que esta recebeu por parâmetro.

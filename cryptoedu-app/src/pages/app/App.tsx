@@ -65,9 +65,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const formatArray = (array: number[]) => {
-  // return "[ " + array.join(", ") + " ]";
-  // return "[" + array.join("") + "]";
-  // return array.join("");
   const char = Utils.getChar(array);
   return (char ? "'" + char + "' " : "") + array.join("");
 };
@@ -77,10 +74,10 @@ const getSteps = (): React.ReactNode[] => {
     "Inicio",
     "LS-1",
     <>
-      P8 & K<sub>1</sub>
+      K<sub>1</sub>
     </>,
     <>
-      LS-2 & K<sub>2</sub>
+      K<sub>2</sub>
     </>,
     "IP",
     <>
@@ -172,12 +169,10 @@ function App() {
               <StepContentAccordion title="S-DES - Simplified Data Encryption Standard">
                 <ExplanationText>
                   O S-DES é uma versão simplificada do algorítimo DES (Data
-                  Encryption Standard).
-                </ExplanationText>
-                <ExplanationText>
-                  Este se utiliza de uma chave de 10 bits que deve ser
-                  compartilhada entre o emissor e o receptor da mensagem para
-                  que a mensagem possa ser criptografada e descriptografada.
+                  Encryption Standard). Este se utiliza de uma chave de 10 bits
+                  que deve ser compartilhada entre o emissor e o receptor da
+                  mensagem para que a mensagem possa ser criptografada e
+                  descriptografada.
                 </ExplanationText>
                 <ExplanationText>
                   Nesta execução (que possui objetivo educacional) podemos
