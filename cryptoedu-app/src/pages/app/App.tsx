@@ -75,7 +75,6 @@ const formatArray = (array: number[]) => {
 const getSteps = (): React.ReactNode[] => {
   return [
     "Inicio",
-    "P10",
     "LS-1",
     <>
       P8 & K<sub>1</sub>
@@ -312,6 +311,7 @@ function App() {
           <Card className={classes.card}>
             <CardContent>
               <P10Step keyBits={keyBits} p10Bits={p10Bits} />
+              <LS1Step p10Bits={p10Bits} ls1Bits={ls1Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation
@@ -326,8 +326,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <P10Step keyBits={keyBits} p10Bits={p10Bits} />
-              <LS1Step p10Bits={p10Bits} ls1Bits={ls1Bits} />
+              <P8Step ls1Bits={ls1Bits} k1Bits={k1Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation
@@ -342,7 +341,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <P8Step ls1Bits={ls1Bits} k1Bits={k1Bits} />
+              <LS2Step ls1Bits={ls1Bits} ls2Bits={ls2Bits} k2Bits={k2Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation
@@ -357,7 +356,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <LS2Step ls1Bits={ls1Bits} ls2Bits={ls2Bits} k2Bits={k2Bits} />
+              <IPStep messageBits={messageBits} ipBits={ipBits} />
             </CardContent>
             <CardActions>
               <StepperNavigation
@@ -372,7 +371,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <IPStep messageBits={messageBits} ipBits={ipBits} />
+              <EPStep ipBits={ipBits} ep1Bits={ep1Bits} k1Bits={k1Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation
@@ -387,7 +386,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <EPStep ipBits={ipBits} ep1Bits={ep1Bits} k1Bits={k1Bits} />
+              <S0S1Step />
             </CardContent>
             <CardActions>
               <StepperNavigation
@@ -402,21 +401,6 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <S0S1Step />
-            </CardContent>
-            <CardActions>
-              <StepperNavigation
-                setActiveStep={setActiveStep}
-                previousStep={stepIndex - 1}
-                nextStep={stepIndex + 1}
-              />
-            </CardActions>
-          </Card>
-        );
-      case 8:
-        return (
-          <Card className={classes.card}>
-            <CardContent>
               <SWStep />
             </CardContent>
             <CardActions>
@@ -428,7 +412,7 @@ function App() {
             </CardActions>
           </Card>
         );
-      case 9:
+      case 8:
         return (
           <Card className={classes.card}>
             <CardContent>
