@@ -7,7 +7,7 @@ interface SWStepProps {
   //   k1Bits: number[];
 }
 
-function SWStep() {
+function SWStep(props: SWStepProps) {
   return (
     <>
       <StepContentTitle>

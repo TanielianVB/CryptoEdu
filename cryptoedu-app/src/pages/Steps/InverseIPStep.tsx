@@ -9,7 +9,7 @@ interface InverseIPStepProps {
   //   k1Bits: number[];
 }
 
-function InverseIPStep() {
+function InverseIPStep(props: InverseIPStepProps) {
   return (
     <>
       <StepContentTitle>

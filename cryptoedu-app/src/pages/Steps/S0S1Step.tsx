@@ -13,7 +13,7 @@ interface S0S1StepProps {
   //   k1Bits: number[];
 }
 
-function S0S1Step() {
+function S0S1Step(props: S0S1StepProps) {
   return (
     <>
       <StepContentTitle>

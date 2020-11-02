@@ -33,9 +33,9 @@ import EPStep from "../Steps/EPStep";
 import S0S1Step from "../Steps/S0S1Step";
 import SWStep from "../Steps/SWStep";
 import InverseIPStep from "../Steps/InverseIPStep";
-import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
+import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -170,26 +170,25 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <StepContentTitle>
-                S-DES - Simplified Data Encryption Standard
-              </StepContentTitle>
-              <ExplanationText>
-                O S-DES é uma versão simplificada do algorítimo DES (Data
-                Encryption Standard).
-              </ExplanationText>
-              <ExplanationText>
-                Este se utiliza de uma chave de 10 bits que deve ser
-                compartilhada entre o emissor e o receptor da mensagem para que
-                a mensagem possa ser criptografada e descriptografada.
-              </ExplanationText>
-              <ExplanationText>
-                Nesta execução (que possui objetivo educacional) podemos
-                escolher se desejamos criptografar ou descriptografar a mensagem
-                e informar uma mensagem e uma chave que irão ser utilizadas
-                durante a execução do algoritmo para assim melhor visualizarmos
-                como a ocorre o processo quando os valores desejados são
-                utilizados.
-              </ExplanationText>
+              <StepContentAccordion title="S-DES - Simplified Data Encryption Standard">
+                <ExplanationText>
+                  O S-DES é uma versão simplificada do algorítimo DES (Data
+                  Encryption Standard).
+                </ExplanationText>
+                <ExplanationText>
+                  Este se utiliza de uma chave de 10 bits que deve ser
+                  compartilhada entre o emissor e o receptor da mensagem para
+                  que a mensagem possa ser criptografada e descriptografada.
+                </ExplanationText>
+                <ExplanationText>
+                  Nesta execução (que possui objetivo educacional) podemos
+                  escolher se desejamos criptografar ou descriptografar a
+                  mensagem e informar uma mensagem e uma chave que irão ser
+                  utilizadas durante a execução do algoritmo para assim melhor
+                  visualizarmos como a ocorre o processo quando os valores
+                  desejados são utilizados.
+                </ExplanationText>
+              </StepContentAccordion>
               <Tabs
                 indicatorColor="primary"
                 textColor="primary"
@@ -327,6 +326,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
+              <P10Step keyBits={keyBits} p10Bits={p10Bits} />
               <LS1Step p10Bits={p10Bits} ls1Bits={ls1Bits} />
             </CardContent>
             <CardActions>
