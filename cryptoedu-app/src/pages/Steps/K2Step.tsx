@@ -1,10 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import SDES from "../../utils/SDES";
-import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
-import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 import BitsField from "../../components/BitsField/BitsField";
 import StepByStepPermutation from "../../components/StepByStepPermutation/StepByStepPermutation";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
