@@ -26,7 +26,7 @@ import SDES from "../../utils/SDES";
 import P10Step from "../Steps/P10Step";
 import LS1Step from "../Steps/LS1Step";
 import IPStep from "../Steps/IPStep";
-import P8Step from "../Steps/P8Step";
+import K1Step from "../Steps/K1Step";
 import LS2Step from "../Steps/LS2Step";
 import EPStep from "../Steps/EPStep";
 import S0S1Step from "../Steps/S0S1Step";
@@ -327,7 +327,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <P8Step ls1Bits={ls1Bits} k1Bits={k1Bits} />
+              <K1Step ls1Bits={ls1Bits} k1Bits={k1Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation
