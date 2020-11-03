@@ -79,13 +79,7 @@ const getSteps = (): React.ReactNode[] => {
       K<sub>2</sub>
     </>,
     "IP",
-    <>
-      f
-      <sub>
-        k<sub>1</sub>
-      </sub>{" "}
-      & E/P
-    </>,
+    "E/P",
     "S0 & S1 & P4",
     <>
       SW & f
