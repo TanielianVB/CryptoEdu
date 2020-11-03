@@ -19,6 +19,7 @@ function SplitBitsField(props: SplitBitsFieldProps) {
           label={leftLabel}
           bits={bits.slice(0, 5)}
           paragraphMargin={paragraphMargin}
+          labelAbove
         />
       </Grid>
       <Grid item>
@@ -26,6 +27,7 @@ function SplitBitsField(props: SplitBitsFieldProps) {
           label={rightLabel}
           bits={bits.slice(5, 10)}
           paragraphMargin={paragraphMargin}
+          labelAbove
         />
       </Grid>
     </Grid>
