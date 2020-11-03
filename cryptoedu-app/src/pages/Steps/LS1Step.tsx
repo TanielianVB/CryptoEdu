@@ -1,8 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
-import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 import BitsField from "../../components/BitsField/BitsField";
 import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
@@ -40,36 +38,31 @@ function LS1Step(props: LS1StepProps) {
           Aplicando a rotação LS-1 nas metades temos:
         </ExplanationText>
       </StepContentAccordion>
-      <StepByStepCircularLeftShift
-        inputLabel="Esquerda de P10"
-        input={p10Bits.slice(0, 5)}
-        outputLabel="Esquerda após a rotação LS-1"
-        output={ls1Bits.slice(0, 5)}
+      <Grid container direction="row" justify="center" spacing={5}>
+        <Grid item md={6}>
+          <StepByStepCircularLeftShift
+            shift={1}
+            inputLabel="Esquerda de P10"
+            input={p10Bits.slice(0, 5)}
+            outputLabel="Esquerda após LS-1"
+            output={ls1Bits.slice(0, 5)}
+          />
+        </Grid>
+        <Grid item md={6}>
+          <StepByStepCircularLeftShift
+            shift={1}
+            inputLabel="Direita de P10"
+            input={p10Bits.slice(5, 10)}
+            outputLabel="Direita após LS-1"
+            output={ls1Bits.slice(5, 10)}
+          />
+        </Grid>
+      </Grid>
+      <BitsField
+        label="Juntando as metades após a rotação temos a Chave rotacionada"
+        bits={ls1Bits}
+        labelAbove
       />
-      <Grid container justify="center" spacing={5}>
-        <Grid item>
-          <BitsFieldLabel>Esquerda de P10</BitsFieldLabel>
-          <BitArrayField bits={p10Bits.slice(0, 5)} justify="center" />
-        </Grid>
-        <Grid item>
-          <BitsFieldLabel>Esquerda após a rotação LS-1</BitsFieldLabel>
-          <BitArrayField bits={ls1Bits.slice(0, 5)} justify="center" />
-        </Grid>
-      </Grid>
-      <Grid container justify="center" spacing={5}>
-        <Grid item>
-          <BitsFieldLabel>Direita da chave P10</BitsFieldLabel>
-          <BitArrayField bits={p10Bits.slice(5, 10)} justify="center" />
-        </Grid>
-        <Grid item>
-          <BitsFieldLabel>Direita após a rotação LS-1</BitsFieldLabel>
-          <BitArrayField bits={ls1Bits.slice(5, 10)} justify="center" />
-        </Grid>
-      </Grid>
-      <ExplanationText>
-        Juntando as metades após a rotação temos:
-      </ExplanationText>
-      <BitsField label="Chave rotacionada" bits={ls1Bits} />
     </>
   );
 }
