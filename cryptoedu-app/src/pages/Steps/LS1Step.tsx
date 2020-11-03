@@ -22,7 +22,7 @@ function LS1Step(props: LS1StepProps) {
           de P10 obtida no passo anterior. Então o primeiro passo dessa etapa é
           dividir P10 em 2 metades:
         </ExplanationText>
-        <BitsField label="Chave após P10" bits={p10Bits} />
+        <BitsField label="Chave após P10" bits={p10Bits} labelAbove />
         <SplitBitsField
           leftLabel="Esquerda de P10"
           rightLabel="Direita de P10"
@@ -59,7 +59,7 @@ function LS1Step(props: LS1StepProps) {
         </Grid>
       </Grid>
       <BitsField
-        label="Juntando as metades após a rotação temos a Chave rotacionada"
+        label="Juntando as metades após a rotação temos a Chave rotacionada LS-1"
         bits={ls1Bits}
         labelAbove
       />

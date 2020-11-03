@@ -27,7 +27,7 @@ import P10Step from "../Steps/P10Step";
 import LS1Step from "../Steps/LS1Step";
 import IPStep from "../Steps/IPStep";
 import K1Step from "../Steps/K1Step";
-import LS2Step from "../Steps/LS2Step";
+import K2Step from "../Steps/K2Step";
 import EPStep from "../Steps/EPStep";
 import S0S1Step from "../Steps/S0S1Step";
 import SWStep from "../Steps/SWStep";
@@ -342,7 +342,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <LS2Step ls1Bits={ls1Bits} ls2Bits={ls2Bits} k2Bits={k2Bits} />
+              <K2Step ls1Bits={ls1Bits} ls2Bits={ls2Bits} k2Bits={k2Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation
