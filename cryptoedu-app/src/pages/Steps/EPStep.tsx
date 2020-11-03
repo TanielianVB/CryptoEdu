@@ -60,7 +60,7 @@ function EPStep(props: EPStepProps) {
         interpretar uma função de permutação, extraímos da função acima que os 4
         bits de R devem ser reordenados nas seguintes posições:
       </ExplanationText>
-      <BitsField label="E/P:" bits={SDES.getEPPositions()} />
+      <BitsField label="E/P" bits={SDES.getEPPositions()} />
       <ExplanationText>
         Sendo assim, aplicando a função E/P sobre R temos:
       </ExplanationText>
@@ -76,11 +76,11 @@ function EPStep(props: EPStepProps) {
         Com a saída da função E/P por sua vez será feito um OU exclusivo com a
         chave K<sub>1</sub> já obtida.
       </ExplanationText>
-      <BitsField label="R permutada:" bits={ep1Bits} paragraphMargin={false} />
+      <BitsField label="R permutada" bits={ep1Bits} paragraphMargin={false} />
       <BitsField
         label={
           <>
-            Chave K<sub>1</sub>:
+            Chave K<sub>1</sub>
           </>
         }
         bits={k1Bits}
@@ -89,7 +89,7 @@ function EPStep(props: EPStepProps) {
       <BitsField
         label={
           <>
-            R permutada XOR K<sub>1</sub>:
+            R permutada XOR K<sub>1</sub>
           </>
         }
         bits={SDES.xor(ep1Bits, k1Bits)}

@@ -38,7 +38,7 @@ function P10Step(props: P10StepProps) {
           recebe por parâmetro 10 bits K ordenados das posições 1 à 10 e estes
           serão então reordenados na seguinte ordem:
         </ExplanationText>
-        <BitsField label="P10:" bits={SDES.getP10Positions()} />
+        <BitsField label="P10" bits={SDES.getP10Positions()} />
         <ExplanationText>
           Lê-se: Na 1ª posição agora ficará o bit que estava na 3ª posição, na
           2ª posição ficará o bit que estava na 5ª posição, na 3ª posição ficará

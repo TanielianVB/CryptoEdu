@@ -16,14 +16,14 @@ function SplitBitsField(props: SplitBitsFieldProps) {
     <Grid container justify="center" alignItems="center" spacing={1}>
       <Grid item>
         <BitsField
-          label={leftLabel + ":"}
+          label={leftLabel}
           bits={bits.slice(0, 5)}
           paragraphMargin={paragraphMargin}
         />
       </Grid>
       <Grid item>
         <BitsField
-          label={rightLabel + ":"}
+          label={rightLabel}
           bits={bits.slice(5, 10)}
           paragraphMargin={paragraphMargin}
         />

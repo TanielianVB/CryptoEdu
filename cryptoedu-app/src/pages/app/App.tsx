@@ -20,7 +20,6 @@ import EmailRoundedIcon from "@material-ui/icons/EmailRounded";
 import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 import AppTopBar from "../../components/AppTopBar/AppTopBar";
-import BitArrayField from "../../components/BitArrayField/BitArrayField";
 import StepperNavigation from "../../components/StepperNavigation/StepperNavigation";
 import Utils from "../../utils/Utils";
 import SDES from "../../utils/SDES";
@@ -34,8 +33,8 @@ import S0S1Step from "../Steps/S0S1Step";
 import SWStep from "../Steps/SWStep";
 import InverseIPStep from "../Steps/InverseIPStep";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
-import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
+import BitsField from "../../components/BitsField/BitsField";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -237,10 +236,11 @@ function App() {
                         onChange={handleMessageChange}
                       />
                     </Grid>
-                    <Grid item>
-                      <BitsFieldLabel>Bits da mensagem:</BitsFieldLabel>
-                      <BitArrayField bits={messageBits} addChar />
-                    </Grid>
+                    <BitsField
+                      label="Bits da mensagem"
+                      bits={messageBits}
+                      labelAbove
+                    />
                   </Grid>
                   <Grid
                     item
@@ -270,10 +270,11 @@ function App() {
                         onChange={handleKeyChange}
                       />
                     </Grid>
-                    <Grid item>
-                      <BitsFieldLabel>Bits da chave:</BitsFieldLabel>
-                      <BitArrayField bits={keyBits} />
-                    </Grid>
+                    <BitsField
+                      label="Bits da chave"
+                      bits={keyBits}
+                      labelAbove
+                    />
                   </Grid>
                 </Grid>
               </Box>
@@ -290,7 +291,7 @@ function App() {
                   color="primary"
                   size="large"
                   endIcon={<PlayArrowRoundedIcon />}
-                  onClick={(event) => {
+                  onClick={() => {
                     setActiveStep(stepIndex + 1);
                   }}
                 >
@@ -463,7 +464,7 @@ function App() {
             <Step key={index}>
               <StepButton
                 completed={index < activeStep}
-                onClick={(event) => setActiveStep(index)}
+                onClick={() => setActiveStep(index)}
               >
                 {label}
               </StepButton>

@@ -36,7 +36,7 @@ function P8Step(props: P8StepProps) {
         função acima que os 10 bits da chave devem ser reordenados nas seguintes
         posições:
       </ExplanationText>
-      <BitsField label="P8:" bits={SDES.getP8Positions()} />
+      <BitsField label="P8" bits={SDES.getP8Positions()} />
       <ExplanationText>
         É interessante observar que, diferente da função de permutação P10, essa
         função de permutação P8 irá gerar somente 8 bits no seu resultado.

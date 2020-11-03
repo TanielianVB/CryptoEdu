@@ -35,14 +35,14 @@ function LS2Step(props: LS2StepProps) {
       <ExplanationText>
         Primeiramente, divide-se LS-1 em duas metades:
       </ExplanationText>
-      <BitsField label="LS-1:" bits={ls1Bits} />
+      <BitsField label="LS-1" bits={ls1Bits} />
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
-          <BitsFieldLabel>Esquerda de LS-1:</BitsFieldLabel>
+          <BitsFieldLabel>Esquerda de LS-1</BitsFieldLabel>
           <BitArrayField bits={ls1Bits.slice(0, 5)} justify="center" />
         </Grid>
         <Grid item justify="center">
-          <BitsFieldLabel>Direita de LS-1:</BitsFieldLabel>
+          <BitsFieldLabel>Direita de LS-1</BitsFieldLabel>
           <BitArrayField bits={ls1Bits.slice(5, 10)} justify="center" />
         </Grid>
       </Grid>
@@ -52,11 +52,11 @@ function LS2Step(props: LS2StepProps) {
       </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
-          <BitsFieldLabel>Esquerda após a rotação LS-2:</BitsFieldLabel>
+          <BitsFieldLabel>Esquerda após a rotação LS-2</BitsFieldLabel>
           <BitArrayField bits={ls2Bits.slice(0, 5)} justify="center" />
         </Grid>
         <Grid item justify="center">
-          <BitsFieldLabel>Direita após a rotação LS-2:</BitsFieldLabel>
+          <BitsFieldLabel>Direita após a rotação LS-2</BitsFieldLabel>
           <BitArrayField bits={ls2Bits.slice(5, 10)} justify="center" />
         </Grid>
       </Grid>

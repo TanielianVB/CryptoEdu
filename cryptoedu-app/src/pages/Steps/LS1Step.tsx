@@ -25,7 +25,7 @@ function LS1Step(props: LS1StepProps) {
         de P10 obtida no passo anterior. Então o primeiro passo dessa etapa é
         dividir P10 em 2 metades:
       </ExplanationText>
-      <BitsField label="Chave após P10:" bits={p10Bits} />
+      <BitsField label="Chave após P10" bits={p10Bits} />
       <SplitBitsField
         leftLabel="Esquerda de P10"
         rightLabel="Direita de P10"
@@ -42,11 +42,11 @@ function LS1Step(props: LS1StepProps) {
       </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item>
-          <BitsFieldLabel>Esquerda de P10:</BitsFieldLabel>
+          <BitsFieldLabel>Esquerda de P10</BitsFieldLabel>
           <BitArrayField bits={p10Bits.slice(0, 5)} justify="center" />
         </Grid>
         <Grid item>
-          <BitsFieldLabel>Esquerda após a rotação LS-1:</BitsFieldLabel>
+          <BitsFieldLabel>Esquerda após a rotação LS-1</BitsFieldLabel>
           <BitArrayField bits={ls1Bits.slice(0, 5)} justify="center" />
         </Grid>
       </Grid>
@@ -55,18 +55,18 @@ function LS1Step(props: LS1StepProps) {
       </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item>
-          <BitsFieldLabel>Direita da chave P10:</BitsFieldLabel>
+          <BitsFieldLabel>Direita da chave P10</BitsFieldLabel>
           <BitArrayField bits={p10Bits.slice(5, 10)} justify="center" />
         </Grid>
         <Grid item>
-          <BitsFieldLabel>Direita após a rotação LS-1:</BitsFieldLabel>
+          <BitsFieldLabel>Direita após a rotação LS-1</BitsFieldLabel>
           <BitArrayField bits={ls1Bits.slice(5, 10)} justify="center" />
         </Grid>
       </Grid>
       <ExplanationText>
         Juntando as metades após a rotação temos:
       </ExplanationText>
-      <BitsField label="Chave rotacionada:" bits={ls1Bits} />
+      <BitsField label="Chave rotacionada" bits={ls1Bits} />
     </>
   );
 }

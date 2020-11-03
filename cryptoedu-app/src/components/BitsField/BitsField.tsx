@@ -9,6 +9,7 @@ interface BitsFieldProps {
   bits: number[];
   addChar?: boolean;
   paragraphMargin?: boolean;
+  labelAbove?: boolean;
   accent?: number;
   focus?: number;
   accentNumbers?: boolean;
@@ -31,12 +32,23 @@ const useStyles = makeStyles((theme: Theme) =>
         justifyContent: "flex-end",
       },
     },
+    labelRow: {
+      display: "flex",
+      [theme.breakpoints.up("xs")]: {
+        justifyContent: "center",
+      },
+    },
     bits: {
       [theme.breakpoints.down("xs")]: {
         justifyContent: "center",
       },
       [theme.breakpoints.up("sm")]: {
         justifyContent: "flex-start",
+      },
+    },
+    bitsRow: {
+      [theme.breakpoints.up("xs")]: {
+        justifyContent: "center",
       },
     },
   })
@@ -48,6 +60,7 @@ function BitsField(props: BitsFieldProps) {
     bits,
     addChar,
     paragraphMargin,
+    labelAbove,
     accent,
     focus,
     accentNumbers,
@@ -60,6 +73,9 @@ function BitsField(props: BitsFieldProps) {
       ? classes.paragraphMargin
       : classes.margin;
 
+  const labelClassName = labelAbove ? classes.labelRow : classes.label;
+  const bitsClassName = labelAbove ? classes.bitsRow : classes.bits;
+
   return (
     <Grid
       container
@@ -69,13 +85,23 @@ function BitsField(props: BitsFieldProps) {
       spacing={1}
       className={gridClassName}
     >
-      <Grid item xs={12} sm={3} className={classes.label}>
+      <Grid
+        item
+        xs={12}
+        sm={labelAbove ? undefined : 3}
+        className={labelClassName}
+      >
         <BitsFieldLabel>{label}</BitsFieldLabel>
       </Grid>
-      <Grid item xs={12} sm={9} className={classes.bits}>
+      <Grid
+        item
+        xs={12}
+        sm={labelAbove ? undefined : 9}
+        className={bitsClassName}
+      >
         <BitArrayField
           bits={bits}
-          className={classes.bits}
+          className={bitsClassName}
           addChar={addChar}
           accent={accent}
           focus={focus}

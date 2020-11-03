@@ -18,7 +18,7 @@ function InverseIPStep(props: InverseIPStepProps) {
       <BitsField
         label={
           <>
-            IP<sup>-1</sup>:{" "}
+            IP<sup>-1</sup>
           </>
         }
         bits={SDES.getInverseIPPositions()}

@@ -129,7 +129,7 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
         <Grid item xs={10}>
           <div>
             <BitsField
-              label={permutationLabel + ":"}
+              label={permutationLabel}
               bits={permutation}
               paragraphMargin={false}
               accent={executionState.position}
@@ -140,7 +140,7 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
               }
             />
             <BitsField
-              label={inputLabel + ":"}
+              label={inputLabel}
               bits={input}
               paragraphMargin={false}
               accent={
@@ -155,7 +155,7 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
               addChar={addChar}
             />
             <BitsField
-              label={outputLabel + ":"}
+              label={outputLabel}
               bits={outputBits}
               paragraphMargin={false}
               accent={

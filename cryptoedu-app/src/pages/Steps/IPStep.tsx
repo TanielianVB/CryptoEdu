@@ -28,7 +28,7 @@ function IPStep(props: IPStepProps) {
         A primeira alteração a ser aplicada à mensagem (P) é a permutação
         inicial que é definida por:
       </ExplanationText>
-      <BitsField label="IP:" bits={SDES.getIPPositions()} />
+      <BitsField label="IP" bits={SDES.getIPPositions()} />
       <ExplanationText>
         Sendo assim, aplicando a função IP sobre a mensagem temos:
       </ExplanationText>
@@ -48,11 +48,11 @@ function IPStep(props: IPStepProps) {
       </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item>
-          <BitsFieldLabel>L (left):</BitsFieldLabel>
+          <BitsFieldLabel>L (left)</BitsFieldLabel>
           <BitArrayField bits={ipBits.slice(0, 4)} justify="center" />
         </Grid>
         <Grid item>
-          <BitsFieldLabel>R (right):</BitsFieldLabel>
+          <BitsFieldLabel>R (right)</BitsFieldLabel>
           <BitArrayField bits={ipBits.slice(4, 8)} justify="center" />
         </Grid>
       </Grid>

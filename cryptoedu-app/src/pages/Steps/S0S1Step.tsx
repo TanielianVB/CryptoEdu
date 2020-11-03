@@ -25,21 +25,21 @@ function S0S1Step(props: S0S1StepProps) {
       </ExplanationText>
       <Grid container justify="center" spacing={5}>
         <Grid item justify="center">
-          <BitsFieldLabel>Função de substituição S0:</BitsFieldLabel>
+          <BitsFieldLabel>Função de substituição S0</BitsFieldLabel>
           <MatrixField
             bits={SDES.getSubstitution0Positions()}
             justify="center"
           />
         </Grid>
         <Grid item justify="center">
-          <BitsFieldLabel>Função de substituição S1:</BitsFieldLabel>
+          <BitsFieldLabel>Função de substituição S1</BitsFieldLabel>
           <MatrixField
             bits={SDES.getSubstitution1Positions()}
             justify="center"
           />
         </Grid>
       </Grid>
-      <BitsField label="P4:" bits={SDES.getP4Positions()} />
+      <BitsField label="P4" bits={SDES.getP4Positions()} />
       <UnderDevelopmentTag />
     </>
   );
