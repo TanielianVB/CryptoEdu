@@ -84,7 +84,7 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
     executionState.position - shift < 1
       ? input.length
       : executionState.position - shift;
-  // const outputValue = output[outputPosition - 1];
+  const outputValue = output[outputPosition - 1];
   const outputBits: number[] =
     executionState.step === "finish" ? output : new Array(output.length);
 
@@ -175,14 +175,14 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
       <Grid item xs={12} container justify="center" alignItems="center">
         <Grid item>
           <StepByStepCircularLeftShiftExplanation
-          // position={executionState.position}
-          // step={executionState.step}
-          // inputPosition={inputPosition}
-          // outputValue={outputValue}
-          // fullOutput={output}
-          // permutationLabel={permutationLabel}
-          // inputLabel={inputLabel}
-          // outputLabel={outputLabel}
+            shift={shift}
+            position={outputPosition}
+            step={executionState.step}
+            inputPosition={inputPosition}
+            outputValue={outputValue}
+            fullOutput={output}
+            inputLabel={inputLabel}
+            outputLabel={outputLabel}
           />
         </Grid>
       </Grid>
