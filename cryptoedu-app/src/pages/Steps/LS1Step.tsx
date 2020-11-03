@@ -38,7 +38,7 @@ function LS1Step(props: LS1StepProps) {
           Aplicando a rotação LS-1 nas metades temos:
         </ExplanationText>
       </StepContentAccordion>
-      <Grid container direction="row" justify="center" spacing={5}>
+      <Grid container direction="row" justify="center" spacing={3}>
         <Grid item md={6}>
           <StepByStepCircularLeftShift
             shift={1}

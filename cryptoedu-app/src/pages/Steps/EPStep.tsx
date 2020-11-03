@@ -1,7 +1,6 @@
 import React from "react";
 import SDES from "../../utils/SDES";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
-import UnderDevelopmentTag from "../../components/UnderDevelopmentTag/UnderDevelopmentTag";
 import MathImg from "../../components/MathImg/MathImg";
 import BitsField from "../../components/BitsField/BitsField";
 import StepByStepPermutation from "../../components/StepByStepPermutation/StepByStepPermutation";
@@ -12,10 +11,11 @@ interface EPStepProps {
   ipBits: number[];
   ep1Bits: number[];
   k1Bits: number[];
+  xor1Bits: number[];
 }
 
 function EPStep(props: EPStepProps) {
-  const { ipBits, ep1Bits, k1Bits } = props;
+  const { ipBits, ep1Bits, k1Bits, xor1Bits } = props;
 
   return (
     <>
@@ -99,10 +99,8 @@ function EPStep(props: EPStepProps) {
             R permutada XOR K<sub>1</sub>
           </>
         }
-        output={SDES.xor(ep1Bits, k1Bits)}
+        output={xor1Bits}
       />
-
-      <UnderDevelopmentTag />
     </>
   );
 }

@@ -80,7 +80,7 @@ const getSteps = (): React.ReactNode[] => {
     </>,
     "IP",
     "E/P",
-    "S0 & S1 & P4",
+    "S",
     <>
       SW & f
       <sub>
@@ -108,6 +108,7 @@ function App() {
   const [k2Bits, setK2Bits] = useState<number[]>([]);
   const [ipBits, setIpBits] = useState<number[]>([]);
   const [ep1Bits, setEp1Bits] = useState<number[]>([]);
+  const [xor1Bits, setXor1Bits] = useState<number[]>([]);
 
   useEffect(() => {
     const p10 = SDES.permutate10(keyBits);
@@ -127,7 +128,9 @@ function App() {
     setIpBits(ip);
     const ep1 = SDES.permutateEP(ip.slice(4, 8));
     setEp1Bits(ep1);
-  }, [messageBits]);
+    const xor1 = SDES.xor(ep1, k1Bits);
+    setXor1Bits(xor1);
+  }, [messageBits, k1Bits]);
 
   const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     var m = event.target.value;
@@ -366,7 +369,12 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <EPStep ipBits={ipBits} ep1Bits={ep1Bits} k1Bits={k1Bits} />
+              <EPStep
+                ipBits={ipBits}
+                ep1Bits={ep1Bits}
+                k1Bits={k1Bits}
+                xor1Bits={xor1Bits}
+              />
             </CardContent>
             <CardActions>
               <StepperNavigation
@@ -381,7 +389,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <S0S1Step />
+              <S0S1Step xor1Bits={xor1Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation
