@@ -8,6 +8,7 @@ interface BitsFieldProps {
   label: React.ReactNode;
   bits: number[];
   addChar?: boolean;
+  gridItem?: boolean;
   paragraphMargin?: boolean;
   labelAbove?: boolean;
   accent?: number;
@@ -59,6 +60,7 @@ function BitsField(props: BitsFieldProps) {
     label,
     bits,
     addChar,
+    gridItem,
     paragraphMargin,
     labelAbove,
     accent,
@@ -78,6 +80,7 @@ function BitsField(props: BitsFieldProps) {
 
   return (
     <Grid
+      item={gridItem}
       container
       direction="row"
       justify="center"

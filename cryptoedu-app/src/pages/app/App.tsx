@@ -213,18 +213,11 @@ function App() {
                   >
                     <Grid item>
                       <TextField
+                        variant="outlined"
+                        required
                         label={
                           "Mensagem" + (selectedTab === 0 ? "" : " cifrada")
                         }
-                        placeholder={
-                          "mensagem" +
-                          (selectedTab === 0 ? "" : " cifrada") +
-                          "..."
-                        }
-                        helperText="1 char ou 8 bits"
-                        required
-                        variant="outlined"
-                        size="medium"
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
@@ -232,13 +225,23 @@ function App() {
                             </InputAdornment>
                           ),
                         }}
+                        placeholder={
+                          "mensagem" +
+                          (selectedTab === 0 ? "" : " cifrada") +
+                          "..."
+                        }
                         value={message}
+                        helperText="1 char ou 8 bits"
+                        size="medium"
+                        style={{ width: "140px" }}
                         onChange={handleMessageChange}
                       />
                     </Grid>
                     <BitsField
+                      gridItem
                       label="Bits da mensagem"
                       bits={messageBits}
+                      addChar
                       labelAbove
                     />
                   </Grid>
@@ -253,12 +256,9 @@ function App() {
                   >
                     <Grid item>
                       <TextField
-                        label="Chave"
-                        placeholder="chave secreta..."
-                        helperText="10 bits"
-                        required
                         variant="outlined"
-                        size="medium"
+                        required
+                        label="Chave"
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
@@ -266,11 +266,16 @@ function App() {
                             </InputAdornment>
                           ),
                         }}
+                        placeholder="chave secreta..."
                         value={key}
+                        helperText="10 bits"
+                        size="medium"
+                        style={{ width: "160px" }}
                         onChange={handleKeyChange}
                       />
                     </Grid>
                     <BitsField
+                      gridItem
                       label="Bits da chave"
                       bits={keyBits}
                       labelAbove
