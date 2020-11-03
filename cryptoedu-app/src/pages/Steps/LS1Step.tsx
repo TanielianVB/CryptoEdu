@@ -6,6 +6,7 @@ import BitsFieldLabel from "../../components/BitsFieldLabel/BitsFieldLabel";
 import BitsField from "../../components/BitsField/BitsField";
 import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
+import StepByStepCircularLeftShift from "../../components/StepByStepCircularLeftShift/StepByStepCircularLeftShift";
 
 interface LS1StepProps {
   p10Bits: number[];
@@ -39,6 +40,12 @@ function LS1Step(props: LS1StepProps) {
           Aplicando a rotação LS-1 nas metades temos:
         </ExplanationText>
       </StepContentAccordion>
+      <StepByStepCircularLeftShift
+        inputLabel="Esquerda de P10"
+        input={p10Bits.slice(0, 5)}
+        outputLabel="Esquerda após a rotação LS-1"
+        output={ls1Bits.slice(0, 5)}
+      />
       <Grid container justify="center" spacing={5}>
         <Grid item>
           <BitsFieldLabel>Esquerda de P10</BitsFieldLabel>
