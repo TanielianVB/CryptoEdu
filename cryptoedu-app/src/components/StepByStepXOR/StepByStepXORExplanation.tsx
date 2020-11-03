@@ -4,25 +4,25 @@ import Accent from "../ExecutionExplanationText/ExecutionExplanationAccentText";
 import Relevant from "../ExecutionExplanationText/ExecutionExplanationRelevantText";
 
 interface StepByStepXORExplanationProps {
-  shift: number;
   position: number;
   step: "start" | "input" | "output" | "finish";
   inputPosition: number;
   outputValue: number;
   fullOutput: number[];
-  inputLabel: string;
-  outputLabel: string;
+  inputALabel: React.ReactNode;
+  inputBLabel: React.ReactNode;
+  outputLabel: React.ReactNode;
 }
 
 function StepByStepXORExplanation(props: StepByStepXORExplanationProps) {
   const {
-    shift,
     position,
     step,
     inputPosition,
     outputValue,
     fullOutput,
-    inputLabel,
+    inputALabel,
+    inputBLabel,
     outputLabel,
   } = props;
 
@@ -42,13 +42,11 @@ function StepByStepXORExplanation(props: StepByStepXORExplanationProps) {
         <>
           A posição
           <Accent>{" " + inputPosition + " "}</Accent>
-          de <Relevant>{" " + inputLabel + " "}</Relevant> possui valor
-          <Accent>{" " + outputValue + " "}</Accent>
-          que será movido para a esquerda <Accent>{shift}x</Accent> indo para a
-          posição
-          <Accent>{" " + position + " "}</Accent>
-          de
-          <Relevant>{" " + outputLabel + " "}</Relevant>
+          de <Relevant>{inputALabel}</Relevant> <Accent>XOR</Accent> A posição
+          <Accent>{" " + inputPosition + " "}</Accent>
+          de <Relevant>{inputBLabel}</Relevant> é o valor da posição
+          <Accent>{" " + inputPosition + " "}</Accent> de{" "}
+          <Relevant>{outputLabel}</Relevant>
         </>
       );
       break;
@@ -57,8 +55,7 @@ function StepByStepXORExplanation(props: StepByStepXORExplanationProps) {
         <>
           Posição
           <Accent>{" " + position + " "}</Accent>
-          de
-          <Relevant>{" " + outputLabel + " "}</Relevant> é então
+          de <Relevant>{outputLabel}</Relevant> é então
           <Accent>{" " + outputValue + " "}</Accent>
         </>
       );
@@ -66,7 +63,7 @@ function StepByStepXORExplanation(props: StepByStepXORExplanationProps) {
     case "finish":
       executionExplanation = (
         <>
-          <Relevant>{outputLabel + " "}</Relevant> é então
+          <Relevant>{outputLabel}</Relevant> é então
           <Accent>{" " + fullOutput.join("")}</Accent>
         </>
       );

@@ -184,16 +184,16 @@ function StepByStepXOR(props: StepByStepXORProps) {
       </Grid>
       <Grid item xs={12} container justify="center" alignItems="center">
         <Grid item>
-          {/* <StepByStepXORExplanation
-            shift={shift}
+          <StepByStepXORExplanation
             position={outputPosition}
             step={executionState.step}
             inputPosition={inputPosition}
             outputValue={outputValue}
             fullOutput={output}
-            inputLabel={inputALabel}
+            inputALabel={inputALabel}
+            inputBLabel={inputBLabel}
             outputLabel={outputLabel}
-          /> */}
+          />
         </Grid>
       </Grid>
     </Grid>
