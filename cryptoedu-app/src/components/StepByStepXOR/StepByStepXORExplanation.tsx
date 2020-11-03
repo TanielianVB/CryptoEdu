@@ -3,52 +3,37 @@ import ExecutionExplanationText from "../ExecutionExplanationText/ExecutionExpla
 import Accent from "../ExecutionExplanationText/ExecutionExplanationAccentText";
 import Relevant from "../ExecutionExplanationText/ExecutionExplanationRelevantText";
 
-interface StepByStepPermutationExplanationProps {
+interface StepByStepXORExplanationProps {
+  shift: number;
   position: number;
-  step: "start" | "permutation" | "input" | "output" | "finish";
+  step: "start" | "input" | "output" | "finish";
   inputPosition: number;
   outputValue: number;
   fullOutput: number[];
-  permutationLabel: React.ReactNode;
-  inputLabel: React.ReactNode;
-  outputLabel: React.ReactNode;
+  inputLabel: string;
+  outputLabel: string;
 }
 
-function StepByStepPermutationExplanation(
-  props: StepByStepPermutationExplanationProps
-) {
+function StepByStepXORExplanation(props: StepByStepXORExplanationProps) {
   const {
+    shift,
     position,
     step,
     inputPosition,
     outputValue,
     fullOutput,
-    permutationLabel,
     inputLabel,
     outputLabel,
   } = props;
 
-  let executionExplanation = <> </>;
+  let executionExplanation = <></>;
 
   switch (step) {
     case "start":
       executionExplanation = (
         <>
-          Inicie a execução da permutação clicando na seta à
+          Inicie a execução da rotação clicando na seta à
           <Accent> direita</Accent>
-        </>
-      );
-      break;
-    case "permutation":
-      executionExplanation = (
-        <>
-          Posição
-          <Accent>{" " + position + " "}</Accent>
-          de
-          <Relevant>{" " + permutationLabel + " "}</Relevant>
-          indica que a posição que irá ser utilizada de
-          <Relevant>{" " + inputLabel + " "}</Relevant> é a
-          <Accent>{" " + inputPosition + " "}</Accent>
         </>
       );
       break;
@@ -59,7 +44,8 @@ function StepByStepPermutationExplanation(
           <Accent>{" " + inputPosition + " "}</Accent>
           de <Relevant>{" " + inputLabel + " "}</Relevant> possui valor
           <Accent>{" " + outputValue + " "}</Accent>
-          que será o valor da posição
+          que será movido para a esquerda <Accent>{shift}x</Accent> indo para a
+          posição
           <Accent>{" " + position + " "}</Accent>
           de
           <Relevant>{" " + outputLabel + " "}</Relevant>
@@ -94,4 +80,4 @@ function StepByStepPermutationExplanation(
   );
 }
 
-export default StepByStepPermutationExplanation;
+export default StepByStepXORExplanation;

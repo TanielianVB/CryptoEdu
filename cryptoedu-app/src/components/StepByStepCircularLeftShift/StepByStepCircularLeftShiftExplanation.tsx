@@ -10,8 +10,8 @@ interface StepByStepCircularLeftShiftExplanationProps {
   inputPosition: number;
   outputValue: number;
   fullOutput: number[];
-  inputLabel: string;
-  outputLabel: string;
+  inputLabel: React.ReactNode;
+  outputLabel: React.ReactNode;
 }
 
 function StepByStepCircularLeftShiftExplanation(

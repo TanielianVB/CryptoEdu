@@ -6,6 +6,7 @@ import MathImg from "../../components/MathImg/MathImg";
 import BitsField from "../../components/BitsField/BitsField";
 import StepByStepPermutation from "../../components/StepByStepPermutation/StepByStepPermutation";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
+import StepByStepXOR from "../../components/StepByStepXOR/StepByStepXOR";
 
 interface EPStepProps {
   ipBits: number[];
@@ -84,24 +85,21 @@ function EPStep(props: EPStepProps) {
           chave K<sub>1</sub> já obtida.
         </ExplanationText>
       </StepContentAccordion>
-
-      <BitsField label="R permutada" bits={ep1Bits} paragraphMargin={false} />
-      <BitsField
-        label={
+      <StepByStepXOR
+        inputALabel="R permutada"
+        inputA={ep1Bits}
+        inputBLabel={
           <>
             Chave K<sub>1</sub>
           </>
         }
-        bits={k1Bits}
-        paragraphMargin={false}
-      />
-      <BitsField
-        label={
+        inputB={k1Bits}
+        outputLabel={
           <>
             R permutada XOR K<sub>1</sub>
           </>
         }
-        bits={SDES.xor(ep1Bits, k1Bits)}
+        output={SDES.xor(ep1Bits, k1Bits)}
       />
 
       <UnderDevelopmentTag />

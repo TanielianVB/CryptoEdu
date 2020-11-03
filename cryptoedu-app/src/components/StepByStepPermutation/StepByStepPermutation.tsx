@@ -8,11 +8,11 @@ import BitsField from "../BitsField/BitsField";
 import StepByStepPermutationExplanation from "./StepByStepPermutationExplanation";
 
 interface StepByStepPermutationProps {
-  permutationLabel: string;
+  permutationLabel: React.ReactNode;
   permutation: number[];
-  inputLabel: string;
+  inputLabel: React.ReactNode;
   input: number[];
-  outputLabel: string;
+  outputLabel: React.ReactNode;
   output: number[];
   addChar?: boolean;
 }

@@ -5,12 +5,13 @@ import NavigateNextRoundedIcon from "@material-ui/icons/NavigateNextRounded";
 import FirstPageRoundedIcon from "@material-ui/icons/FirstPageRounded";
 import LastPageRoundedIcon from "@material-ui/icons/LastPageRounded";
 import BitsField from "../BitsField/BitsField";
-import StepByStepCircularLeftShiftExplanation from "./StepByStepCircularLeftShiftExplanation";
+import StepByStepXORExplanation from "./StepByStepXORExplanation";
 
-interface StepByStepCircularLeftShiftProps {
-  shift: number;
-  inputLabel: React.ReactNode;
-  input: number[];
+interface StepByStepXORProps {
+  inputALabel: React.ReactNode;
+  inputA: number[];
+  inputBLabel: React.ReactNode;
+  inputB: number[];
   outputLabel: React.ReactNode;
   output: number[];
 }
@@ -22,8 +23,15 @@ interface ExecutionState {
 
 type ExecutionAction = "prev" | "next" | "first" | "last";
 
-function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
-  const { shift, inputLabel, input, outputLabel, output } = props;
+function StepByStepXOR(props: StepByStepXORProps) {
+  const {
+    inputALabel,
+    inputA,
+    inputBLabel,
+    inputB,
+    outputLabel,
+    output,
+  } = props;
 
   const executionReducer = (
     state: ExecutionState,
@@ -46,7 +54,7 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
           case "output":
             return { position: state.position, step: "input" };
           case "finish":
-            return { position: input.length, step: "output" };
+            return { position: inputA.length, step: "output" };
           default:
             throw new Error();
         }
@@ -57,7 +65,7 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
           case "input":
             return { position: state.position, step: "output" };
           case "output":
-            if (state.position === input.length) {
+            if (state.position === inputA.length) {
               return { position: 0, step: "finish" };
             } else {
               return { position: state.position + 1, step: "input" };
@@ -80,10 +88,7 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
   });
 
   const inputPosition = executionState.position;
-  const outputPosition =
-    executionState.position - shift < 1
-      ? input.length
-      : executionState.position - shift;
+  const outputPosition = executionState.position;
   const outputValue = output[outputPosition - 1];
   const outputBits: number[] =
     executionState.step === "finish" ? output : new Array(output.length);
@@ -95,19 +100,14 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
         : executionState.position;
 
     for (let index = 0; index < positionLimit; index++) {
-      const outIndex = index - shift;
-      if (outIndex < 0) {
-        outputBits[outputBits.length - 1] = output[outputBits.length - 1];
-      } else {
-        outputBits[index - shift] = output[index - shift];
-      }
+      outputBits[index] = output[index];
     }
   }
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">
       <Grid item xs={1}>
-        <Tooltip title="Passo anterior na rotação">
+        <Tooltip title="Passo anterior na operação">
           <IconButton
             color="secondary"
             onClick={() => executionDispatch("prev")}
@@ -115,7 +115,7 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
             <NavigateBeforeRoundedIcon />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Primeiro passo na rotação">
+        <Tooltip title="Primeiro passo na operação">
           <IconButton
             color="secondary"
             onClick={() => executionDispatch("first")}
@@ -127,10 +127,21 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
       <Grid item xs={10}>
         <div>
           <BitsField
-            label={inputLabel}
-            bits={input}
+            label={inputALabel}
+            bits={inputA}
             paragraphMargin={false}
-            labelAbove
+            accent={
+              executionState.step === "input" ||
+              executionState.step === "output"
+                ? inputPosition
+                : undefined
+            }
+            focus={executionState.step === "input" ? inputPosition : undefined}
+          />
+          <BitsField
+            label={inputBLabel}
+            bits={inputB}
+            paragraphMargin={false}
             accent={
               executionState.step === "input" ||
               executionState.step === "output"
@@ -143,7 +154,6 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
             label={outputLabel}
             bits={outputBits}
             paragraphMargin={false}
-            labelAbove
             accent={
               executionState.step === "output" ? outputPosition : undefined
             }
@@ -155,7 +165,7 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
         </div>
       </Grid>
       <Grid item xs={1}>
-        <Tooltip title="Próximo passo na rotação">
+        <Tooltip title="Próximo passo na operação">
           <IconButton
             color="secondary"
             onClick={() => executionDispatch("next")}
@@ -163,7 +173,7 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
             <NavigateNextRoundedIcon />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Último passo na rotação">
+        <Tooltip title="Último passo na operação">
           <IconButton
             color="secondary"
             onClick={() => executionDispatch("last")}
@@ -174,20 +184,20 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
       </Grid>
       <Grid item xs={12} container justify="center" alignItems="center">
         <Grid item>
-          <StepByStepCircularLeftShiftExplanation
+          {/* <StepByStepXORExplanation
             shift={shift}
             position={outputPosition}
             step={executionState.step}
             inputPosition={inputPosition}
             outputValue={outputValue}
             fullOutput={output}
-            inputLabel={inputLabel}
+            inputLabel={inputALabel}
             outputLabel={outputLabel}
-          />
+          /> */}
         </Grid>
       </Grid>
     </Grid>
   );
 }
 
-export default StepByStepCircularLeftShift;
+export default StepByStepXOR;
