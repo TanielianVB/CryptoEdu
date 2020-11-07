@@ -6,6 +6,7 @@ import FirstPageRoundedIcon from "@material-ui/icons/FirstPageRounded";
 import LastPageRoundedIcon from "@material-ui/icons/LastPageRounded";
 import BitsField from "../BitsField/BitsField";
 import BitMatrixField from "../BitMatrixField/BitMatrixField";
+import StepByStepSubstitutionExplanation from "./StepByStepSubstitutionExplanation";
 
 interface StepByStepSubstitutionProps {
   substitutionLabel: React.ReactNode;
@@ -91,6 +92,10 @@ function StepByStepSubstitution(props: StepByStepSubstitutionProps) {
   });
 
   const inputPosition = executionState.step === "inputRow" ? [1, 4] : [2, 3];
+  const inputValue =
+    executionState.step === "inputRow"
+      ? input[0].toString() + input[3].toString()
+      : input[1].toString() + input[2].toString();
   const row = parseInt(input[0].toString() + input[3].toString(), 2);
   const col = parseInt(input[1].toString() + input[2].toString(), 2);
   const substitutionLine = executionState.step === "inputRow" ? row : col;
@@ -195,16 +200,16 @@ function StepByStepSubstitution(props: StepByStepSubstitutionProps) {
       </Grid>
       <Grid item xs={12} container justify="center" alignItems="center">
         <Grid item>
-          {/* <StepByStepSubstitutionExplanation
-            position={executionState.position}
+          <StepByStepSubstitutionExplanation
             step={executionState.step}
-            inputPosition={inputPosition}
-            outputValue={outputValue}
+            inputValue={inputValue}
+            row={row}
+            col={col}
             fullOutput={output}
-            substitutionLabel={substitutionLabel}
             inputLabel={inputLabel}
+            substitutionLabel={substitutionLabel}
             outputLabel={outputLabel}
-          /> */}
+          />
         </Grid>
       </Grid>
     </Grid>

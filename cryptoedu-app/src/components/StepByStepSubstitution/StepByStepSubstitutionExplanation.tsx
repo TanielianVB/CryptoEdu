@@ -4,13 +4,19 @@ import Accent from "../ExecutionExplanationText/ExecutionExplanationAccentText";
 import Relevant from "../ExecutionExplanationText/ExecutionExplanationRelevantText";
 
 interface StepByStepSubstitutionExplanationProps {
-  position: number;
-  step: "start" | "substitution" | "input" | "output" | "finish";
-  inputPosition: number;
-  outputValue: number;
+  step:
+    | "start"
+    | "inputRow"
+    | "inputCol"
+    | "substitution"
+    | "output"
+    | "finish";
+  inputValue: string;
+  row: number;
+  col: number;
   fullOutput: number[];
-  substitutionLabel: React.ReactNode;
   inputLabel: React.ReactNode;
+  substitutionLabel: React.ReactNode;
   outputLabel: React.ReactNode;
 }
 
@@ -18,13 +24,13 @@ function StepByStepSubstitutionExplanation(
   props: StepByStepSubstitutionExplanationProps
 ) {
   const {
-    position,
     step,
-    inputPosition,
-    outputValue,
+    inputValue,
+    row,
+    col,
     fullOutput,
-    substitutionLabel,
     inputLabel,
+    substitutionLabel,
     outputLabel,
   } = props;
 
@@ -39,48 +45,50 @@ function StepByStepSubstitutionExplanation(
         </>
       );
       break;
-    case "substitution":
+    case "inputRow":
       executionExplanation = (
         <>
-          Posição
-          <Accent>{" " + position + " "}</Accent>
-          de
-          <Relevant>{" " + substitutionLabel + " "}</Relevant>
-          indica que a posição que irá ser utilizada de
-          <Relevant>{" " + inputLabel + " "}</Relevant> é a
-          <Accent>{" " + inputPosition + " "}</Accent>
+          As posições <Accent>{1}</Accent> e <Accent>{4}</Accent> de{" "}
+          <Relevant>{inputLabel}</Relevant> possuem juntas o valor{" "}
+          <Accent>{inputValue}</Accent>, o que indica que a linha de{" "}
+          <Relevant>{substitutionLabel}</Relevant> que deve ser utilizada é a{" "}
+          <Accent>{row}</Accent>
         </>
       );
       break;
-    case "input":
+    case "inputCol":
       executionExplanation = (
         <>
-          A posição
-          <Accent>{" " + inputPosition + " "}</Accent>
-          de <Relevant>{" " + inputLabel + " "}</Relevant> possui valor
-          <Accent>{" " + outputValue + " "}</Accent>
-          que será o valor da posição
-          <Accent>{" " + position + " "}</Accent>
-          de
-          <Relevant>{" " + outputLabel + " "}</Relevant>
+          As posições <Accent>{2}</Accent> e <Accent>{3}</Accent> de{" "}
+          <Relevant>{inputLabel}</Relevant> possuem juntas o valor{" "}
+          <Accent>{inputValue}</Accent>, o que indica que a coluna de{" "}
+          <Relevant>{substitutionLabel}</Relevant> que deve ser utilizada é a{" "}
+          <Accent>{col}</Accent>
+        </>
+      );
+      break;
+    case "substitution":
+      executionExplanation = (
+        <>
+          A posição que será utilizada de{" "}
+          <Relevant>{substitutionLabel}</Relevant> é então{" "}
+          <Accent>{row.toString() + col.toString()}</Accent>
         </>
       );
       break;
     case "output":
       executionExplanation = (
         <>
-          Posição
-          <Accent>{" " + position + " "}</Accent>
-          de
-          <Relevant>{" " + outputLabel + " "}</Relevant> é então
-          <Accent>{" " + outputValue + " "}</Accent>
+          O valor da posição <Accent>{row.toString() + col.toString()}</Accent>{" "}
+          em <Relevant>{substitutionLabel}</Relevant> será o valor de{" "}
+          <Relevant>{outputLabel}</Relevant>
         </>
       );
       break;
     case "finish":
       executionExplanation = (
         <>
-          <Relevant>{outputLabel + " "}</Relevant> é então
+          <Relevant>{outputLabel}</Relevant> é então{" "}
           <Accent>{" " + fullOutput.join("")}</Accent>
         </>
       );
