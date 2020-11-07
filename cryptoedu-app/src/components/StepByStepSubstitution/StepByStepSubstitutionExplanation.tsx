@@ -98,7 +98,9 @@ function StepByStepSubstitutionExplanation(
   }
 
   return (
-    <ExecutionExplanationText>{executionExplanation}</ExecutionExplanationText>
+    <ExecutionExplanationText minLineSizeMultiplier={3}>
+      {executionExplanation}
+    </ExecutionExplanationText>
   );
 }
 

@@ -4,13 +4,18 @@ import { Typography } from "@material-ui/core";
 
 interface ExecutionExplanationTextProps {
   children: React.ReactNode;
+  minLineSizeMultiplier?: number;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     explanation: {
-      minHeight:
-        "calc(2 * " +
+      minHeight: (props: ExecutionExplanationTextProps) =>
+        "calc(" +
+        (props.minLineSizeMultiplier === undefined
+          ? 2
+          : props.minLineSizeMultiplier) +
+        " * " +
         theme.typography.caption.lineHeight +
         " * " +
         theme.typography.caption.fontSize +
@@ -20,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function ExecutionExplanationText(props: ExecutionExplanationTextProps) {
-  const classes = useStyles();
+  const classes = useStyles(props);
   return (
     <Typography
       variant="caption"
