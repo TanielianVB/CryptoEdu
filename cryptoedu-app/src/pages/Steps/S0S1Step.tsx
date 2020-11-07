@@ -7,14 +7,16 @@ import BitsField from "../../components/BitsField/BitsField";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
 import StepByStepSubstitution from "../../components/StepByStepSubstitution/StepByStepSubstitution";
+import StepByStepPermutation from "../../components/StepByStepPermutation/StepByStepPermutation";
 
 interface S0S1StepProps {
   xor1Bits: number[];
   sub1Bits: number[];
+  p41Bits: number[];
 }
 
 function S0S1Step(props: S0S1StepProps) {
-  const { xor1Bits, sub1Bits } = props;
+  const { xor1Bits, sub1Bits, p41Bits } = props;
 
   return (
     <>
@@ -56,8 +58,14 @@ function S0S1Step(props: S0S1StepProps) {
       <StepContentAccordion title="P4 - permutação de 4 bits">
         <ExplanationText>...</ExplanationText>
       </StepContentAccordion>
-      <BitsField label="P4" bits={SDES.getP4Positions()} labelAbove />
-      <UnderDevelopmentTag />
+      <StepByStepPermutation
+        permutationLabel="P4"
+        permutation={SDES.getP4Positions()}
+        inputLabel="Resultado das Substituições"
+        input={sub1Bits}
+        outputLabel="Resultado permutado"
+        output={p41Bits}
+      />
     </>
   );
 }

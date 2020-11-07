@@ -113,6 +113,7 @@ function App() {
   const [ep1Bits, setEp1Bits] = useState<number[]>([]);
   const [xor1Bits, setXor1Bits] = useState<number[]>([]);
   const [sub1Bits, setSub1Bits] = useState<number[]>([]);
+  const [p41Bits, setP41Bits] = useState<number[]>([]);
 
   useEffect(() => {
     const p10 = SDES.permutate10(keyBits);
@@ -136,7 +137,10 @@ function App() {
     setXor1Bits(xor1);
     const sub1L = SDES.substituteS0(xor1.slice(0, 4));
     const sub1R = SDES.substituteS1(xor1.slice(4, 8));
-    setSub1Bits(sub1L.concat(sub1R));
+    const sub1 = sub1L.concat(sub1R);
+    setSub1Bits(sub1);
+    const p41 = SDES.permutateP4(sub1);
+    setP41Bits(p41);
   }, [messageBits, k1Bits]);
 
   const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -396,7 +400,11 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <S0S1Step xor1Bits={xor1Bits} sub1Bits={sub1Bits} />
+              <S0S1Step
+                xor1Bits={xor1Bits}
+                sub1Bits={sub1Bits}
+                p41Bits={p41Bits}
+              />
             </CardContent>
             <CardActions>
               <StepperNavigation
