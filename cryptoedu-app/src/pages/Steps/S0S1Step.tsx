@@ -2,7 +2,6 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 import SDES from "../../utils/SDES";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
-import UnderDevelopmentTag from "../../components/UnderDevelopmentTag/UnderDevelopmentTag";
 import BitsField from "../../components/BitsField/BitsField";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
