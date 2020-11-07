@@ -1,12 +1,9 @@
 class SDES {
-  static permutate = (array: number[], newPositions: number[]): number[] => {
-    const permutatedArray: number[] = [];
-    newPositions.forEach((position) => {
-      permutatedArray.push(array[position - 1]);
-    });
+  static leftHalf = (array: number[]): number[] =>
+    array.slice(0, array.length / 2);
 
-    return permutatedArray;
-  };
+  static rightHalf = (array: number[]): number[] =>
+    array.slice(array.length / 2, array.length);
 
   static xor = (a: number[], b: number[]): number[] => {
     let result: number[] = new Array(a.length);
@@ -14,6 +11,15 @@ class SDES {
       result[index] = a[index] ^ b[index];
     }
     return result;
+  };
+
+  static permutate = (array: number[], newPositions: number[]): number[] => {
+    const permutatedArray: number[] = [];
+    newPositions.forEach((position) => {
+      permutatedArray.push(array[position - 1]);
+    });
+
+    return permutatedArray;
   };
 
   static substitute = (xor: number[], matrix: number[][][]): number[] => {
@@ -150,6 +156,9 @@ class SDES {
 
   static permutateP4 = (message: number[]): number[] =>
     SDES.permutate(message, SDES.getP4Positions());
+
+  static switch = (array: number[]): number[] =>
+    SDES.rightHalf(array).concat(SDES.leftHalf(array));
 
   static getInverseIPPositions = (): number[] => [4, 1, 3, 5, 7, 2, 8, 6];
 

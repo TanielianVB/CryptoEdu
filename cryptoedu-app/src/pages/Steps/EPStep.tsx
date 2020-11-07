@@ -11,11 +11,11 @@ interface EPStepProps {
   ipBits: number[];
   ep1Bits: number[];
   k1Bits: number[];
-  xor1Bits: number[];
+  ep1XorK1Bits: number[];
 }
 
 function EPStep(props: EPStepProps) {
-  const { ipBits, ep1Bits, k1Bits, xor1Bits } = props;
+  const { ipBits, ep1Bits, k1Bits, ep1XorK1Bits } = props;
 
   return (
     <>
@@ -99,7 +99,7 @@ function EPStep(props: EPStepProps) {
             R permutada XOR K<sub>1</sub>
           </>
         }
-        output={xor1Bits}
+        output={ep1XorK1Bits}
       />
     </>
   );

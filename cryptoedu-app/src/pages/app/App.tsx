@@ -110,10 +110,14 @@ function App() {
   const [k2Bits, setK2Bits] = useState<number[]>([]);
 
   const [ipBits, setIpBits] = useState<number[]>([]);
+  const [ipLBits, setIpLBits] = useState<number[]>([]);
   const [ep1Bits, setEp1Bits] = useState<number[]>([]);
-  const [xor1Bits, setXor1Bits] = useState<number[]>([]);
+  const [ep1XorK1Bits, setEp1XorK1Bits] = useState<number[]>([]);
   const [sub1Bits, setSub1Bits] = useState<number[]>([]);
   const [p41Bits, setP41Bits] = useState<number[]>([]);
+  const [p4XorIplBits, setP4XorIplBits] = useState<number[]>([]);
+
+  // const [swBits, setSwBits] = useState<number[]>([]);
 
   useEffect(() => {
     const p10 = SDES.permutate10(keyBits);
@@ -131,16 +135,28 @@ function App() {
   useEffect(() => {
     const ip = SDES.permutateIP(messageBits);
     setIpBits(ip);
-    const ep1 = SDES.permutateEP(ip.slice(4, 8));
+    const ipL = SDES.leftHalf(ip);
+    const ipR = SDES.rightHalf(ip);
+    setIpLBits(ipL);
+    const ep1 = SDES.permutateEP(ipR);
     setEp1Bits(ep1);
     const xor1 = SDES.xor(ep1, k1Bits);
-    setXor1Bits(xor1);
-    const sub1L = SDES.substituteS0(xor1.slice(0, 4));
-    const sub1R = SDES.substituteS1(xor1.slice(4, 8));
+    setEp1XorK1Bits(xor1);
+    const sub1L = SDES.substituteS0(SDES.leftHalf(xor1));
+    const sub1R = SDES.substituteS1(SDES.rightHalf(xor1));
     const sub1 = sub1L.concat(sub1R);
     setSub1Bits(sub1);
     const p41 = SDES.permutateP4(sub1);
     setP41Bits(p41);
+    const p4XorIpl = SDES.xor(p41, ipL);
+    setP4XorIplBits(p4XorIpl);
+    
+    // const swInput = p4XorIpl.concat(ipR);
+    // const sw = SDES.switch(swInput);
+    // const swL = SDES.leftHalf(sw);
+    // const swR = SDES.rightHalf(sw);
+    // setSwBits(sw);
+
   }, [messageBits, k1Bits]);
 
   const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -384,7 +400,7 @@ function App() {
                 ipBits={ipBits}
                 ep1Bits={ep1Bits}
                 k1Bits={k1Bits}
-                xor1Bits={xor1Bits}
+                ep1XorK1Bits={ep1XorK1Bits}
               />
             </CardContent>
             <CardActions>
@@ -401,9 +417,11 @@ function App() {
           <Card className={classes.card}>
             <CardContent>
               <S0S1Step
-                xor1Bits={xor1Bits}
+                ep1XorK1Bits={ep1XorK1Bits}
                 sub1Bits={sub1Bits}
                 p41Bits={p41Bits}
+                ipLBits={ipLBits}
+                p4XorIplBits={p4XorIplBits}
               />
             </CardContent>
             <CardActions>
