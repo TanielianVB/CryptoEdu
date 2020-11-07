@@ -6,14 +6,15 @@ import UnderDevelopmentTag from "../../components/UnderDevelopmentTag/UnderDevel
 import BitsField from "../../components/BitsField/BitsField";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
-import BitMatrixField from "../../components/BitMatrixField/BitMatrixField";
+import StepByStepSubstitution from "../../components/StepByStepSubstitution/StepByStepSubstitution";
 
 interface S0S1StepProps {
   xor1Bits: number[];
+  sub1Bits: number[];
 }
 
 function S0S1Step(props: S0S1StepProps) {
-  const { xor1Bits } = props;
+  const { xor1Bits, sub1Bits } = props;
 
   return (
     <>
@@ -32,15 +33,23 @@ function S0S1Step(props: S0S1StepProps) {
       </StepContentAccordion>
       <Grid container direction="row" justify="center" spacing={3}>
         <Grid item md={6}>
-          <BitMatrixField
-            label="Função de substituição S0"
-            bits={SDES.getSubstitution0Positions()}
+          <StepByStepSubstitution
+            substitutionLabel="Matriz de substituição S0"
+            substitution={SDES.getSubstitution0Matrix()}
+            inputLabel="Esquerda do XOR"
+            input={xor1Bits.slice(0, 4)}
+            outputLabel="Esquerda do XOR substituída"
+            output={sub1Bits.slice(0, 2)}
           />
         </Grid>
         <Grid item md={6}>
-          <BitMatrixField
-            label="Função de substituição S1"
-            bits={SDES.getSubstitution1Positions()}
+          <StepByStepSubstitution
+            substitutionLabel="Matriz de substituição S1"
+            substitution={SDES.getSubstitution1Matrix()}
+            inputLabel="Direita do XOR"
+            input={xor1Bits.slice(4, 8)}
+            outputLabel="Direita do XOR substituída"
+            output={sub1Bits.slice(2, 4)}
           />
         </Grid>
       </Grid>

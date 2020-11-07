@@ -16,6 +16,12 @@ class SDES {
     return result;
   };
 
+  static substitute = (xor: number[], matrix: number[][][]): number[] => {
+    const row = parseInt(xor[0].toString() + xor[3].toString(), 2);
+    const col = parseInt(xor[1].toString() + xor[2].toString(), 2);
+    return matrix[row][col];
+  };
+
   static getP10Positions = (): number[] => [3, 5, 2, 7, 4, 10, 1, 9, 8, 6];
 
   static permutate10 = (key: number[]): number[] =>
@@ -80,7 +86,7 @@ class SDES {
   static permutateEP = (message: number[]): number[] =>
     SDES.permutate(message, SDES.getEPPositions());
 
-  static getSubstitution0Positions = (): number[][][] => [
+  static getSubstitution0Matrix = (): number[][][] => [
     [
       [0, 1],
       [0, 0],
@@ -107,7 +113,10 @@ class SDES {
     ],
   ];
 
-  static getSubstitution1Positions = (): number[][][] => [
+  static substituteS0 = (leftXor: number[]): number[] =>
+    SDES.substitute(leftXor, SDES.getSubstitution0Matrix());
+
+  static getSubstitution1Matrix = (): number[][][] => [
     [
       [0, 0],
       [0, 1],
@@ -133,6 +142,9 @@ class SDES {
       [1, 1],
     ],
   ];
+
+  static substituteS1 = (rightXor: number[]): number[] =>
+    SDES.substitute(rightXor, SDES.getSubstitution1Matrix());
 
   static getP4Positions = (): number[] => [2, 4, 3, 1];
 

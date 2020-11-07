@@ -16,7 +16,7 @@ function IPStep(props: IPStepProps) {
 
   return (
     <>
-      <StepContentAccordion title="IP - Initial Permutation">
+      <StepContentAccordion title="IP - Permutação Inicial">
         <ExplanationText>
           Uma vez tendo-se obtidas as chaves que serão utilizadas na
           criptografia (K<sub>1</sub> & K<sub>2</sub>) iremos finalmente começar

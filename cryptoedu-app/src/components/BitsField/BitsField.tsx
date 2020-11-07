@@ -11,8 +11,8 @@ interface BitsFieldProps {
   gridItem?: boolean;
   paragraphMargin?: boolean;
   labelAbove?: boolean;
-  accent?: number;
-  focus?: number;
+  accent?: number | number[];
+  focus?: number | number[];
   accentNumbers?: boolean;
 }
 

@@ -9,9 +9,12 @@ interface BitMatrixFieldProps {
   bits: number[][][];
   gridItem?: boolean;
   paragraphMargin?: boolean;
-  // accent?: number;
-  // focus?: number;
-  // accentNumbers?: boolean;
+  accentFullRow?: number;
+  accentFullCol?: number;
+  accentRow?: number;
+  accentCol?: number;
+  focusRow?: number;
+  focusCol?: number;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -42,9 +45,12 @@ function BitMatrixField(props: BitMatrixFieldProps) {
     bits,
     gridItem,
     paragraphMargin,
-    // accent,
-    // focus,
-    // accentNumbers,
+    accentFullRow,
+    accentFullCol,
+    accentRow,
+    accentCol,
+    focusRow,
+    focusCol,
   } = props;
 
   const classes = useStyles();
@@ -68,15 +74,16 @@ function BitMatrixField(props: BitMatrixFieldProps) {
         <BitsFieldLabel>{label}</BitsFieldLabel>
       </Grid>
       <Grid item xs={12} className={classes.bitsRow}>
-        {/* <BitArrayField
+        <MatrixField
           bits={bits}
-          className={classes.bitsRow}
-          addChar={addChar}
-          accent={accent}
-          focus={focus}
-          accentNumbers={accentNumbers}
-        /> */}
-        <MatrixField bits={bits} justify="center" />
+          justify="center"
+          accentFullRow={accentFullRow}
+          accentFullCol={accentFullCol}
+          accentRow={accentRow}
+          accentCol={accentCol}
+          focusRow={focusRow}
+          focusCol={focusCol}
+        />
       </Grid>
     </Grid>
   );

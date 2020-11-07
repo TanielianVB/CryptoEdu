@@ -3,19 +3,19 @@ import ExecutionExplanationText from "../ExecutionExplanationText/ExecutionExpla
 import Accent from "../ExecutionExplanationText/ExecutionExplanationAccentText";
 import Relevant from "../ExecutionExplanationText/ExecutionExplanationRelevantText";
 
-interface StepByStepPermutationExplanationProps {
+interface StepByStepSubstitutionExplanationProps {
   position: number;
-  step: "start" | "permutation" | "input" | "output" | "finish";
+  step: "start" | "substitution" | "input" | "output" | "finish";
   inputPosition: number;
   outputValue: number;
   fullOutput: number[];
-  permutationLabel: React.ReactNode;
+  substitutionLabel: React.ReactNode;
   inputLabel: React.ReactNode;
   outputLabel: React.ReactNode;
 }
 
-function StepByStepPermutationExplanation(
-  props: StepByStepPermutationExplanationProps
+function StepByStepSubstitutionExplanation(
+  props: StepByStepSubstitutionExplanationProps
 ) {
   const {
     position,
@@ -23,7 +23,7 @@ function StepByStepPermutationExplanation(
     inputPosition,
     outputValue,
     fullOutput,
-    permutationLabel,
+    substitutionLabel,
     inputLabel,
     outputLabel,
   } = props;
@@ -39,14 +39,14 @@ function StepByStepPermutationExplanation(
         </>
       );
       break;
-    case "permutation":
+    case "substitution":
       executionExplanation = (
         <>
           Posição
           <Accent>{" " + position + " "}</Accent>
           de
-          <Relevant>{" " + permutationLabel + " "}</Relevant>
-          indica que a posição que será utilizada de
+          <Relevant>{" " + substitutionLabel + " "}</Relevant>
+          indica que a posição que irá ser utilizada de
           <Relevant>{" " + inputLabel + " "}</Relevant> é a
           <Accent>{" " + inputPosition + " "}</Accent>
         </>
@@ -94,4 +94,4 @@ function StepByStepPermutationExplanation(
   );
 }
 
-export default StepByStepPermutationExplanation;
+export default StepByStepSubstitutionExplanation;

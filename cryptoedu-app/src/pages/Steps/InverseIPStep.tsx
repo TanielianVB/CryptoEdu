@@ -13,7 +13,7 @@ function InverseIPStep(props: InverseIPStepProps) {
   return (
     <>
       <StepContentTitle>
-        IP<sup>-1</sup> (Inverse Initial Permutation)
+        IP<sup>-1</sup> - Permutação Inicial Inversa
       </StepContentTitle>
       <BitsField
         label={

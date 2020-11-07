@@ -15,8 +15,8 @@ interface BitsFieldProps {
   gridItem?: boolean;
   className?: string;
   style?: React.CSSProperties;
-  accent?: number;
-  focus?: number;
+  accent?: number | number[];
+  focus?: number | number[];
   accentNumbers?: boolean;
 }
 
@@ -40,6 +40,24 @@ function BitArrayField(props: BitsFieldProps) {
     values[index] = element !== undefined ? element.toString() : " ";
   }
 
+  const isAccent = (position: number): boolean => {
+    if (typeof accent === "number") {
+      return position === accent;
+    } else if (accent !== undefined) {
+      return accent.includes(position);
+    }
+    return false;
+  };
+
+  const isFocus = (position: number): boolean => {
+    if (typeof focus === "number") {
+      return position === focus;
+    } else if (focus !== undefined) {
+      return focus.includes(position);
+    }
+    return false;
+  };
+
   return (
     <Grid
       item={gridItem}
@@ -57,8 +75,8 @@ function BitArrayField(props: BitsFieldProps) {
             <BitTextField
               position={position.toString()}
               value={b.toString()}
-              accent={position === accent}
-              focus={position === focus}
+              accent={isAccent(position)}
+              focus={isFocus(position)}
               accentNumber={accentNumbers}
             />
           </Grid>

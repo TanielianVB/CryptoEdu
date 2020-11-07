@@ -97,18 +97,22 @@ const getSteps = (): React.ReactNode[] => {
 function App() {
   const [activeStep, setActiveStep] = useState(0);
   const [selectedTab, setSelectedTab] = useState(0);
+
   const [message, setMessage] = useState("01110010");
   const [messageBits, setMessageBits] = useState([0, 1, 1, 1, 0, 0, 1, 0]);
   const [key, setKey] = useState("1010000010");
   const [keyBits, setKeyBits] = useState([1, 0, 1, 0, 0, 0, 0, 0, 1, 0]);
+
   const [p10Bits, setP10Bits] = useState<number[]>([]);
   const [ls1Bits, setLs1Bits] = useState<number[]>([]);
   const [k1Bits, setK1Bits] = useState<number[]>([]);
   const [ls2Bits, setLs2Bits] = useState<number[]>([]);
   const [k2Bits, setK2Bits] = useState<number[]>([]);
+
   const [ipBits, setIpBits] = useState<number[]>([]);
   const [ep1Bits, setEp1Bits] = useState<number[]>([]);
   const [xor1Bits, setXor1Bits] = useState<number[]>([]);
+  const [sub1Bits, setSub1Bits] = useState<number[]>([]);
 
   useEffect(() => {
     const p10 = SDES.permutate10(keyBits);
@@ -130,6 +134,9 @@ function App() {
     setEp1Bits(ep1);
     const xor1 = SDES.xor(ep1, k1Bits);
     setXor1Bits(xor1);
+    const sub1L = SDES.substituteS0(xor1.slice(0, 4));
+    const sub1R = SDES.substituteS1(xor1.slice(4, 8));
+    setSub1Bits(sub1L.concat(sub1R));
   }, [messageBits, k1Bits]);
 
   const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -230,7 +237,7 @@ function App() {
                         value={message}
                         helperText="1 char ou 8 bits"
                         size="medium"
-                        style={{ width: "140px" }}
+                        style={{ width: "146px" }}
                         onChange={handleMessageChange}
                       />
                     </Grid>
@@ -389,7 +396,7 @@ function App() {
         return (
           <Card className={classes.card}>
             <CardContent>
-              <S0S1Step xor1Bits={xor1Bits} />
+              <S0S1Step xor1Bits={xor1Bits} sub1Bits={sub1Bits} />
             </CardContent>
             <CardActions>
               <StepperNavigation

@@ -47,7 +47,7 @@ function EPStep(props: EPStepProps) {
           cada parte assim como viemos fazendo até o momento.
         </ExplanationText>
       </StepContentAccordion>
-      <StepContentAccordion title="E/P - Permutação de Expansão (Expansion / Permutation)">
+      <StepContentAccordion title="E/P - Permutação de Expansão">
         <ExplanationText>
           Iniciamos então pelo primeiro passo de F, que é a aplicação da função
           E/P (permutação de expansão), que é assim chamada pois recebe 4 bits e
