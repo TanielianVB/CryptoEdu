@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import ListRoundedIcon from "@material-ui/icons/ListRounded";
 import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 import Brightness4RoundedIcon from "@material-ui/icons/Brightness4Rounded";
@@ -22,7 +23,6 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     header: {
       flex: "0 1 auto",
-      // zIndex: theme.zIndex.drawer + 1,
     },
     bar: {
       display: "flex",
@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       padding: theme.spacing(1),
-      // flexGrow: 1,
     },
   })
 );
@@ -54,13 +53,24 @@ function AppTopBar(props: AppTopBarProps) {
               CryptoEdu
             </Typography>
           </Tooltip>
-          <IconButton
-            color="inherit"
-            href="https://github.com/TanielianVB/CryptoEdu"
-            target="_blank"
-          >
-            <GitHubIcon />
-          </IconButton>
+          <Tooltip title="Código fonte no GitHub">
+            <IconButton
+              color="inherit"
+              href="https://github.com/TanielianVB/CryptoEdu"
+              target="_blank"
+            >
+              <GitHubIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Pesquisa de utilização do simulador">
+            <IconButton
+              color="inherit"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSd4WZFS6CSGD95991vkVQdrcDK-c01BnqNNBQV5Z86E2yMbvw/viewform?usp=sf_link"
+              target="_blank"
+            >
+              <ListRoundedIcon />
+            </IconButton>
+          </Tooltip>
         </div>
         <div className={classes.title}>
           <Typography variant="subtitle2">{title}</Typography>
