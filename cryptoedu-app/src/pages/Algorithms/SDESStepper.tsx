@@ -6,7 +6,6 @@ import {
   Step,
   StepButton,
   Stepper,
-  Typography,
 } from "@material-ui/core";
 import StepperNavigation from "../../components/StepperNavigation/StepperNavigation";
 import Utils from "../../utils/Utils";
@@ -221,11 +220,7 @@ function SDESStepper(props: SDESStepperProps) {
           />
         );
       default:
-        return (
-          <Typography variant="h5" color="secondary">
-            Em desenvolvimento...
-          </Typography>
-        );
+        throw new Error("You should not see this!");
     }
   };
 
