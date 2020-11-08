@@ -42,29 +42,81 @@ function K2Step(props: K2StepProps) {
           shift (LS-2), nas metades de LS-1:
         </ExplanationText>
       </StepContentAccordion>
-      <Grid container direction="row" justify="center" spacing={5}>
+      <Grid container direction="row" justify="center" spacing={3}>
         <Grid item md={6}>
           <StepByStepCircularLeftShift
-            shift={1}
-            inputLabel="Esquerda de LS-1"
+            shift={2}
+            inputLabel={
+              <>
+                Esquerda de R<sub>LS-1</sub>
+              </>
+            }
             input={Utils.leftHalf(ls1Bits)}
-            outputLabel="Esquerda após LS-2"
+            outputLabel={
+              <>
+                R
+                <sub>
+                  LS-2<sub>L</sub>
+                </sub>{" "}
+                = Resultado de LS-2 sobre a esquerda
+              </>
+            }
+            outputShortLabel={
+              <>
+                R
+                <sub>
+                  LS-2<sub>L</sub>
+                </sub>
+              </>
+            }
             output={Utils.leftHalf(ls2Bits)}
           />
         </Grid>
         <Grid item md={6}>
           <StepByStepCircularLeftShift
-            shift={1}
-            inputLabel="Direita de LS-1"
+            shift={2}
+            inputLabel={
+              <>
+                Direita de R<sub>LS-1</sub>
+              </>
+            }
             input={Utils.rightHalf(ls1Bits)}
-            outputLabel="Direita após LS-2"
+            outputLabel={
+              <>
+                R
+                <sub>
+                  LS-2<sub>R</sub>
+                </sub>{" "}
+                = Resultado de LS-2 sobre a direita
+              </>
+            }
+            outputShortLabel={
+              <>
+                R
+                <sub>
+                  LS-2<sub>R</sub>
+                </sub>
+              </>
+            }
             output={Utils.rightHalf(ls2Bits)}
           />
         </Grid>
       </Grid>
       <BitsField
-        label="Juntando as metades após a rotação temos a Chave rotacionada LS-2"
-        bits={ls1Bits}
+        label={
+          <>
+            R<sub>LS-2</sub> = Resultado de LS-2 = R
+            <sub>
+              LS-2<sub>L</sub>
+            </sub>{" "}
+            + R
+            <sub>
+              LS-2<sub>R</sub>
+            </sub>
+          </>
+        }
+        //"Juntando as metades após a rotação temos a Chave rotacionada LS-2"
+        bits={ls2Bits}
         labelAbove
       />
       <StepContentAccordion title="P8 - Permutação de 8 bits">
@@ -76,9 +128,17 @@ function K2Step(props: K2StepProps) {
       <StepByStepPermutation
         permutationLabel="P8"
         permutation={SDES.getP8Positions()}
-        inputLabel="LS-2"
+        inputLabel={
+          <>
+            R<sub>LS-2</sub>
+          </>
+        }
         input={ls2Bits}
-        outputLabel="LS-2 permutada"
+        outputLabel={
+          <>
+            R<sub>P8</sub> = Resultado de P8
+          </>
+        }
         output={k2Bits}
       />
       <StepContentAccordion

@@ -16,6 +16,8 @@ import BeginStep from "../OuterSteps/BeginStep";
 import KeysStep from "../OuterSteps/KeysStep";
 import FK1Step from "../OuterSteps/FK1Step";
 import SWStep from "../Steps/SWStep";
+import FK2Step from "../OuterSteps/FK2Step";
+import InverseIPStep from "../Steps/InverseIPStep";
 
 interface SDESStepperProps {
   mainClassName: string;
@@ -59,6 +61,7 @@ function SDESStepper(props: SDESStepperProps) {
 
   const [activeOuterStep, setActiveOuterStep] = useState(0);
 
+  // Inputs
   const [mode, setMode] = useState<"encrypt" | "decrypt">("encrypt");
   const [message, setMessage] = useState("01110010");
   const [messageBits, setMessageBits] = useState([0, 1, 1, 1, 0, 0, 1, 0]);
@@ -78,12 +81,19 @@ function SDESStepper(props: SDESStepperProps) {
   const [fK1SubBits, setFK1SubBits] = useState<number[]>([]);
   const [fK1P4Bits, setFK1P4Bits] = useState<number[]>([]);
   const [fK1P4XorIpLBits, setFK1P4XorIpLBits] = useState<number[]>([]);
+  const [fK1Bits, setFK1Bits] = useState<number[]>([]);
   // SW
-  const [swInputBits, setSwInputBits] = useState<number[]>([]);
   const [swBits, setSwBits] = useState<number[]>([]);
-  // const [swLBits, setSwLBits] = useState<number[]>([]);
-  // const [swRBits, setSwRBits] = useState<number[]>([]);
+  const [swLBits, setSwLBits] = useState<number[]>([]);
+  const [swRBits, setSwRBits] = useState<number[]>([]);
   // fK2
+  const [fK2EpBits, setFK2EpBits] = useState<number[]>([]);
+  const [fK2EpXorK2Bits, setFK2EpXorK2Bits] = useState<number[]>([]);
+  const [fK2SubBits, setFK2SubBits] = useState<number[]>([]);
+  const [fK2P4Bits, setFK2P4Bits] = useState<number[]>([]);
+  const [fK2P4XorSwLBits, setFK2P4XorSwLBits] = useState<number[]>([]);
+  const [fK2Bits, setFK2Bits] = useState<number[]>([]);
+  // Inverse IP
 
   useEffect(() => {
     // Keys
@@ -115,59 +125,32 @@ function SDESStepper(props: SDESStepperProps) {
     setFK1P4Bits(fK1P4);
     const fK1P4XorIpL = SDES.xor(fK1P4, ipL);
     setFK1P4XorIpLBits(fK1P4XorIpL);
+    const fK1 = fK1P4XorIpL.concat(ipR);
+    setFK1Bits(fK1);
     // SW
-    const swInput = fK1P4XorIpL.concat(ipR);
-    setSwInputBits(swInput);
-    const sw = SDES.switch(swInput);
+    const sw = SDES.switch(fK1);
     setSwBits(sw);
-    // const swL = Utils.leftHalf(sw);
-    // setSwLBits(swL);
-    // const swR = Utils.rightHalf(sw);
-    // setSwRBits(swR);
+    const swL = Utils.leftHalf(sw);
+    setSwLBits(swL);
+    const swR = Utils.rightHalf(sw);
+    setSwRBits(swR);
     // fK2
+    const fK2Ep = SDES.permutateEP(swR);
+    setFK2EpBits(fK2Ep);
+    const fK2EpXorK2 = SDES.xor(fK2Ep, k2Bits);
+    setFK2EpXorK2Bits(fK2EpXorK2);
+    const fK2SubL = SDES.substituteS0(Utils.leftHalf(fK2EpXorK2));
+    const fK2SubR = SDES.substituteS1(Utils.rightHalf(fK2EpXorK2));
+    const fK2Sub = fK2SubL.concat(fK2SubR);
+    setFK2SubBits(fK2Sub);
+    const fK2P4 = SDES.permutateP4(fK2Sub);
+    setFK2P4Bits(fK2P4);
+    const fK2P4XorSwL = SDES.xor(fK2P4, swL);
+    setFK2P4XorSwLBits(fK2P4XorSwL);
+    const fK2 = fK2P4XorSwL.concat(swR);
+    setFK2Bits(fK2);
+    // Inverse IP
   }, [messageBits, k1Bits]);
-
-  //   const getStepContent = (stepIndex: number) => {
-  //     switch (stepIndex) {
-  //       case 0:
-  //       case 1:
-  //       case 2:
-  //       case 3:
-  //       case 4:
-  //       case 5:
-  //       case 6:
-  //       case 7:
-  //         return (
-  //           <Card className={cardClassName}>
-  //             <CardContent>
-  //               <SWStep />
-  //             </CardContent>
-  //             <CardActions>
-  //               <StepperNavigation
-  //                 setActiveStep={setActiveStep}
-  //                 previousStep={stepIndex - 1}
-  //                 nextStep={stepIndex + 1}
-  //               />
-  //             </CardActions>
-  //           </Card>
-  //         );
-  //       case 8:
-  //         return (
-  //           <Card className={cardClassName}>
-  //             <CardContent>
-  //               <InverseIPStep />
-  //             </CardContent>
-  //             <CardActions>
-  //               <StepperNavigation
-  //                 setActiveStep={setActiveStep}
-  //                 previousStep={stepIndex - 1}
-  //                 nextStep={stepIndex + 1}
-  //               />
-  //             </CardActions>
-  //           </Card>
-  //         );
-  //     }
-  //   };
 
   const getOuterStepContent = (stepIndex: number) => {
     switch (stepIndex) {
@@ -200,10 +183,27 @@ function SDESStepper(props: SDESStepperProps) {
             p4Bits={fK1P4Bits}
             ipLBits={ipLBits}
             p4XorIpLBits={fK1P4XorIpLBits}
+            fK1Bits={fK1Bits}
           />
         );
       case 4:
-        return <SWStep swInputBits={swInputBits} swBits={swBits} />;
+        return <SWStep fK1Bits={fK1Bits} swBits={swBits} />;
+      case 5:
+        return (
+          <FK2Step
+            swRBits={swRBits}
+            epBits={fK2EpBits}
+            k2Bits={k2Bits}
+            epXorK2Bits={fK2EpXorK2Bits}
+            subBits={fK2SubBits}
+            p4Bits={fK2P4Bits}
+            swLBits={swLBits}
+            p4XorSwLBits={fK2P4XorSwLBits}
+            fK2Bits={fK2Bits}
+          />
+        );
+      case 6:
+        return <InverseIPStep />;
       default:
         return (
           <Typography variant="h5" color="secondary">

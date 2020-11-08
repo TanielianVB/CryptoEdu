@@ -36,18 +36,34 @@ function LS1Step(props: LS1StepProps) {
           primeira posição irá então para a última posição.
         </ExplanationText>
         <ExplanationText>
-          Aplicando a rotação LS-1 nas metades temos:
+          Aplicando a rotação LS-1 nas metades de R<sub>P10</sub> temos:
         </ExplanationText>
       </StepContentAccordion>
       <Grid container direction="row" justify="center" spacing={3}>
         <Grid item md={6}>
           <StepByStepCircularLeftShift
             shift={1}
-            inputLabel="Esquerda de P10"
+            inputLabel={
+              <>
+                Esquerda de R<sub>P10</sub>
+              </>
+            }
             input={Utils.leftHalf(p10Bits)}
             outputLabel={
               <>
-                R<sub>LS-1</sub>
+                R
+                <sub>
+                  LS-1<sub>L</sub>
+                </sub>{" "}
+                = Resultado de LS-1 sobre a esquerda
+              </>
+            }
+            outputShortLabel={
+              <>
+                R
+                <sub>
+                  LS-1<sub>L</sub>
+                </sub>
               </>
             }
             output={Utils.leftHalf(ls1Bits)}
@@ -56,11 +72,27 @@ function LS1Step(props: LS1StepProps) {
         <Grid item md={6}>
           <StepByStepCircularLeftShift
             shift={1}
-            inputLabel="Direita de P10"
+            inputLabel={
+              <>
+                Direita de R<sub>P10</sub>
+              </>
+            }
             input={Utils.rightHalf(p10Bits)}
             outputLabel={
               <>
-                R<sub>LS-1</sub>
+                R
+                <sub>
+                  LS-1<sub>R</sub>
+                </sub>{" "}
+                = Resultado de LS-1 sobre a direita
+              </>
+            }
+            outputShortLabel={
+              <>
+                R
+                <sub>
+                  LS-1<sub>R</sub>
+                </sub>
               </>
             }
             output={Utils.rightHalf(ls1Bits)}
@@ -68,7 +100,18 @@ function LS1Step(props: LS1StepProps) {
         </Grid>
       </Grid>
       <BitsField
-        label="Juntando as metades após a rotação temos a Chave rotacionada LS-1"
+        label={
+          <>
+            R<sub>LS-1</sub> = Resultado de LS-1 = R
+            <sub>
+              LS-1<sub>L</sub>
+            </sub>{" "}
+            + R
+            <sub>
+              LS-1<sub>R</sub>
+            </sub>
+          </>
+        }
         bits={ls1Bits}
         labelAbove
       />

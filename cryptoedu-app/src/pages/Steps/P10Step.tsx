@@ -55,7 +55,7 @@ function P10Step(props: P10StepProps) {
         input={keyBits}
         outputLabel={
           <>
-            R<sub>P10</sub>
+            R<sub>P10</sub> = Resultado de P10
           </>
         }
         output={p10Bits}

@@ -12,6 +12,7 @@ interface StepByStepCircularLeftShiftProps {
   inputLabel: React.ReactNode;
   input: number[];
   outputLabel: React.ReactNode;
+  outputShortLabel: React.ReactNode;
   output: number[];
 }
 
@@ -23,7 +24,14 @@ interface ExecutionState {
 type ExecutionAction = "prev" | "next" | "first" | "last";
 
 function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
-  const { shift, inputLabel, input, outputLabel, output } = props;
+  const {
+    shift,
+    inputLabel,
+    input,
+    outputLabel,
+    outputShortLabel,
+    output,
+  } = props;
 
   const executionReducer = (
     state: ExecutionState,
@@ -183,6 +191,7 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
             fullOutput={output}
             inputLabel={inputLabel}
             outputLabel={outputLabel}
+            outputShortLabel={outputShortLabel}
           />
         </Grid>
       </Grid>

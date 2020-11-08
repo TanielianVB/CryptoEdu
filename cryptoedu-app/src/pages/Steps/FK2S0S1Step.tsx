@@ -11,25 +11,25 @@ import StepByStepXOR from "../../components/StepByStepXOR/StepByStepXOR";
 import Utils from "../../utils/Utils";
 
 interface S0S1StepProps {
-  epXorK1Bits: number[];
+  epXorK2Bits: number[];
   subBits: number[];
   p4Bits: number[];
-  ipLBits: number[];
-  p4XorIpLBits: number[];
+  swLBits: number[];
+  p4XorSwLBits: number[];
 }
 
-function FK1S0S1Step(props: S0S1StepProps) {
-  const { epXorK1Bits, subBits, p4Bits, ipLBits, p4XorIpLBits } = props;
+function FK2S0S1Step(props: S0S1StepProps) {
+  const { epXorK2Bits, subBits, p4Bits, swLBits, p4XorSwLBits } = props;
 
   return (
     <>
-      <StepContentAccordion title="S0 & S1 - Substituições S0 e S1">
+      <StepContentAccordion title="S0 & S2 - Substituições S0 e S2">
         <ExplanationText>...</ExplanationText>
-        <BitsField label="Resultado do XOR" bits={epXorK1Bits} labelAbove />
+        <BitsField label="Resultado do XOR" bits={epXorK2Bits} labelAbove />
         <SplitBitsField
           leftLabel="Esquerda do resultado do XOR"
           rightLabel="Direita do resultado do XOR"
-          bits={epXorK1Bits}
+          bits={epXorK2Bits}
         />
         <ExplanationText>
           A função de substituição S0 é na realidade uma matrix com pares de
@@ -42,17 +42,17 @@ function FK1S0S1Step(props: S0S1StepProps) {
             substitutionLabel="Matriz de substituição S0"
             substitution={SDES.getSubstitution0Matrix()}
             inputLabel="Esquerda do XOR"
-            input={Utils.leftHalf(epXorK1Bits)}
+            input={Utils.leftHalf(epXorK2Bits)}
             outputLabel="Esquerda do XOR substituída"
             output={Utils.leftHalf(subBits)}
           />
         </Grid>
         <Grid item md={6}>
           <StepByStepSubstitution
-            substitutionLabel="Matriz de substituição S1"
+            substitutionLabel="Matriz de substituição S2"
             substitution={SDES.getSubstitution1Matrix()}
             inputLabel="Direita do XOR"
-            input={Utils.rightHalf(epXorK1Bits)}
+            input={Utils.rightHalf(epXorK2Bits)}
             outputLabel="Direita do XOR substituída"
             output={Utils.rightHalf(subBits)}
           />
@@ -66,11 +66,7 @@ function FK1S0S1Step(props: S0S1StepProps) {
         permutation={SDES.getP4Positions()}
         inputLabel="Resultado das Substituições"
         input={subBits}
-        outputLabel={
-          <>
-            R<sub>P4</sub> = Resultado de P4
-          </>
-        }
+        outputLabel="Resultado permutado"
         output={p4Bits}
       />
       <StepContentAccordion title="XOR - OU exclusivo">
@@ -86,17 +82,17 @@ function FK1S0S1Step(props: S0S1StepProps) {
           </>
         }
         inputA={p4Bits}
-        inputBLabel="L de IP"
-        inputB={ipLBits}
+        inputBLabel="L de SW"
+        inputB={swLBits}
         outputLabel={
           <>
-            R<sub>P4</sub> &oplus; L de IP
+            R<sub>P4</sub> &oplus; L de SW
           </>
         }
-        output={p4XorIpLBits}
+        output={p4XorSwLBits}
       />
     </>
   );
 }
 
-export default FK1S0S1Step;
+export default FK2S0S1Step;

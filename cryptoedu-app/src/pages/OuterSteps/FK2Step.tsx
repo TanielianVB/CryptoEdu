@@ -3,55 +3,55 @@ import BitsField from "../../components/BitsField/BitsField";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
-import FK1EPStep from "../Steps/FK1EPStep";
-import FK1S0S1Step from "../Steps/FK1S0S1Step";
+import FK2EPStep from "../Steps/FK2EPStep";
+import FK2S0S2Step from "../Steps/FK2S0S1Step";
 
-interface FK1StepProps {
-  ipRBits: number[];
+interface FK2StepProps {
+  swRBits: number[];
   epBits: number[];
-  k1Bits: number[];
-  epXorK1Bits: number[];
+  k2Bits: number[];
+  epXorK2Bits: number[];
   subBits: number[];
   p4Bits: number[];
-  ipLBits: number[];
-  p4XorIpLBits: number[];
-  fK1Bits: number[];
+  swLBits: number[];
+  p4XorSwLBits: number[];
+  fK2Bits: number[];
 }
 
-function FK1Step(props: FK1StepProps) {
+function FK2Step(props: FK2StepProps) {
   const {
-    ipRBits,
+    swRBits,
     epBits,
-    k1Bits,
-    epXorK1Bits,
+    k2Bits,
+    epXorK2Bits,
     subBits,
     p4Bits,
-    ipLBits,
-    p4XorIpLBits,
-    fK1Bits,
+    swLBits,
+    p4XorSwLBits,
+    fK2Bits,
   } = props;
 
   return (
     <>
-      <FK1EPStep
-        ipRBits={ipRBits}
+      <FK2EPStep
+        swRBits={swRBits}
         epBits={epBits}
-        k1Bits={k1Bits}
-        epXorK1Bits={epXorK1Bits}
+        k2Bits={k2Bits}
+        epXorK2Bits={epXorK2Bits}
       />
-      <FK1S0S1Step
-        epXorK1Bits={epXorK1Bits}
+      <FK2S0S2Step
+        epXorK2Bits={epXorK2Bits}
         subBits={subBits}
         p4Bits={p4Bits}
-        ipLBits={ipLBits}
-        p4XorIpLBits={p4XorIpLBits}
+        swLBits={swLBits}
+        p4XorSwLBits={p4XorSwLBits}
       />
       <StepContentAccordion
         title={
           <>
             Resultado de f
             <sub>
-              K<sub>1</sub>
+              K<sub>2</sub>
             </sub>
           </>
         }
@@ -61,11 +61,11 @@ function FK1Step(props: FK1StepProps) {
       <SplitBitsField
         leftLabel={
           <>
-            R<sub>P4</sub> &oplus; L de IP
+            R<sub>P4</sub> &oplus; L de SW
           </>
         }
-        rightLabel="R de IP"
-        bits={fK1Bits}
+        rightLabel="R de SW"
+        bits={fK2Bits}
       />
       <BitsField
         label={
@@ -74,21 +74,21 @@ function FK1Step(props: FK1StepProps) {
             <sub>
               f
               <sub>
-                K<sub>1</sub>
+                K<sub>2</sub>
               </sub>
             </sub>{" "}
             = Resultado de f
             <sub>
-              K<sub>1</sub>
+              K<sub>2</sub>
             </sub>{" "}
-            = (R<sub>P4</sub> &oplus; L de IP) + R de IP
+            = (R<sub>P4</sub> &oplus; L de SW) + R de SW
           </>
         }
-        bits={fK1Bits}
+        bits={fK2Bits}
         labelAbove
       />
     </>
   );
 }
 
-export default FK1Step;
+export default FK2Step;

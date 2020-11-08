@@ -46,9 +46,17 @@ function K1Step(props: K1StepProps) {
       <StepByStepPermutation
         permutationLabel="P8"
         permutation={SDES.getP8Positions()}
-        inputLabel="LS-1"
+        inputLabel={
+          <>
+            R<sub>LS-1</sub>
+          </>
+        }
         input={ls1Bits}
-        outputLabel="LS-1 permutada"
+        outputLabel={
+          <>
+            R<sub>P8</sub> = Resultado de P8
+          </>
+        }
         output={k1Bits}
       />
       <StepContentAccordion

@@ -12,6 +12,7 @@ interface StepByStepCircularLeftShiftExplanationProps {
   fullOutput: number[];
   inputLabel: React.ReactNode;
   outputLabel: React.ReactNode;
+  outputShortLabel: React.ReactNode;
 }
 
 function StepByStepCircularLeftShiftExplanation(
@@ -26,6 +27,7 @@ function StepByStepCircularLeftShiftExplanation(
     fullOutput,
     inputLabel,
     outputLabel,
+    outputShortLabel,
   } = props;
 
   let executionExplanation = <></>;
@@ -34,7 +36,7 @@ function StepByStepCircularLeftShiftExplanation(
     case "start":
       executionExplanation = (
         <>
-          Inicie a execução da rotação clicando na seta à
+          Inicie a execução da rotação clicando na seta à{" "}
           <Accent> direita</Accent>
         </>
       );
@@ -42,34 +44,28 @@ function StepByStepCircularLeftShiftExplanation(
     case "input":
       executionExplanation = (
         <>
-          A posição
-          <Accent>{" " + inputPosition + " "}</Accent>
-          de <Relevant>{" " + inputLabel + " "}</Relevant> possui valor
-          <Accent>{" " + outputValue + " "}</Accent>
-          que será movido para a esquerda <Accent>{shift}x</Accent> indo para a
-          posição
-          <Accent>{" " + position + " "}</Accent>
-          de
-          <Relevant>{" " + outputLabel + " "}</Relevant>
+          A posição <Accent>{inputPosition}</Accent> de{" "}
+          <Relevant>{inputLabel}</Relevant> possui valor{" "}
+          <Accent>{outputValue}</Accent> que será movido para a esquerda{" "}
+          <Accent>{shift}x</Accent> indo para a posição{" "}
+          <Accent>{position}</Accent> de <Relevant>{outputShortLabel}</Relevant>
         </>
       );
       break;
     case "output":
       executionExplanation = (
         <>
-          Posição
-          <Accent>{" " + position + " "}</Accent>
-          de
-          <Relevant>{" " + outputLabel + " "}</Relevant> é então
-          <Accent>{" " + outputValue + " "}</Accent>
+          Posição <Accent>{position}</Accent> de{" "}
+          <Relevant>{outputLabel}</Relevant> é então{" "}
+          <Accent>{outputValue}</Accent>
         </>
       );
       break;
     case "finish":
       executionExplanation = (
         <>
-          <Relevant>{outputLabel + " "}</Relevant> é então
-          <Accent>{" " + fullOutput.join("")}</Accent>
+          <Relevant>{outputLabel}</Relevant> é então{" "}
+          <Accent>{fullOutput.join("")}</Accent>
         </>
       );
       break;
@@ -78,7 +74,9 @@ function StepByStepCircularLeftShiftExplanation(
   }
 
   return (
-    <ExecutionExplanationText>{executionExplanation}</ExecutionExplanationText>
+    <ExecutionExplanationText minLineSizeMultiplier={3}>
+      {executionExplanation}
+    </ExecutionExplanationText>
   );
 }
 

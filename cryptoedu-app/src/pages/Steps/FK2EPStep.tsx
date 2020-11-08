@@ -7,15 +7,15 @@ import StepByStepPermutation from "../../components/StepByStepPermutation/StepBy
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 import StepByStepXOR from "../../components/StepByStepXOR/StepByStepXOR";
 
-interface FK1EPStepProps {
-  ipRBits: number[];
+interface FK2EPStepProps {
+  swRBits: number[];
   epBits: number[];
-  k1Bits: number[];
-  epXorK1Bits: number[];
+  k2Bits: number[];
+  epXorK2Bits: number[];
 }
 
-function FK1EPStep(props: FK1EPStepProps) {
-  const { ipRBits, epBits, k1Bits, epXorK1Bits } = props;
+function FK2EPStep(props: FK2EPStepProps) {
+  const { swRBits, epBits, k2Bits, epXorK2Bits } = props;
 
   return (
     <>
@@ -24,9 +24,9 @@ function FK1EPStep(props: FK1EPStepProps) {
           <>
             f
             <sub>
-              K<sub>1</sub>
+              K<sub>2</sub>
             </sub>{" "}
-            - Função que usa a chave K<sub>1</sub>
+            - Função que usa a chave K<sub>2</sub>
           </>
         }
       >
@@ -34,7 +34,7 @@ function FK1EPStep(props: FK1EPStepProps) {
           A função f<sub>K</sub> é o componente mais complexo da execução do
           algoritmo e consiste de uma combinação de permutações e substituições
           e será chamada duas vezes durante o fluxo de execução, sendo uma vez
-          para cada chave (K<sub>1</sub> e K<sub>2</sub>). A função f
+          para cada chave (K<sub>2</sub> e K<sub>2</sub>). A função f
           <sub>K</sub> é definida por:
         </ExplanationText>
         {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
@@ -54,7 +54,7 @@ function FK1EPStep(props: FK1EPStepProps) {
           retorna 8 bits. Esta é definida por:
         </ExplanationText>
         {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
-            EP(k_{1}, k_{2}, k_{3}, k_{4}) = (k_{4}, k_{1}, k_{2}, k_{3}, k_{2}, k_{3}, k_{4}, k_{1}) */}
+            EP(k_{2}, k_{2}, k_{3}, k_{4}) = (k_{4}, k_{2}, k_{2}, k_{3}, k_{2}, k_{3}, k_{4}, k_{2}) */}
         <MathImg src="sdes\ep.svg" alt="ep" />
         <ExplanationText>
           Pode-se observar que, ao contrário da função F8, esta função retorna
@@ -74,15 +74,19 @@ function FK1EPStep(props: FK1EPStepProps) {
       <StepByStepPermutation
         permutationLabel="E/P"
         permutation={SDES.getEPPositions()}
-        inputLabel="R (right)"
-        input={ipRBits}
+        inputLabel={
+          <>
+            R (direita) de R<sub>SW</sub>
+          </>
+        }
+        input={swRBits}
         outputLabel="R permutada"
         output={epBits}
       />
-      <StepContentAccordion title="XOR - OU exclusivo - &oplus;">
+      <StepContentAccordion title="XOR - OU exclusivo">
         <ExplanationText>
           Com a saída da função E/P por sua vez será feito um OU exclusivo com a
-          chave K<sub>1</sub> já obtida.
+          chave K<sub>2</sub> já obtida.
         </ExplanationText>
       </StepContentAccordion>
       <StepByStepXOR
@@ -90,19 +94,19 @@ function FK1EPStep(props: FK1EPStepProps) {
         inputA={epBits}
         inputBLabel={
           <>
-            Chave K<sub>1</sub>
+            Chave K<sub>2</sub>
           </>
         }
-        inputB={k1Bits}
+        inputB={k2Bits}
         outputLabel={
           <>
-            R permutada &oplus; K<sub>1</sub>
+            R permutada &oplus; K<sub>2</sub>
           </>
         }
-        output={epXorK1Bits}
+        output={epXorK2Bits}
       />
     </>
   );
 }
 
-export default FK1EPStep;
+export default FK2EPStep;
