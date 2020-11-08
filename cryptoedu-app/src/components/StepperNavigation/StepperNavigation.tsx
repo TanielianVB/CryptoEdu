@@ -11,13 +11,16 @@ interface StepperNavigationProps {
 
 function StepperNavigation(props: StepperNavigationProps) {
   const { previousStep, nextStep, setActiveStep } = props;
+
+  const justify =
+    previousStep !== undefined && nextStep !== undefined
+      ? "space-between"
+      : previousStep !== undefined
+      ? "flex-start"
+      : "flex-end";
+
   return (
-    <Grid
-      container
-      direction="row"
-      justify="space-between"
-      alignItems="flex-end"
-    >
+    <Grid container direction="row" justify={justify} alignItems="flex-end">
       {previousStep !== undefined && (
         <Button
           size="small"

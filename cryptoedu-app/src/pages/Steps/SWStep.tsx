@@ -25,7 +25,7 @@ function SWStep(props: SWStepProps) {
       <StepContentTitle>
         SW & f
         <sub>
-          k<sub>2</sub>
+          K<sub>2</sub>
         </sub>
       </StepContentTitle>
       <UnderDevelopmentTag />

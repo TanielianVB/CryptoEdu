@@ -24,24 +24,24 @@ function EPStep(props: EPStepProps) {
           <>
             f
             <sub>
-              k<sub>1</sub>
+              K<sub>1</sub>
             </sub>{" "}
             - Função que usa a chave
           </>
         }
       >
         <ExplanationText>
-          A função f<sub>k</sub> é o componente mais complexo da execução do
+          A função f<sub>K</sub> é o componente mais complexo da execução do
           algoritmo e consiste de uma combinação de permutações e substituições
           e será chamada duas vezes durante o fluxo de execução, sendo uma vez
           para cada chave (K<sub>1</sub> e K<sub>2</sub>). A função f
-          <sub>k</sub> é definida por:
+          <sub>K</sub> é definida por:
         </ExplanationText>
         {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
         f_{K}(L, R) = (L \oplus F(R, SK), R) */}
         <MathImg src="sdes\fk.svg" alt="fk" />
         <ExplanationText>
-          A função f<sub>k</sub> se utiliza da função F que por sua vez é
+          A função f<sub>K</sub> se utiliza da função F que por sua vez é
           definida por uma sequencia de passos. Apesar de parecer complicado
           vamos executar da função mais interna até a mais externa e compreender
           cada parte assim como viemos fazendo até o momento.

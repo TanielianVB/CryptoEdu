@@ -16,11 +16,18 @@ class Utils {
 
     return bits;
   };
+
   static getChar = (binaryArray: number[]) => {
     return binaryArray.length === 8
       ? String.fromCharCode(parseInt(binaryArray.join(""), 2))
       : "";
   };
+
+  static leftHalf = (array: number[]): number[] =>
+    array.slice(0, array.length / 2);
+
+  static rightHalf = (array: number[]): number[] =>
+    array.slice(array.length / 2, array.length);
 }
 
 export default Utils;

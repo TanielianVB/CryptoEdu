@@ -15,10 +15,6 @@ import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 import Brightness4RoundedIcon from "@material-ui/icons/Brightness4Rounded";
 import TranslateRoundedIcon from "@material-ui/icons/TranslateRounded";
 
-interface AppTopBarProps {
-  title: string;
-}
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     header: {
@@ -28,31 +24,15 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       justifyContent: "space-between",
     },
-    name: {
-      paddingRight: theme.spacing(1),
-    },
-    title: {
-      padding: theme.spacing(1),
-    },
   })
 );
 
-function AppTopBar(props: AppTopBarProps) {
-  const { title } = props;
-
+function AppTopBar() {
   const classes = useStyles();
   return (
     <AppBar position="static" className={classes.header}>
       <Toolbar className={classes.bar}>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <Tooltip
-            title="Simulador de Algoritmos de Criptografia com Finalidade
-              Educacional"
-          >
-            <Typography variant="h6" className={classes.name}>
-              CryptoEdu
-            </Typography>
-          </Tooltip>
           <Tooltip title="Código fonte no GitHub">
             <IconButton
               color="inherit"
@@ -72,8 +52,13 @@ function AppTopBar(props: AppTopBarProps) {
             </IconButton>
           </Tooltip>
         </div>
-        <div className={classes.title}>
-          <Typography variant="subtitle2">{title}</Typography>
+        <div>
+          <Tooltip
+            title="Simulador de Algoritmos de Criptografia com Finalidade
+              Educacional"
+          >
+            <Typography variant="h6">CryptoEdu</Typography>
+          </Tooltip>
         </div>
         <div>
           <Tooltip title="Trocar o algorítimo?">
