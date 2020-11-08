@@ -41,16 +41,16 @@ function IPStep(props: IPStepProps) {
         output={ipBits}
         addChar
       />
-      <StepContentAccordion title="L (left) & R (right)">
+      <StepContentAccordion title="L (esquerda) & R (direita)">
         <ExplanationText>
           A saída da função de permutação inicial IP é então divida na metade.
-          São elas L (left) e R (right). Estas serão utilizadas como parâmetros
-          que serão passados para a f <sub>K</sub>.
+          São elas L (left - esquerda) e R (right - direita). Estas serão
+          utilizadas como parâmetros que serão passados para a f <sub>K</sub>.
         </ExplanationText>
       </StepContentAccordion>
       <SplitBitsField
-        leftLabel="L (left)"
-        rightLabel="R (right)"
+        leftLabel="L (esquerda)"
+        rightLabel="R (direita)"
         bits={ipBits}
       />
     </>

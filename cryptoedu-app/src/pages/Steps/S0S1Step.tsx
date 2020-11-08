@@ -8,6 +8,7 @@ import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
 import StepByStepSubstitution from "../../components/StepByStepSubstitution/StepByStepSubstitution";
 import StepByStepPermutation from "../../components/StepByStepPermutation/StepByStepPermutation";
 import StepByStepXOR from "../../components/StepByStepXOR/StepByStepXOR";
+import Utils from "../../utils/Utils";
 
 interface S0S1StepProps {
   ep1XorK1Bits: number[];
@@ -41,9 +42,9 @@ function S0S1Step(props: S0S1StepProps) {
             substitutionLabel="Matriz de substituição S0"
             substitution={SDES.getSubstitution0Matrix()}
             inputLabel="Esquerda do XOR"
-            input={ep1XorK1Bits.slice(0, 4)}
+            input={Utils.leftHalf(ep1XorK1Bits)}
             outputLabel="Esquerda do XOR substituída"
-            output={sub1Bits.slice(0, 2)}
+            output={Utils.leftHalf(sub1Bits)}
           />
         </Grid>
         <Grid item md={6}>
@@ -51,9 +52,9 @@ function S0S1Step(props: S0S1StepProps) {
             substitutionLabel="Matriz de substituição S1"
             substitution={SDES.getSubstitution1Matrix()}
             inputLabel="Direita do XOR"
-            input={ep1XorK1Bits.slice(4, 8)}
+            input={Utils.rightHalf(ep1XorK1Bits)}
             outputLabel="Direita do XOR substituída"
-            output={sub1Bits.slice(2, 4)}
+            output={Utils.rightHalf(sub1Bits)}
           />
         </Grid>
       </Grid>

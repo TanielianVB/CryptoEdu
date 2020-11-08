@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import BitsField from "../BitsField/BitsField";
+import Utils from "../../utils/Utils";
 
 interface SplitBitsFieldProps {
   leftLabel: React.ReactNode;
@@ -17,7 +18,7 @@ function SplitBitsField(props: SplitBitsFieldProps) {
       <Grid item>
         <BitsField
           label={leftLabel}
-          bits={bits.slice(0, bits.length / 2)}
+          bits={Utils.leftHalf(bits)}
           paragraphMargin={paragraphMargin}
           labelAbove
         />
@@ -25,7 +26,7 @@ function SplitBitsField(props: SplitBitsFieldProps) {
       <Grid item>
         <BitsField
           label={rightLabel}
-          bits={bits.slice(bits.length / 2, bits.length)}
+          bits={Utils.rightHalf(bits)}
           paragraphMargin={paragraphMargin}
           labelAbove
         />

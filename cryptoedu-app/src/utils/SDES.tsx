@@ -53,13 +53,10 @@ class SDES {
     return array;
   };
 
-  static generateLS1 = (p10: number[]): number[] => {
-    const leftHalf = p10.slice(0, 5);
-    const rightHalf = p10.slice(5, 10);
-    return SDES.circularLeftShiftNTimes(leftHalf, 1).concat(
-      SDES.circularLeftShiftNTimes(rightHalf, 1)
+  static generateLS1 = (p10: number[]): number[] =>
+    SDES.circularLeftShiftNTimes(Utils.leftHalf(p10), 1).concat(
+      SDES.circularLeftShiftNTimes(Utils.rightHalf(p10), 1)
     );
-  };
 
   static getP8Positions = (): number[] => [6, 3, 7, 4, 8, 5, 10, 9];
 
@@ -68,13 +65,10 @@ class SDES {
 
   static generateKey1 = (ls1: number[]): number[] => SDES.permutateP8(ls1);
 
-  static generateLS2 = (ls1: number[]): number[] => {
-    const leftHalf = ls1.slice(0, 5);
-    const rightHalf = ls1.slice(5, 10);
-    return SDES.circularLeftShiftNTimes(leftHalf, 2).concat(
-      SDES.circularLeftShiftNTimes(rightHalf, 2)
+  static generateLS2 = (ls1: number[]): number[] =>
+    SDES.circularLeftShiftNTimes(Utils.leftHalf(ls1), 2).concat(
+      SDES.circularLeftShiftNTimes(Utils.rightHalf(ls1), 2)
     );
-  };
 
   static generateKey2 = (ls2: number[]): number[] => SDES.permutateP8(ls2);
 

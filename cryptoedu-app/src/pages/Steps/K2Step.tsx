@@ -7,6 +7,7 @@ import StepByStepPermutation from "../../components/StepByStepPermutation/StepBy
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
 import StepByStepCircularLeftShift from "../../components/StepByStepCircularLeftShift/StepByStepCircularLeftShift";
+import Utils from "../../utils/Utils";
 
 interface K2StepProps {
   ls1Bits: number[];
@@ -46,18 +47,18 @@ function K2Step(props: K2StepProps) {
           <StepByStepCircularLeftShift
             shift={1}
             inputLabel="Esquerda de LS-1"
-            input={ls1Bits.slice(0, 5)}
+            input={Utils.leftHalf(ls1Bits)}
             outputLabel="Esquerda após LS-2"
-            output={ls2Bits.slice(0, 5)}
+            output={Utils.leftHalf(ls2Bits)}
           />
         </Grid>
         <Grid item md={6}>
           <StepByStepCircularLeftShift
             shift={1}
             inputLabel="Direita de LS-1"
-            input={ls1Bits.slice(5, 10)}
+            input={Utils.rightHalf(ls1Bits)}
             outputLabel="Direita após LS-2"
-            output={ls2Bits.slice(5, 10)}
+            output={Utils.rightHalf(ls2Bits)}
           />
         </Grid>
       </Grid>

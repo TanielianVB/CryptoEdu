@@ -5,6 +5,7 @@ import BitsField from "../../components/BitsField/BitsField";
 import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 import StepByStepCircularLeftShift from "../../components/StepByStepCircularLeftShift/StepByStepCircularLeftShift";
+import Utils from "../../utils/Utils";
 
 interface LS1StepProps {
   p10Bits: number[];
@@ -43,26 +44,26 @@ function LS1Step(props: LS1StepProps) {
           <StepByStepCircularLeftShift
             shift={1}
             inputLabel="Esquerda de P10"
-            input={p10Bits.slice(0, 5)}
+            input={Utils.leftHalf(p10Bits)}
             outputLabel={
               <>
                 R<sub>LS-1</sub>
               </>
             }
-            output={ls1Bits.slice(0, 5)}
+            output={Utils.leftHalf(ls1Bits)}
           />
         </Grid>
         <Grid item md={6}>
           <StepByStepCircularLeftShift
             shift={1}
             inputLabel="Direita de P10"
-            input={p10Bits.slice(5, 10)}
+            input={Utils.rightHalf(p10Bits)}
             outputLabel={
               <>
                 R<sub>LS-1</sub>
               </>
             }
-            output={ls1Bits.slice(5, 10)}
+            output={Utils.rightHalf(ls1Bits)}
           />
         </Grid>
       </Grid>

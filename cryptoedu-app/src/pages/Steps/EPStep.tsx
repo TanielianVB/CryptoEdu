@@ -8,14 +8,14 @@ import StepContentAccordion from "../../components/StepContentAccordion/StepCont
 import StepByStepXOR from "../../components/StepByStepXOR/StepByStepXOR";
 
 interface EPStepProps {
-  ipBits: number[];
+  ipRBits: number[];
   ep1Bits: number[];
   k1Bits: number[];
   ep1XorK1Bits: number[];
 }
 
 function EPStep(props: EPStepProps) {
-  const { ipBits, ep1Bits, k1Bits, ep1XorK1Bits } = props;
+  const { ipRBits, ep1Bits, k1Bits, ep1XorK1Bits } = props;
 
   return (
     <>
@@ -75,7 +75,7 @@ function EPStep(props: EPStepProps) {
         permutationLabel="E/P"
         permutation={SDES.getEPPositions()}
         inputLabel="R (right)"
-        input={ipBits.slice(4, 8)}
+        input={ipRBits}
         outputLabel="R permutada"
         output={ep1Bits}
       />

@@ -70,6 +70,7 @@ function SDESStepper(props: SDESStepperProps) {
 
   const [ipBits, setIpBits] = useState<number[]>([]);
   const [ipLBits, setIpLBits] = useState<number[]>([]);
+  const [ipRBits, setIpRBits] = useState<number[]>([]);
   const [ep1Bits, setEp1Bits] = useState<number[]>([]);
   const [ep1XorK1Bits, setEp1XorK1Bits] = useState<number[]>([]);
   const [sub1Bits, setSub1Bits] = useState<number[]>([]);
@@ -90,8 +91,10 @@ function SDESStepper(props: SDESStepperProps) {
     const ip = SDES.permutateIP(messageBits);
     setIpBits(ip);
     const ipL = Utils.leftHalf(ip);
-    const ipR = Utils.rightHalf(ip);
     setIpLBits(ipL);
+    const ipR = Utils.rightHalf(ip);
+    setIpRBits(ipR);
+
     const ep1 = SDES.permutateEP(ipR);
     setEp1Bits(ep1);
     const xor1 = SDES.xor(ep1, k1Bits);
@@ -177,7 +180,7 @@ function SDESStepper(props: SDESStepperProps) {
       case 3:
         return (
           <FK1Step
-            ipBits={ipBits}
+            ipRBits={ipRBits}
             ep1Bits={ep1Bits}
             k1Bits={k1Bits}
             ep1XorK1Bits={ep1XorK1Bits}

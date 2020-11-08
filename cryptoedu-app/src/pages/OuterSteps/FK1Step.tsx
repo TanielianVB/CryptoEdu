@@ -3,7 +3,7 @@ import EPStep from "../Steps/EPStep";
 import S0S1Step from "../Steps/S0S1Step";
 
 interface FK1StepProps {
-  ipBits: number[];
+  ipRBits: number[];
   ep1Bits: number[];
   k1Bits: number[];
   ep1XorK1Bits: number[];
@@ -15,7 +15,7 @@ interface FK1StepProps {
 
 function FK1Step(props: FK1StepProps) {
   const {
-    ipBits,
+    ipRBits,
     ep1Bits,
     k1Bits,
     ep1XorK1Bits,
@@ -28,7 +28,7 @@ function FK1Step(props: FK1StepProps) {
   return (
     <>
       <EPStep
-        ipBits={ipBits}
+        ipRBits={ipRBits}
         ep1Bits={ep1Bits}
         k1Bits={k1Bits}
         ep1XorK1Bits={ep1XorK1Bits}
