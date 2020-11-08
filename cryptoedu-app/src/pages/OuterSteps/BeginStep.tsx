@@ -15,6 +15,7 @@ import BitsField from "../../components/BitsField/BitsField";
 import Utils from "../../utils/Utils";
 
 interface BeginStepProps {
+  mode: "encrypt" | "decrypt";
   setMode: React.Dispatch<React.SetStateAction<"encrypt" | "decrypt">>;
   message: string;
   setMessage: React.Dispatch<React.SetStateAction<string>>;
@@ -28,6 +29,7 @@ interface BeginStepProps {
 
 function BeginStep(props: BeginStepProps) {
   const {
+    mode,
     setMode,
     message,
     setMessage,
@@ -39,7 +41,7 @@ function BeginStep(props: BeginStepProps) {
     setKeyBits,
   } = props;
 
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(mode === "encrypt" ? 0 : 1);
 
   useEffect(() => setMode(selectedTab === 0 ? "encrypt" : "decrypt"), [
     selectedTab,
@@ -136,7 +138,9 @@ function BeginStep(props: BeginStepProps) {
             </Grid>
             <BitsField
               gridItem
-              label="Bits da mensagem"
+              label={
+                <>Bits da mensagem{mode === "encrypt" ? "" : " cifrada"}</>
+              }
               bits={messageBits}
               addChar
               labelAbove

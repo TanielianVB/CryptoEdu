@@ -13,9 +13,9 @@ import SDES from "../../utils/SDES";
 import IPStep from "../Steps/IPStep";
 import BeginStep from "../OuterSteps/BeginStep";
 import KeysStep from "../OuterSteps/KeysStep";
-import FK1Step from "../OuterSteps/FK1Step";
+import FirstFKStep from "../OuterSteps/FirstFKStep";
 import SWStep from "../Steps/SWStep";
-import FK2Step from "../OuterSteps/FK2Step";
+import SecondFKStep from "../OuterSteps/SecondFKStep";
 import InverseIPStep from "../Steps/InverseIPStep";
 import EndStep from "../OuterSteps/EndStep";
 
@@ -90,7 +90,9 @@ function SDESStepper(props: SDESStepperProps) {
   const [secondFKEpXorK2Bits, setSecondFKEpXorK2Bits] = useState<number[]>([]);
   const [secondFKSubBits, setSecondFKSubBits] = useState<number[]>([]);
   const [secondFKP4Bits, setSecondFKP4Bits] = useState<number[]>([]);
-  const [secondFKP4XorSwLBits, setSecondFKP4XorSwLBits] = useState<number[]>([]);
+  const [secondFKP4XorSwLBits, setSecondFKP4XorSwLBits] = useState<number[]>(
+    []
+  );
   const [secondFKBits, setSecondFKBits] = useState<number[]>([]);
   // Inverse IP
   const [iipBits, setIipBits] = useState<number[]>([]);
@@ -161,6 +163,7 @@ function SDESStepper(props: SDESStepperProps) {
       case 0:
         return (
           <BeginStep
+            mode={mode}
             setMode={setMode}
             message={message}
             setMessage={setMessage}
@@ -178,11 +181,13 @@ function SDESStepper(props: SDESStepperProps) {
         return <IPStep messageBits={messageBits} ipBits={ipBits} />;
       case 3:
         return (
-          <FK1Step
+          <FirstFKStep
+            mode={mode}
             ipRBits={ipRBits}
             epBits={firstFKEpBits}
-            k1Bits={k1Bits}
-            epXorK1Bits={firstFKEpXorK1Bits}
+            keyNumber={mode === "encrypt" ? 1 : 2}
+            keyBits={mode === "encrypt" ? k1Bits : k2Bits}
+            epXorKeyBits={firstFKEpXorK1Bits}
             subBits={firstFKSubBits}
             p4Bits={firstFKP4Bits}
             ipLBits={ipLBits}
@@ -194,11 +199,13 @@ function SDESStepper(props: SDESStepperProps) {
         return <SWStep firstFKBits={firstFKBits} swBits={swBits} />;
       case 5:
         return (
-          <FK2Step
+          <SecondFKStep
+            mode={mode}
             swRBits={swRBits}
             epBits={secondFKEpBits}
-            k2Bits={k2Bits}
-            epXorK2Bits={secondFKEpXorK2Bits}
+            keyNumber={mode === "encrypt" ? 2 : 1}
+            keyBits={mode === "encrypt" ? k2Bits : k1Bits}
+            epXorKeyBits={secondFKEpXorK2Bits}
             subBits={secondFKSubBits}
             p4Bits={secondFKP4Bits}
             swLBits={swLBits}

@@ -7,15 +7,17 @@ import StepByStepPermutation from "../../components/StepByStepPermutation/StepBy
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 import StepByStepXOR from "../../components/StepByStepXOR/StepByStepXOR";
 
-interface FK1EPStepProps {
+interface FirstFKEPStepProps {
+  mode: "encrypt" | "decrypt";
   ipRBits: number[];
   epBits: number[];
-  k1Bits: number[];
-  epXorK1Bits: number[];
+  keyNumber: number;
+  keyBits: number[];
+  epXorKeyBits: number[];
 }
 
-function FK1EPStep(props: FK1EPStepProps) {
-  const { ipRBits, epBits, k1Bits, epXorK1Bits } = props;
+function FirstFKEPStep(props: FirstFKEPStepProps) {
+  const { mode, ipRBits, epBits, keyNumber, keyBits, epXorKeyBits } = props;
 
   return (
     <>
@@ -24,9 +26,9 @@ function FK1EPStep(props: FK1EPStepProps) {
           <>
             f
             <sub>
-              K<sub>1</sub>
+              K<sub>{keyNumber}</sub>
             </sub>{" "}
-            - Função que usa a chave K<sub>1</sub>
+            - Função que usa a chave K<sub>{keyNumber}</sub>
           </>
         }
       >
@@ -34,8 +36,10 @@ function FK1EPStep(props: FK1EPStepProps) {
           A função f<sub>K</sub> é o componente mais complexo da execução do
           algoritmo e consiste de uma combinação de permutações e substituições
           e será chamada duas vezes durante o fluxo de execução, sendo uma vez
-          para cada chave (K<sub>1</sub> e K<sub>2</sub>). A função f
-          <sub>K</sub> é definida por:
+          para cada chave (K<sub>1</sub> e K<sub>2</sub>). Como estamos{" "}
+          {mode === "encrypt" ? "criptografando" : "descriptografando"}, a
+          primeira execução da função f<sub>K</sub> deverá se utilizar da chave
+          K<sub>{keyNumber}</sub>. A função f<sub>K</sub> é definida por:
         </ExplanationText>
         {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
             f_{K}(L, R) = (L \oplus F(R, SK), R) */}
@@ -82,7 +86,10 @@ function FK1EPStep(props: FK1EPStepProps) {
       <StepContentAccordion title="XOR - OU exclusivo - &oplus;">
         <ExplanationText>
           Com a saída da função E/P por sua vez será feito um OU exclusivo com a
-          chave K<sub>1</sub> já obtida.
+          chave K<sub>{keyNumber}</sub> já obtida. Como estamos{" "}
+          {mode === "encrypt" ? "criptografando" : "descriptografando"}, a
+          primeira execução da função f<sub>K</sub> deverá se utilizar da chave
+          K<sub>{keyNumber}</sub>.
         </ExplanationText>
       </StepContentAccordion>
       <StepByStepXOR
@@ -90,19 +97,19 @@ function FK1EPStep(props: FK1EPStepProps) {
         inputA={epBits}
         inputBLabel={
           <>
-            Chave K<sub>1</sub>
+            Chave K<sub>{keyNumber}</sub>
           </>
         }
-        inputB={k1Bits}
+        inputB={keyBits}
         outputLabel={
           <>
-            R permutada &oplus; K<sub>1</sub>
+            R permutada &oplus; K<sub>{keyNumber}</sub>
           </>
         }
-        output={epXorK1Bits}
+        output={epXorKeyBits}
       />
     </>
   );
 }
 
-export default FK1EPStep;
+export default FirstFKEPStep;

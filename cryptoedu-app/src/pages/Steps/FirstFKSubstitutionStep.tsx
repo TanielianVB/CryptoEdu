@@ -10,26 +10,26 @@ import StepByStepPermutation from "../../components/StepByStepPermutation/StepBy
 import StepByStepXOR from "../../components/StepByStepXOR/StepByStepXOR";
 import Utils from "../../utils/Utils";
 
-interface S0S1StepProps {
-  epXorK1Bits: number[];
+interface FirstFKSubstitutionStepProps {
+  epXorKeyBits: number[];
   subBits: number[];
   p4Bits: number[];
   ipLBits: number[];
   p4XorIpLBits: number[];
 }
 
-function FK1S0S1Step(props: S0S1StepProps) {
-  const { epXorK1Bits, subBits, p4Bits, ipLBits, p4XorIpLBits } = props;
+function FirstFKSubstitutionStep(props: FirstFKSubstitutionStepProps) {
+  const { epXorKeyBits, subBits, p4Bits, ipLBits, p4XorIpLBits } = props;
 
   return (
     <>
       <StepContentAccordion title="S0 & S1 - Substituições S0 e S1">
         <ExplanationText>...</ExplanationText>
-        <BitsField label="Resultado do XOR" bits={epXorK1Bits} labelAbove />
+        <BitsField label="Resultado do XOR" bits={epXorKeyBits} labelAbove />
         <SplitBitsField
           leftLabel="Esquerda do resultado do XOR"
           rightLabel="Direita do resultado do XOR"
-          bits={epXorK1Bits}
+          bits={epXorKeyBits}
         />
         <ExplanationText>
           A função de substituição S0 é na realidade uma matrix com pares de
@@ -42,7 +42,7 @@ function FK1S0S1Step(props: S0S1StepProps) {
             substitutionLabel="Matriz de substituição S0"
             substitution={SDES.getSubstitution0Matrix()}
             inputLabel="Esquerda do XOR"
-            input={Utils.leftHalf(epXorK1Bits)}
+            input={Utils.leftHalf(epXorKeyBits)}
             outputLabel="Esquerda do XOR substituída"
             output={Utils.leftHalf(subBits)}
           />
@@ -52,7 +52,7 @@ function FK1S0S1Step(props: S0S1StepProps) {
             substitutionLabel="Matriz de substituição S1"
             substitution={SDES.getSubstitution1Matrix()}
             inputLabel="Direita do XOR"
-            input={Utils.rightHalf(epXorK1Bits)}
+            input={Utils.rightHalf(epXorKeyBits)}
             outputLabel="Direita do XOR substituída"
             output={Utils.rightHalf(subBits)}
           />
@@ -99,4 +99,4 @@ function FK1S0S1Step(props: S0S1StepProps) {
   );
 }
 
-export default FK1S0S1Step;
+export default FirstFKSubstitutionStep;
