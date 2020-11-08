@@ -1,34 +1,37 @@
 import React from "react";
+import BitsField from "../../components/BitsField/BitsField";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
+import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
-import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
-import UnderDevelopmentTag from "../../components/UnderDevelopmentTag/UnderDevelopmentTag";
 
 interface SWStepProps {
-  //   ls1Bits: number[];
-  //   k1Bits: number[];
+  swInputBits: number[];
+  swBits: number[];
 }
 
 function SWStep(props: SWStepProps) {
+  const { swInputBits, swBits } = props;
   return (
     <>
       <StepContentAccordion title="SW - Troca">
         <ExplanationText>...</ExplanationText>
-        {/* <BitsField label="Resultado do XOR" bits={xor1Bits} labelAbove />
-        <SplitBitsField
-          leftLabel="Esquerda do resultado do XOR"
-          rightLabel="Direita do resultado do XOR"
-          bits={xor1Bits}
-        /> */}
-        <ExplanationText>...</ExplanationText>
       </StepContentAccordion>
-      <StepContentTitle>
-        SW & f
-        <sub>
-          K<sub>2</sub>
-        </sub>
-      </StepContentTitle>
-      <UnderDevelopmentTag />
+      <BitsField
+        label="Resultado de P4 XOR L de IP"
+        bits={swInputBits}
+        labelAbove
+      />
+      <SplitBitsField
+        leftLabel="Esquerda"
+        rightLabel="Direita"
+        bits={swInputBits}
+      />
+      <SplitBitsField
+        leftLabel="Nova esquerda (antiga direita)"
+        rightLabel="Nova direita (antiga esquerda)"
+        bits={swBits}
+      />
+      <BitsField label="Resultado de SW" bits={swBits} labelAbove />
     </>
   );
 }

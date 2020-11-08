@@ -15,6 +15,7 @@ import IPStep from "../Steps/IPStep";
 import BeginStep from "../OuterSteps/BeginStep";
 import KeysStep from "../OuterSteps/KeysStep";
 import FK1Step from "../OuterSteps/FK1Step";
+import SWStep from "../Steps/SWStep";
 
 interface SDESStepperProps {
   mainClassName: string;
@@ -78,7 +79,10 @@ function SDESStepper(props: SDESStepperProps) {
   const [fK1P4Bits, setFK1P4Bits] = useState<number[]>([]);
   const [fK1P4XorIpLBits, setFK1P4XorIpLBits] = useState<number[]>([]);
   // SW
-  // const [swBits, setSwBits] = useState<number[]>([]);
+  const [swInputBits, setSwInputBits] = useState<number[]>([]);
+  const [swBits, setSwBits] = useState<number[]>([]);
+  // const [swLBits, setSwLBits] = useState<number[]>([]);
+  // const [swRBits, setSwRBits] = useState<number[]>([]);
   // fK2
 
   useEffect(() => {
@@ -112,11 +116,14 @@ function SDESStepper(props: SDESStepperProps) {
     const fK1P4XorIpL = SDES.xor(fK1P4, ipL);
     setFK1P4XorIpLBits(fK1P4XorIpL);
     // SW
-    // const swInput = p4XorIpl.concat(ipR);
-    // const sw = SDES.switch(swInput);
-    // const swL = SDES.leftHalf(sw);
-    // const swR = SDES.rightHalf(sw);
-    // setSwBits(sw);
+    const swInput = fK1P4XorIpL.concat(ipR);
+    setSwInputBits(swInput);
+    const sw = SDES.switch(swInput);
+    setSwBits(sw);
+    // const swL = Utils.leftHalf(sw);
+    // setSwLBits(swL);
+    // const swR = Utils.rightHalf(sw);
+    // setSwRBits(swR);
     // fK2
   }, [messageBits, k1Bits]);
 
@@ -195,6 +202,8 @@ function SDESStepper(props: SDESStepperProps) {
             p4XorIpLBits={fK1P4XorIpLBits}
           />
         );
+      case 4:
+        return <SWStep swInputBits={swInputBits} swBits={swBits} />;
       default:
         return (
           <Typography variant="h5" color="secondary">

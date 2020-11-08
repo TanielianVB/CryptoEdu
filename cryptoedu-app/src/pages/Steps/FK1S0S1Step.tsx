@@ -80,7 +80,7 @@ function FK1S0S1Step(props: S0S1StepProps) {
         inputA={p4Bits}
         inputBLabel="L de IP"
         inputB={ipLBits}
-        outputLabel="P4 XOR L"
+        outputLabel="P4 XOR L de IP"
         output={p4XorIpLBits}
       />
     </>
