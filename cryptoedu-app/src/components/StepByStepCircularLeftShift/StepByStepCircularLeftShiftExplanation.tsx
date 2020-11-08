@@ -47,7 +47,7 @@ function StepByStepCircularLeftShiftExplanation(
           A posição <Accent>{inputPosition}</Accent> de{" "}
           <Relevant>{inputLabel}</Relevant> possui valor{" "}
           <Accent>{outputValue}</Accent> que será movido para a esquerda{" "}
-          <Accent>{shift}x</Accent> indo para a posição{" "}
+          <Accent>{shift}x</Accent>, indo para a posição{" "}
           <Accent>{position}</Accent> de <Relevant>{outputShortLabel}</Relevant>
         </>
       );
@@ -56,7 +56,7 @@ function StepByStepCircularLeftShiftExplanation(
       executionExplanation = (
         <>
           Posição <Accent>{position}</Accent> de{" "}
-          <Relevant>{outputLabel}</Relevant> é então{" "}
+          <Relevant>{outputShortLabel}</Relevant> é então{" "}
           <Accent>{outputValue}</Accent>
         </>
       );

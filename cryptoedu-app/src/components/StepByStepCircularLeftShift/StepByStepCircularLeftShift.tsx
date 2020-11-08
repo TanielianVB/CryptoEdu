@@ -90,7 +90,7 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
   const inputPosition = executionState.position;
   const outputPosition =
     executionState.position - shift < 1
-      ? input.length
+      ? input.length - shift + executionState.position
       : executionState.position - shift;
   const outputValue = output[outputPosition - 1];
   const outputBits: number[] =
@@ -103,9 +103,10 @@ function StepByStepCircularLeftShift(props: StepByStepCircularLeftShiftProps) {
         : executionState.position;
 
     for (let index = 0; index < positionLimit; index++) {
-      const outIndex = index - shift;
+      let outIndex = index - shift;
       if (outIndex < 0) {
-        outputBits[outputBits.length - 1] = output[outputBits.length - 1];
+        outIndex = input.length + index - shift;
+        outputBits[outIndex] = output[outIndex];
       } else {
         outputBits[index - shift] = output[index - shift];
       }
