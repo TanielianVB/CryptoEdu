@@ -44,7 +44,11 @@ function LS1Step(props: LS1StepProps) {
             shift={1}
             inputLabel="Esquerda de P10"
             input={p10Bits.slice(0, 5)}
-            outputLabel="Esquerda após LS-1"
+            outputLabel={
+              <>
+                R<sub>LS-1</sub>
+              </>
+            }
             output={ls1Bits.slice(0, 5)}
           />
         </Grid>
@@ -53,7 +57,11 @@ function LS1Step(props: LS1StepProps) {
             shift={1}
             inputLabel="Direita de P10"
             input={p10Bits.slice(5, 10)}
-            outputLabel="Direita após LS-1"
+            outputLabel={
+              <>
+                R<sub>LS-1</sub>
+              </>
+            }
             output={ls1Bits.slice(5, 10)}
           />
         </Grid>

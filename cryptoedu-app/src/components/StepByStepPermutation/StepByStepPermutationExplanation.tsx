@@ -42,46 +42,37 @@ function StepByStepPermutationExplanation(
     case "permutation":
       executionExplanation = (
         <>
-          Posição
-          <Accent>{" " + position + " "}</Accent>
-          de
-          <Relevant>{" " + permutationLabel + " "}</Relevant>
-          indica que a posição que será utilizada de
-          <Relevant>{" " + inputLabel + " "}</Relevant> é a
-          <Accent>{" " + inputPosition + " "}</Accent>
+          Posição <Accent>{position}</Accent> de{" "}
+          <Relevant>{permutationLabel}</Relevant> indica que a posição que será{" "}
+          utilizada de <Relevant>{inputLabel}</Relevant> é a{" "}
+          <Accent>{inputPosition}</Accent>
         </>
       );
       break;
     case "input":
       executionExplanation = (
         <>
-          A posição
-          <Accent>{" " + inputPosition + " "}</Accent>
-          de <Relevant>{" " + inputLabel + " "}</Relevant> possui valor
-          <Accent>{" " + outputValue + " "}</Accent>
-          que será o valor da posição
-          <Accent>{" " + position + " "}</Accent>
-          de
-          <Relevant>{" " + outputLabel + " "}</Relevant>
+          A posição <Accent>{inputPosition}</Accent> de{" "}
+          <Relevant>{inputLabel}</Relevant> possui valor{" "}
+          <Accent>{outputValue}</Accent> que será o valor da posição{" "}
+          <Accent>{position}</Accent> de <Relevant>{outputLabel}</Relevant>
         </>
       );
       break;
     case "output":
       executionExplanation = (
         <>
-          Posição
-          <Accent>{" " + position + " "}</Accent>
-          de
-          <Relevant>{" " + outputLabel + " "}</Relevant> é então
-          <Accent>{" " + outputValue + " "}</Accent>
+          Posição <Accent>{position}</Accent> de{" "}
+          <Relevant>{outputLabel}</Relevant> é então{" "}
+          <Accent>{outputValue}</Accent>
         </>
       );
       break;
     case "finish":
       executionExplanation = (
         <>
-          <Relevant>{outputLabel + " "}</Relevant> é então
-          <Accent>{" " + fullOutput.join("")}</Accent>
+          <Relevant>{outputLabel}</Relevant> é então{" "}
+          <Accent>{fullOutput.join("")}</Accent>
         </>
       );
       break;

@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import P10Step from "../Steps/P10Step";
 import LS1Step from "../Steps/LS1Step";
 import K1Step from "../Steps/K1Step";
 import K2Step from "../Steps/K2Step";
+import SDES from "../../utils/SDES";
 
 interface KeysStepProps {
   keyBits: number[];
-  p10Bits: number[];
-  ls1Bits: number[];
   k1Bits: number[];
-  ls2Bits: number[];
   k2Bits: number[];
 }
 
 function KeysStep(props: KeysStepProps) {
-  const { keyBits, p10Bits, ls1Bits, k1Bits, ls2Bits, k2Bits } = props;
+  const { keyBits, k1Bits, k2Bits } = props;
+
+  const [p10Bits, setP10Bits] = useState<number[]>([]);
+  const [ls1Bits, setLs1Bits] = useState<number[]>([]);
+  const [ls2Bits, setLs2Bits] = useState<number[]>([]);
+
+  useEffect(() => {
+    const p10 = SDES.permutate10(keyBits);
+    setP10Bits(p10);
+    const ls1 = SDES.generateLS1(p10);
+    setLs1Bits(ls1);
+    setLs2Bits(SDES.generateLS2(ls1));
+  }, [keyBits]);
 
   return (
     <>

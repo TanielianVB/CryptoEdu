@@ -65,10 +65,7 @@ function SDESStepper(props: SDESStepperProps) {
   const [keyBits, setKeyBits] = useState([1, 0, 1, 0, 0, 0, 0, 0, 1, 0]);
   console.info(mode);
 
-  const [p10Bits, setP10Bits] = useState<number[]>([]);
-  const [ls1Bits, setLs1Bits] = useState<number[]>([]);
   const [k1Bits, setK1Bits] = useState<number[]>([]);
-  const [ls2Bits, setLs2Bits] = useState<number[]>([]);
   const [k2Bits, setK2Bits] = useState<number[]>([]);
 
   const [ipBits, setIpBits] = useState<number[]>([]);
@@ -82,15 +79,10 @@ function SDESStepper(props: SDESStepperProps) {
   // const [swBits, setSwBits] = useState<number[]>([]);
 
   useEffect(() => {
-    const p10 = SDES.permutate10(keyBits);
-    setP10Bits(p10);
-    const ls1 = SDES.generateLS1(p10);
-    setLs1Bits(ls1);
+    const ls1 = SDES.generateLS1(SDES.permutate10(keyBits));
     const k1 = SDES.generateKey1(ls1);
     setK1Bits(k1);
-    const ls2 = SDES.generateLS2(ls1);
-    setLs2Bits(ls2);
-    const k2 = SDES.generateKey2(ls2);
+    const k2 = SDES.generateKey2(SDES.generateLS2(ls1));
     setK2Bits(k2);
   }, [keyBits]);
 
@@ -179,16 +171,7 @@ function SDESStepper(props: SDESStepperProps) {
           />
         );
       case 1:
-        return (
-          <KeysStep
-            keyBits={keyBits}
-            p10Bits={p10Bits}
-            ls1Bits={ls1Bits}
-            k1Bits={k1Bits}
-            ls2Bits={ls2Bits}
-            k2Bits={k2Bits}
-          />
-        );
+        return <KeysStep keyBits={keyBits} k1Bits={k1Bits} k2Bits={k2Bits} />;
       case 2:
         return <IPStep messageBits={messageBits} ipBits={ipBits} />;
       case 3:
