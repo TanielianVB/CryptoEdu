@@ -7,15 +7,15 @@ import StepByStepPermutation from "../../components/StepByStepPermutation/StepBy
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 import StepByStepXOR from "../../components/StepByStepXOR/StepByStepXOR";
 
-interface EPStepProps {
+interface FK1EPStepProps {
   ipRBits: number[];
-  ep1Bits: number[];
+  epBits: number[];
   k1Bits: number[];
-  ep1XorK1Bits: number[];
+  epXorK1Bits: number[];
 }
 
-function EPStep(props: EPStepProps) {
-  const { ipRBits, ep1Bits, k1Bits, ep1XorK1Bits } = props;
+function FK1EPStep(props: FK1EPStepProps) {
+  const { ipRBits, epBits, k1Bits, epXorK1Bits } = props;
 
   return (
     <>
@@ -38,7 +38,7 @@ function EPStep(props: EPStepProps) {
           <sub>K</sub> é definida por:
         </ExplanationText>
         {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
-        f_{K}(L, R) = (L \oplus F(R, SK), R) */}
+            f_{K}(L, R) = (L \oplus F(R, SK), R) */}
         <MathImg src="sdes\fk.svg" alt="fk" />
         <ExplanationText>
           A função f<sub>K</sub> se utiliza da função F que por sua vez é
@@ -77,7 +77,7 @@ function EPStep(props: EPStepProps) {
         inputLabel="R (right)"
         input={ipRBits}
         outputLabel="R permutada"
-        output={ep1Bits}
+        output={epBits}
       />
       <StepContentAccordion title="XOR - OU exclusivo">
         <ExplanationText>
@@ -87,7 +87,7 @@ function EPStep(props: EPStepProps) {
       </StepContentAccordion>
       <StepByStepXOR
         inputALabel="R permutada"
-        inputA={ep1Bits}
+        inputA={epBits}
         inputBLabel={
           <>
             Chave K<sub>1</sub>
@@ -99,10 +99,10 @@ function EPStep(props: EPStepProps) {
             R permutada XOR K<sub>1</sub>
           </>
         }
-        output={ep1XorK1Bits}
+        output={epXorK1Bits}
       />
     </>
   );
 }
 
-export default EPStep;
+export default FK1EPStep;

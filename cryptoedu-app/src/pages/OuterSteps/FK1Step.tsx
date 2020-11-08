@@ -1,44 +1,44 @@
 import React from "react";
-import EPStep from "../Steps/EPStep";
-import S0S1Step from "../Steps/S0S1Step";
+import FK1EPStep from "../Steps/FK1EPStep";
+import FK1S0S1Step from "../Steps/FK1S0S1Step";
 
 interface FK1StepProps {
   ipRBits: number[];
-  ep1Bits: number[];
+  epBits: number[];
   k1Bits: number[];
-  ep1XorK1Bits: number[];
-  sub1Bits: number[];
-  p41Bits: number[];
+  epXorK1Bits: number[];
+  subBits: number[];
+  p4Bits: number[];
   ipLBits: number[];
-  p4XorIplBits: number[];
+  p4XorIpLBits: number[];
 }
 
 function FK1Step(props: FK1StepProps) {
   const {
     ipRBits,
-    ep1Bits,
+    epBits,
     k1Bits,
-    ep1XorK1Bits,
-    sub1Bits,
-    p41Bits,
+    epXorK1Bits,
+    subBits,
+    p4Bits,
     ipLBits,
-    p4XorIplBits,
+    p4XorIpLBits,
   } = props;
 
   return (
     <>
-      <EPStep
+      <FK1EPStep
         ipRBits={ipRBits}
-        ep1Bits={ep1Bits}
+        epBits={epBits}
         k1Bits={k1Bits}
-        ep1XorK1Bits={ep1XorK1Bits}
+        epXorK1Bits={epXorK1Bits}
       />
-      <S0S1Step
-        ep1XorK1Bits={ep1XorK1Bits}
-        sub1Bits={sub1Bits}
-        p41Bits={p41Bits}
+      <FK1S0S1Step
+        epXorK1Bits={epXorK1Bits}
+        subBits={subBits}
+        p4Bits={p4Bits}
         ipLBits={ipLBits}
-        p4XorIplBits={p4XorIplBits}
+        p4XorIpLBits={p4XorIpLBits}
       />
     </>
   );

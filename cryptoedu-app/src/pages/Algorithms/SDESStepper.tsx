@@ -64,22 +64,25 @@ function SDESStepper(props: SDESStepperProps) {
   const [key, setKey] = useState("1010000010");
   const [keyBits, setKeyBits] = useState([1, 0, 1, 0, 0, 0, 0, 0, 1, 0]);
   console.info(mode);
-
+  // Keys
   const [k1Bits, setK1Bits] = useState<number[]>([]);
   const [k2Bits, setK2Bits] = useState<number[]>([]);
-
+  // IP
   const [ipBits, setIpBits] = useState<number[]>([]);
   const [ipLBits, setIpLBits] = useState<number[]>([]);
   const [ipRBits, setIpRBits] = useState<number[]>([]);
-  const [ep1Bits, setEp1Bits] = useState<number[]>([]);
-  const [ep1XorK1Bits, setEp1XorK1Bits] = useState<number[]>([]);
-  const [sub1Bits, setSub1Bits] = useState<number[]>([]);
-  const [p41Bits, setP41Bits] = useState<number[]>([]);
-  const [p4XorIplBits, setP4XorIplBits] = useState<number[]>([]);
-
+  // fK1
+  const [fK1EpBits, setFK1EpBits] = useState<number[]>([]);
+  const [fK1EpXorK1Bits, setFK1EpXorK1Bits] = useState<number[]>([]);
+  const [fK1SubBits, setFK1SubBits] = useState<number[]>([]);
+  const [fK1P4Bits, setFK1P4Bits] = useState<number[]>([]);
+  const [fK1P4XorIpLBits, setFK1P4XorIpLBits] = useState<number[]>([]);
+  // SW
   // const [swBits, setSwBits] = useState<number[]>([]);
+  // fK2
 
   useEffect(() => {
+    // Keys
     const ls1 = SDES.generateLS1(SDES.permutate10(keyBits));
     const k1 = SDES.generateKey1(ls1);
     setK1Bits(k1);
@@ -88,31 +91,33 @@ function SDESStepper(props: SDESStepperProps) {
   }, [keyBits]);
 
   useEffect(() => {
+    // IP
     const ip = SDES.permutateIP(messageBits);
     setIpBits(ip);
     const ipL = Utils.leftHalf(ip);
     setIpLBits(ipL);
     const ipR = Utils.rightHalf(ip);
     setIpRBits(ipR);
-
-    const ep1 = SDES.permutateEP(ipR);
-    setEp1Bits(ep1);
-    const xor1 = SDES.xor(ep1, k1Bits);
-    setEp1XorK1Bits(xor1);
-    const sub1L = SDES.substituteS0(Utils.leftHalf(xor1));
-    const sub1R = SDES.substituteS1(Utils.rightHalf(xor1));
-    const sub1 = sub1L.concat(sub1R);
-    setSub1Bits(sub1);
-    const p41 = SDES.permutateP4(sub1);
-    setP41Bits(p41);
-    const p4XorIpl = SDES.xor(p41, ipL);
-    setP4XorIplBits(p4XorIpl);
-
+    // fK1
+    const fK1Ep = SDES.permutateEP(ipR);
+    setFK1EpBits(fK1Ep);
+    const fK1EpXorK1 = SDES.xor(fK1Ep, k1Bits);
+    setFK1EpXorK1Bits(fK1EpXorK1);
+    const fK1SubL = SDES.substituteS0(Utils.leftHalf(fK1EpXorK1));
+    const fK1SubR = SDES.substituteS1(Utils.rightHalf(fK1EpXorK1));
+    const fK1Sub = fK1SubL.concat(fK1SubR);
+    setFK1SubBits(fK1Sub);
+    const fK1P4 = SDES.permutateP4(fK1Sub);
+    setFK1P4Bits(fK1P4);
+    const fK1P4XorIpL = SDES.xor(fK1P4, ipL);
+    setFK1P4XorIpLBits(fK1P4XorIpL);
+    // SW
     // const swInput = p4XorIpl.concat(ipR);
     // const sw = SDES.switch(swInput);
     // const swL = SDES.leftHalf(sw);
     // const swR = SDES.rightHalf(sw);
     // setSwBits(sw);
+    // fK2
   }, [messageBits, k1Bits]);
 
   //   const getStepContent = (stepIndex: number) => {
@@ -181,13 +186,13 @@ function SDESStepper(props: SDESStepperProps) {
         return (
           <FK1Step
             ipRBits={ipRBits}
-            ep1Bits={ep1Bits}
+            epBits={fK1EpBits}
             k1Bits={k1Bits}
-            ep1XorK1Bits={ep1XorK1Bits}
-            sub1Bits={sub1Bits}
-            p41Bits={p41Bits}
+            epXorK1Bits={fK1EpXorK1Bits}
+            subBits={fK1SubBits}
+            p4Bits={fK1P4Bits}
             ipLBits={ipLBits}
-            p4XorIplBits={p4XorIplBits}
+            p4XorIpLBits={fK1P4XorIpLBits}
           />
         );
       default:

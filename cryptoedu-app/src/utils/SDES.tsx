@@ -79,8 +79,8 @@ class SDES {
 
   static getEPPositions = (): number[] => [4, 1, 2, 3, 2, 3, 4, 1];
 
-  static permutateEP = (message: number[]): number[] =>
-    SDES.permutate(message, SDES.getEPPositions());
+  static permutateEP = (array: number[]): number[] =>
+    SDES.permutate(array, SDES.getEPPositions());
 
   static getSubstitution0Matrix = (): number[][][] => [
     [
