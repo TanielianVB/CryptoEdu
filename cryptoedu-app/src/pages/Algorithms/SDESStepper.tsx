@@ -94,6 +94,7 @@ function SDESStepper(props: SDESStepperProps) {
   const [fK2P4XorSwLBits, setFK2P4XorSwLBits] = useState<number[]>([]);
   const [fK2Bits, setFK2Bits] = useState<number[]>([]);
   // Inverse IP
+  const [iipBits, setIipBits] = useState<number[]>([]);
 
   useEffect(() => {
     // Keys
@@ -150,7 +151,9 @@ function SDESStepper(props: SDESStepperProps) {
     const fK2 = fK2P4XorSwL.concat(swR);
     setFK2Bits(fK2);
     // Inverse IP
-  }, [messageBits, k1Bits]);
+    const iip = SDES.permutateInverseIP(fK2);
+    setIipBits(iip);
+  }, [messageBits, k1Bits, k2Bits]);
 
   const getOuterStepContent = (stepIndex: number) => {
     switch (stepIndex) {
@@ -203,7 +206,7 @@ function SDESStepper(props: SDESStepperProps) {
           />
         );
       case 6:
-        return <InverseIPStep />;
+        return <InverseIPStep fK2Bits={fK2Bits} iipBits={iipBits} />;
       default:
         return (
           <Typography variant="h5" color="secondary">
