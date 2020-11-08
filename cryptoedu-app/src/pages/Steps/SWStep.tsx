@@ -5,12 +5,12 @@ import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 
 interface SWStepProps {
-  fK1Bits: number[];
+  firstFKBits: number[];
   swBits: number[];
 }
 
 function SWStep(props: SWStepProps) {
-  const { fK1Bits, swBits } = props;
+  const { firstFKBits, swBits } = props;
   return (
     <>
       <StepContentAccordion title="SW - Troca">
@@ -28,13 +28,13 @@ function SWStep(props: SWStepProps) {
             </sub>
           </>
         }
-        bits={fK1Bits}
+        bits={firstFKBits}
         labelAbove
       />
       <SplitBitsField
         leftLabel="Esquerda"
         rightLabel="Direita"
-        bits={fK1Bits}
+        bits={firstFKBits}
       />
       <SplitBitsField
         leftLabel="Nova esquerda (antiga direita)"

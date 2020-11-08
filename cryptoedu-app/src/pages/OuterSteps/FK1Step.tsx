@@ -15,7 +15,7 @@ interface FK1StepProps {
   p4Bits: number[];
   ipLBits: number[];
   p4XorIpLBits: number[];
-  fK1Bits: number[];
+  firstFKBits: number[];
 }
 
 function FK1Step(props: FK1StepProps) {
@@ -28,7 +28,7 @@ function FK1Step(props: FK1StepProps) {
     p4Bits,
     ipLBits,
     p4XorIpLBits,
-    fK1Bits,
+    firstFKBits,
   } = props;
 
   return (
@@ -65,7 +65,7 @@ function FK1Step(props: FK1StepProps) {
           </>
         }
         rightLabel="R de IP"
-        bits={fK1Bits}
+        bits={firstFKBits}
       />
       <BitsField
         label={
@@ -84,7 +84,7 @@ function FK1Step(props: FK1StepProps) {
             = (R<sub>P4</sub> &oplus; L de IP) + R de IP
           </>
         }
-        bits={fK1Bits}
+        bits={firstFKBits}
         labelAbove
       />
     </>

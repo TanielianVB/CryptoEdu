@@ -5,12 +5,12 @@ import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
 
 interface InverseIPStepProps {
-  fK2Bits: number[];
+  secondFKBits: number[];
   iipBits: number[];
 }
 
 function InverseIPStep(props: InverseIPStepProps) {
-  const { fK2Bits, iipBits } = props;
+  const { secondFKBits, iipBits } = props;
 
   return (
     <>
@@ -41,7 +41,7 @@ function InverseIPStep(props: InverseIPStepProps) {
             </sub>
           </>
         }
-        input={fK2Bits}
+        input={secondFKBits}
         outputLabel={
           <>
             R

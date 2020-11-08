@@ -26,7 +26,7 @@ interface SDESStepperProps {
   stepperClassName: string;
 }
 
-const outerSteps: React.ReactNode[] = [
+const getOuterSteps = (mode: "encrypt" | "decrypt"): React.ReactNode[] => [
   "Inicio",
   <>
     K<sub>1</sub> & K<sub>2</sub>
@@ -35,14 +35,14 @@ const outerSteps: React.ReactNode[] = [
   <>
     f
     <sub>
-      K<sub>1</sub>
+      K<sub>{mode === "encrypt" ? 1 : 2}</sub>
     </sub>
   </>,
   "SW",
   <>
     f
     <sub>
-      K<sub>2</sub>
+      K<sub>{mode === "encrypt" ? 2 : 1}</sub>
     </sub>
   </>,
   <>
@@ -67,7 +67,6 @@ function SDESStepper(props: SDESStepperProps) {
   const [messageBits, setMessageBits] = useState([0, 1, 1, 1, 0, 0, 1, 0]);
   const [key, setKey] = useState("1010000010");
   const [keyBits, setKeyBits] = useState([1, 0, 1, 0, 0, 0, 0, 0, 1, 0]);
-  console.info(mode);
   // Keys
   const [k1Bits, setK1Bits] = useState<number[]>([]);
   const [k2Bits, setK2Bits] = useState<number[]>([]);
@@ -75,28 +74,26 @@ function SDESStepper(props: SDESStepperProps) {
   const [ipBits, setIpBits] = useState<number[]>([]);
   const [ipLBits, setIpLBits] = useState<number[]>([]);
   const [ipRBits, setIpRBits] = useState<number[]>([]);
-  // fK1
-  const [fK1EpBits, setFK1EpBits] = useState<number[]>([]);
-  const [fK1EpXorK1Bits, setFK1EpXorK1Bits] = useState<number[]>([]);
-  const [fK1SubBits, setFK1SubBits] = useState<number[]>([]);
-  const [fK1P4Bits, setFK1P4Bits] = useState<number[]>([]);
-  const [fK1P4XorIpLBits, setFK1P4XorIpLBits] = useState<number[]>([]);
-  const [fK1Bits, setFK1Bits] = useState<number[]>([]);
+  // first FK
+  const [firstFKEpBits, setFirstFKEpBits] = useState<number[]>([]);
+  const [firstFKEpXorK1Bits, setFirstFKEpXorK1Bits] = useState<number[]>([]);
+  const [firstFKSubBits, setFirstFKSubBits] = useState<number[]>([]);
+  const [firstFKP4Bits, setFirstFKP4Bits] = useState<number[]>([]);
+  const [firstFKP4XorIpLBits, setFirstFKP4XorIpLBits] = useState<number[]>([]);
+  const [firstFKBits, setFirstFKBits] = useState<number[]>([]);
   // SW
   const [swBits, setSwBits] = useState<number[]>([]);
   const [swLBits, setSwLBits] = useState<number[]>([]);
   const [swRBits, setSwRBits] = useState<number[]>([]);
-  // fK2
-  const [fK2EpBits, setFK2EpBits] = useState<number[]>([]);
-  const [fK2EpXorK2Bits, setFK2EpXorK2Bits] = useState<number[]>([]);
-  const [fK2SubBits, setFK2SubBits] = useState<number[]>([]);
-  const [fK2P4Bits, setFK2P4Bits] = useState<number[]>([]);
-  const [fK2P4XorSwLBits, setFK2P4XorSwLBits] = useState<number[]>([]);
-  const [fK2Bits, setFK2Bits] = useState<number[]>([]);
+  // second FK
+  const [secondFKEpBits, setSecondFKEpBits] = useState<number[]>([]);
+  const [secondFKEpXorK2Bits, setSecondFKEpXorK2Bits] = useState<number[]>([]);
+  const [secondFKSubBits, setSecondFKSubBits] = useState<number[]>([]);
+  const [secondFKP4Bits, setSecondFKP4Bits] = useState<number[]>([]);
+  const [secondFKP4XorSwLBits, setSecondFKP4XorSwLBits] = useState<number[]>([]);
+  const [secondFKBits, setSecondFKBits] = useState<number[]>([]);
   // Inverse IP
   const [iipBits, setIipBits] = useState<number[]>([]);
-  // Output
-  const [resultBits, setResultBits] = useState<number[]>([]);
 
   useEffect(() => {
     // Keys
@@ -115,49 +112,49 @@ function SDESStepper(props: SDESStepperProps) {
     setIpLBits(ipL);
     const ipR = Utils.rightHalf(ip);
     setIpRBits(ipR);
-    // fK1
-    const fK1Ep = SDES.permutateEP(ipR);
-    setFK1EpBits(fK1Ep);
-    const fK1EpXorK1 = SDES.xor(fK1Ep, k1Bits);
-    setFK1EpXorK1Bits(fK1EpXorK1);
-    const fK1SubL = SDES.substituteS0(Utils.leftHalf(fK1EpXorK1));
-    const fK1SubR = SDES.substituteS1(Utils.rightHalf(fK1EpXorK1));
-    const fK1Sub = fK1SubL.concat(fK1SubR);
-    setFK1SubBits(fK1Sub);
-    const fK1P4 = SDES.permutateP4(fK1Sub);
-    setFK1P4Bits(fK1P4);
-    const fK1P4XorIpL = SDES.xor(fK1P4, ipL);
-    setFK1P4XorIpLBits(fK1P4XorIpL);
-    const fK1 = fK1P4XorIpL.concat(ipR);
-    setFK1Bits(fK1);
+    // first fK
+    const firstKey = mode === "encrypt" ? k1Bits : k2Bits;
+    const firstFKEp = SDES.permutateEP(ipR);
+    setFirstFKEpBits(firstFKEp);
+    const firstFKEpXorK1 = SDES.xor(firstFKEp, firstKey);
+    setFirstFKEpXorK1Bits(firstFKEpXorK1);
+    const firstFKSubL = SDES.substituteS0(Utils.leftHalf(firstFKEpXorK1));
+    const firstFKSubR = SDES.substituteS1(Utils.rightHalf(firstFKEpXorK1));
+    const firstFKSub = firstFKSubL.concat(firstFKSubR);
+    setFirstFKSubBits(firstFKSub);
+    const firstFKP4 = SDES.permutateP4(firstFKSub);
+    setFirstFKP4Bits(firstFKP4);
+    const firstFKP4XorIpL = SDES.xor(firstFKP4, ipL);
+    setFirstFKP4XorIpLBits(firstFKP4XorIpL);
+    const firstFK = firstFKP4XorIpL.concat(ipR);
+    setFirstFKBits(firstFK);
     // SW
-    const sw = SDES.switch(fK1);
+    const sw = SDES.switch(firstFK);
     setSwBits(sw);
     const swL = Utils.leftHalf(sw);
     setSwLBits(swL);
     const swR = Utils.rightHalf(sw);
     setSwRBits(swR);
-    // fK2
-    const fK2Ep = SDES.permutateEP(swR);
-    setFK2EpBits(fK2Ep);
-    const fK2EpXorK2 = SDES.xor(fK2Ep, k2Bits);
-    setFK2EpXorK2Bits(fK2EpXorK2);
-    const fK2SubL = SDES.substituteS0(Utils.leftHalf(fK2EpXorK2));
-    const fK2SubR = SDES.substituteS1(Utils.rightHalf(fK2EpXorK2));
-    const fK2Sub = fK2SubL.concat(fK2SubR);
-    setFK2SubBits(fK2Sub);
-    const fK2P4 = SDES.permutateP4(fK2Sub);
-    setFK2P4Bits(fK2P4);
-    const fK2P4XorSwL = SDES.xor(fK2P4, swL);
-    setFK2P4XorSwLBits(fK2P4XorSwL);
-    const fK2 = fK2P4XorSwL.concat(swR);
-    setFK2Bits(fK2);
+    // second FK
+    const secondKey = mode === "encrypt" ? k2Bits : k1Bits;
+    const secondFKEp = SDES.permutateEP(swR);
+    setSecondFKEpBits(secondFKEp);
+    const secondFKEpXorK2 = SDES.xor(secondFKEp, secondKey);
+    setSecondFKEpXorK2Bits(secondFKEpXorK2);
+    const secondFKSubL = SDES.substituteS0(Utils.leftHalf(secondFKEpXorK2));
+    const secondFKSubR = SDES.substituteS1(Utils.rightHalf(secondFKEpXorK2));
+    const secondFKSub = secondFKSubL.concat(secondFKSubR);
+    setSecondFKSubBits(secondFKSub);
+    const secondFKP4 = SDES.permutateP4(secondFKSub);
+    setSecondFKP4Bits(secondFKP4);
+    const secondFKP4XorSwL = SDES.xor(secondFKP4, swL);
+    setSecondFKP4XorSwLBits(secondFKP4XorSwL);
+    const secondFK = secondFKP4XorSwL.concat(swR);
+    setSecondFKBits(secondFK);
     // Inverse IP
-    const iip = SDES.permutateInverseIP(fK2);
+    const iip = SDES.permutateInverseIP(secondFK);
     setIipBits(iip);
-    const result = iip;
-    setResultBits(result);
-  }, [messageBits, k1Bits, k2Bits]);
+  }, [messageBits, k1Bits, k2Bits, mode]);
 
   const getOuterStepContent = (stepIndex: number) => {
     switch (stepIndex) {
@@ -183,46 +180,49 @@ function SDESStepper(props: SDESStepperProps) {
         return (
           <FK1Step
             ipRBits={ipRBits}
-            epBits={fK1EpBits}
+            epBits={firstFKEpBits}
             k1Bits={k1Bits}
-            epXorK1Bits={fK1EpXorK1Bits}
-            subBits={fK1SubBits}
-            p4Bits={fK1P4Bits}
+            epXorK1Bits={firstFKEpXorK1Bits}
+            subBits={firstFKSubBits}
+            p4Bits={firstFKP4Bits}
             ipLBits={ipLBits}
-            p4XorIpLBits={fK1P4XorIpLBits}
-            fK1Bits={fK1Bits}
+            p4XorIpLBits={firstFKP4XorIpLBits}
+            firstFKBits={firstFKBits}
           />
         );
       case 4:
-        return <SWStep fK1Bits={fK1Bits} swBits={swBits} />;
+        return <SWStep firstFKBits={firstFKBits} swBits={swBits} />;
       case 5:
         return (
           <FK2Step
             swRBits={swRBits}
-            epBits={fK2EpBits}
+            epBits={secondFKEpBits}
             k2Bits={k2Bits}
-            epXorK2Bits={fK2EpXorK2Bits}
-            subBits={fK2SubBits}
-            p4Bits={fK2P4Bits}
+            epXorK2Bits={secondFKEpXorK2Bits}
+            subBits={secondFKSubBits}
+            p4Bits={secondFKP4Bits}
             swLBits={swLBits}
-            p4XorSwLBits={fK2P4XorSwLBits}
-            fK2Bits={fK2Bits}
+            p4XorSwLBits={secondFKP4XorSwLBits}
+            secondFKBits={secondFKBits}
           />
         );
       case 6:
-        return <InverseIPStep fK2Bits={fK2Bits} iipBits={iipBits} />;
+        return <InverseIPStep secondFKBits={secondFKBits} iipBits={iipBits} />;
       case 7:
         return (
           <EndStep
+            mode={mode}
             messageBits={messageBits}
             keyBits={keyBits}
-            resultBits={resultBits}
+            resultBits={iipBits}
           />
         );
       default:
         throw new Error("You should not see this!");
     }
   };
+
+  const outerSteps = getOuterSteps(mode);
 
   return (
     <>

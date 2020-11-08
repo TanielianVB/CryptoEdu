@@ -15,7 +15,7 @@ interface FK2StepProps {
   p4Bits: number[];
   swLBits: number[];
   p4XorSwLBits: number[];
-  fK2Bits: number[];
+  secondFKBits: number[];
 }
 
 function FK2Step(props: FK2StepProps) {
@@ -28,7 +28,7 @@ function FK2Step(props: FK2StepProps) {
     p4Bits,
     swLBits,
     p4XorSwLBits,
-    fK2Bits,
+    secondFKBits,
   } = props;
 
   return (
@@ -65,7 +65,7 @@ function FK2Step(props: FK2StepProps) {
           </>
         }
         rightLabel="R de SW"
-        bits={fK2Bits}
+        bits={secondFKBits}
       />
       <BitsField
         label={
@@ -84,7 +84,7 @@ function FK2Step(props: FK2StepProps) {
             = (R<sub>P4</sub> &oplus; L de SW) + R de SW
           </>
         }
-        bits={fK2Bits}
+        bits={secondFKBits}
         labelAbove
       />
     </>
