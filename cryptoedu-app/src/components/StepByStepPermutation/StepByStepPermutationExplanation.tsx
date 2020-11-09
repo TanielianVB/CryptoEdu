@@ -11,6 +11,7 @@ interface StepByStepPermutationExplanationProps {
   fullOutput: number[];
   permutationLabel: React.ReactNode;
   inputLabel: React.ReactNode;
+  outputShortLabel: React.ReactNode;
   outputLabel: React.ReactNode;
 }
 
@@ -25,6 +26,7 @@ function StepByStepPermutationExplanation(
     fullOutput,
     permutationLabel,
     inputLabel,
+    outputShortLabel,
     outputLabel,
   } = props;
 
@@ -55,7 +57,7 @@ function StepByStepPermutationExplanation(
           A posição <Accent>{inputPosition}</Accent> de{" "}
           <Relevant>{inputLabel}</Relevant> possui valor{" "}
           <Accent>{outputValue}</Accent> que será o valor da posição{" "}
-          <Accent>{position}</Accent> de <Relevant>{outputLabel}</Relevant>
+          <Accent>{position}</Accent> de <Relevant>{outputShortLabel}</Relevant>
         </>
       );
       break;
@@ -63,7 +65,7 @@ function StepByStepPermutationExplanation(
       executionExplanation = (
         <>
           Posição <Accent>{position}</Accent> de{" "}
-          <Relevant>{outputLabel}</Relevant> é então{" "}
+          <Relevant>{outputShortLabel}</Relevant> é então{" "}
           <Accent>{outputValue}</Accent>
         </>
       );

@@ -52,6 +52,11 @@ function K1Step(props: K1StepProps) {
           </>
         }
         input={ls1Bits}
+        outputShortLabel={
+          <>
+            R<sub>P8</sub>
+          </>
+        }
         outputLabel={
           <>
             R<sub>P8</sub> = Resultado de P8

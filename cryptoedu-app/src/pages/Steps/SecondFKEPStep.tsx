@@ -84,7 +84,16 @@ function SecondFKEPStep(props: SecondFKEPStepProps) {
           </>
         }
         input={swRBits}
-        outputLabel="R permutada"
+        outputShortLabel={
+          <>
+            R<sub>E/P</sub>
+          </>
+        }
+        outputLabel={
+          <>
+            R<sub>E/P</sub> = Resultado de E/P
+          </>
+        }
         output={epBits}
       />
       <StepContentAccordion title="XOR - OU exclusivo">

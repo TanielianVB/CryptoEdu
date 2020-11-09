@@ -37,7 +37,16 @@ function IPStep(props: IPStepProps) {
         permutation={SDES.getIPPositions()}
         inputLabel="P"
         input={messageBits}
-        outputLabel="P permutada"
+        outputShortLabel={
+          <>
+            R<sub>IP</sub>
+          </>
+        }
+        outputLabel={
+          <>
+            R<sub>IP</sub> = Resultado de IP
+          </>
+        }
         output={ipBits}
         addChar
       />

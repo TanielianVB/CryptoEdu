@@ -134,6 +134,11 @@ function K2Step(props: K2StepProps) {
           </>
         }
         input={ls2Bits}
+        outputShortLabel={
+          <>
+            R<sub>P8</sub>
+          </>
+        }
         outputLabel={
           <>
             R<sub>P8</sub> = Resultado de P8

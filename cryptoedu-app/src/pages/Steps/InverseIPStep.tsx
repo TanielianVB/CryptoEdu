@@ -42,16 +42,21 @@ function InverseIPStep(props: InverseIPStepProps) {
           </>
         }
         input={secondFKBits}
+        outputShortLabel={
+          <>
+            R
+            <sub>
+              IP<sup>-1</sup>
+            </sub>
+          </>
+        }
         outputLabel={
           <>
             R
             <sub>
-              f
-              <sub>
-                K<sub>2</sub>
-              </sub>
+              IP<sup>-1</sup>
             </sub>{" "}
-            permutada
+            = Resultado de IP<sup>-1</sup>
           </>
         }
         output={iipBits}

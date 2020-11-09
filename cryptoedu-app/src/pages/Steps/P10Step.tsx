@@ -53,6 +53,11 @@ function P10Step(props: P10StepProps) {
         permutation={SDES.getP10Positions()}
         inputLabel="Chave"
         input={keyBits}
+        outputShortLabel={
+          <>
+            R<sub>P10</sub>
+          </>
+        }
         outputLabel={
           <>
             R<sub>P10</sub> = Resultado de P10

@@ -66,6 +66,11 @@ function FirstFKSubstitutionStep(props: FirstFKSubstitutionStepProps) {
         permutation={SDES.getP4Positions()}
         inputLabel="Resultado das Substituições"
         input={subBits}
+        outputShortLabel={
+          <>
+            R<sub>P4</sub>
+          </>
+        }
         outputLabel={
           <>
             R<sub>P4</sub> = Resultado de P4

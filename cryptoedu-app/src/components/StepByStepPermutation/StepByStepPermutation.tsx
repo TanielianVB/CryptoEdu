@@ -12,6 +12,7 @@ interface StepByStepPermutationProps {
   permutation: number[];
   inputLabel: React.ReactNode;
   input: number[];
+  outputShortLabel: React.ReactNode;
   outputLabel: React.ReactNode;
   output: number[];
   addChar?: boolean;
@@ -30,6 +31,7 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
     permutation,
     inputLabel,
     input,
+    outputShortLabel,
     outputLabel,
     output,
     addChar,
@@ -200,6 +202,7 @@ function StepByStepPermutation(props: StepByStepPermutationProps) {
             fullOutput={output}
             permutationLabel={permutationLabel}
             inputLabel={inputLabel}
+            outputShortLabel={outputShortLabel}
             outputLabel={outputLabel}
           />
         </Grid>

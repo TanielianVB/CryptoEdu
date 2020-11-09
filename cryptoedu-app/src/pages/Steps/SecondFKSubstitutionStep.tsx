@@ -66,7 +66,16 @@ function SecondFKSubstitutionStep(props: SecondFKSubstitutionStepProps) {
         permutation={SDES.getP4Positions()}
         inputLabel="Resultado das Substituições"
         input={subBits}
-        outputLabel="Resultado permutado"
+        outputShortLabel={
+          <>
+            R<sub>P4</sub>
+          </>
+        }
+        outputLabel={
+          <>
+            R<sub>P4</sub> = Resultado de P4
+          </>
+        }
         output={p4Bits}
       />
       <StepContentAccordion title="XOR - OU exclusivo">
