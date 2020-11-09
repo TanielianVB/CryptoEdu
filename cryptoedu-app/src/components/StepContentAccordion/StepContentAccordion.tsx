@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -7,6 +7,7 @@ import {
 import HelpOutlineRoundedIcon from "@material-ui/icons/HelpOutlineRounded";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 import StepContentTitle from "../../components/StepContentTitle/StepContentTitle";
+import ExplanationsInitiallyOpenContext from "../ExplanationsInitiallyOpenContext/ExplanationsInitiallyOpenContext";
 
 interface StepContentAccordionProps {
   title: React.ReactNode;
@@ -16,7 +17,11 @@ interface StepContentAccordionProps {
 function StepContentAccordion(props: StepContentAccordionProps) {
   const { title, children } = props;
 
-  const [expanded, setExpanded] = useState(false);
+  const explanationsInitiallyOpen = useContext(
+    ExplanationsInitiallyOpenContext
+  );
+
+  const [expanded, setExpanded] = useState(explanationsInitiallyOpen);
 
   const expandIcon = expanded ? (
     <ExpandMoreRoundedIcon />

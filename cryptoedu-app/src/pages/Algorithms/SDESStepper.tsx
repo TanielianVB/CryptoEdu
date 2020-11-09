@@ -18,6 +18,7 @@ import SWStep from "../Steps/SWStep";
 import SecondFKStep from "../OuterSteps/SecondFKStep";
 import InverseIPStep from "../Steps/InverseIPStep";
 import EndStep from "../OuterSteps/EndStep";
+import ExplanationsInitiallyOpenContext from "../../components/ExplanationsInitiallyOpenContext/ExplanationsInitiallyOpenContext";
 
 interface SDESStepperProps {
   mainClassName: string;
@@ -60,6 +61,9 @@ function SDESStepper(props: SDESStepperProps) {
   } = props;
 
   const [activeOuterStep, setActiveOuterStep] = useState(0);
+  const [explanationsInitiallyOpen, setExplanationsInitiallyOpen] = useState(
+    false
+  );
 
   // Inputs
   const [mode, setMode] = useState<"encrypt" | "decrypt">("encrypt");
@@ -173,6 +177,8 @@ function SDESStepper(props: SDESStepperProps) {
             setSecretKey={setKey}
             keyBits={keyBits}
             setKeyBits={setKeyBits}
+            explanationsInitiallyOpen={explanationsInitiallyOpen}
+            setExplanationsInitiallyOpen={setExplanationsInitiallyOpen}
           />
         );
       case 1:
@@ -235,7 +241,11 @@ function SDESStepper(props: SDESStepperProps) {
     <>
       <main className={mainClassName}>
         <Card className={cardClassName}>
-          <CardContent>{getOuterStepContent(activeOuterStep)}</CardContent>
+          <ExplanationsInitiallyOpenContext.Provider
+            value={explanationsInitiallyOpen}
+          >
+            <CardContent>{getOuterStepContent(activeOuterStep)}</CardContent>
+          </ExplanationsInitiallyOpenContext.Provider>
           <CardActions>
             <StepperNavigation
               setActiveStep={setActiveOuterStep}

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
+  FormControlLabel,
   Grid,
   InputAdornment,
+  Switch,
   Tab,
   Tabs,
   TextField,
@@ -25,6 +27,8 @@ interface BeginStepProps {
   setSecretKey: React.Dispatch<React.SetStateAction<string>>;
   keyBits: number[];
   setKeyBits: React.Dispatch<React.SetStateAction<number[]>>;
+  explanationsInitiallyOpen: boolean;
+  setExplanationsInitiallyOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function BeginStep(props: BeginStepProps) {
@@ -39,6 +43,8 @@ function BeginStep(props: BeginStepProps) {
     setSecretKey,
     keyBits,
     setKeyBits,
+    explanationsInitiallyOpen,
+    setExplanationsInitiallyOpen,
   } = props;
 
   const [selectedTab, setSelectedTab] = useState(mode === "encrypt" ? 0 : 1);
@@ -180,6 +186,24 @@ function BeginStep(props: BeginStepProps) {
               label="Bits da chave"
               bits={keyBits}
               labelAbove
+            />
+          </Grid>
+          <Grid item>
+            <FormControlLabel
+              control={
+                <Switch
+                  size="small"
+                  checked={explanationsInitiallyOpen}
+                  onChange={(event) => {
+                    setExplanationsInitiallyOpen(event.target.checked);
+                  }}
+                />
+              }
+              label={
+                <ExplanationText paragraph={false}>
+                  Iniciar regiões de explicação abertas
+                </ExplanationText>
+              }
             />
           </Grid>
         </Grid>
