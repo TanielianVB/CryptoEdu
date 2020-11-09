@@ -54,12 +54,19 @@ function K1Step(props: K1StepProps) {
         input={ls1Bits}
         outputShortLabel={
           <>
-            R<sub>P8</sub>
+            R
+            <sub>
+              P8<sub>LS-1</sub>
+            </sub>
           </>
         }
         outputLabel={
           <>
-            R<sub>P8</sub> = Resultado de P8
+            R
+            <sub>
+              P8<sub>LS-1</sub>
+            </sub>{" "}
+            = Resultado de P8
           </>
         }
         output={k1Bits}
@@ -79,7 +86,10 @@ function K1Step(props: K1StepProps) {
       <BitsField
         label={
           <>
-            K<sub>1</sub> obtida da aplicação de P8 sobre LS-1
+            K<sub>1</sub> = R
+            <sub>
+              P8<sub>LS-1</sub>
+            </sub>
           </>
         }
         bits={k1Bits}

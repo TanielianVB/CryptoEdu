@@ -45,7 +45,7 @@ function LS1Step(props: LS1StepProps) {
             shift={1}
             inputLabel={
               <>
-                Esquerda de R<sub>P10</sub>
+                Esquerda (L) de R<sub>P10</sub>
               </>
             }
             input={Utils.leftHalf(p10Bits)}
@@ -74,7 +74,7 @@ function LS1Step(props: LS1StepProps) {
             shift={1}
             inputLabel={
               <>
-                Direita de R<sub>P10</sub>
+                Direita (R) de R<sub>P10</sub>
               </>
             }
             input={Utils.rightHalf(p10Bits)}

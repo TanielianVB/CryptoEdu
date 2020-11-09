@@ -48,7 +48,7 @@ function K2Step(props: K2StepProps) {
             shift={2}
             inputLabel={
               <>
-                Esquerda de R<sub>LS-1</sub>
+                Esquerda (L) de R<sub>LS-1</sub>
               </>
             }
             input={Utils.leftHalf(ls1Bits)}
@@ -77,7 +77,7 @@ function K2Step(props: K2StepProps) {
             shift={2}
             inputLabel={
               <>
-                Direita de R<sub>LS-1</sub>
+                Direita (R) de R<sub>LS-1</sub>
               </>
             }
             input={Utils.rightHalf(ls1Bits)}
@@ -136,12 +136,19 @@ function K2Step(props: K2StepProps) {
         input={ls2Bits}
         outputShortLabel={
           <>
-            R<sub>P8</sub>
+            R
+            <sub>
+              P8<sub>LS-2</sub>
+            </sub>
           </>
         }
         outputLabel={
           <>
-            R<sub>P8</sub> = Resultado de P8
+            R
+            <sub>
+              P8<sub>LS-2</sub>
+            </sub>{" "}
+            = Resultado de P8
           </>
         }
         output={k2Bits}
@@ -161,7 +168,10 @@ function K2Step(props: K2StepProps) {
       <BitsField
         label={
           <>
-            K<sub>2</sub> obtida da aplicação de P8 sobre LS-2
+            K<sub>2</sub> = R
+            <sub>
+              P8<sub>LS-2</sub>
+            </sub>
           </>
         }
         bits={k2Bits}
