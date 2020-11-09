@@ -19,31 +19,28 @@ function StepperNavigation(props: StepperNavigationProps) {
     <Grid container direction="row" justify={justify} alignItems="flex-end">
       {previousStep !== undefined && (
         <Button
-          size="small"
           startIcon={<NavigateBeforeRoundedIcon />}
           onClick={(event) => {
             setActiveStep(previousStep);
           }}
         >
-          Passo anterior
+          Anterior
         </Button>
       )}
       {nextStep !== undefined && (
         <Button
           variant="contained"
           color="primary"
-          size="large"
           endIcon={<NavigateNextRoundedIcon />}
           onClick={(event) => {
             setActiveStep(nextStep);
           }}
         >
-          Próximo passo
+          Próximo
         </Button>
       )}
       {nextStep === undefined && (
         <Button
-          size="small"
           endIcon={<RotateLeftRoundedIcon />}
           onClick={(event) => {
             setActiveStep(0);

@@ -3,6 +3,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Tooltip,
 } from "@material-ui/core";
 import HelpOutlineRoundedIcon from "@material-ui/icons/HelpOutlineRounded";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
@@ -24,9 +25,13 @@ function StepContentAccordion(props: StepContentAccordionProps) {
   const [expanded, setExpanded] = useState(explanationsInitiallyOpen);
 
   const expandIcon = expanded ? (
-    <ExpandMoreRoundedIcon />
+    <Tooltip title="Fechar explicação">
+      <ExpandMoreRoundedIcon />
+    </Tooltip>
   ) : (
-    <HelpOutlineRoundedIcon />
+    <Tooltip title="Abrir explicação">
+      <HelpOutlineRoundedIcon />
+    </Tooltip>
   );
 
   return (
