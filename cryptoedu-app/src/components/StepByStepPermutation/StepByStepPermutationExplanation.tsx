@@ -36,18 +36,17 @@ function StepByStepPermutationExplanation(
     case "start":
       executionExplanation = (
         <>
-          Inicie a execução da permutação clicando na seta à
-          <Accent> direita</Accent>
+          Inicie a execução da permutação nas setas à <Accent>direita</Accent>.
         </>
       );
       break;
     case "permutation":
       executionExplanation = (
         <>
-          Posição <Accent>{position}</Accent> de{" "}
-          <Relevant>{permutationLabel}</Relevant> indica que a posição que será{" "}
-          utilizada de <Relevant>{inputLabel}</Relevant> é a{" "}
-          <Accent>{inputPosition}</Accent>
+          O valor da posição <Accent>{position}</Accent> de{" "}
+          <Relevant>{permutationLabel}</Relevant> indica qual será a posição{" "}
+          utilizada de <Relevant>{inputLabel}</Relevant>. Será a posição{" "}
+          <Accent>{inputPosition}</Accent>.
         </>
       );
       break;
@@ -58,6 +57,7 @@ function StepByStepPermutationExplanation(
           <Relevant>{inputLabel}</Relevant> possui valor{" "}
           <Accent>{outputValue}</Accent> que será o valor da posição{" "}
           <Accent>{position}</Accent> de <Relevant>{outputShortLabel}</Relevant>
+          .
         </>
       );
       break;
@@ -66,7 +66,7 @@ function StepByStepPermutationExplanation(
         <>
           Posição <Accent>{position}</Accent> de{" "}
           <Relevant>{outputShortLabel}</Relevant> é então{" "}
-          <Accent>{outputValue}</Accent>
+          <Accent>{outputValue}</Accent>.
         </>
       );
       break;
@@ -74,7 +74,7 @@ function StepByStepPermutationExplanation(
       executionExplanation = (
         <>
           <Relevant>{outputLabel}</Relevant> é então{" "}
-          <Accent>{fullOutput.join("")}</Accent>
+          <Accent>{fullOutput.join("")}</Accent>.
         </>
       );
       break;

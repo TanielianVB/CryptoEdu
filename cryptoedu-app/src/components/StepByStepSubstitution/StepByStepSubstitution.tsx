@@ -13,6 +13,7 @@ interface StepByStepSubstitutionProps {
   substitution: number[][][];
   inputLabel: React.ReactNode;
   input: number[];
+  outputShortLabel: React.ReactNode;
   outputLabel: React.ReactNode;
   output: number[];
 }
@@ -35,6 +36,7 @@ function StepByStepSubstitution(props: StepByStepSubstitutionProps) {
     substitution,
     inputLabel,
     input,
+    outputShortLabel,
     outputLabel,
     output,
   } = props;
@@ -208,6 +210,7 @@ function StepByStepSubstitution(props: StepByStepSubstitutionProps) {
             fullOutput={output}
             inputLabel={inputLabel}
             substitutionLabel={substitutionLabel}
+            outputShortLabel={outputShortLabel}
             outputLabel={outputLabel}
           />
         </Grid>

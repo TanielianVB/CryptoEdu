@@ -17,6 +17,7 @@ interface StepByStepSubstitutionExplanationProps {
   fullOutput: number[];
   inputLabel: React.ReactNode;
   substitutionLabel: React.ReactNode;
+  outputShortLabel: React.ReactNode;
   outputLabel: React.ReactNode;
 }
 
@@ -31,6 +32,7 @@ function StepByStepSubstitutionExplanation(
     fullOutput,
     inputLabel,
     substitutionLabel,
+    outputShortLabel,
     outputLabel,
   } = props;
 
@@ -40,8 +42,7 @@ function StepByStepSubstitutionExplanation(
     case "start":
       executionExplanation = (
         <>
-          Inicie a execução da permutação clicando na seta à
-          <Accent> direita</Accent>
+          Inicie a execução da permutação nas setas à <Accent>direita</Accent>.
         </>
       );
       break;
@@ -52,7 +53,7 @@ function StepByStepSubstitutionExplanation(
           <Relevant>{inputLabel}</Relevant> possuem juntas o valor{" "}
           <Accent>{inputValue}</Accent>, o que indica que a linha de{" "}
           <Relevant>{substitutionLabel}</Relevant> que deve ser utilizada é a{" "}
-          <Accent>{row}</Accent>
+          <Accent>{row}</Accent>.
         </>
       );
       break;
@@ -63,7 +64,7 @@ function StepByStepSubstitutionExplanation(
           <Relevant>{inputLabel}</Relevant> possuem juntas o valor{" "}
           <Accent>{inputValue}</Accent>, o que indica que a coluna de{" "}
           <Relevant>{substitutionLabel}</Relevant> que deve ser utilizada é a{" "}
-          <Accent>{col}</Accent>
+          <Accent>{col}</Accent>.
         </>
       );
       break;
@@ -72,7 +73,7 @@ function StepByStepSubstitutionExplanation(
         <>
           A posição que será utilizada de{" "}
           <Relevant>{substitutionLabel}</Relevant> é então{" "}
-          <Accent>{row.toString() + col.toString()}</Accent>
+          <Accent>{row.toString() + col.toString()}</Accent>.
         </>
       );
       break;
@@ -81,7 +82,7 @@ function StepByStepSubstitutionExplanation(
         <>
           O valor da posição <Accent>{row.toString() + col.toString()}</Accent>{" "}
           em <Relevant>{substitutionLabel}</Relevant> será o valor de{" "}
-          <Relevant>{outputLabel}</Relevant>
+          <Relevant>{outputShortLabel}</Relevant>.
         </>
       );
       break;
@@ -89,7 +90,7 @@ function StepByStepSubstitutionExplanation(
       executionExplanation = (
         <>
           <Relevant>{outputLabel}</Relevant> é então{" "}
-          <Accent>{" " + fullOutput.join("")}</Accent>
+          <Accent>{" " + fullOutput.join("")}</Accent>.
         </>
       );
       break;

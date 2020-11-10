@@ -11,8 +11,8 @@ interface StepByStepCircularLeftShiftExplanationProps {
   outputValue: number;
   fullOutput: number[];
   inputLabel: React.ReactNode;
-  outputLabel: React.ReactNode;
   outputShortLabel: React.ReactNode;
+  outputLabel: React.ReactNode;
 }
 
 function StepByStepCircularLeftShiftExplanation(
@@ -26,8 +26,8 @@ function StepByStepCircularLeftShiftExplanation(
     outputValue,
     fullOutput,
     inputLabel,
-    outputLabel,
     outputShortLabel,
+    outputLabel,
   } = props;
 
   let executionExplanation = <></>;
@@ -36,8 +36,7 @@ function StepByStepCircularLeftShiftExplanation(
     case "start":
       executionExplanation = (
         <>
-          Inicie a execução da rotação clicando na seta à{" "}
-          <Accent> direita</Accent>
+          Inicie a execução da rotação nas setas à <Accent>direita</Accent>.
         </>
       );
       break;
@@ -47,8 +46,10 @@ function StepByStepCircularLeftShiftExplanation(
           A posição <Accent>{inputPosition}</Accent> de{" "}
           <Relevant>{inputLabel}</Relevant> possui valor{" "}
           <Accent>{outputValue}</Accent> que será movido para a esquerda{" "}
-          <Accent>{shift}x</Accent>, indo para a posição{" "}
-          <Accent>{position}</Accent> de <Relevant>{outputShortLabel}</Relevant>
+          <Accent>{shift}x</Accent>.{" "}
+          {inputPosition < position ? <>Rotacionando</> : <>Indo</>} para a
+          posição <Accent>{position}</Accent> de{" "}
+          <Relevant>{outputShortLabel}</Relevant>.
         </>
       );
       break;
@@ -57,7 +58,7 @@ function StepByStepCircularLeftShiftExplanation(
         <>
           Posição <Accent>{position}</Accent> de{" "}
           <Relevant>{outputShortLabel}</Relevant> é então{" "}
-          <Accent>{outputValue}</Accent>
+          <Accent>{outputValue}</Accent>.
         </>
       );
       break;
@@ -65,7 +66,7 @@ function StepByStepCircularLeftShiftExplanation(
       executionExplanation = (
         <>
           <Relevant>{outputLabel}</Relevant> é então{" "}
-          <Accent>{fullOutput.join("")}</Accent>
+          <Accent>{fullOutput.join("")}</Accent>.
         </>
       );
       break;

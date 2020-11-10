@@ -30,7 +30,7 @@ function ExecutionExplanationText(props: ExecutionExplanationTextProps) {
     <Typography
       variant="caption"
       display="block"
-      align="justify"
+      align="center"
       className={classes.explanation}
       gutterBottom
     >

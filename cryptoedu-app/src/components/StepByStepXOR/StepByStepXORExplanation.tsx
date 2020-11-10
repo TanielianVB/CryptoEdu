@@ -32,39 +32,35 @@ function StepByStepXORExplanation(props: StepByStepXORExplanationProps) {
     case "start":
       executionExplanation = (
         <>
-          Inicie a execução da rotação clicando na seta à
-          <Accent> direita</Accent>
+          Inicie a execução da rotação nas setas às <Accent>direita</Accent>.
         </>
       );
       break;
     case "input":
       executionExplanation = (
         <>
-          A posição
-          <Accent>{" " + inputPosition + " "}</Accent>
-          de <Relevant>{inputALabel}</Relevant> <Accent>XOR</Accent> A posição
-          <Accent>{" " + inputPosition + " "}</Accent>
-          de <Relevant>{inputBLabel}</Relevant> é o valor da posição
-          <Accent>{" " + inputPosition + " "}</Accent> de{" "}
-          <Relevant>{outputLabel}</Relevant>
+          A posição <Accent>{inputPosition}</Accent> de{" "}
+          <Relevant>{inputALabel}</Relevant> <Accent>XOR</Accent> A posição{" "}
+          <Accent>{inputPosition}</Accent> de <Relevant>{inputBLabel}</Relevant>{" "}
+          é o valor da posição <Accent>{inputPosition}</Accent> de{" "}
+          <Relevant>{outputLabel}</Relevant>.
         </>
       );
       break;
     case "output":
       executionExplanation = (
         <>
-          Posição
-          <Accent>{" " + position + " "}</Accent>
-          de <Relevant>{outputLabel}</Relevant> é então
-          <Accent>{" " + outputValue + " "}</Accent>
+          Posição <Accent>{position}</Accent> de{" "}
+          <Relevant>{outputLabel}</Relevant> é então{" "}
+          <Accent>{outputValue}</Accent>.
         </>
       );
       break;
     case "finish":
       executionExplanation = (
         <>
-          <Relevant>{outputLabel}</Relevant> é então
-          <Accent>{" " + fullOutput.join("")}</Accent>
+          <Relevant>{outputLabel}</Relevant> é então{" "}
+          <Accent>{fullOutput.join("")}</Accent>.
         </>
       );
       break;

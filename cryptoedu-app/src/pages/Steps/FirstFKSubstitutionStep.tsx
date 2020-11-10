@@ -63,6 +63,11 @@ function FirstFKSubstitutionStep(props: FirstFKSubstitutionStepProps) {
               </>
             }
             input={Utils.leftHalf(epXorKeyBits)}
+            outputShortLabel={
+              <>
+                R<sub>S0</sub>
+              </>
+            }
             outputLabel={
               <>
                 R<sub>S0</sub> = Resultado de S0 sobre a esquerda
@@ -81,6 +86,11 @@ function FirstFKSubstitutionStep(props: FirstFKSubstitutionStepProps) {
               </>
             }
             input={Utils.rightHalf(epXorKeyBits)}
+            outputShortLabel={
+              <>
+                R<sub>S1</sub>
+              </>
+            }
             outputLabel={
               <>
                 R<sub>S1</sub> = Resultado de S1 sobre a direita
