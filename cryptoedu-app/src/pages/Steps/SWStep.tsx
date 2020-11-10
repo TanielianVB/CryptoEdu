@@ -36,15 +36,11 @@ function SWStep(props: SWStepProps) {
         rightLabel="Direita"
         bits={firstFKBits}
       />
-      <SplitBitsField
-        leftLabel="Nova esquerda (antiga direita)"
-        rightLabel="Nova direita (antiga esquerda)"
-        bits={swBits}
-      />
+      <SplitBitsField leftLabel="Direita" rightLabel="Esquerda" bits={swBits} />
       <BitsField
         label={
           <>
-            R<sub>SW</sub> = Resultado de SW
+            R<sub>SW</sub> = Resultado de SW = Direita + Equerda
           </>
         }
         bits={swBits}

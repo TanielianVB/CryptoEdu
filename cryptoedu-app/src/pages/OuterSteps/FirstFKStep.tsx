@@ -67,10 +67,10 @@ function FirstFKStep(props: FirstFKStepProps) {
       <SplitBitsField
         leftLabel={
           <>
-            R<sub>P4</sub> &oplus; L de IP
+            R<sub>&oplus;</sub> = R<sub>P4</sub> &oplus; L (de IP)
           </>
         }
-        rightLabel="R de IP"
+        rightLabel="R (de IP)"
         bits={firstFKBits}
       />
       <BitsField
@@ -87,7 +87,7 @@ function FirstFKStep(props: FirstFKStepProps) {
             <sub>
               K<sub>{keyNumber}</sub>
             </sub>{" "}
-            = (R<sub>P4</sub> &oplus; L de IP) + R de IP
+            = R<sub>&oplus;</sub> + R (de IP)
           </>
         }
         bits={firstFKBits}

@@ -80,7 +80,7 @@ function SecondFKEPStep(props: SecondFKEPStepProps) {
         permutation={SDES.getEPPositions()}
         inputLabel={
           <>
-            R (direita) de R<sub>SW</sub>
+            R (direita de R<sub>SW</sub>)
           </>
         }
         input={swRBits}
@@ -96,7 +96,7 @@ function SecondFKEPStep(props: SecondFKEPStepProps) {
         }
         output={epBits}
       />
-      <StepContentAccordion title="XOR - OU exclusivo">
+      <StepContentAccordion title="XOR - OU exclusivo - &oplus;">
         <ExplanationText>
           Com a saída da função E/P por sua vez será feito um OU exclusivo com a
           chave K<sub>{keyNumber}</sub> já obtida. Como estamos{" "}
@@ -106,7 +106,11 @@ function SecondFKEPStep(props: SecondFKEPStepProps) {
         </ExplanationText>
       </StepContentAccordion>
       <StepByStepXOR
-        inputALabel="R permutada"
+        inputALabel={
+          <>
+            R<sub>E/P</sub>
+          </>
+        }
         inputA={epBits}
         inputBLabel={
           <>
@@ -116,7 +120,8 @@ function SecondFKEPStep(props: SecondFKEPStepProps) {
         inputB={keyBits}
         outputLabel={
           <>
-            R permutada &oplus; K<sub>{keyNumber}</sub>
+            R<sub>&oplus;</sub> = R<sub>E/P</sub> &oplus; K
+            <sub>{keyNumber}</sub>
           </>
         }
         output={epXorKeyBits}

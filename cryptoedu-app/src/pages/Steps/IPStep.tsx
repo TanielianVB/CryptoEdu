@@ -54,7 +54,7 @@ function IPStep(props: IPStepProps) {
         <ExplanationText>
           A saída da função de permutação inicial IP é então divida na metade.
           São elas L (left - esquerda) e R (right - direita). Estas serão
-          utilizadas como parâmetros que serão passados para a f <sub>K</sub>.
+          utilizadas como parâmetros que serão passados para a f<sub>K</sub>.
         </ExplanationText>
       </StepContentAccordion>
       <SplitBitsField

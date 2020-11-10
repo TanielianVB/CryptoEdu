@@ -78,7 +78,11 @@ function FirstFKEPStep(props: FirstFKEPStepProps) {
       <StepByStepPermutation
         permutationLabel="E/P"
         permutation={SDES.getEPPositions()}
-        inputLabel="R (right)"
+        inputLabel={
+          <>
+            R (direita de R<sub>IP</sub>)
+          </>
+        }
         input={ipRBits}
         outputShortLabel={
           <>
@@ -102,7 +106,11 @@ function FirstFKEPStep(props: FirstFKEPStepProps) {
         </ExplanationText>
       </StepContentAccordion>
       <StepByStepXOR
-        inputALabel="R permutada"
+        inputALabel={
+          <>
+            R<sub>E/P</sub>
+          </>
+        }
         inputA={epBits}
         inputBLabel={
           <>
@@ -112,7 +120,8 @@ function FirstFKEPStep(props: FirstFKEPStepProps) {
         inputB={keyBits}
         outputLabel={
           <>
-            R permutada &oplus; K<sub>{keyNumber}</sub>
+            R<sub>&oplus;</sub> = R<sub>E/P</sub> &oplus; K
+            <sub>{keyNumber}</sub>
           </>
         }
         output={epXorKeyBits}

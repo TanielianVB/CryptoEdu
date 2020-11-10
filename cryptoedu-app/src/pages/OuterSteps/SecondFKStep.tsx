@@ -67,10 +67,10 @@ function SecondFKStep(props: SecondFKStepProps) {
       <SplitBitsField
         leftLabel={
           <>
-            R<sub>P4</sub> &oplus; L de SW
+            R<sub>&oplus;</sub> = R<sub>P4</sub> &oplus; L (de SW)
           </>
         }
-        rightLabel="R de SW"
+        rightLabel="R (de SW)"
         bits={secondFKBits}
       />
       <BitsField
@@ -87,7 +87,7 @@ function SecondFKStep(props: SecondFKStepProps) {
             <sub>
               K<sub>{keyNumber}</sub>
             </sub>{" "}
-            = (R<sub>P4</sub> &oplus; L de SW) + R de SW
+            = R<sub>&oplus;</sub> + R (de SW)
           </>
         }
         bits={secondFKBits}

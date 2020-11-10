@@ -25,10 +25,26 @@ function SecondFKSubstitutionStep(props: SecondFKSubstitutionStepProps) {
     <>
       <StepContentAccordion title="S0 & S2 - Substituições S0 e S2">
         <ExplanationText>...</ExplanationText>
-        <BitsField label="Resultado do XOR" bits={epXorKeyBits} labelAbove />
+        <BitsField
+          label={
+            <>
+              R<sub>&oplus;</sub>
+            </>
+          }
+          bits={epXorKeyBits}
+          labelAbove
+        />
         <SplitBitsField
-          leftLabel="Esquerda do resultado do XOR"
-          rightLabel="Direita do resultado do XOR"
+          leftLabel={
+            <>
+              Esquerda (L) de R<sub>&oplus;</sub>
+            </>
+          }
+          rightLabel={
+            <>
+              Direita (R) de R<sub>&oplus;</sub>
+            </>
+          }
           bits={epXorKeyBits}
         />
         <ExplanationText>
@@ -39,32 +55,61 @@ function SecondFKSubstitutionStep(props: SecondFKSubstitutionStepProps) {
       <Grid container direction="row" justify="center" spacing={3}>
         <Grid item md={6}>
           <StepByStepSubstitution
-            substitutionLabel="Matriz de substituição S0"
+            substitutionLabel="S0"
             substitution={SDES.getSubstitution0Matrix()}
-            inputLabel="Esquerda do XOR"
+            inputLabel={
+              <>
+                Esquerda (L) de R<sub>&oplus;</sub>
+              </>
+            }
             input={Utils.leftHalf(epXorKeyBits)}
-            outputLabel="Esquerda do XOR substituída"
+            outputLabel={
+              <>
+                R<sub>S0</sub> = Resultado de S0 sobre a esquerda
+              </>
+            }
             output={Utils.leftHalf(subBits)}
           />
         </Grid>
         <Grid item md={6}>
           <StepByStepSubstitution
-            substitutionLabel="Matriz de substituição S2"
+            substitutionLabel="S1"
             substitution={SDES.getSubstitution1Matrix()}
-            inputLabel="Direita do XOR"
+            inputLabel={
+              <>
+                Direita (R) de R<sub>&oplus;</sub>
+              </>
+            }
             input={Utils.rightHalf(epXorKeyBits)}
-            outputLabel="Direita do XOR substituída"
+            outputLabel={
+              <>
+                R<sub>S1</sub> = Resultado de S1 sobre a direita
+              </>
+            }
             output={Utils.rightHalf(subBits)}
           />
         </Grid>
       </Grid>
+      <BitsField
+        label={
+          <>
+            R<sub>S</sub> = R<sub>S0</sub> + R<sub>S1</sub>
+          </>
+        }
+        bits={subBits}
+        labelAbove
+      />
       <StepContentAccordion title="P4 - permutação de 4 bits">
         <ExplanationText>...</ExplanationText>
       </StepContentAccordion>
       <StepByStepPermutation
         permutationLabel="P4"
         permutation={SDES.getP4Positions()}
-        inputLabel="Resultado das Substituições"
+        inputLabel={
+          <>
+            R<sub>S</sub>
+          </>
+        }
         input={subBits}
         outputShortLabel={
           <>
@@ -78,7 +123,7 @@ function SecondFKSubstitutionStep(props: SecondFKSubstitutionStepProps) {
         }
         output={p4Bits}
       />
-      <StepContentAccordion title="XOR - OU exclusivo">
+      <StepContentAccordion title="XOR - OU exclusivo - &oplus;">
         <ExplanationText>
           Com a saída da função P4 por sua vez será feito um OU exclusivo com a
           chave a metade esquerda (L) do resultado da Permutação Inicial (IP).
@@ -91,11 +136,11 @@ function SecondFKSubstitutionStep(props: SecondFKSubstitutionStepProps) {
           </>
         }
         inputA={p4Bits}
-        inputBLabel="L de SW"
+        inputBLabel="L (de SW)"
         inputB={swLBits}
         outputLabel={
           <>
-            R<sub>P4</sub> &oplus; L de SW
+            R<sub>&oplus;</sub> = R<sub>P4</sub> &oplus; L (de SW)
           </>
         }
         output={p4XorSwLBits}
