@@ -37,7 +37,7 @@ function AppTopBar() {
             <IconButton
               color="inherit"
               href="https://github.com/TanielianVB/CryptoEdu"
-              target="_blank"
+              target="CryptoEduGitHub"
             >
               <GitHubIcon />
             </IconButton>
@@ -46,19 +46,24 @@ function AppTopBar() {
             <IconButton
               color="inherit"
               href="https://docs.google.com/forms/d/e/1FAIpQLSd4WZFS6CSGD95991vkVQdrcDK-c01BnqNNBQV5Z86E2yMbvw/viewform?usp=sf_link"
-              target="_blank"
+              target="CryptoEduGoogleForms"
             >
               <ListRoundedIcon />
             </IconButton>
           </Tooltip>
         </div>
-        <div>
-          <Tooltip
-            title="Simulador de Algoritmos de Criptografia com Finalidade
-              Educacional"
-          >
-            <Typography variant="h6">CryptoEdu</Typography>
-          </Tooltip>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h6">CryptoEdu</Typography>
+          <Typography variant="caption">
+            Simulador de Algoritmos de Criptografia com Finalidade Educacional
+          </Typography>
         </div>
         <div>
           <Tooltip title="Trocar o algorítimo?">
