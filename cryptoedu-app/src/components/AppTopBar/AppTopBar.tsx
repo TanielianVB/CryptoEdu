@@ -60,8 +60,10 @@ function AppTopBar() {
             alignItems: "center",
           }}
         >
-          <Typography variant="h6">CryptoEdu</Typography>
-          <Typography variant="caption">
+          <Typography variant="h6" align="center">
+            CryptoEdu
+          </Typography>
+          <Typography variant="caption" align="center">
             Simulador de Algoritmos de Criptografia com Finalidade Educacional
           </Typography>
         </div>

@@ -9,6 +9,7 @@ import StepByStepSubstitution from "../../components/StepByStepSubstitution/Step
 import StepByStepPermutation from "../../components/StepByStepPermutation/StepByStepPermutation";
 import StepByStepXOR from "../../components/StepByStepXOR/StepByStepXOR";
 import Utils from "../../utils/Utils";
+import MathImg from "../../components/MathImg/MathImg";
 
 interface FirstFKSubstitutionStepProps {
   epXorKeyBits: number[];
@@ -110,7 +111,29 @@ function FirstFKSubstitutionStep(props: FirstFKSubstitutionStepProps) {
         labelAbove
       />
       <StepContentAccordion title="P4 - permutação de 4 bits">
-        <ExplanationText>...</ExplanationText>
+        <ExplanationText>
+          O próximo passo é uma permutação a ser aplicada sobre R<sub>S</sub>{" "}
+          obtido no passo anterior. A permutação ocorrerá através da aplicação
+          de uma função de permutação. A função de permutação P4 é definida por:
+        </ExplanationText>
+        {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
+            P4(k_{1}, k_{2}, k_{3}, k_{4}) = (k_{2}, k_{4}, k_{3}, k_{1}) */}
+        <MathImg src="sdes\p4.svg" alt="P4" />
+        <ExplanationText>
+          A permutação nada mais é do que uma reorganiação dos bits passados por
+          parâmetro para a função. A função acima deve ser interpretada da
+          seguinte forma: P4 recebe por parâmetro 4 bits K ordenados das
+          posições 1 à 4 e estes serão reordenados na seguinte ordem:
+        </ExplanationText>
+        <BitsField label="P4" bits={SDES.getP4Positions()} />
+        <ExplanationText>
+          Lê-se: Na 1ª posição ficará o bit que estava na 2ª posição, na 2ª
+          posição ficará o bit que estava na 4ª posição, na 3ª posição ficará o
+          bit que estava na 3ª posição, e assim consecutivamente...
+        </ExplanationText>
+        <ExplanationText>
+          Sendo assim, aplicando a função P4 sobre a R<sub>S</sub> temos:
+        </ExplanationText>
       </StepContentAccordion>
       <StepByStepPermutation
         permutationLabel="P4"

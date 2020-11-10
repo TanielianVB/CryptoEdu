@@ -87,8 +87,8 @@ function BeginStep(props: BeginStepProps) {
           Nesta execução (que possui objetivo educacional) podemos escolher se
           desejamos criptografar ou descriptografar a mensagem e informar uma
           mensagem e uma chave que irão ser utilizadas durante a execução do
-          algoritmo para assim melhor visualizarmos como a ocorre o processo
-          quando os valores desejados são utilizados.
+          algoritmo para que assim consiguamos melhor visualizar como a ocorre o
+          processo quando os valores colocados são utilizados.
         </ExplanationText>
       </StepContentAccordion>
       <Tabs

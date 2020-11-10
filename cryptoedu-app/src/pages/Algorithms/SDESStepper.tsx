@@ -184,7 +184,7 @@ function SDESStepper(props: SDESStepperProps) {
       case 1:
         return <KeysStep keyBits={keyBits} k1Bits={k1Bits} k2Bits={k2Bits} />;
       case 2:
-        return <IPStep messageBits={messageBits} ipBits={ipBits} />;
+        return <IPStep mode={mode} messageBits={messageBits} ipBits={ipBits} />;
       case 3:
         return (
           <FirstFKStep
@@ -220,7 +220,13 @@ function SDESStepper(props: SDESStepperProps) {
           />
         );
       case 6:
-        return <InverseIPStep secondFKBits={secondFKBits} iipBits={iipBits} />;
+        return (
+          <InverseIPStep
+            mode={mode}
+            secondFKBits={secondFKBits}
+            iipBits={iipBits}
+          />
+        );
       case 7:
         return (
           <EndStep

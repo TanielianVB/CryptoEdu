@@ -55,24 +55,29 @@ function FirstFKEPStep(props: FirstFKEPStepProps) {
         <ExplanationText>
           Iniciamos então pelo primeiro passo de F, que é a aplicação da função
           E/P (permutação de expansão), que é assim chamada pois recebe 4 bits e
-          retorna 8 bits. Esta é definida por:
+          retorna 8 bits. A função de permutação E/P é definida por:
         </ExplanationText>
         {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
             EP(k_{1}, k_{2}, k_{3}, k_{4}) = (k_{4}, k_{1}, k_{2}, k_{3}, k_{2}, k_{3}, k_{4}, k_{1}) */}
         <MathImg src="sdes\ep.svg" alt="ep" />
         <ExplanationText>
-          Pode-se observar que, ao contrário da função F8, esta função retorna
-          mais bits do que esta recebeu por parâmetro.
-        </ExplanationText>
-        <ExplanationText>
-          A função E/P recebe R (right) que já foi obtida no passo anterior. É a
-          metade direita do resultado da permutação inicial. Como já aprendemos
-          a interpretar uma função de permutação, extraímos da função acima que
-          os 4 bits de R devem ser reordenados nas seguintes posições:
+          A permutação nada mais é do que uma reorganiação dos bits passados por
+          parâmetro para a função. A função acima deve ser interpretada da
+          seguinte forma: E/P recebe por parâmetro 4 bits K ordenados das
+          posições 1 à 4 e estes serão reordenados na seguinte ordem:
         </ExplanationText>
         <BitsField label="E/P" bits={SDES.getEPPositions()} />
         <ExplanationText>
-          Sendo assim, aplicando a função E/P sobre R temos:
+          Lê-se: Na 1ª posição ficará o bit que estava na 4ª posição, na 2ª
+          posição ficará o bit que estava na 1ª posição, na 3ª posição ficará o
+          bit que estava na 2ª posição, e assim consecutivamente...
+        </ExplanationText>
+        <ExplanationText>
+          É interessante observar que, ao contrário da função F8, a função E/P
+          retorna mais bits do que recebeu por parâmetro. A função E/P recebe R
+          (right) que já foi obtida no passo anterior. É a metade direita do
+          resultado da permutação inicial (R<sub>IP</sub>). Sendo assim,
+          aplicando a função E/P sobre R temos:
         </ExplanationText>
       </StepContentAccordion>
       <StepByStepPermutation

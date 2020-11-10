@@ -8,6 +8,7 @@ import StepContentAccordion from "../../components/StepContentAccordion/StepCont
 import SplitBitsField from "../../components/SplitBitsField/SplitBitsField";
 import StepByStepCircularLeftShift from "../../components/StepByStepCircularLeftShift/StepByStepCircularLeftShift";
 import Utils from "../../utils/Utils";
+import MathImg from "../../components/MathImg/MathImg";
 
 interface K2StepProps {
   ls1Bits: number[];
@@ -121,8 +122,30 @@ function K2Step(props: K2StepProps) {
       />
       <StepContentAccordion title="P8 - Permutação de 8 bits">
         <ExplanationText>
-          Finalmente, se aplica P8 sobre a junção das metades alteradas pela
-          rotação LS-2.
+          O próximo passo é uma permutação a ser aplicada sobre R<sub>LS-2</sub>{" "}
+          obtido no passo anterior. A permutação ocorrerá através da aplicação
+          de uma função de permutação. A função de permutação P8 é definida por:
+        </ExplanationText>
+        {/* Generated using https://www.codecogs.com/latex/eqneditor.php with the following expression:
+            P8(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{6}, k_{3}, k_{7}, k_{4}, k_{8}, k_{5}, k_{10}, k_{9}) */}
+        <MathImg src="sdes\p8.svg" alt="P8" />
+        <ExplanationText>
+          A permutação nada mais é do que uma reorganiação dos bits passados por
+          parâmetro para a função. A função acima deve ser interpretada da
+          seguinte forma: P8 recebe por parâmetro 10 bits K ordenados das
+          posições 1 à 10 e estes serão reordenados na seguinte ordem:
+        </ExplanationText>
+        <BitsField label="P8" bits={SDES.getP8Positions()} />
+        <ExplanationText>
+          Lê-se: Na 1ª posição ficará o bit que estava na 6ª posição, na 2ª
+          posição ficará o bit que estava na 3ª posição, na 3ª posição ficará o
+          bit que estava na 7ª posição, e assim consecutivamente...
+        </ExplanationText>
+        <ExplanationText>
+          É interessante observar que, diferente da função de permutação P10,
+          essa função de permutação P8 irá gerar somente 8 bits no seu
+          resultado. Sendo assim, aplicando a função P8 sobre R<sub>LS-2</sub>{" "}
+          temos:
         </ExplanationText>
       </StepContentAccordion>
       <StepByStepPermutation
