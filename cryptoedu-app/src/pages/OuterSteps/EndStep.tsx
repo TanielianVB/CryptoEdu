@@ -46,7 +46,7 @@ function EndStep(props: EndStepProps) {
             O Código fonte desse simulador está disponível no GitHub:
           </ExplanationText>
           <ExplanationText>
-            <Tooltip title="Pesquisa de utilização do simulador">
+            <Tooltip title="CryptoEdu GitHub">
               <Button
                 variant="contained"
                 startIcon={<GitHubIcon />}
