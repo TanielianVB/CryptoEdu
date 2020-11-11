@@ -148,7 +148,7 @@ function K2Step(props: K2StepProps) {
             P8(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}, k_{9}, k_{10}) = (k_{6}, k_{3}, k_{7}, k_{4}, k_{8}, k_{5}, k_{10}, k_{9}) */}
         <MathImg src="sdes\p8.svg" alt="P8" />
         <ExplanationText>
-          A permutação nada mais é do que uma reorganiação dos bits passados por
+          A permutação nada mais é do que uma reorganização dos bits passados por
           parâmetro para a função. A função acima deve ser interpretada da
           seguinte forma: P8 recebe por parâmetro 10 bits K ordenados das
           posições 1 à 10 e estes serão reordenados na seguinte ordem:

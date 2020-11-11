@@ -139,7 +139,7 @@ function SecondFKSubstitutionStep(props: SecondFKSubstitutionStepProps) {
             P4(k_{1}, k_{2}, k_{3}, k_{4}) = (k_{2}, k_{4}, k_{3}, k_{1}) */}
         <MathImg src="sdes\p4.svg" alt="P4" />
         <ExplanationText>
-          A permutação nada mais é do que uma reorganiação dos bits passados por
+          A permutação nada mais é do que uma reorganização dos bits passados por
           parâmetro para a função. A função acima deve ser interpretada da
           seguinte forma: P4 recebe por parâmetro 4 bits K ordenados das
           posições 1 à 4 e estes serão reordenados na seguinte ordem:

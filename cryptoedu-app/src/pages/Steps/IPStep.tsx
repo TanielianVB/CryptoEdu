@@ -35,7 +35,7 @@ function IPStep(props: IPStepProps) {
             IP(k_{1}, k_{2}, k_{3}, k_{4}, k_{5}, k_{6}, k_{7},k_{8}) = (k_{2}, k_{6}, k_{3}, k_{1}, k_{4}, k_{8}, k_{5}, k_{7}) */}
         <MathImg src="sdes\ip.svg" alt="IP" />
         <ExplanationText>
-          A permutação nada mais é do que uma reorganiação dos bits passados por
+          A permutação nada mais é do que uma reorganização dos bits passados por
           parâmetro para a função. A função acima deve ser interpretada da
           seguinte forma: IP recebe por parâmetro 8 bits K ordenados das
           posições 1 à 8 e estes serão reordenados na seguinte ordem:
