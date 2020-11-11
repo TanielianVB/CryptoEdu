@@ -62,7 +62,14 @@ function SecondFKStep(props: SecondFKStepProps) {
           </>
         }
       >
-        <ExplanationText>...</ExplanationText>
+        <ExplanationText>
+          O resultado da função f
+          <sub>
+            K<sub>{keyNumber}</sub>
+          </sub>{" "}
+          será simplesmente a junção do R<sub>&oplus;</sub> obtido no passo
+          anterior com R (de SW) obtido na troca. Sendo assim, temos:
+        </ExplanationText>
       </StepContentAccordion>
       <SplitBitsField
         leftLabel={

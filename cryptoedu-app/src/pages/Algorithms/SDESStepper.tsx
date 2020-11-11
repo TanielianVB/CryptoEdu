@@ -29,9 +29,7 @@ interface SDESStepperProps {
 
 const getOuterSteps = (mode: "encrypt" | "decrypt"): React.ReactNode[] => [
   "Inicio",
-  <>
-    K<sub>1</sub> & K<sub>2</sub>
-  </>,
+  "Keys",
   "IP",
   <>
     f

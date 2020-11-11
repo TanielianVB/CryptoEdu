@@ -202,8 +202,8 @@ function K2Step(props: K2StepProps) {
         }
       >
         <ExplanationText>
-          O resultado da aplicação da função de permutação P8 será a nossa
-          segunda chave K<sub>2</sub>.
+          O resultado da aplicação da função de permutação P8 sobre R
+          <sub>LS-2</sub> será a segunda chave K<sub>2</sub>.
         </ExplanationText>
       </StepContentAccordion>
       <BitsField

@@ -80,8 +80,8 @@ function K1Step(props: K1StepProps) {
         }
       >
         <ExplanationText>
-          O resultado da aplicação da função de permutação P8 será a nossa
-          primeira chave K<sub>1</sub>.
+          O resultado da aplicação da função de permutação P8 sobre R
+          <sub>LS-1</sub> será a primeira chave K<sub>1</sub>.
         </ExplanationText>
       </StepContentAccordion>
       <BitsField

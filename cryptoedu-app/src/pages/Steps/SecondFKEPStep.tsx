@@ -46,9 +46,8 @@ function SecondFKEPStep(props: SecondFKEPStepProps) {
         <MathImg src="sdes\fk.svg" alt="fk" />
         <ExplanationText>
           A função f<sub>K</sub> se utiliza da função F que por sua vez é
-          definida por uma sequencia de passos. Apesar de parecer complicado
-          vamos executar da função mais interna até a mais externa e compreender
-          cada parte assim como viemos fazendo até o momento.
+          definida por uma sequencia de passos. Vamos executar iniciando da
+          função mais interna até a mais externa e analisar cada parte.
         </ExplanationText>
       </StepContentAccordion>
       <StepContentAccordion title="E/P - Permutação de Expansão">
@@ -103,11 +102,11 @@ function SecondFKEPStep(props: SecondFKEPStepProps) {
       />
       <StepContentAccordion title="XOR - OU exclusivo - &oplus;">
         <ExplanationText>
-          Com a saída da função E/P por sua vez será feito um OU exclusivo com a
-          chave K<sub>{keyNumber}</sub> já obtida. Como estamos{" "}
-          {mode === "encrypt" ? "criptografando" : "descriptografando"}, a
-          segunda execução da função f<sub>K</sub> deverá se utilizar da chave K
-          <sub>{keyNumber}</sub>.
+          Com o resultado da permutação de expansão (R<sub>E/P</sub>) será feito
+          um OU exclusivo com a chave K<sub>{keyNumber}</sub> já obtida. Como
+          estamos {mode === "encrypt" ? "criptografando" : "descriptografando"},
+          a primeira execução da função f<sub>K</sub> deverá se utilizar da
+          chave K<sub>{keyNumber}</sub>.
         </ExplanationText>
       </StepContentAccordion>
       <StepByStepXOR

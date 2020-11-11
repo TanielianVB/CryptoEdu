@@ -25,7 +25,12 @@ function FirstFKSubstitutionStep(props: FirstFKSubstitutionStepProps) {
   return (
     <>
       <StepContentAccordion title="S0 & S1 - Substituições S0 e S1">
-        <ExplanationText>...</ExplanationText>
+        <ExplanationText>
+          O próximo passo é a substituição de R<sub>&oplus;</sub>, que ocorre
+          separadamente em cada uma das metades de R<sub>&oplus;</sub> que foi
+          obtido no passo anterior. Então o primeiro passo dessa etapa é dividir
+          R<sub>&oplus;</sub> em 2 metades:
+        </ExplanationText>
         <BitsField
           label={
             <>
@@ -49,8 +54,22 @@ function FirstFKSubstitutionStep(props: FirstFKSubstitutionStepProps) {
           bits={epXorKeyBits}
         />
         <ExplanationText>
-          A função de substituição S0 é na realidade uma matrix com pares de
-          bits...
+          O próximo passo é a substituição das metades. A substituição usa uma
+          matriz de substituição para gerar os bits de saída. A substituição
+          contém 3 passos. 1º: Identificação da linha da matriz que deve ser
+          utilizada.; 2º: Identificação da coluna da matriz que deve ser
+          utilizada.; 3º: Identificação da posição exata que conterá os bits de
+          saída.
+        </ExplanationText>
+        <ExplanationText>
+          A metade esquerda será substituida utilizando a matriz de substituição
+          S0. A metade direita será substituida utilizando a matriz de
+          substituição S1. O resultado da substituição (R<sub>S</sub>) será a
+          junção dos bits da esquerda com os bits da direita após a substituição
+          idenpendente das metades.
+        </ExplanationText>
+        <ExplanationText>
+          Aplicando as substituições nas metades de R<sub>&oplus;</sub> temos:
         </ExplanationText>
       </StepContentAccordion>
       <Grid container direction="row" justify="center" spacing={3}>
@@ -158,8 +177,9 @@ function FirstFKSubstitutionStep(props: FirstFKSubstitutionStepProps) {
       />
       <StepContentAccordion title="XOR - OU exclusivo - &oplus;">
         <ExplanationText>
-          Com a saída da função P4 por sua vez será feito um OU exclusivo com a
-          chave a metade esquerda (L) do resultado da Permutação Inicial (IP).
+          Com o resultado da permutação P4 (R<sub>P4</sub>) será feito um OU
+          exclusivo com a metade esquerda (L) do resultado da Permutação Inicial
+          (IP) já obtido.
         </ExplanationText>
       </StepContentAccordion>
       <StepByStepXOR
