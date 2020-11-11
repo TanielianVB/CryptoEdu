@@ -19,21 +19,39 @@ function LS1Step(props: LS1StepProps) {
     <>
       <StepContentAccordion title="LS-1 - Circular Left Shift de 1 posição">
         <ExplanationText>
-          O próximo passo é a rotação de P10, que ocorre em cada uma das metades
-          de P10 obtida no passo anterior. Então o primeiro passo dessa etapa é
-          dividir P10 em 2 metades:
+          O próximo passo é a rotação circular para a esquerda de R
+          <sub>P10</sub>, que ocorre separadamente em cada uma das metades de R
+          <sub>P10</sub> que foi obtido no passo anterior. Então o primeiro
+          passo dessa etapa é dividir R<sub>P10</sub> em 2 metades:
         </ExplanationText>
-        <BitsField label="Chave após P10" bits={p10Bits} labelAbove />
+        <BitsField
+          label={
+            <>
+              R<sub>P10</sub>
+            </>
+          }
+          bits={p10Bits}
+          labelAbove
+        />
         <SplitBitsField
-          leftLabel="Esquerda de P10"
-          rightLabel="Direita de P10"
+          leftLabel={
+            <>
+              Esquerda (L) de R<sub>P10</sub>
+            </>
+          }
+          rightLabel={
+            <>
+              Direita (R) de R<sub>P10</sub>
+            </>
+          }
           bits={p10Bits}
         />
         <ExplanationText>
           O próximo passo é a rotação das metades. A rotação nada mais é do que
           a movimentação de todos os bits. No caso do S-DES essa rotação inicial
-          será de 1 posição para esquerda, circular left shift (LS-1). O bit na
-          primeira posição irá então para a última posição.
+          será de 1 posição para esquerda, circular left shift 1 (LS-1). O bit
+          que está na primeira posição, por não ter como se mover para a
+          esquerda, irá então para a última posição.
         </ExplanationText>
         <ExplanationText>
           Aplicando a rotação LS-1 nas metades de R<sub>P10</sub> temos:

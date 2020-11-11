@@ -23,24 +23,42 @@ function K2Step(props: K2StepProps) {
     <>
       <StepContentAccordion title="LS-2 - Circular Left Shift de 2 posições">
         <ExplanationText>
-          Munidos do conhecimento obtido até o momento podemos enfim obter a
-          segunda chave (K<sub>2</sub>) que será utilizada, juntamente com K
-          <sub>1</sub>, durante o processo de criptografia e descriptografia.
+          O próximo passo é a rotação circular para a esquerda de R
+          <sub>LS-1</sub>, que ocorre separadamente em cada uma das metades de R
+          <sub>LS-1</sub> que foi obtido anteriormente. Então o primeiro passo
+          dessa etapa é dividir R<sub>LS-1</sub> em 2 metades:
         </ExplanationText>
-        <ExplanationText>
-          A segunda chave (K<sub>2</sub>) será obtida através da repetição de
-          alguns passos agora já conhecidos por nós. Primeiramente, divide-se
-          LS-1 em duas metades:
-        </ExplanationText>
-        <BitsField label="LS-1" bits={ls1Bits} labelAbove />
+        <BitsField
+          label={
+            <>
+              R<sub>LS-1</sub>
+            </>
+          }
+          bits={ls1Bits}
+          labelAbove
+        />
         <SplitBitsField
-          leftLabel="Esquerda de LS-1"
-          rightLabel="Direita de LS-1"
+          leftLabel={
+            <>
+              Esquerda (L) de R<sub>LS-1</sub>
+            </>
+          }
+          rightLabel={
+            <>
+              Direita (R) de R<sub>LS-1</sub>
+            </>
+          }
           bits={ls1Bits}
         />
         <ExplanationText>
-          Aplica-se então a rotação de 2 posições para esquerda, circular left
-          shift (LS-2), nas metades de LS-1:
+          O próximo passo é a rotação das metades. A rotação nada mais é do que
+          a movimentação de todos os bits. No caso do S-DES a segunda rotação
+          será de 2 posições para esquerda, circular left shift 2 (LS-2). Os
+          bits que estão no inicio, por não ter como se mover para a esquerda,
+          irão então para as últimas posições.
+        </ExplanationText>
+        <ExplanationText>
+          Aplicando a rotação LS-2 nas metades de R<sub>LS-1</sub> temos:
         </ExplanationText>
       </StepContentAccordion>
       <Grid container direction="row" justify="center" spacing={3}>
