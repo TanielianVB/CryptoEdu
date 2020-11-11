@@ -79,15 +79,15 @@ function BeginStep(props: BeginStepProps) {
       <StepContentAccordion title="S-DES - Simplified Data Encryption Standard">
         <ExplanationText>
           O S-DES é uma versão simplificada do algorítimo DES (Data Encryption
-          Standard). Este se utiliza de uma chave de 10 bits que deve ser
+          Standard). Aquele se utiliza de uma chave de 10 bits que deve ser
           compartilhada entre o emissor e o receptor da mensagem para que a
           mensagem possa ser criptografada e descriptografada.
         </ExplanationText>
         <ExplanationText>
-          Nesta execução (que possui objetivo educacional) podemos escolher se
+          Nesta execução (que possui objetivo educacional), podemos escolher se
           desejamos criptografar ou descriptografar a mensagem e informar uma
           mensagem e uma chave que irão ser utilizadas durante a execução do
-          algoritmo para que assim consiguamos melhor visualizar como a ocorre o
+          algoritmo para que, assim, consiguamos melhor visualizar como ocorre o
           processo quando os valores colocados são utilizados.
         </ExplanationText>
       </StepContentAccordion>

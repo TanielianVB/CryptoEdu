@@ -20,7 +20,7 @@ function EndStep(props: EndStepProps) {
 
   return (
     <>
-      <StepContentAccordion title={<>Resultado da {operation} SDES</>}>
+      <StepContentAccordion title={<>Resultado da {operation} S-DES</>}>
         <ExplanationText>
           Com o resultado do passo IP<sup>-1</sup> (R
           <sub>
@@ -62,7 +62,7 @@ function EndStep(props: EndStepProps) {
       </StepContentAccordion>
       <Grid container direction="column" justify="center" alignItems="center">
         <ExplanationText>
-          Peço, encarecidamente, que responda um questionário relativo à
+          Peço, encarecidamente, que responda à um questionário relativo à
           utilização do simulador:
         </ExplanationText>
         <ExplanationText>
@@ -79,12 +79,12 @@ function EndStep(props: EndStepProps) {
           </Tooltip>
         </ExplanationText>
         <ExplanationText>
-          São somente 6 perguntas de multipla escolha e demora, em média, 1
+          São somente 6 perguntas de múltipla escolha e demora, em média, 1
           minuto para ser respondido.
         </ExplanationText>
         <ExplanationText>
-          Esse simulador foi desenvolvido com o objetivo de auxiliar o ensino da
-          criptografia. E responder o formulário auxilia a evolução desde.
+          Este simulador foi desenvolvido com o objetivo de auxiliar o ensino da
+          criptografia. E responder ao formulário auxilia a evolução deste.
         </ExplanationText>
       </Grid>
     </>

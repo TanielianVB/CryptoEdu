@@ -32,7 +32,7 @@ function StepByStepXORExplanation(props: StepByStepXORExplanationProps) {
     case "start":
       executionExplanation = (
         <>
-          Inicie a execução da rotação nas setas às <Accent>direita</Accent>.
+          Inicie a execução da rotação nas setas à <Accent>direita</Accent>.
         </>
       );
       break;
