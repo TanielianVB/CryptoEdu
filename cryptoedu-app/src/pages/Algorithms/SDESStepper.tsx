@@ -8,6 +8,7 @@ import {
   Step,
   StepButton,
   Stepper,
+  Tooltip,
 } from "@material-ui/core";
 import StepperNavigation from "../../components/StepperNavigation/StepperNavigation";
 import Utils from "../../utils/Utils";
@@ -53,6 +54,17 @@ const getOuterSteps = (
     IP<sup>-1</sup>
   </>,
   isXS ? "F" : "Fim",
+];
+
+const getOuterStepsTooltips = (mode: "encrypt" | "decrypt"): string[] => [
+  "Inicio da execução",
+  "Geração das Chaves",
+  "Permutação Inicial",
+  "",
+  "Troca das metades",
+  "",
+  "Permutação Inicial Inversa",
+  "Fim da execução",
 ];
 
 function SDESStepper(props: SDESStepperProps) {
@@ -246,6 +258,7 @@ function SDESStepper(props: SDESStepperProps) {
   const theme = useTheme();
   const isXS = useMediaQuery(theme.breakpoints.only("xs"));
   const outerSteps = getOuterSteps(mode, isXS);
+  const outerStepsTooltips = getOuterStepsTooltips(mode);
 
   return (
     <>
@@ -280,12 +293,14 @@ function SDESStepper(props: SDESStepperProps) {
         >
           {outerSteps.map((label, index) => (
             <Step key={index}>
-              <StepButton
-                completed={index < activeOuterStep}
-                onClick={() => setActiveOuterStep(index)}
-              >
-                {label}
-              </StepButton>
+              <Tooltip title={outerStepsTooltips[index]}>
+                <StepButton
+                  completed={index < activeOuterStep}
+                  onClick={() => setActiveOuterStep(index)}
+                >
+                  {label}
+                </StepButton>
+              </Tooltip>
             </Step>
           ))}
         </Stepper>
