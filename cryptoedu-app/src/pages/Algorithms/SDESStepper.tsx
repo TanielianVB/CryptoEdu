@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {
   Card,
   CardActions,
@@ -27,9 +29,12 @@ interface SDESStepperProps {
   stepperClassName: string;
 }
 
-const getOuterSteps = (mode: "encrypt" | "decrypt"): React.ReactNode[] => [
-  "Inicio",
-  "Keys",
+const getOuterSteps = (
+  mode: "encrypt" | "decrypt",
+  isXS: boolean
+): React.ReactNode[] => [
+  isXS ? "I" : "Inicio",
+  isXS ? "C" : "Chaves",
   "IP",
   <>
     f
@@ -47,7 +52,7 @@ const getOuterSteps = (mode: "encrypt" | "decrypt"): React.ReactNode[] => [
   <>
     IP<sup>-1</sup>
   </>,
-  "Fim",
+  isXS ? "F" : "Fim",
 ];
 
 function SDESStepper(props: SDESStepperProps) {
@@ -238,8 +243,9 @@ function SDESStepper(props: SDESStepperProps) {
         throw new Error("You should not see this!");
     }
   };
-
-  const outerSteps = getOuterSteps(mode);
+  const theme = useTheme();
+  const isXS = useMediaQuery(theme.breakpoints.only("xs"));
+  const outerSteps = getOuterSteps(mode, isXS);
 
   return (
     <>
