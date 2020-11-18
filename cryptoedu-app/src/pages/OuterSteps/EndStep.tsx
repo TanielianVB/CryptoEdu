@@ -5,6 +5,7 @@ import ListRoundedIcon from "@material-ui/icons/ListRounded";
 import BitsField from "../../components/BitsField/BitsField";
 import ExplanationText from "../../components/ExplanationText/ExplanationText";
 import StepContentAccordion from "../../components/StepContentAccordion/StepContentAccordion";
+import MathImg from "../../components/MathImg/MathImg";
 
 interface EndStepProps {
   mode: "encrypt" | "decrypt";
@@ -80,12 +81,16 @@ function EndStep(props: EndStepProps) {
         </ExplanationText>
         <ExplanationText>
           São somente 6 perguntas de múltipla escolha e demora, em média, 1
-          minuto para ser respondido.
+          minuto para ser respondido. Este simulador foi desenvolvido com o
+          objetivo de auxiliar o ensino da criptografia. E responder ao
+          formulário auxilia a evolução deste.
         </ExplanationText>
         <ExplanationText>
-          Este simulador foi desenvolvido com o objetivo de auxiliar o ensino da
-          criptografia. E responder ao formulário auxilia a evolução deste.
+          As respostas desse questionário serão utilizadas para embasar um TCC -
+          Trabalho de Conclusão de Curso para o curso de Ciência da Computação
+          do Centro Universitário Farias Brito.
         </ExplanationText>
+        <MathImg src="FBUNI.png" alt="FBUNI" />
       </Grid>
     </>
   );
