@@ -1,0 +1,258 @@
+% 
+%% Primeira versão feita por Ygor Rebouças Serpa (2017)
+%%
+%% Baseado na classe Abntex2 versão 1.9.6
+%% Para mais informações e comandos, visite a página e o modelo original do Abntex2
+%%
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openany,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{{Modelo/abntex2_FBUNI}}
+
+% ---
+% Pacotes básicos 
+\usepackage{todonotes}
+\usepackage[brazilian,hyperpageref]{backref}
+\usepackage[alf]{{Modelo/abntex2_FBUNI_cite}}
+\usepackage{calc}
+\usepackage{lmodern}		
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[space]{grffile}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage[brazil]{babel}
+\usepackage{hyphenat}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\hyphenation{Ciên-cias}
+\usepackage{ulem}
+%\usepackage{helvet} % Tani: Não gosto dessa fonte
+\usepackage[acronym]{glossaries}
+%\usepackage{titlesec}
+%\usepackage{minted}
+
+% Incluir lista de siglas
+\include{0d_abreviacao}
+
+\graphicspath{{Figuras/}}
+
+% CONFIGURAÇÕES DE PACOTES
+
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+%\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+%\renewcommand{\backref}{}
+% Define os textos da citação
+%\renewcommand*{\backrefalt}[4]{
+%	\ifcase #1 %
+%		Nenhuma citação no texto.%
+%	\or
+%		Citado na página #2.%
+%	\else
+%		Citado #1 vezes nas páginas #2.%
+%	\fi}
+
+% Informações de dados para CAPA e FOLHA DE ROSTO
+\titulo{CryptoEdu - Simulador de Algoritmos de Criptografia de Cifra de Blocos com Finalidade Educacional}
+\autor{Tanielian Viana Barreira}
+\local{Fortaleza-CE, Brasil}
+\data{2020}
+\orientador{Me. Sérgio Araújo Yunes}
+\instituicao{
+  Centro Universitário Farias Brito
+  \par
+  Bacharelado em Ciência da Computação
+  \par
+  TCC
+  }
+  
+% Troque para Dissertação ou Tese, caso seja trabalho de mestrado ou doutorado.
+\tipotrabalho{Trabalho de Conclusão de Curso (Monografia)}
+
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho de Conclusão de Curso para o curso de Ciência da Computação do Centro Universitário Farias Brito.}
+
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX com uma versão modificada do abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
+    	filecolor=black,          % color of file links
+		urlcolor=black,
+		bookmarksdepth=4
+}
+\makeatother
+
+% Espaçamentos entre linhas e parágrafos 
+\setlength{\parindent}{1.3cm}
+\setlength{\parskip}{0.2cm}
+
+% compila o indice
+\makeindex
+
+% Seleciona fonte principal como Arial
+%setmainfont{helvet}
+
+% Abreviações
+\makeglossaries
+%\setacronymstyle{long-short}
+%\loadglsentries[acronym]{example-glossaries-acronym}
+
+
+
+% Início do documento
+\begin{document}
+
+\include{0b_macros}
+
+\selectlanguage{brazil}
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+\imprimircapa
+\imprimirfolhaderosto*
+
+% Comando para colocar a fixa catalográfica
+%\includepdf{catalografica.pdf}
+% Comando para colocar a folha de aceite do trabalho
+%\includepdf{aceite.pdf}
+%Remove página branca extra entre capítulos
+\cleardoublepage
+
+% Dedicatória
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{
+    Dedico este trabalho a todos os que me ajudaram ao longo desta caminhada. Especialmente aos meus pais, amigos e esposa.
+   }
+   \vspace*{\fill}
+\end{dedicatoria}
+
+% Agradecimentos
+\begin{agradecimentos}
+    Agradeço ao professor Dr. Jorge Albuquerque por ter me apresentado à Computação, esta área que tanto amo.
+    
+    Agradeço aos professores Dr. Fani Carvalho, Cleiton Albuquerque, Ricardo, Maikol.
+    
+    E agradeço especialmente ao meu orientador Me. Sérgio Araújo Yunes por ter me auxiliado na criação deste trabalho, mas principalmente, pela paciência.
+    
+    \revisar{Melhorar...}
+\end{agradecimentos}
+
+% Resumos
+%\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+    \adicionar{TODO: Resumo}
+    
+    \vspace{\onelineskip}
+    \noindent 
+    \textbf{Palavras-chave}: simulador, educacional, criptografia
+\end{resumo}
+\cleardoublepage
+\begin{resumo}[Abstract]
+    \begin{otherlanguage*}{english}
+    \adicionar{TODO: Abstract}
+    
+    \vspace{\onelineskip}
+    \noindent 
+    \textbf{Keywords}: simulator, educational, cryptography
+    \end{otherlanguage*}
+\end{resumo}
+
+\begin{epigrafe}
+    \vspace*{\fill}
+	\begin{flushright}
+		\textit{
+		    "Antes tarde do que nunca"
+		}
+	\end{flushright}
+\end{epigrafe}
+
+%Lista de Siglas
+\printglossary [type=\acronymtype, title=Lista de Siglas e Abreviações, toctitle=Lista de Siglas e Abreviações]
+\cleardoublepage
+
+% inserir lista de ilustrações
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+% inserir o sumario
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+%inclui novas arquivos .tex ao trabalho na ordem em que são incluidos aqui
+\include{1_Introducao}
+\include{2_FundTeorica}
+\include{3_FerrDesenvolvida}
+\include{4_Pesquisa}
+\include{5_ConclusoesETrabFuturos}
+
+\phantompart % necessário
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+%\bibliographystyle{abbrv}
+\bibliography{0c_referencias}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+\phantompart
+\printindex
+
+\end{document}
