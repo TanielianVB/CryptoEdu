@@ -324,9 +324,31 @@ A ferramenta foi desenvolvida prevendo uma fácil extensão das suas atuais func
 \end{itemize}
 
 \section{Comparação com outros simuladores criptográficos}
-Comparando o simulador desenvolvido com todos os outros simuladores criptográficos encontrados foram identificados os seguintes pontos positivos:
+Os simuladores foram comparados em alguns pontos: \textbf{Idioma}; \textbf{Algoritmos}, quais algoritmos o simulador é capaz de simular; \textbf{Educativo}, se o simulador é voltado ao ensino ou não; \textbf{I/O}, nível de detalhamento das entradas e saídas, onde, \textbf{algoritmo} exibe somente as entradas e saídas do algoritmo, \textbf{passo} exibe também as entradas e saídas de cada passo do algoritmo e \textbf{etapa} exibe também as entradas e saídas de cada etapa dentro de cada passo; \textbf{\textit{Open Source}}, se o simulador possui código aberto e permite ou não que colaboradores extendam suas funcionalidades; \textbf{Plataforma}; e \textbf{Responsivo}, que indica o nível de responsividade da interface do simulador.
 
-\begin{itemize}
-    \item É mais acessível. Somente 2 dos outros simuladores estão \textit{online}, nenhum deles é utilizável em \textit{mobile}, destes somente 1 é voltado para o ensino e este está em Koreano. 
-    \item Possui detalhamento da execução do algorítimo. Embora alguns outros simuladores sejam voltados ao ensino, nenhum deles explica o processo que ocorre dentro das etapas do algorítimo muito menos permite uma execução passo a passo dos processos contidos nessas etapas.
-\end{itemize}
+Comparando o simulador desenvolvido com os outros simuladores criptográficos encontrados levando em consideração os pontos já explícitos temos:
+
+\begin{table}[h!]
+\centering
+    \addtolength{\leftskip} {-3cm} % increase (absolute) value if needed
+    \addtolength{\rightskip}{-2cm}
+\resizebox{1.2\textwidth}{!}{%
+\begin{tabular}{ c | c c c c c c }
+ \xrowht{20pt} & \textbf{CyberChef} & \textbf{CrypTool} & \textbf{S-DES Sim. App} & \textbf{S-DES Sim. \textit{online}} & \textbf{S-DES Sim. Win} & \textbf{CryptoEdu} \\
+ \hline
+ \xrowht{20pt} \textbf{Idioma} & Inglês & Inglês & Inglês & Koreano & Inglês & \cellcolor{green!70!yellow!40} Português \\
+ \xrowht{20pt} \textbf{Algoritmos} & Vários & Vários & \cellcolor{green!70!yellow!40} S-DES & \cellcolor{green!70!yellow!40} S-DES & \cellcolor{green!70!yellow!40} S-DES & \cellcolor{green!70!yellow!40} S-DES \\
+ \xrowht{20pt} \textbf{Educativo} & Não & \cellcolor{green!70!yellow!40} Sim & \cellcolor{green!70!yellow!40} Sim & \cellcolor{green!70!yellow!40} Sim & \cellcolor{green!70!yellow!40} Sim & \cellcolor{green!70!yellow!40} Sim \\
+ \xrowht{20pt} \textbf{I/O} & algoritmo & algoritmo & passo & passo & passo & \cellcolor{green!70!yellow!40} etapa \\
+ \xrowht{20pt} \textbf{\textit{Open Source}} & \cellcolor{green!70!yellow!40} Sim & Não & Não & \cellcolor{green!70!yellow!40} Sim & Não & \cellcolor{green!70!yellow!40} Sim \\
+ \xrowht{20pt} \textbf{Plataforma} & \cellcolor{green!70!yellow!40} \textit{online} & SO's & Android & \cellcolor{green!70!yellow!40} \textit{online} & Windows & \cellcolor{green!70!yellow!40} \textit{online} \\
+ \xrowht{20pt} \textbf{Responsivo} & \textit{desktop} & \textit{desktop} & \cellcolor{green!70!yellow!40} \textit{mobile} & \textit{desktop} & \textit{desktop} & \cellcolor{green!70!yellow!40} \textit{desktop} e \textit{mobile} \\
+\end{tabular}}
+\end{table}
+
+Foram marcados de verde na tabela os pontos dos simuladores que se sobressaem quando analisados em um contexto de acessibilidade e ensino-aprendizagem.
+
+%\begin{itemize}
+    %\item É mais acessível. Somente 2 dos outros simuladores estão \textit{online}, nenhum deles é utilizável em \textit{mobile}, destes somente 1 é voltado para o ensino e este está em Koreano. 
+    %\item Possui detalhamento da execução do algoritmo. Embora alguns outros simuladores sejam voltados ao ensino, nenhum deles explica o processo que ocorre dentro das etapas do algoritmo muito menos permite uma execução passo a passo dos processos contidos nessas etapas.
+%\end{itemize}

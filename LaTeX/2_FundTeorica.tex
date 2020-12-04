@@ -1,16 +1,12 @@
 \chapter{Fundamentação Teórica}
 \label{char:fundteorica}
-Inicia-se com uma explicação geral sobre o enquadramento desse trabalho no meio acadêmico com os tópicos \ref{sec:informaticaeducacao} \nameref{sec:informaticaeducacao} e \ref{sec:objetosaprendizagem} \nameref{sec:objetosaprendizagem}.
+Inicia-se com uma explicação geral sobre o enquadramento desse trabalho no meio acadêmico com as seções \ref{sec:informaticaeducacao} \nameref{sec:informaticaeducacao} e \ref{sec:objetosaprendizagem} \nameref{sec:objetosaprendizagem}.
  
-No tópico \ref{sec:ferramentaspoioensino} \nameref{sec:ferramentaspoioensino}, é dado uma visão geral sobre o que são e sobre o ganho que elas trazem para os alunos. O tópico, \ref{sec:simuladoresvoltadosensino} \nameref{sec:simuladoresvoltadosensino}, traz uma visão geral sobre simuladores e uma análise da existência de simuladores voltados ao ensino de uma forma geral e o tópico \ref{sec:simuladorescriptografia} enumera os simuladores de criptografia atuais.
+Na seção \ref{sec:ferramentaspoioensino} \nameref{sec:ferramentaspoioensino}, se dá uma visão geral sobre o que são e qual o ganho que elas trazem para os alunos. A seção, \ref{sec:simuladoresvoltadosensino} \nameref{sec:simuladoresvoltadosensino}, traz uma visão geral sobre simuladores e uma análise de simuladores voltados ao ensino de uma forma geral e a seção \ref{sec:simuladorescriptografia} descreve os simuladores de criptografia atuais.
 
-A análise criptográfica inicia-se com o tópico \ref{sec:historia} \nameref{sec:historia}, onde há uma breve contextualização histórica sobre segurança e criptografia. No tópico \ref{sec:criptografia} \nameref{sec:criptografia}, é feita uma visão geral sobre criptografia e suas aplicabilidades. 
+A seção \ref{sec:criptografia} \nameref{sec:criptografia} discorre sobre criptografia e suas aplicabilidades, assim como seus dois tipos, \ref{subsec:criptografiasync} \nameref{subsec:criptografiasync} e \ref{subsec:criptografiaasync} \nameref{subsec:criptografiaasync}. Apresentam-se suas definições, seus cenários de utilização, e trazem alguns exemplos de algoritmos sobre seus respectivos ramos da criptografia. A seção \ref{sec:cifradeblocos} \nameref{sec:cifradeblocos} fala sobre esse método de criptografia simétrica no qual é feita uma visão geral sobre seu funcionamento e benefícios obtidos por sua utilização.
 
-Os dois seguintes, \ref{subsec:criptografiasync} \nameref{subsec:criptografiasync} e \ref{subsec:criptografiaasync} \nameref{subsec:criptografiaasync}, tratam de dois tipos de criptografia e explanam sobre suas definições, seus cenários de utilização, e trazem alguns exemplos de algoritmos sobre seus respectivos ramos da criptografia. O tópico \ref{sec:cifradeblocos} \nameref{sec:cifradeblocos} fala sobre esse método de criptografia simétrica no qual é feita uma visão geral sobre seu funcionamento e benefícios obtidos por sua utilização.
-
-Os tópicos \ref{sec:des} \nameref{sec:des}, \ref{sec:3des} \nameref{sec:3des} e \ref{sec:sdes} \nameref{sec:sdes} tratam sobre estes algoritmos de criptografia simétrica baseados em cifra de blocos, os quais trazem uma visão geral e uma breve explicação de cada algoritmo dando uma ênfase maior no \nameref{sec:sdes} por ser o algorítimo utilizado na ferramenta desenvolvida.
-
-Neste caso, é perceptível a intenção de trazer uma clara e breve explanação sobre os tópicos abordados neste trabalho, de forma que este se faça compreender da melhor forma possível.
+As seções \ref{sec:des} \nameref{sec:des}, \ref{sec:3des} \nameref{sec:3des} e \ref{sec:sdes} \nameref{sec:sdes} tratam sobre estes algoritmos de criptografia simétrica baseados em cifra de blocos, os quais trazem uma visão geral e uma explicação de cada algoritmo dando uma ênfase maior no \nameref{sec:sdes} por ser o algoritmo utilizado na ferramenta desenvolvida.
 
 \section{Informática na educação}
 \label{sec:informaticaeducacao}
@@ -18,13 +14,11 @@ A educação abrange dar e receber conhecimento. Qualquer sociedade possui esse 
 
 Dentre as formas de aprendizagem, são citadas duas teorias importantes por Ausubel \cite{ausubel80}, a aprendizagem significativa e a mecânica.
 
-A primeira diz respeito à ideia de que a aprendizagem é um processo por onde uma informação recém-adquirida relaciona-se com um aspecto importante da estrutura de conhecimento do aluno, ou seja, quando a nova informação adquirida vincula-se em conhecimentos relevantes previamente adquiridos na estrutura cognitiva do aluno. A aprendizagem significativa é onde o aluno realmente aprende.
+A primeira diz respeito à ideia de que a aprendizagem é um processo pelo qual uma informação recém-adquirida relaciona-se com um aspecto importante da estrutura de conhecimento do aluno, ou seja, quando a nova informação adquirida vincula-se em conhecimentos relevantes previamente adquiridos na estrutura cognitiva do aluno. A aprendizagem significativa é onde o aluno realmente aprende.
 
 A aprendizagem mecânica por sua vez ocorre quando o novo conhecimento se associa pouco ou não se associa a algum conhecimento importante já existente na estrutura cognitiva do aprendiz. Quando isso ocorre o conhecimento adquirido recentemente é gravado de maneira arbitrária. Essa aprendizagem é inviável quando um aluno recebe um novo conhecimento em uma área de conhecimentos nova para ele. Ou seja, aprendizagem mecânica acontece somente até que alguns elementos do conhecimento pré-adquirido, relevantes a novas informações na mesma área de conhecimento, existam na estrutura cognitiva do aluno e possam ser utilizadas como base para a aprendizagem significativa. E é através dessa aprendizagem que se inicia a criação, na cabeça do aluno, de uma estrutura cognitiva mais complexa, onde ele deixa de aprender de forma passiva e mecânica e passa a assimilar o conteúdo de forma mais clara e não linear \cite{ausubel80}.
 
-Muitas vezes o desempenho da transmissão do conhecimento é árduo e complexo. Tendo em vista essa dificuldade, almeja-se a utilização bons recursos didáticos que melhorem o desempenho docente. \cite{souza07}.
-
-Uma das considerações que devem ser levadas em conta pelo educador como critério de escolha de um recurso didático é que sua utilização deve preencher as lacunas existentes no ensino tradicional e viabilizar ao aluno a ampliação 
+Muitas vezes a transmissão do conhecimento é árdua e complexa. Tendo em vista essa dificuldade, almeja-se a utilização de bons recursos didáticos que melhorem o desempenho docente. \cite{souza07}. Uma das considerações que devem ser levadas em conta pelo educador como critério de escolha de um recurso didático é que sua utilização deve preencher as lacunas existentes no ensino tradicional e viabilizar ao aluno a ampliação 
 tanto da capacidade de reter conhecimento quanto a sua visão, e ainda estimular o ensino docente. \cite{trivelato06}
 
 Sons, imagens, construção de maquetes e até o uso de materiais lúdicos, esses simples elementos podem ser aplicados como recursos didáticos. Quando o corpo docente se utiliza de tipos variados de recursos didáticos ele não somente faz com que o ensino seja mais interessante do que o ensino tradicional, como também pode propiciar melhores resultados \cite{parra85} \cite{souza07} \cite{costoldi09}. Dentre os recursos didáticos que podem ser utilizados existem vários tipos, como: livros, apostilas, artigos, quadro e giz, apresentações, maquetes, trabalhos acadêmicos, softwares, ilustrações, filmes, músicas, exercícios físicos, excursões, brincadeiras e outros \cite{ferreira07}. A brincadeira Adedonha, por exemplo, já teve sua eficiência comprovada como ferramenta prático-pedagógica no processo de ensino-aprendizagem \cite{silva18}.
@@ -36,7 +30,7 @@ A abordagem do uso do computador e/ou dispositivos eletrônicos similares como r
 
 \textit{"...definimos objetos de aprendizagem como sendo recursos digitais dinâmicos, interativos e reutilizáveis em diferentes ambientes de aprendizagem elaborados a partir de uma base tecnológica. Desenvolvidos com fins educacionais, eles cobrem diversas modalidades de ensino: presencial, híbrida ou à distância; diversos campos de atuação: educação formal, corporativa ou informal; e, devem reunir várias características como durabilidade, facilidade para atualização, flexibilidade, interoperabilidade, modularidade, portabilidade, entre outras. Eles ainda apresentam-se como unidades autoconsistentes de pequena extensão e fácil manipulação, passíveis de combinação (essa combinação dá-se, principalmente, no sentido objeto-mídia, mas o contrário também é válido dependendo da mídia, pois não são todas que oferecem a característica de hiperligação) com outros objetos educacionais ou qualquer outra mídia digital (vídeos, imagens, áudios, textos, gráficos, tabelas, tutoriais, aplicações, mapas, jogos educacionais, animações, infográficos, páginas web) por meio da hiperligação. Além disso, um objeto de aprendizagem pode ter usos variados, seu conteúdo pode ser alterado ou reagregado, e ainda ter sua interface e seu layout modificado para ser adaptado a outros módulos ou cursos. No âmbito técnico, eles são estruturas autocontidas em sua grande maioria, mas também contidas, e marcadas por identificadores denominados metadados."} \cite{audino12}
 
-Em suma, um \acrfull{oa} é um recurso digital utilizado para suportar o ensino. Imagens, vídeos, softwares e animações podem ser considerados \acrshort{oa}s contanto que sejam voltados ao ensino. Já os \acrshort{avas} por sua vez, \acrlong{avas}, não são considerados \acrshort{oa}s pois esses, apesar de gerenciar e até armazenar \acrshort{oa}s, não são utilizados diretamente na aprendizagem. \cite{wiley02} \cite{braga14}
+Em suma, um \acrfull{oa} é um recurso digital utilizado para suportar o ensino. Imagens, vídeos, softwares e animações podem ser considerados \acrshort{oa}s contanto que sejam voltados ao ensino. Já os \acrfull{avas} por sua vez não são considerados \acrshort{oa}s pois esses, apesar de gerenciar e até armazenar \acrshort{oa}s, não são utilizados diretamente na aprendizagem. \cite{wiley02} \cite{braga14}
 
 Apesar do AVA ser o principal instrumento mediador em um sistema de \acrfull{ead} isso não exclui sua utilização como suporte para o ensino presencial \cite{belmonte10}.
 
@@ -47,13 +41,9 @@ Ainda é um desafio a criação de \acrshort{oa}s pois geralmente o conhecimento
 
 Há também \acrshort{oa}s que podem ser customizadas e aplicadas para várias áreas de ensino, como é o caso do jogo \textit{Minecraft: Education Edition} que já foi aplicado no ensino de Biologia, Ecologia, Física, Química, Geologia, Geografia \cite{short12} e até Cibersegurança \cite{geary19}, .
 
-Existe um problema comum entre professores e alunos de disciplinas do curso de Ciência da Computação, e este é: Existe uma dificuldade em demonstrar a real dinâmica dos eventos computacionais. Por melhor que o mestre possua conhecimento e comunicação, que o aluno dedique raciocínio e atenção, a total compreensão dos conceitos abordados fica comprometida pela forma de abordagem das disciplinas.
+Existe um problema comum entre professores e alunos de disciplinas do curso de Ciência da Computação: Existe uma dificuldade em demonstrar a real dinâmica dos eventos computacionais. Mesmo que o mestre tenha conhecimento e didática, que o aluno dedique raciocínio e atenção, nem sempre é possível se obter a total compreensão dos conceitos ensinados diante da abordagem destes nas disciplinas.
 
-O computador não deve ser o substituto do professor, mas sim, tomar o papel de ferramenta educacional auxiliando o aprendizado. Com isso o papel do professor passa a ser mais produtivo.
-
-Primeiramente, ferramentas voltadas ao ensino, já se utilizando do computador, se baseavam na máquina de \textit{B. F. Skinner}, onde se utilizava a ideia de instrução programada, que consistia de dividir o conteúdo total em pequenas partes lógicas e sequenciais.
-
-Somente durante a década de 1960, foi dado inicio ao conceito de \acrfull{cai}, ou seja, \acrfull{pec}. A real dispersão do \acrshort{cai} só aconteceu com popularização dos microcomputadores, possibilitando assim, a criação de diversos tipos de ferramentas de ensino, como, tutoriais, exercício-e-prática, avaliações, jogos, e simulações \cite{hamawaki09}.
+O computador não deve ser o substituto do professor, mas sim, tomar o papel de ferramenta educacional auxiliando o aprendizado. Com isso o papel do professor passa a ser mais produtivo. Primeiramente, ferramentas voltadas ao ensino, já se utilizando do computador, se baseavam na máquina de \textit{B. F. Skinner}, onde se utilizava a ideia de instrução programada, que consistia de dividir o conteúdo total em pequenas partes lógicas e sequenciais. Somente durante a década de 1960, foi dado inicio ao conceito de \acrfull{cai}, ou seja, \acrfull{pec}. A real dispersão do \acrshort{cai} só aconteceu com popularização dos microcomputadores, possibilitando assim, a criação de diversos tipos de ferramentas de ensino, como, tutoriais, exercício-e-prática, avaliações, jogos, e simulações \cite{hamawaki09}.
 
 \section{Simuladores voltados ao ensino}
 \label{sec:simuladoresvoltadosensino}
@@ -72,149 +62,170 @@ Quando o aluno possui pouco conhecimento na área, os simuladores são indicados
 
 \section{Simuladores de criptografia}
 \label{sec:simuladorescriptografia}
+Essa seção descreve os simuladores de criptografia encontrados.
 
 \subsection{CyberChef}
-Um simulador da máquina enigma criado pela \acrfull{gchq}, o centro de inteligência britânica.
 
 \begin{figure}[H]
     \centering
     \caption{Simulador: CyberChef}
+    \label{fig:cyberchef}
     \includegraphics[width=1\linewidth]{Simuladores/CyberChef_Enigma.png}
-    \legend{Fonte: \textit{https://gchq.github.io/CyberChef/}}
+    \legend{Fonte: \textit{https://gchq.github.io/CyberChef/} \cite{gchq20}}
 \end{figure}
 
-Principais características:
-\begin{itemize}
-    \item Disponibilizado \textit{online} em \textit{https://gchq.github.io/CyberChef/}.
-    \item Idioma: Inglês.
-    \item Possui vários algorítimos simples.
-    \item Mostra somente entradas e saídas.
-    \item Possui atualmente vários algorítimos.
-    \item Pode encadear criptografias que serão aplicadas sequencialmente sobre o \textit{input}.
-    \item Não é direcionado ao ensino.
-    \item Disponibilizado no \textit{GitHub} (\textit{https://github.com/gchq/CyberChef/}).
-\end{itemize}
+O CyberChef (Figura \ref{fig:cyberchef}) trata-se de um simulador da máquina enigma criado pela \acrfull{gchq}, o centro de inteligência britânica. Ele está disponibilizado no idioma inglês e permite a utilização de vários algoritmos simples (como \textit{ToBase64String} e etc.), podendo inclusive encadear a execução destes sobre o \textit{input}. Nele pode-se informar os parâmetros de entrada que ele utiliza para mostrar o resultado da execução do algoritmo. Ele não é voltado ao ensino e sim para testes dos algoritmos com entradas customizadas. Ele possui o código aberto e este está disponibilizado em \textit{https://github.com/gchq/CyberChef/}. O simulador pode ser utilizado em \textit{browsers} pois está \textit{online} no endereço \textit{https://gchq.github.io/CyberChef/}. \cite{gchq20}
+
+%\begin{itemize}
+    %\item Disponibilizado \textit{online} em \textit{https://gchq.github.io/CyberChef/}.
+    %\item Idioma: Inglês.
+    %\item Possui vários algoritmos simples.
+    %\item Mostra somente entradas e saídas.
+    %\item Possui atualmente vários algoritmos.
+    %\item Pode encadear criptografias que serão aplicadas sequencialmente sobre o \textit{input}.
+    %\item Não é direcionado ao ensino.
+    %\item Disponibilizado no \textit{GitHub} (\textit{https://github.com/gchq/CyberChef/}).
+%\end{itemize}
 
 \subsection{CrypTool}
 
-\textit{CrypTool} é um portal de criptografia (\textit{https://www.cryptool.org/en/}) que disponibiliza alguns simuladores de criptografia.
+\textit{CrypTool} é um portal de criptografia (\textit{https://www.cryptool.org/en/}) que disponibiliza alguns simuladores de criptografia. Ele foi criado pela contribuição de várias instituições de vários locais do mundo, por exemplo: \textit{University of Siegen} (Germany), \textit{Politechnika Warszawska} (Poland), \textit{Consejo Superior de Investigaciones Científicas} (Spain), \textit{Klagenfurt University} (Austria) e \textit{University of Singidunum} (Serbia). \cite{cryptool20}
 
 \subsubsection{CrypTool 2}
 
 \begin{figure}[H]
     \centering
     \caption{Simulador: CrypTool 2}
+    \label{fig:cryptool2}
     \includegraphics[width=1\linewidth]{Simuladores/CrypTool2.png}
 \end{figure}
 
-Principais características:
-\begin{itemize}
-    \item Só pode ser instalado em Windows.
-    \item Idioma: Inglês.
-    \item Tem um conjunto de \textit{templates} de algorítimos expansível.
-    \item Possui somente 1 \textit{template} que executa passo a passo.
-    \item Interface complexa e de difícil utilização.
-    \item Não é direcionado ao ensino.
-\end{itemize}
+O CrypTool 2 (Figura \ref{fig:cryptool2}) está disponibilizado no idioma inglês e permite a utilização de vários algoritmos através da disponibilização de \textit{templates} que podem ser criados pelos colaboradores. Nele pode-se informar os parâmetros de entrada que ele utiliza para mostrar o fluxo e resultado da execução do algoritmo. Ele é voltado ao ensino e também para testes dos algoritmos com entradas customizadas, dependendo do \textit{template} escolhido. Só foi encontrado 1 \textit{template} voltado ao ensino (a existência de \textit{templates} voltados ao ensino dependem dos contribuidores). Ele possui o código aberto e este está disponibilizado em \textit{https://www.cryptool.org/en/}. O simulador pode ser instalado somente no Windows e apresenta uma interface complexa e com muitas interações possíveis visíveis simultaneamente. \cite{cryptool14}
+
+%\begin{itemize}
+    %\item Só pode ser instalado em Windows.
+    %\item Idioma: Inglês.
+    %\item Tem um conjunto de \textit{templates} de algoritmos expansível.
+    %\item Possui somente 1 \textit{template} que executa passo a passo.
+    %\item Interface complexa e de difícil utilização.
+    %\item É direcionado ao ensino.
+%\end{itemize}
 
 \subsubsection{JCrypTool}
 
 \begin{figure}[H]
     \centering
     \caption{Simulador: JCrypTool}
+    \label{fig:jcryptool}
     \includegraphics[width=1\linewidth]{Simuladores/JCrypTool.png}
 \end{figure}
 
-Principais características:
-\begin{itemize}
-    \item Desenvolvida em Java e pode ser instalado em Linux, Mac and Windows.
-    \item Idioma: Inglês.
-    \item Tem um conjunto de \textit{templates} de algorítimos expansível.
-    \item Não possui \textit{template} que executa passo a passo.
-    \item Interface complexa e de difícil utilização.
-    \item Não é direcionado ao ensino.
-\end{itemize}
+O JCrypTool (Figura \ref{fig:jcryptool}) está disponibilizado no idioma inglês, foi feito em java se utilizando como base a interface do \textit{Eclipse} e permite a utilização de vários algoritmos através da disponibilização de \textit{templates} que podem ser criados pelos colaboradores. Nele pode-se informar os parâmetros de entrada que ele utiliza para mostrar o resultado da execução do algoritmo. Ele é voltado ao ensino e para testes dos algoritmos com entradas customizadas, dependendo do \textit{template} escolhido. Não foi encontrado \textit{template} voltado ao ensino (a existência de \textit{templates} voltados ao ensino dependem dos contribuidores). Ele possui o código aberto e este está disponibilizado em \textit{https://www.cryptool.org/en/}. O simulador pode ser instalado em versões mais recentes do Windows, Linux e macOS e apresenta uma interface complexa e com muitas interações possíveis visíveis simultaneamente. \cite{cryptool16}
+
+%\begin{itemize}
+    %\item Desenvolvida em Java e pode ser instalado em Linux, Mac and Windows.
+    %\item Idioma: Inglês.
+    %\item Tem um conjunto de \textit{templates} de algoritmos expansível.
+    %\item Não possui \textit{template} que executa passo a passo.
+    %\item Interface complexa e de difícil utilização.
+    %\item É direcionado ao ensino.
+%\end{itemize}
 
 \subsection{S-DES Simulator (\textit{Android App})}
 
 \begin{figure}[H]
     \centering
     \caption{Simulador: S-DES Simulator}
+    \label{fig:sdessimulatorapp}
     \includegraphics[width=.75\linewidth]{Simuladores/SDESSimulatorApp.png}
 \end{figure}
 
-Principais características:
-\begin{itemize}
-    \item Pode ser instalado em versões antigas do \textit{Android}. Foi necessário usar um simulador para poder testar.
-    \item Idioma: Inglês.
-    \item Só possui o \acrshort{sdes} como possível algorítimo.
-    \item Executa passo a passo mas só mostra os resultados dos passos.
-    \item É direcionado ao ensino.
-\end{itemize}
+O S-DES Simulator (Figura \ref{fig:sdessimulatorapp}) está disponibilizado no idioma inglês e permite a execução do S-DES, incluindo os resultados obtidos em cada passo. Nele pode-se informar os parâmetros de entrada que ele utiliza para mostrar os resultados dos passos e o resultado da execução do algoritmo. Ele é voltado ao ensino. O simulador foi desenvolvido para uma versão bem antiga do Android então precisa ser habilitado modo de compatibilidade na \textit{App Store} e mesmo depois de instalado um aviso sempre aparece ao iniciar o aplicativo como mostra a figura \ref{fig:sdessimulatorappwarning}. \cite{mountogiannakis15}
 
-\subsection{S-DES Simulator (Koreano)}
+\begin{figure}[H]
+    \centering
+    \caption{Simulador: S-DES Simulator's warning}
+    \label{fig:sdessimulatorappwarning}
+    \includegraphics[width=.55\linewidth]{Simuladores/SDESSimulatorAppWarning.jpeg}
+\end{figure}
+
+%\begin{itemize}
+    %\item Pode ser instalado em versões antigas do \textit{Android}. Foi necessário usar um simulador para poder testar.
+    %\item Idioma: Inglês.
+    %\item Só possui o \acrshort{sdes} como possível algoritmo.
+    %\item Executa passo a passo mas só mostra os resultados dos passos.
+    %\item É direcionado ao ensino.
+%\end{itemize}
+
+\subsection{S-DES Simulator (\textit{online})}
 
 \begin{figure}[H]
     \centering
     \caption{Simulador: S-DES Simulator}
+    \label{fig:sdessimulatorkr}
     \includegraphics[width=.75\linewidth]{Simuladores/SDESSimulatorKr.png}
 \end{figure}
 
-Principais características:
-\begin{itemize}
-    \item Disponibilizado \textit{online} em \textit{https://devgw.github.io/S-DES-simulator/}.
-    \item Idioma: Koreano.
-    \item Só possui o \acrshort{sdes} como possível algorítimo.
-    \item Executa passo a passo mas só mostra os resultados dos passos.
-    \item É direcionado ao ensino.
-    \item Disponibilizado no \textit{GitHub} (\textit{https://github.com/devGW/S-DES-simulator}).
-\end{itemize}
+O S-DES Simulator (Figura \ref{fig:sdessimulatorkr}) está disponibilizado no idioma koreano e permite a execução do S-DES, incluindo os resultados obtidos em cada passo. Nele pode-se informar os parâmetros de entrada que ele utiliza para mostrar os resultados dos passos e o resultado da execução do algoritmo. Ele é voltado ao ensino. Ele possui o código aberto e este está disponibilizado em \textit{https://github.com/devGW/S-DES-simulator/}. O simulador pode ser utilizado em \textit{browsers} pois está \textit{online} no endereço \textit{https://devgw.github.io/S-DES-simulator/}. \cite{woo18}
 
-\subsection{S-DES Simulator (Inglês)}
+%\begin{itemize}
+    %\item Disponibilizado \textit{online} em \textit{https://devgw.github.io/S-DES-simulator/}.
+    %\item Idioma: Koreano.
+    %\item Só possui o \acrshort{sdes} como possível algoritmo.
+    %\item Executa passo a passo mas só mostra os resultados dos passos.
+    %\item É direcionado ao ensino.
+    %\item Disponibilizado no \textit{GitHub} (\textit{https://github.com/devGW/S-DES-simulator}).
+%\end{itemize}
+
+\subsection{S-DES Simulator (Win)}
 
 \begin{figure}[H]
     \centering
     \caption{Simulador: S-DES Simulator}
+    \label{fig:sdessimulatoren}
     \includegraphics[width=.75\linewidth]{Simuladores/SDESSimulatorXp.png}
 \end{figure}
 
-Principais características:
-\begin{itemize}
-    \item Só pode ser instalado em Windows.
-    \item Idioma: Inglês.
-    \item Só possui o \acrshort{sdes} como possível algorítimo.
-    \item Executa passo a passo mas só mostra os resultados dos passos.
-    \item É direcionado ao ensino.
-\end{itemize}
+O S-DES Simulator (Figura \ref{fig:sdessimulatoren}) está disponibilizado no idioma inglês e permite a execução do S-DES, incluindo os resultados obtidos em cada passo. Nele pode-se informar os parâmetros de entrada que ele utiliza para mostrar os resultados dos passos e o resultado da execução do algoritmo. Ele é voltado ao ensino e pode ser instalado no Windows. \cite{permadi18}
+
+%\begin{itemize}
+    %\item Só pode ser instalado em Windows.
+    %\item Idioma: Inglês.
+    %\item Só possui o \acrshort{sdes} como possível algoritmo.
+    %\item Executa passo a passo mas só mostra os resultados dos passos.
+    %\item É direcionado ao ensino.
+%\end{itemize}
 
 \subsection{Crypto-tutor}
-\textit{"Crypto-tutor: An educational tool for learning modern cryptography"} \cite{luburic16} possui como principais características:
-\begin{itemize}
-    \item Idioma: Inglês.
-    \item Possui vários algorítimos.
-    \item Possui \textit{benchmarking} entre os algorítimos.
-    \item É direcionado ao ensino.
-\end{itemize}
+"Crypto-tutor: \textit{An educational tool for learning modern cryptography}" \cite{luburic16} não está disponibilizado para uso e sua publicação cientifica não está disponível publicamente. Do \textit{abstract} da publicação só se conseguiu identificar que o o simulador está no idioma inglês, permite a execução de vários algoritmos, permite se fazer o \textit{benchmarking} dos algoritmos e comparar estes e é direcionado ao ensino.
+
+%\begin{itemize}
+    %\item Idioma: Inglês.
+    %\item Possui vários algoritmos.
+    %\item Possui \textit{benchmarking} entre os algoritmos.
+    %\item É direcionado ao ensino.
+%\end{itemize}
 
 \subsection{CET - \textit{Cryptographic Education Tool}}
-CET - \textit{Cryptographic Education Tool} \cite{abuzaid11} possui como principais características:
-\begin{itemize}
-    \item Idioma: Inglês.
-    \item Possui os algorítimos \textit{simple cipher}, \acrshort{rsa} e \acrshort{sdes}.
-    \item É direcionado ao ensino.
-\end{itemize}
+CET - \textit{Cryptographic Education Tool} \cite{abuzaid11} não está disponibilizado para uso e sua publicação cientifica não está disponível publicamente. Do \textit{abstract} da publicação só se conseguiu identificar que o o simulador está no idioma inglês, permite a execução dos algoritmos \textit{simple cipher}, \acrshort{rsa} e \acrshort{sdes} e é direcionado ao ensino.
 
-\section{História}
-\label{sec:historia}
-Há algumas décadas atrás, antes que se fosse comum o uso de equipamentos de processamento de dados, a segurança da informação que era considerada importante para uma empresa se dava basicamente através de dois meios: o administrativo e o físico. Um bom exemplo para o meio administrativo é o uso de um processo de aquisição de profissionais bastante seleto e rigoroso, assim como a utilização de um contrato de confidencialidade que protege a empresa de possíveis ‘vazamentos’ de dados. Um bom exemplo para o meio físico é o uso de cofres e senhas para armazenar documentos importantes ou até confidenciais.
+%\begin{itemize}
+    %\item Idioma: Inglês.
+    %\item Possui os algoritmos \textit{simple cipher}, \acrshort{rsa} e \acrshort{sdes}.
+    %\item É direcionado ao ensino.
+%\end{itemize}
 
-Com o surgimento do computador surgiu a necessidade de proteger virtualmente os arquivos, agora armazenados de forma virtual no computador. Essa necessidade é ainda mais evidente com o surgimento da Internet, que traz uma facilidade de comunicação muito grande entre os computadores.
+%\section{História}
+%\label{sec:historia}
+%Há algumas décadas atrás, antes que se fosse comum o uso de equipamentos de processamento de dados, a segurança da informação que era considerada importante para uma empresa se dava basicamente através de dois meios: o administrativo e o físico. Um bom exemplo para o meio administrativo é o uso de um processo de aquisição de profissionais bastante seleto e rigoroso, assim como a utilização de um contrato de confidencialidade que protege a empresa de possíveis ‘vazamentos’ de dados. Um bom exemplo para o meio físico é o uso de cofres e senhas para armazenar documentos importantes ou até confidenciais.
 
-O \acrfull{iab} emitiu, em 1994, um relatório de título “Security in the internet architecture” (Segurança na arquitetura da Internet). O documento estabelecia que a internet necessitava de mais e melhor segurança. Entre as principais áreas citadas no relatório como sendo as que mais necessitavam de segurança estavam a infraestrutura da rede contra monitoração e controle não autorizados do tráfego da rede e também a necessidade de proteger o tráfego entre usuários finais se utilizando de autenticações e criptografias.
+%Com o surgimento do computador surgiu a necessidade de proteger virtualmente os arquivos, agora armazenados de forma virtual no computador. Essa necessidade é ainda mais evidente com o surgimento da Internet, que traz uma facilidade de comunicação muito grande entre os computadores.
 
-Com o passar dos anos, os ataques através da Internet se tornaram mais evoluídos, eles se tornaram mais automatizados e mais devastadores, necessitando cada vez mais de formas de segurança também mais evoluídas \cite{stallings14}.
+%O \acrfull{iab} emitiu, em 1994, um relatório de título “Security in the internet architecture” (Segurança na arquitetura da Internet). O documento estabelecia que a internet necessitava de mais e melhor segurança. Entre as principais áreas citadas no relatório como sendo as que mais necessitavam de segurança estavam a infraestrutura da rede contra monitoração e controle não autorizados do tráfego da rede e também a necessidade de proteger o tráfego entre usuários finais se utilizando de autenticações e criptografias.
 
-Existe uma lista de mecanismos de segurança explicitados na recomendação X.800 \cite{itu91}. Entre eles temos a cifragem, que é melhor descrita mais adiante. A X.800 divide, muito claramente, dois tipos de criptografia, a reversível e a irreversível. A criptografia reversível é composta por um algoritmo matemático que permite que dados sejam criptografados e que estes dados criptografados possam ser decriptografados posteriormente. Já a criptografia irreversível, por sua vez, é capaz de criptografar os dados, mas a decriptografia desses dados é impossível. Esta por sua vez tem objetivos diferentes da reversível, que visa somente trafegar ou armazenar dados de maneira segura, ela é composta de algoritmos de hash e tem como objetivo autenticação e assinatura digital \cite{stallings14} \cite{itu91}.
+%Com o passar dos anos, os ataques através da Internet se tornaram mais evoluídos, eles se tornaram mais automatizados e mais devastadores, necessitando cada vez mais de formas de segurança também mais evoluídas \cite{stallings14}.
+
+%Existe uma lista de mecanismos de segurança explicitados na recomendação X.800 \cite{itu91}. Entre eles temos a cifragem, que é melhor descrita mais adiante. A X.800 divide, muito claramente, dois tipos de criptografia, a reversível e a irreversível. A criptografia reversível é composta por um algoritmo matemático que permite que dados sejam criptografados e que estes dados criptografados possam ser decriptografados posteriormente. Já a criptografia irreversível, por sua vez, é capaz de criptografar os dados, mas a decriptografia desses dados é impossível. Esta por sua vez tem objetivos diferentes da reversível, que visa somente trafegar ou armazenar dados de maneira segura, ela é composta de algoritmos de hash e tem como objetivo autenticação e assinatura digital \cite{stallings14} \cite{itu91}.
 
 \section{Criptografia}
 \label{sec:criptografia}
@@ -224,7 +235,7 @@ O termo Criptografia vem do Grego \textit{kryptós}, que significa “escondido�
 
 O estudo da maneira de camuflar o real significado de uma mensagem usando técnicas e algoritmos de cifragem têm evoluído juntamente com o estudo da maneira de se conseguir entender a mensagem quando não se é o real destinatário da mesma. Este campo de estudo é chamado Criptoanálise \cite{gaines56}. A Criptologia engloba a Criptografia e a Criptoanálise. Alguns autores se utilizam do termo Criptovirologia quando falam de vírus que se utilizam de chaves publicas \cite{young04}.
 
-Há também a Esteganografia que não faz parte de Criptologia, mesmo sendo estudada em situações bem similares e até pelos mesmos autores. Ao contrário da criptografia que modifica a informação com intuito de transformar seu estado original em algo indecifrável a Esteganografia estuda formas de como se pode camuflar uma informação dentro de outra. Temos também a Esteganálise que está para Esteganografia assim como a Criptoanálise está para a Criptografia \cite{salomon05}.
+%Há também a Esteganografia que não faz parte de Criptologia, mesmo sendo estudada em situações bem similares e até pelos mesmos autores. Ao contrário da criptografia que modifica a informação com intuito de transformar seu estado original em algo indecifrável a Esteganografia estuda formas de como se pode camuflar uma informação dentro de outra. Temos também a Esteganálise que está para Esteganografia assim como a Criptoanálise está para a Criptografia \cite{salomon05}.
 
 A criptografia se divide em Simétrica, também chamada de criptografia convencional, e Assimétrica, também chamada de criptografia por chave pública \cite{stallings14} e dentro dessa divisão ainda temos algoritmos de criptografia reversíveis e irreversíveis \cite{stallings14} \cite{itu91}.
 
@@ -232,7 +243,7 @@ A criptografia possui inúmeras áreas de aplicação. Desde transações bancá
 
 \subsection{Criptografia Simétrica}
 \label{subsec:criptografiasync}
-Também chamada de criptografia convencional, a criptografia simétrica é um criptosistema onde tanto a criptografia como a decriptografia são realizadas com a mesma chave.
+Também chamada de criptografia convencional, a criptografia simétrica é um criptosistema no qual tanto a criptografia como a decriptografia são realizadas com a mesma chave.
 
 Ela transforma uma mensagem clara em uma mensagem cifrada, usando um algoritmo de criptografia e uma chave. Esta mesma chave juntamente com a inversão do algoritmo utilizado (gerando assim o algoritmo de decriptografia do algoritmo), são necessários para que se possa obter a mensagem clara novamente a partir da mensagem cifrada, assim como demonstra a Figura 1.
 
@@ -272,7 +283,7 @@ Antes da existência do computador existiam máquinas que implementavam a nível
     \legend{Máquina Enigma com três rotores, teclado, luzes e conexões para câmbio de codificação. Fonte: Wikipedia \cite{maqenigma20}}
 \end{figure}
 
-Algoritmos simétricos são utilizados em cenários onde a mensagem tem uma necessidade de ser decriptografada, por exemplo, o Kerberos, serviço de autenticação desenvolvido no \textit{Massachusetts Institute of Technology} (MIT) como parte do projeto Athena, que visa trazer segurança a cenários distribuídos abertos, se utiliza unicamente de cifra simétrica \cite{stallings14}.
+Algoritmos simétricos são utilizados em cenários em que a mensagem tem uma necessidade de ser decriptografada, por exemplo, o Kerberos, serviço de autenticação desenvolvido no \textit{Massachusetts Institute of Technology} (MIT) como parte do projeto Athena, que visa trazer segurança a cenários distribuídos abertos, se utiliza unicamente de cifra simétrica \cite{stallings14}.
 
 \subsection{Criptografia Assimétrica}
 \label{subsec:criptografiaasync}
@@ -317,24 +328,19 @@ A combinação das duas criptografias, a com chave privada do remetente e com a 
 
 \section{Cifra de blocos}
 \label{sec:cifradeblocos}
-A cifra de blocos manipula um bloco da mensagem clara como um todo e utiliza este para criar um bloco de mensagem cifrada de mesmo tamanho. É comum a utilização de um bloco com 64 ou 128 bits. Uma cifra de bloco pode ser usada para alcançar o mesmo efeito que uma cifra de fluxo. Cifras de fluxo trata de certo fluxo de dados singularmente, bit a bit ou byte a byte. São implementações clássicas das cifras de fluxo as cifras de \textit{Vigenère} auto chaveada e a cifra de Vernam e a mais utilizada atualmente é o RC4.
+A cifra de blocos manipula um bloco da mensagem clara como um todo e utiliza este para criar um bloco de mensagem cifrada de mesmo tamanho. É comum a utilização de um bloco com 64 ou 128 bits. Uma cifra de bloco pode ser usada para alcançar o mesmo efeito que uma cifra de fluxo. Cifras de fluxo trata de certo fluxo de dados singularmente, bit a bit ou byte a byte. São implementações clássicas das cifras de fluxo as cifras de \textit{Vigenère} auto chaveada e a cifra de Vernam e a mais utilizada atualmente é o RC4. A maioria das criptografias simétricas voltadas para ambientes de rede de computadores são implementadas com cifra de blocos e grande parte dos algoritmos de cifra de bloco simétrico usados na atualidade são baseados na cifra de blocos de \textit{Feistel}.
 
-A maioria das criptografias simétricas voltadas para ambientes de rede de computadores são implementadas com cifra de blocos e grande parte dos algoritmos de cifra de bloco simétrico usados na atualidade são baseados na cifra de blocos de \textit{Feistel}.
-
-A cifra de bloco trabalha com um bloco de dados da mensagem clara de n bits para produzir um bloco de mensagem cifrada de também de n bits. Se a cifra de bloco se utilizar de um n baixo então a cifra será equivalente a uma cifra de substituição simples. E se n for grande o suficiente e ainda assim for permitida a substituição reversível entre os blocos de mensagem cifrada e não cifrada, então a mensagem clara estaria tão camuflada que a criptoanálise se tornaria inviável.
-
-Uma cifra de substituição reversível qualquer, \textit{Feistel} chamava esse cenário de cifra de bloco ideal, para um grande tamanho de bloco não é viável, do ponto de vista de desempenho e implementação, assim como demonstra a Figura 8.
+%A cifra de bloco trabalha com um bloco de dados da mensagem clara de n bits para produzir um bloco de mensagem cifrada de também de n bits. Se a cifra de bloco se utilizar de um n baixo então a cifra será equivalente a uma cifra de substituição simples. E se n for grande o suficiente e ainda assim for permitida a substituição reversível entre os blocos de mensagem cifrada e não cifrada, então a mensagem clara estaria tão camuflada que a criptoanálise se tornaria inviável.
 
 \begin{figure}[H]
     \centering
     \caption{Cifra de bloco ideal}
+    \label{fig:cifrablocoideal}
     \includegraphics[width=.8\linewidth]{Figuras/CifraDeBloco.png}
     \legend{Fonte: }
 \end{figure}
 
-\textit{Feistel} propunha que era possível chegar mais próximo da cifra de bloco ideal. Era só utilizar uma cifra de produto, ou seja, a execução de duas ou mais cifras em sequência, tornando assim o produto final criptograficamente mais forte do que se poderia obter através de qualquer uma das cifras componentes do produto. A estrutura de Feistel consiste em repetidas rodadas do mesmo procedimento. A cada vez que o procedimento se repete é realizada a substituição em metade dos dados da mensagem sendo processados, logo após se permuta as duas metades. A chave sendo utilizada é expandida de modo que uma chave diferente seja utilizada em cada iteração.
-
-Na prática \textit{Fiestel} propôs o uso de uma cifra que alternava entre substituições e permutações, o que na realidade é uma implementação prática do que \textit{Claude Shannon} já havia proposto como, cifra de produto que alterne confusão e difusão \cite{stallings14}.
+Uma cifra de substituição reversível qualquer, \textit{Feistel} chamava esse cenário de cifra de bloco ideal, para um grande tamanho de bloco não é viável, do ponto de vista de desempenho e implementação, assim como demonstra a Figura \ref{fig:cifrablocoideal}. \textit{Feistel} propunha que era possível chegar mais próximo da cifra de bloco ideal. Era só utilizar uma cifra de produto, ou seja, a execução de duas ou mais cifras em sequência, tornando assim o produto final criptograficamente mais forte do que se poderia obter através de qualquer uma das cifras componentes do produto. A estrutura de \textit{Feistel} consiste em repetidas rodadas do mesmo procedimento. A cada vez que o procedimento se repete é realizada a substituição em metade dos dados da mensagem sendo processados, logo após se permuta as duas metades. A chave sendo utilizada é expandida de modo que uma chave diferente seja utilizada em cada iteração. Na prática \textit{Fiestel} propôs o uso de uma cifra que alternava entre substituições e permutações, o que na realidade é uma implementação prática do que \textit{Claude Shannon} já havia proposto como, cifra de produto que alterne confusão e difusão \cite{stallings14}.
 
 \section{DES}
 \label{sec:des}
@@ -382,7 +388,7 @@ Mesmo o \acrshort{3des} com duas chaves sendo de difícil ataque, ainda pode hav
 
 \section{S-DES}
 \label{sec:sdes}
-O \acrfull{sdes}, desenvolvido pelo professor \textit{Edward Schaefer} da \textit{Santa Clara University} \cite{schaefer96}, é uma versão simplificada e voltada ao ensino do algorítimo \acrfull{des} do qual possui as mesmas propriedades e estrutura tendo como únicas divergências o tamanho reduzido dos parâmetros de entrada e o número reduzido de execuções da função \(f_K\). Enquanto o \acrshort{des} recebe como entrada blocos de 64 bits, usa 1 chave de 56 bits de onde se extraem 16 chaves de 48 bits (cada uma será utiliza em uma das 16 aplicações de \(f_K\)) e retorna como saída blocos de 64 bits o \acrshort{sdes} recebe como entrada 1 bloco de 8 bits, usa 1 chave de 10 bits de onde se extraem 2 chaves de 8 bits (cada uma será utilizada em uma das 2 aplicações de \(f_K\)) e retorna como saída 1 bloco de 8 bits. Essas reduções tornam o \acrshort{sdes} o melhor candidato para análise quando o objetivo é aprendizado. \cite{stallings10} \cite{stallings14}
+O \acrfull{sdes}, desenvolvido pelo professor \textit{Edward Schaefer} da \textit{Santa Clara University} \cite{schaefer96}, é uma versão simplificada e voltada ao ensino do algoritmo \acrfull{des} do qual possui as mesmas propriedades e estrutura tendo como únicas divergências o tamanho reduzido dos parâmetros de entrada e o número reduzido de execuções da função \(f_K\). Enquanto o \acrshort{des} recebe como entrada blocos de 64 bits, usa 1 chave de 56 bits de onde se extraem 16 chaves de 48 bits (cada uma será utiliza em uma das 16 aplicações de \(f_K\)) e retorna como saída blocos de 64 bits o \acrshort{sdes} recebe como entrada 1 bloco de 8 bits, usa 1 chave de 10 bits de onde se extraem 2 chaves de 8 bits (cada uma será utilizada em uma das 2 aplicações de \(f_K\)) e retorna como saída 1 bloco de 8 bits. Essas reduções tornam o \acrshort{sdes} o melhor candidato para análise quando o objetivo é aprendizado. \cite{stallings10} \cite{stallings14}
 
 A figura \ref{fig:sdesscheme} apresenta a estrutura geral do \acrshort{sdes}. Nela pode-se observar quais são as etapas que geram as chaves, quais etapas e ordem destas criptografam o \textit{plaintext} e quais etapas e ordem destas descriptografram o \textit{ciphertext}.
 
@@ -394,7 +400,7 @@ A figura \ref{fig:sdesscheme} apresenta a estrutura geral do \acrshort{sdes}. Ne
     \legend{Fonte: "Figura G.1 do apêndice G" \cite{stallings10}}
 \end{figure}
 
-Pode-se expressar matematicamente o algorítimo de criptografia como uma composição de funções:
+Pode-se expressar matematicamente o algoritmo de criptografia como uma composição de funções:
 
 \[IP^{-1} \circ f_{K_2} \circ SW \circ f_{K_1} \circ IP\]
 
@@ -402,7 +408,7 @@ Ou de maneira mais direta:
 
 \[ciphertext = IP^{-1}(f_{K_2}(SW(f_{K_1}(IP(plaintext)))))\]
 
-Similarmente pode-se expressar o algorítimo de descriptografia:
+Similarmente pode-se expressar o algoritmo de descriptografia:
 
 \[IP^{-1} \circ f_{K_1} \circ SW \circ f_{K_2} \circ IP\]
 
@@ -437,3 +443,5 @@ A descrição detalhada completa do fluxo de execução do \acrshort{sdes} pode 
     \includegraphics[width=.5\linewidth]{Figuras/SDESEncrypDetail.png}
     \legend{Fonte: "Figura G.3 do apêndice G" \cite{stallings10}}
 \end{figure}
+%Há também a Esteganografia que não faz parte de Criptologia, mesmo sendo estudada em situações bem similares e até pelos mesmos autores. Ao contrário da criptografia que modifica a informação com intuito de transformar seu estado original em algo indecifrável a Esteganografia estuda formas de como se pode camuflar uma informação dentro de outra. Temos também a Esteganálise que está para Esteganogr
+

@@ -23,6 +23,9 @@
 
 % ---
 % Pacotes básicos 
+\usepackage[table]{xcolor} % Utilizado para poder colocar cor em uma tabela
+\usepackage{stackengine}
+\newcommand\xrowht[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
 \usepackage{todonotes}
 \usepackage[brazilian,hyperpageref]{backref}
 \usepackage[alf]{{Modelo/abntex2_FBUNI_cite}}
@@ -77,7 +80,7 @@
 %	\fi}
 
 % Informações de dados para CAPA e FOLHA DE ROSTO
-\titulo{CryptoEdu - Simulador de Algoritmos de Criptografia de Cifra de Blocos com Finalidade Educacional}
+\titulo{CryptoEdu - Simulador de Algoritmo de Criptografia de Cifra de Blocos com Finalidade Educacional}
 \autor{Tanielian Viana Barreira}
 \local{Fortaleza-CE, Brasil}
 \data{2020}
@@ -184,11 +187,11 @@
 % Resumos
 %\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
-    \adicionar{TODO: Resumo}
+    A manipulação de informações sensíveis, senhas, dinheiro e informações privadas, por meio da \textit{internet} faz com que a segurança da informação seja um ponto que, cada vez, mais deve ser levado em consideração ao se manipular dados, seja ao persistir ou ao trafegar estes. A criptografia, um dos pilares da segurança da informação, por sua vez, é complexa, dificultando assim o seu ensino e, consequentemente, sua utilização de maneira adequada ou otimizada. Vale a pena salientar também, que o uso de \acrfull{oas} para melhorar o processo de ensino-aprendizagem vem crescendo cada vez mais e as suas áreas de aplicabilidade também. Isso é decorrente dos vários benefícios provenientes da utilização de \acrshort{oas} no ambiente de ensino, em especial no \acrfull{ead}. Baseado no contexto exposto, este trabalho apresenta o resultado de uma pesquisa na área da Informática na Educação, que objetivou criar um \acrlong{oa} simulador capaz de auxiliar no processo de ensino-aprendizagem de algoritmos criptográficos por cifra de bloco. No simulador, são explicadas todas as etapas do algoritmo simulado que, por ser o mais adequado ao ensino, é o S-DES. Além disso, foi realizada uma pesquisa com intuito de avaliar a efetividade do \acrshort{oa} no processo de ensino-aprendizagem e esta atestou que o simulador foi capaz de aumentar o conhecimento de alunos e professores sobre a temática abordada.
     
     \vspace{\onelineskip}
     \noindent 
-    \textbf{Palavras-chave}: simulador, educacional, criptografia
+    \textbf{Palavras-chave}:  Informática na Educação, \acrfull{oa}, Simulador, Criptografia, S-DES
 \end{resumo}
 \cleardoublepage
 \begin{resumo}[Abstract]
@@ -197,7 +200,7 @@
     
     \vspace{\onelineskip}
     \noindent 
-    \textbf{Keywords}: simulator, educational, cryptography
+    \textbf{Keywords}: Computers in Education, Learning Object, Simulator, Cryptography, S-DES
     \end{otherlanguage*}
 \end{resumo}
 
