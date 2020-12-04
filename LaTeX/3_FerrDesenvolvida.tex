@@ -1,22 +1,21 @@
-\chapter{Ferramenta desenvolvida}
+\chapter{O simulador}
 \label{char:ferrdesenvolvida}
-Nesse capítulo descrevo o \textbf{CryptoEdu - simulador de algoritmos de criptografia com finalidade educacional} desenvolvido no decorrer da escrita desse trabalho de conclusão de curso.
+Esse capítulo descreve o \textbf{CryptoEdu - simulador de algoritmos de criptografia com finalidade educacional} criado no decorrer da escrita desse trabalho de conclusão de curso.
 
-O simulador permite a execução completa e passo a passo de todas as etapas envolvidas tanto na criptografia quando na descriptografia utilizando o algoritimo \acrfull{sdes}.
+O simulador permite a execução completa e passo a passo de todas as etapas envolvidas tanto na criptografia quando na descriptografia utilizando o algoritimo \acrfull{sdes}, escolhido por ser um algoritmo mais recomendado para ensino, como explicado na seção \ref{sec:sdes}.
+
+O público alvo da ferramenta é o corpo docente e discente de cursos de TI. Mas também, pode ser utilizada por todos que desejam aprender como a criptografia de cifra de blocos funcionada, refinar e/ou lapidar os conhecimentos já adquiridos ou até somente desmistificar esse conteúdo complexo chamado criptografia.
 
 \section{Informações técnicas}
 
 O simulador foi desenvolvido na linguagem \textit{Javascript} utilizando \textit{React.js} e \textit{Typescript}. O ambiente de desenvolvimento utilizado foi o \textit{Visual Studio Code}. O código fonte do simulador é \textit{open source} e está disponibilizado no \textit{GitHub} no endereço \textit{https://github.com/TanielianVB/CryptoEdu/}.
 
-No \textit{GitHub} é possível: Gerenciar problemas encontrados e melhorias sugeridas através de \textit{Issues}.; Facilmente integrar melhorias implementados por terceiros através de \textit{Pull Requests}.; A publicações de novas versões está automatizado e reagindo à publicação de qualquer nova versão no repositório através da ferramenta \textit{Netlify} (\textit{https://www.netlify.com/}). Esses \textit{deploys} podem ser visualizados em \textit{https://app.netlify.com/sites/cryptoedu/deploys/}.; E até, caso necessário, criar uma nova versão do simulador de propriedade de terceiros através do \textit{Fork}.
+No \textit{GitHub} é possível: Gerenciar problemas encontrados e melhorias sugeridas através de \textit{Issues}.; Integrar melhorias implementados por terceiros através de \textit{Pull Requests}.; A publicação de qualquer nova versão está automatizada através da ferramenta \textit{Netlify} (\textit{https://www.netlify.com/}) e reagindo à qualquer nova versão submetida ao repositório. Esses \textit{deploys} podem ser visualizados em \textit{https://app.netlify.com/sites/cryptoedu/deploys/}.; E até, caso necessário, criar uma nova versão do simulador de propriedade de terceiros através do \textit{Fork}.
 
-O simulador está disponibilizado ao usuário através da internet no endereço \textit{https://cryptoedu.netlify.app/}. O simulador pode ser visualizado em qualquer \textit{browser}, inclusive em dispositivos móveis. No entanto a melhor experiência é obtida quando se utiliza \textit{desktop}.
-
-\section{Usuário}
-O público alvo da ferramenta são os alunos de Computação, mas os atores desta não estão limitados à. Todos que desejam aprender como a criptografia de cifra de blocos funcionada, refinar e/ou lapidar os conhecimentos já adquiridos ou até somente desmistificar esse conteúdo complexo chamado criptografia.
+O simulador está disponibilizado ao usuário através da internet no endereço \textit{https://cryptoedu.netlify.app/}. O simulador pode ser visualizado em \textit{browsers}, inclusive em dispositivos móveis. No entanto a melhor experiência é obtida quando se utiliza uma resolução maior. Normalmente só obtida se utilizando \textit{desktops}.
 
 \section{Estrutura da interface}
-Nessa seção descrevo os elementos contidos na interface de maneira estrutural.
+Nessa seção são descritos os elementos contidos na interface de maneira estrutural.
 
 \begin{figure}[H]
     \centering
@@ -50,7 +49,7 @@ A região do cabeçalho possui:
     \includegraphics[width=1\linewidth]{UI/UIMain.png}
 \end{figure}
 
-A região principal do site será onde cada passo da execução do algoritmo selecionado irá ocorrer. Em cada passo serão listados as etapas executadas em cada passo.
+A região principal da página será onde cada passo da execução do algoritmo selecionado irá ocorrer. Em cada passo serão listados as etapas executadas em cada passo.
 
 Inicialmente irá conter uma interface discorrendo sobre o algoritmo selecionado e posteriormente cada passo que estará sendo executado. É possível navegar por esses passos através dos botões de navegação (Próximo e Anterior) exibidos na parte inferior da região de cada passo. No último passo o botão Próximo é substituído pelo botão Reiniciar para facilitar o início de uma nova execução.
 
@@ -324,9 +323,9 @@ A ferramenta foi desenvolvida prevendo uma fácil extensão das suas atuais func
 \end{itemize}
 
 \section{Comparação com outros simuladores criptográficos}
-Os simuladores foram comparados em alguns pontos: \textbf{Idioma}; \textbf{Algoritmos}, quais algoritmos o simulador é capaz de simular; \textbf{Educativo}, se o simulador é voltado ao ensino ou não; \textbf{I/O}, nível de detalhamento das entradas e saídas, onde, \textbf{algoritmo} exibe somente as entradas e saídas do algoritmo, \textbf{passo} exibe também as entradas e saídas de cada passo do algoritmo e \textbf{etapa} exibe também as entradas e saídas de cada etapa dentro de cada passo; \textbf{\textit{Open Source}}, se o simulador possui código aberto e permite ou não que colaboradores extendam suas funcionalidades; \textbf{Plataforma}; e \textbf{Responsivo}, que indica o nível de responsividade da interface do simulador.
+Os simuladores foram comparados em alguns pontos: \textbf{Idioma}; \textbf{Algoritmos}, quais algoritmos o simulador é capaz de simular; \textbf{Educativo}, se o simulador é voltado ao ensino ou não; \textbf{I/O}, nível de detalhamento das entradas e saídas, em que, \textbf{algoritmo} exibe somente as entradas e saídas do algoritmo, \textbf{passo} exibe também as entradas e saídas de cada passo do algoritmo e \textbf{etapa} exibe também as entradas e saídas de cada etapa dentro de cada passo; \textbf{\textit{Open Source}}, se o simulador possui código aberto e permite ou não que colaboradores extendam suas funcionalidades; \textbf{Plataforma}; e \textbf{Responsivo}, que indica o nível de responsividade da interface do simulador.
 
-Comparando o simulador desenvolvido com os outros simuladores criptográficos encontrados levando em consideração os pontos já explícitos temos:
+Comparando o simulador desenvolvido com os outros simuladores criptográficos encontrados, levando em consideração os pontos já explícitos, temos:
 
 \begin{table}[h!]
 \centering
@@ -346,7 +345,7 @@ Comparando o simulador desenvolvido com os outros simuladores criptográficos en
 \end{tabular}}
 \end{table}
 
-Foram marcados de verde na tabela os pontos dos simuladores que se sobressaem quando analisados em um contexto de acessibilidade e ensino-aprendizagem.
+Foram marcados de verde, na tabela, os pontos dos simuladores que se sobressaem quando analisados em um contexto de acessibilidade e ensino-aprendizagem.
 
 %\begin{itemize}
     %\item É mais acessível. Somente 2 dos outros simuladores estão \textit{online}, nenhum deles é utilizável em \textit{mobile}, destes somente 1 é voltado para o ensino e este está em Koreano. 
