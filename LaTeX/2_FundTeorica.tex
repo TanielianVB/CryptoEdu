@@ -245,40 +245,44 @@ A criptografia possui inúmeras áreas de aplicação. Desde transações bancá
 \label{subsec:criptografiasync}
 Também chamada de criptografia convencional, a criptografia simétrica é um criptosistema no qual tanto a criptografia como a decriptografia são realizadas com a mesma chave.
 
-Ela transforma uma mensagem clara em uma mensagem cifrada, usando um algoritmo de criptografia e uma chave. Esta mesma chave juntamente com a inversão do algoritmo utilizado (gerando assim o algoritmo de decriptografia do algoritmo), são necessários para que se possa obter a mensagem clara novamente a partir da mensagem cifrada, assim como demonstra a Figura 1.
+Ela transforma uma mensagem clara em uma mensagem cifrada, usando um algoritmo de criptografia e uma chave. Esta mesma chave juntamente com a inversão do algoritmo utilizado (gerando assim o algoritmo de decriptografia do algoritmo), são necessários para que se possa obter a mensagem clara novamente a partir da mensagem cifrada, assim como demonstra a Figura \ref{fig:cripsimerica}.
 
 \begin{figure}[H]
     \centering
     \caption{Criptografia Simétrica}
+    \label{fig:cripsimerica}
     \includegraphics[width=.8\linewidth]{Figuras/CripSimetrica.jpg}
     \legend{Fonte: "Introdução à certificação digital: da criptografia ao carimbo de tempo" \cite{brocardo06}}
 \end{figure}
 
 Antes do computador, as cifras simétricas tradicionais poderiam se utilizar de técnicas de transposição ou de substituição, ou até as duas técnicas combinadas. Essas técnicas são os componentes básicos para todas as técnicas de criptografia.
 
-Técnicas de transposição transpõem sistematicamente as posições dos elementos da mensagem clara. Tal técnica consiste na aplicação de alguma permutação na mensagem clara de forma que a mensagem final seja ilegível, e somente o detentor da forma de como os elementos da mensagem foram permutados pode obter novamente a mensagem de forma clara. A cifra mais simples dessa técnica é a cifra de \textit{Rail fence}. A Figura 2 ilustra como ficaria a crifa \textit{Rail fence} de profundidade dois do texto “Técnica de transposição”.
+Técnicas de transposição transpõem sistematicamente as posições dos elementos da mensagem clara. Tal técnica consiste na aplicação de alguma permutação na mensagem clara de forma que a mensagem final seja ilegível, e somente o detentor da forma de como os elementos da mensagem foram permutados pode obter novamente a mensagem de forma clara. A cifra mais simples dessa técnica é a cifra de \textit{Rail fence}. A Figura \ref{fig:railfence} ilustra como ficaria a crifa \textit{Rail fence} de profundidade dois do texto “Técnica de transposição”.
 
 \begin{figure}[H]
     \centering
     \caption{Exemplo de \textit{Rail fence}}
+    \label{fig:railfence}
     \includegraphics{Figuras/RailFence.png}
 \end{figure}
 
-Técnicas de substituição mapeiam elementos, caracteres ou bits, da mensagem clara e as substitui por outras letras ou números ou até símbolos. Analisando a mensagem clara como sendo um conjunto de bits, então a substituição é definida pela troca de padrões de bits da mensagem clara por padrões de bits da mensagem cifrada. Como exemplo clássico temos a cifra de César, criada por Júlio César. A Figura 3 ilustra como ficaria a cifra de César com o texto “Tecnica de substituicao”.
+Técnicas de substituição mapeiam elementos, caracteres ou bits, da mensagem clara e as substitui por outras letras ou números ou até símbolos. Analisando a mensagem clara como sendo um conjunto de bits, então a substituição é definida pela troca de padrões de bits da mensagem clara por padrões de bits da mensagem cifrada. Como exemplo clássico temos a cifra de César, criada por Júlio César. A Figura \ref{fig:cifradecesar} ilustra como ficaria a cifra de César com o texto “Tecnica de substituicao”.
 
 \begin{figure}[H]
     \centering
     \caption{Exemplo de cifra de César}
+    \label{fig:cifradecesar}
     \includegraphics{Figuras/CifraDeCesar.png}
 \end{figure}
 
 Existem basicamente dois os ataques possíveis em um algoritmo criptográfico. A criptoanálise, que se baseia nas características do próprio algoritmo de criptografia, e a força bruta, que engloba simplesmente repetidas tentativas de todas as chaves possíveis até encontrar a correta.
 
-Antes da existência do computador existiam máquinas que implementavam a nível de hardware técnicas de substituição. Eram conhecidas como máquinas de rotor. Duas foram as máquinas de rotor mais conhecidas, a da Alemanha, conhecida como Enigma e a do Japão conhecida como Purple. Elas foram utilizadas durante a segunda guerra mundial e a quebra desses dois códigos pelos Aliados foi significante para o resultado da guerra. Abaixo, a Figura 4 mostra a máquina Enigma com três rotores.
+Antes da existência do computador existiam máquinas que implementavam a nível de hardware técnicas de substituição. Eram conhecidas como máquinas de rotor. Duas foram as máquinas de rotor mais conhecidas, a da Alemanha, conhecida como Enigma e a do Japão conhecida como Purple. Elas foram utilizadas durante a segunda guerra mundial e a quebra desses dois códigos pelos Aliados foi significante para o resultado da guerra. Abaixo, a Figura \ref{fig:maqenigma} mostra a máquina Enigma com três rotores.
 
 \begin{figure}[H]
     \centering
     \caption{Imagem da máquina Enigma}
+    \label{fig:maqenigma}
     \includegraphics[width=.35\linewidth]{Figuras/MaqEnigma.jpg}
     \legend{Máquina Enigma com três rotores, teclado, luzes e conexões para câmbio de codificação. Fonte: Wikipedia \cite{maqenigma20}}
 \end{figure}
@@ -295,35 +299,35 @@ A criptografia assimétrica possui três utilizações básicas: confidencialida
 
 A confidencialidade garante que somente o destinatário será capaz de ler a mensagem. Quando se tem essa necessidade, deve-se criptografar a mensagem com a chave pública do destinatário, enviar a mensagem criptografada para o destinatário, e ele, de posse da chave privada, poderá decriptografar a mensagem e dessa forma obter a mensagem original.
 
-O fato do destinatário ter conseguido decriptografar a mensagem com a chave privada dele próprio garante que a mensagem só poderia ter sido decriptografada por ele, detentor da chave privada, mas não garante a identidade do remetente, visto que a chave utilizada para criptografar a mensagem é publica, assim como demonstra a Figura 5.
+O fato do destinatário ter conseguido decriptografar a mensagem com a chave privada dele próprio garante que a mensagem só poderia ter sido decriptografada por ele, detentor da chave privada, mas não garante a identidade do remetente, visto que a chave utilizada para criptografar a mensagem é publica, assim como demonstra a Figura \ref{fig:cripfococonfi}.
 
 \begin{figure}[H]
     \centering
     \caption{Fluxo da mensagem criptografada quando o foco é confidencialidade}
+    \label{fig:cripfococonfi}
     \includegraphics[width=.8\linewidth]{Figuras/Confidencialidade.png}
-    \legend{Fonte: }
 \end{figure}
 
 A autenticidade garante que quem enviou a mensagem foi o remetente. Quando se tem essa necessidade, deve-se criptografar a mensagem com a chave privada do remetente, enviar a mensagem criptografada para o destinatário, e ele, de posse da chave pública do remetente, poderá decriptografar a mensagem e assim obter a mensagem original.
 
-O fato do destinatário ter conseguido decriptografar a mensagem com a chave pública do remetente comprova que a mensagem é realmente do remetente, mas não garante que o destinatário é o único que poderia decriptografar a mensagem, visto que qualquer pessoa pode possuir a chave pública do remetente, assim como demonstra a Figura 6.
+O fato do destinatário ter conseguido decriptografar a mensagem com a chave pública do remetente comprova que a mensagem é realmente do remetente, mas não garante que o destinatário é o único que poderia decriptografar a mensagem, visto que qualquer pessoa pode possuir a chave pública do remetente, assim como demonstra a Figura \ref{fig:cripfocoauten}.
 
 \begin{figure}[H]
     \centering
     \caption{Fluxo da mensagem criptografada quando o foco é autenticidade}
+    \label{fig:cripfocoauten}
     \includegraphics[width=.8\linewidth]{Figuras/Autencidade.png}
-    \legend{Fonte: }
 \end{figure}
 
 É possível também que se criptografe a mensagem com a chave privada do remetente, criptografar a mensagem já criptografada com a chave pública do destinatário, enviar a mensagem duplamente criptografada para o destinatário, e ele de posse da chave privada, poderá decriptografar a mensagem duplamente criptografada em uma mensagem criptografada e esta por sua vez será decriptografada com a chave pública do remetente e finalmente obter a mensagem original.
 
-A combinação das duas criptografias, a com chave privada do remetente e com a chave publica do receptor, garante tanto que quem vai receber a mensagem é realmente o destinatário correto como garante que o remetente é quem ele diz ser \cite{stallings14}, assim como demonstra a Figura 7.
+A combinação das duas criptografias, a com chave privada do remetente e com a chave publica do receptor, garante tanto que quem vai receber a mensagem é realmente o destinatário correto como garante que o remetente é quem ele diz ser \cite{stallings14}, assim como demonstra a Figura \ref{fig:cripfococonfieauten}.
 
 \begin{figure}[H]
     \centering
     \caption{Fluxo da mensagem criptografada quando o foco é confidencialidade e autenticidade}
+    \label{fig:cripfococonfieauten}
     \includegraphics[width=.8\linewidth]{Figuras/ConfidEAuten.png}
-    \legend{Fonte: }
 \end{figure}
 
 \section{Cifra de blocos}
@@ -337,7 +341,6 @@ A cifra de blocos manipula um bloco da mensagem clara como um todo e utiliza est
     \caption{Cifra de bloco ideal}
     \label{fig:cifrablocoideal}
     \includegraphics[width=.8\linewidth]{Figuras/CifraDeBloco.png}
-    \legend{Fonte: }
 \end{figure}
 
 Uma cifra de substituição reversível qualquer, \textit{Feistel} chamava esse cenário de cifra de bloco ideal, para um grande tamanho de bloco não é viável, do ponto de vista de desempenho e implementação, assim como demonstra a Figura \ref{fig:cifrablocoideal}. \textit{Feistel} propunha que era possível chegar mais próximo da cifra de bloco ideal. Era só utilizar uma cifra de produto, ou seja, a execução de duas ou mais cifras em sequência, tornando assim o produto final criptograficamente mais forte do que se poderia obter através de qualquer uma das cifras componentes do produto. A estrutura de \textit{Feistel} consiste em repetidas rodadas do mesmo procedimento. A cada vez que o procedimento se repete é realizada a substituição em metade dos dados da mensagem sendo processados, logo após se permuta as duas metades. A chave sendo utilizada é expandida de modo que uma chave diferente seja utilizada em cada iteração. Na prática \textit{Fiestel} propôs o uso de uma cifra que alternava entre substituições e permutações, o que na realidade é uma implementação prática do que \textit{Claude Shannon} já havia proposto como, cifra de produto que alterne confusão e difusão \cite{stallings14}.
@@ -443,5 +446,5 @@ A descrição detalhada completa do fluxo de execução do \acrshort{sdes} pode 
     \includegraphics[width=.5\linewidth]{Figuras/SDESEncrypDetail.png}
     \legend{Fonte: "Figura G.3 do apêndice G" \cite{stallings10}}
 \end{figure}
-%Há também a Esteganografia que não faz parte de Criptologia, mesmo sendo estudada em situações bem similares e até pelos mesmos autores. Ao contrário da criptografia que modifica a informação com intuito de transformar seu estado original em algo indecifrável a Esteganografia estuda formas de como se pode camuflar uma informação dentro de outra. Temos também a Esteganálise que está para Esteganogr
 
+%Há também a Esteganografia que não faz parte de Criptologia, mesmo sendo estudada em situações bem similares e até pelos mesmos autores. Ao contrário da criptografia que modifica a informação com intuito de transformar seu estado original em algo indecifrável a Esteganografia estuda formas de como se pode camuflar uma informação dentro de outra. Temos também a Esteganálise que está para Esteganogr

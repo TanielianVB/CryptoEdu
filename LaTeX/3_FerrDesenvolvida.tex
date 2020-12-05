@@ -12,14 +12,33 @@ O simulador foi desenvolvido na linguagem \textit{Javascript} utilizando \textit
 
 No \textit{GitHub} é possível: Gerenciar problemas encontrados e melhorias sugeridas através de \textit{Issues}.; Integrar melhorias implementados por terceiros através de \textit{Pull Requests}.; A publicação de qualquer nova versão está automatizada através da ferramenta \textit{Netlify} (\textit{https://www.netlify.com/}) e reagindo à qualquer nova versão submetida ao repositório. Esses \textit{deploys} podem ser visualizados em \textit{https://app.netlify.com/sites/cryptoedu/deploys/}.; E até, caso necessário, criar uma nova versão do simulador de propriedade de terceiros através do \textit{Fork}.
 
-O simulador está disponibilizado ao usuário através da internet no endereço \textit{https://cryptoedu.netlify.app/}. O simulador pode ser visualizado em \textit{browsers}, inclusive em dispositivos móveis. No entanto a melhor experiência é obtida quando se utiliza uma resolução maior. Normalmente só obtida se utilizando \textit{desktops}.
+O simulador está disponibilizado ao usuário através da internet no endereço \textit{https://cryptoedu.netlify.app/}. O simulador pode ser visualizado em \textit{browsers}, inclusive em dispositivos móveis. No entanto a melhor experiência é obtida quando se utiliza uma resolução maior. Normalmente só obtida se utilizando \textit{desktops}. Embora não seja o ideal, o simulador se comporta bem em dispositivos móveis melhorando ainda mais a sua acessibilidade (figura \ref{fig:simuladormobile}).
+
+\begin{figure}[H]
+    \centering
+    \caption{Visualização em um \textit{browser} de dispositivo móvel}
+    \label{fig:simuladormobile}
+    \includegraphics[width=0.5\linewidth]{UI/UIMobile.png}
+\end{figure}
+
+O simulador foi concebido prevendo uma fácil extensão das suas atuais funcionalidades. Mas, visto que o escopo do projeto pode se exceder além do limite possível de execução de um trabalho de conclusão de curso, algumas decisões foram tomadas para viabilizar o desenvolvimento da ferramenta em tempo hábil. São elas:
+
+\begin{itemize}
+    \item Somente 1 algoritmo será disponibilizado. Sendo este, o \acrfull{sdes}.
+    \item Só estará disponibilizado no tema \textbf{claro}.
+    \item Só estará disponibilizado em \textbf{Português-BR}.
+    \item A interface será otimizada para dispositivos \textit{desktop} mas também irá poder ser visualizada em dispositivos \textit{mobile}.
+\end{itemize}
 
 \section{Estrutura da interface}
 Nessa seção são descritos os elementos contidos na interface de maneira estrutural.
 
+A interface do simulador é composta por 3 seções principais, como pode ser visto na figura \ref{fig:uiestrutura}: 1. cabeçalho; 2. conteúdo; e 3. rodapé. Descritas nas sub-seções abaixo.
+
 \begin{figure}[H]
     \centering
     \caption{Estrutura da interface}
+    \label{fig:uiestrutura}
     \includegraphics[width=1\linewidth]{UI/UIEstrutura.png}
 \end{figure}
 
@@ -28,182 +47,227 @@ Nessa seção são descritos os elementos contidos na interface de maneira estru
 \begin{figure}[H]
     \centering
     \caption{Cabeçalho}
+    \label{fig:uicabecalho}
     \includegraphics[width=1\linewidth]{UI/UIHeader.png}
 \end{figure}
 
-A região do cabeçalho possui:
-\begin{itemize}
+A região do cabeçalho (figura \ref{fig:uicabecalho}) possui:
+\begin{enumerate}
     \item Link do repositório onde está localizado tanto o código fonte do simulador como um pdf do TCC: \textit{https://github.com/TanielianVB/CryptoEdu}
     \item Link do questionário de \textit{feedback} de utilização do simulador.
     \item O nome do simulador: \textbf{CryptoEdu - Simulador de Algoritmos de Criptografia com Finalidade Educacional}.
     \item \textit{Combo Box} de escolha do algoritmo que está em execução.
     \item Botão para alternar entre o tema \textbf{claro} e \textbf{escuro}.
     \item Botão para alterar o idioma no qual o simulador está sendo exibido.
-\end{itemize}
+\end{enumerate}
 
 \subsection{Conteúdo}
 
 \begin{figure}[H]
     \centering
     \caption{Conteúdo}
+    \label{fig:uimain}
     \includegraphics[width=1\linewidth]{UI/UIMain.png}
 \end{figure}
 
-A região principal da página será onde cada passo da execução do algoritmo selecionado irá ocorrer. Em cada passo serão listados as etapas executadas em cada passo.
+A região principal da página será onde cada passo da execução do algoritmo selecionado irá ocorrer. À cada passo serão exibidos nessa região as etapas contidas nesse passo. Inicialmente irá a interface do passo inicial (figura \ref{fig:uimain}). É possível navegar pelos passos através dos botões de navegação (Próximo, Anterior e Reiniciar) exibidos na parte inferior da região de cada passo. No primeiro passo o botão Anterior não é exibido, somente nos outros. No último passo o botão Próximo é substituído pelo botão Reiniciar para facilitar o início de uma nova execução, como mostra a figura \ref{fig:uilastnav}.
 
-Inicialmente irá conter uma interface discorrendo sobre o algoritmo selecionado e posteriormente cada passo que estará sendo executado. É possível navegar por esses passos através dos botões de navegação (Próximo e Anterior) exibidos na parte inferior da região de cada passo. No último passo o botão Próximo é substituído pelo botão Reiniciar para facilitar o início de uma nova execução.
+\begin{figure}[H]
+    \centering
+    \caption{Navegação no último passo}
+    \label{fig:uilastnav}
+    \includegraphics[width=1\linewidth]{UI/UILastNavigation.png}
+\end{figure}
 
 \subsection{Rodapé}
 
 \begin{figure}[H]
     \centering
     \caption{Rodapé}
+    \label{fig:uifooter}
     \includegraphics[width=1\linewidth]{UI/UIFooter.png}
 \end{figure}
 
-A região do rodapé contém:
-\begin{itemize}
+A região do rodapé (figura \ref{fig:uifooter}) contém:
+\begin{enumerate}
     \item Todos os passos necessários para a execução do algoritmo em execução. Ao se passar o mouse sobre eles é exibida uma \textit{tooltip} com um nome mais explicativo do passo.
     \item Quais passos já foram completados.
     \item Qual passo o usuário se encontra no momento.
     \item Quais passos ainda faltam ser completados para finalizar a execução do algoritmo.
-\end{itemize}
+\end{enumerate}
 É possível também, a qualquer momento, navegar para qualquer passo diretamente. Basta-se clicar sobre este.
 
-\subsection{\textit{Mobile}}
+\subsection{Executor bit a bit}
 
 \begin{figure}[H]
     \centering
-    \caption{Visualização em um \textit{browser} de dispositivo móvel}
-    \includegraphics[width=0.5\linewidth]{UI/UIMobile.png}
+    \caption{Executor bit a bit no inicio da execução da etapa}
+    \label{fig:uibitabit}
+    \includegraphics[width=1\linewidth]{UI/UIBitABit.png}
 \end{figure}
 
-Embora não seja o ideal, o simulador se comporta bem em dispositivos móveis melhorando ainda mais a sua acessibilidade.
+Um componente de interface muito utilizado é o executor \textbf{bit a bit} que permite que o usuário visualize a execução da etapa de maneira granular e explicativa. Este componente, como mostra a figura \ref{fig:uibitabit}, é composto por:
+\begin{enumerate}
+    \item Vai para o próximo passo da execução da etapa.
+    \item Vai para o último passo da execução da etapa.
+    \item Vai para o passo anterior da execução da etapa.
+    \item Vai para o primeiro passo da execução da etapa.
+    \item Entradas recebidas para execução da etapa.
+    \item Saída da etapa, que é construída a cada passo da execução desta.
+    \item Explicação do passo da execução da etapa sendo exibido no momento.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \caption{Executor bit a bit durante a execução da etapa}
+    \label{fig:uibitabit2}
+    \includegraphics[width=1\linewidth]{UI/UIBitABit2.png}
+\end{figure}
+
+Durante a execução da etapa, os bits envolvidos nesta são realçados, o resultado vai sendo preenchido e a explicação na parte de baixo do executor vai se ajustando ao contexto sendo apresentado pelo executor, como mostra a figura \ref{fig:uibitabit2}.
+
+\begin{figure}[H]
+    \centering
+    \caption{Executor bit a bit no fim da execução da etapa}
+    \label{fig:uibitabit3}
+    \includegraphics[width=1\linewidth]{UI/UIBitABit3.png}
+\end{figure}
+
+Ao fim da execução da etapa, o resultado vai estar todo preenchido e a explicação na parte de baixo do executor irá indicará o resultado da etapa, como mostra a figura \ref{fig:uibitabit3}.
 
 \section{Interface do conteúdo}
-Descrição da interface apresentada em cada um dos passos da execução do algoritmo.
+Considera-se passo como sendo a sequência lógica da execução do algoritmo S-DES como modelada pelo seu autor (figura \ref{fig:sdesscheme}), exemplo: Geração das chaves, Permutação inicial, etc.. Considera-se etapa como sendo a sequência de subprocessos executada dentro de um passo, exemplo: P10, LS-1, etc.. Considera-se um processo como sendo a operação computacional utilizada por uma etapa, exemplo: P10 e P8 são permutações.
 
 Cada passo possui no mínimo uma etapa e cada etapa possui uma região de explicação onde a etapa é descrita de maneira que possibilite o usuário compreender como a etapa é executada, como essa deve ser compreendida, como esta difere de outras etapas similares e qual a definição matemática desta etapa, caso haja.
 
-A explicação pode ser acessada através do clique do botão interrogação à direita do cabeçalho que contém o título da referida etapa. Esse clique irá expandir a região que contém a explicação da etapa. É possível também que todas as regiões de explicação já iniciem abertas. Basta habilitar a opção \textbf{Iniciar regiões de explicação abertas} ao iniciar a execução da criptografia ou descriptografia.
-
-\subsection{Tela inicial - entrada de dados}
+A explicação pode ser acessada através do clique do botão interrogação à direita do cabeçalho que contém o título da referida etapa (figura \ref{fig:uimain} elemento 1). Esse clique irá expandir a região que contém a explicação da etapa, como pode ser visto na figura \ref{fig:uimainopen} elemento 1. É possível também que todas as regiões de explicação já iniciem abertas. Basta habilitar a opção \textbf{Iniciar regiões de explicação abertas} (figura \ref{fig:uimainopen} elemento 2) ao iniciar a execução da criptografia ou descriptografia.
 
 \begin{figure}[H]
     \centering
-    \caption{Tela inicial - entrada de dados}
-    \includegraphics[width=1\linewidth]{UI/UIMain.png}
+    \caption{Explicação expandida}
+    \label{fig:uimainopen}
+    \includegraphics[width=1\linewidth]{UI/UIMainOpen.png}
 \end{figure}
 
-A interface inicial faz uma breve descrição do algoritmo selecionado na \textit{Combo Box} de escolha de algoritmo buscando situar o usuário no contexto selecionado para execução. No momento só será disponibilizado um algoritmo: \acrfull{sdes}.
+\subsection{Tela inicial - entrada de dados}
 
-O usuário pode então escolher se ele deseja o fluxo de execução \textbf{criptografar} ou \textbf{descriptografar} e assim então informar valores customizados para os campos \textbf{Mensagem} (\textbf{Mensagem cifrada} caso o fluxo escolhido tenha sido o \textbf{descriptografar}) e \textbf{Chave}.
+A interface inicial (figura \ref{fig:uimainopen}) descreve o algoritmo selecionado na \textit{Combo Box} de escolha de algoritmo (na região de explicação) buscando situar o usuário no contexto selecionado para execução. O usuário pode então escolher se ele deseja o fluxo de execução \textbf{Criptografar} ou \textbf{Descriptografar} e assim então informar valores customizados para os campos \textbf{Mensagem} (\textbf{Mensagem cifrada} caso o fluxo escolhido tenha sido o \textbf{descriptografar}) e \textbf{Chave}.
 
-Os algoritmos recebem como entrada bits. Por conta disso, são exibidos os bits contidos nos campos e que serão utilizados para a execução do fluxo escolhido. Tanto para facilitar o preenchimento do campo \textbf{Mensagem} como para melhorar a compreensão do usuário sobre o valor contido no campo, é possível informar no campo uma letra, visto que essa pode, e é, facilmente convertida para 8 bits. Isso ajuda não somente no preenchimento do campo durante a execução do fluxo \textbf{criptografar} mas também na validação do resultado obtido da execução do fluxo \textbf{descriptografar} visto quê é possível, mais facilmente, comparar as mensagens (tanto a de entrada do fluxo \textbf{criptografar} quando a de saída do fluxo \textbf{descriptografar}) se estas forem letras. Exemplo: A letra \textbf{'T'} gera a sequência de bits: \textbf{01010100}.
+Os algoritmos recebem como entrada bits. Por conta disso, são exibidos os bits contidos nos campos e que serão utilizados para a execução do fluxo escolhido. Tanto para facilitar o preenchimento do campo \textbf{Mensagem} como para melhorar a compreensão do usuário sobre o valor contido no campo, é possível informar no campo uma letra, visto que essa pode, e é, convertida para 8 bits. Isso ajuda não somente no preenchimento do campo durante a execução do fluxo \textbf{criptografar} mas também na validação do resultado obtido da execução do fluxo \textbf{descriptografar} visto que é possível, mais facilmente, comparar as mensagens (tanto a de entrada do fluxo \textbf{criptografar} quando a de saída do fluxo \textbf{descriptografar}) se estas forem letras. Exemplo: A letra \textbf{'T'} gera a sequência de bits: \textbf{01010100}.
 
 Nessa tela também é possível habilitar a opção \textbf{Iniciar regiões de explicação abertas} que fará com que, durante a navegação pelos passos da execução do algoritmo todas as regiões de explicação já se iniciem abertas. Caso o usuário não queria mais visualizar a explicação para alguma etapa. Ele pode esconder a explicação clicando no botão à direita do título da etapa.
 
 \subsection{Passo Chaves - Geração das chaves}
 
-Nesse passo estão concentradas todas as etapas necessárias para a geração das chaves \(K_1\) e \(K_2\). A etapas contidas nesse passo estavam inicialmente divididas em 3 passos. Mas por ter gerado dúvida sobre como essas etapas se relacionavam tanto entre elas como com os outros passos da execução do algoritmo estas etapas estão em um mesmo passo.
+Nesse passo estão concentradas todas as etapas necessárias para a geração das chaves \(K_1\) e \(K_2\). A etapas contidas nesse passo estavam inicialmente divididas em 3 passos. Mas por ter gerado dúvida sobre como essas etapas se relacionavam tanto entre elas como com os outros passos da execução do algoritmo, estas etapas estão em um mesmo passo.
 
 \subsubsection{Etapa P10 - Permutação de 10 bits}
 
 \begin{figure}[H]
     \centering
     \caption{Etapa P10 - Permutação de 10 bits}
+    \label{fig:uip10}
     \includegraphics[width=1\linewidth]{UI/UIP10.png}
 \end{figure}
 
-A interface da etapa P10 contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação P10 (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação P10. O parâmetro de entrada da permutação P10 é a Chave recebida da tela de entrada de dados. O resultado dessa execução será o parâmetro de entrada para a próxima etapa, LS-1.
+A interface da etapa P10 (figura \ref{fig:uip10}), na região de explicação, contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação P10 (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação P10. O parâmetro de entrada da permutação P10 é a Chave recebida da tela de entrada de dados. O resultado dessa execução será o parâmetro de entrada para a próxima etapa, LS-1.
 
 \subsubsection{Etapa LS-1 - \textit{Circular Left Shift} de 1 posição}
 
 \begin{figure}[H]
     \centering
     \caption{Etapa LS-1 - \textit{Circular Left Shift} de 1 posição}
+    \label{fig:uils1}
     \includegraphics[width=1\linewidth]{UI/UILS1.png}
 \end{figure}
 
-A interface da etapa LS-1 contextualiza o objetivo pelo qual essa etapa existe e explica como esta etapa deve ocorrer, incluindo a divisão na metade do valor obtido na etapa anterior (P10) e o que é o processo de rotação. Após tal contextualização se exibe dois componentes capazes de executar passo a passo a rotação circular para a esquerda de 1 posição. Cada um destes componentes irá rotacionar uma das metades. O resultado desta etapa é então a junção das metades após suas rotações individuais.
+A interface da etapa LS-1 (figura \ref{fig:uils1}), na região de explicação, contextualiza o objetivo pelo qual essa etapa existe e explica como esta etapa deve ocorrer, incluindo a divisão na metade do valor obtido na etapa anterior (P10) e o que é o processo de rotação. Após tal contextualização se exibe dois componentes capazes de executar passo a passo a rotação circular para a esquerda de 1 posição. Cada um destes componentes irá rotacionar uma das metades. O resultado desta etapa é então a junção das metades após suas rotações individuais.
 
 \subsubsection{Etapa P8 - Permutação de 8 bits sobre o resultado de LS-1}
 
 \begin{figure}[H]
     \centering
     \caption{Passo P8 - Permutação de 8 bits sobre o resultado de LS-1}
+    \label{fig:uip81}
     \includegraphics[width=1\linewidth]{UI/UIP81.png}
 \end{figure}
 
-A interface da etapa P8 contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação P8 (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação P8. O parâmetro de entrada da permutação P8 é o resultado obtido na etapa anterior, LS-1.
+A interface da etapa P8 (figura \ref{fig:uip81}), na região de explicação, contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação P8 (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação P8. O parâmetro de entrada da permutação P8 é o resultado obtido na etapa anterior, LS-1.
 
 \subsubsection{Resultado Chave \(K_1\)}
 
 \begin{figure}[H]
     \centering
     \caption{Chave \(K_1\) - Geração da primeira chave \(K_1\)}
+    \label{fig:uik1}
     \includegraphics[width=1\linewidth]{UI/UIK1.png}
 \end{figure}
 
-O resultado da aplicação da função de permutação P8 sobre o resultado da etapa LS-1 será a primeira chave K1. Esta será utilizada em uma etapa futura durante a criptografia ou descriptografia da mensagem.
+O resultado da aplicação da função de permutação P8 sobre o resultado da etapa LS-1 será a primeira chave K1 (figura \ref{fig:uik1}). Esta será utilizada no primeiro passo \(f_K\) durante a criptografia ou no segundo passo \(f_K\) durante a descriptografia.
 
 \subsubsection{Etapa LS-2 - \textit{Circular Left Shift} de 2 posições}
 
 \begin{figure}[H]
     \centering
     \caption{Etapa LS-2 - \textit{Circular Left Shift} de 2 posições}
+    \label{fig:uils2}
     \includegraphics[width=1\linewidth]{UI/UILS2.png}
 \end{figure}
 
-A interface da etapa LS-2 contextualiza o objetivo pelo qual essa etapa existe e explica como esta etapa deve ocorrer, incluindo a divisão na metade do valor obtido na etapa LS-1 e o que é o processo de rotação. Após tal contextualização se exibe dois componentes capazes de executar passo a passo a rotação circular para a esquerda de 2 posições. Cada um destes componentes irá rotacionar uma das metades. O resultado desta etapa é então a junção das metades após suas rotações individuais.
+A interface da etapa LS-2 (figura \ref{fig:uils2}), na região de explicação, contextualiza o objetivo pelo qual essa etapa existe e explica como esta etapa deve ocorrer, incluindo a divisão na metade do valor obtido na etapa LS-1 e o que é o processo de rotação. Após tal contextualização se exibe dois componentes capazes de executar passo a passo a rotação circular para a esquerda de 2 posições. Cada um destes componentes irá rotacionar uma das metades. O resultado desta etapa é então a junção das metades após suas rotações individuais.
 
 \subsubsection{Etapa P8 - Permutação de 8 bits sobre o resultado de LS-2}
 
 \begin{figure}[H]
     \centering
     \caption{Passo P8 - Permutação de 8 bits sobre o resultado de LS-2}
+    \label{fig:uip82}
     \includegraphics[width=1\linewidth]{UI/UIP82.png}
 \end{figure}
 
-A interface da etapa P8 contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação P8 (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação P8. O parâmetro de entrada da permutação P8 é o resultado obtido na etapa anterior, LS-2.
+A interface da etapa P8 (figura \ref{fig:uip82}), na região de explicação, contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação P8 (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação P8. O parâmetro de entrada da permutação P8 é o resultado obtido na etapa anterior, LS-2.
 
 \subsubsection{Resultado Chave \(K_2\)}
 
 \begin{figure}[H]
     \centering
     \caption{Chave \(K_2\) - Geração da segunda chave \(K_2\)}
+    \label{fig:uik2}
     \includegraphics[width=1\linewidth]{UI/UIK2.png}
 \end{figure}
 
-O resultado da aplicação da função de permutação P8 sobre o resultado da etapa LS-2 será a segunda chave K2. Esta será utilizada em uma etapa futura durante a criptografia ou descriptografia da mensagem.
+O resultado da aplicação da função de permutação P8 sobre o resultado da etapa LS-2 será a segunda chave K2 (figura \ref{fig:uik2}). Esta será utilizada no segundo passo \(f_K\) durante a criptografia ou no primeiro passo \(f_K\) durante a descriptografia.
 
 \subsection{Passo IP - Permutação Inicial}
 
 \begin{figure}[H]
     \centering
     \caption{Passo IP (\textit{Initial Permutation}) - Permutação Inicial}
+    \label{fig:uiip}
     \includegraphics[width=1\linewidth]{UI/UIIP.png}
 \end{figure}
 
-A interface da etapa IP contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação IP (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação IP. O parâmetro de entrada da permutação IP é a Mensagem (\textit{Plaintext} P) recebida da tela de entrada de dados.
+A interface da etapa IP (figura \ref{fig:uiip}), na região de explicação, contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação IP (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação IP. O parâmetro de entrada da permutação IP é a Mensagem (\textit{Plaintext} P) recebida da tela de entrada de dados.
 
 \begin{figure}[H]
     \centering
     \caption{L (esquerda) \& R (direita)}
+    \label{fig:uilr}
     \includegraphics[width=1\linewidth]{UI/UILR.png}
 \end{figure}
 
-O resultado desse passo é a divisão do resultado obtido da permutação IP em duas metades, L (\textit{left}) e R (\textit{right}), que serão enfim passados por parâmetro para a execução da função \(f_K\).
+O resultado desse passo é a divisão do resultado obtido da permutação IP em duas metades, L (\textit{left}) e R (\textit{right}) (figura \ref{fig:uilr}), que serão enfim passados por parâmetro para a execução da função \(f_K\).
 
 \subsection{Passo \(f_K\) - Função que usa uma chave}
 
 \begin{figure}[H]
     \centering
     \caption{Passo \(f_K\) - Função que usa uma chave}
+    \label{fig:uifk1}
     \includegraphics[width=1\linewidth]{UI/UIFK1.png}
 \end{figure}
 
-Esse passo é o único passo que se repete durante a execução da criptografia ou descriptografia. Essa função recebe 2 parâmetros de entrada. Um é uma sequência de 8 bits divididos entre L \& R (4 bits na esquerda L e 4 bits na direita R) e o segundo parâmetro é a chave. Caso a execução escolhida seja a criptografia, a primeira vez que essa função é executada a chave utilizada será a \(K_1\) e na segunda vez será a \(K_2\). Caso a execução escolhida seja a descriptografia, a ordem de utilização das chaves será inversa. A interface explica a tais peculiaridades e apresenta a função matemática desta.
+Esse passo é o único passo que se repete durante a execução da criptografia ou descriptografia. Essa função (figura \ref{fig:uifk1}) recebe 2 parâmetros de entrada. Um é uma sequência de 8 bits divididos entre L \& R (4 bits na esquerda L e 4 bits na direita R) e o segundo parâmetro é a chave. Caso a execução escolhida seja a criptografia, a primeira vez que essa função é executada a chave utilizada será a \(K_1\) e na segunda vez será a \(K_2\). Caso a execução escolhida seja a descriptografia, a ordem de utilização das chaves será inversa. A interface explica a tais peculiaridades e apresenta a função matemática desta.
 
 Nesse passo estão concentradas todas as etapas da execução da função \(f_K\). A etapas contidas nesse passo estavam inicialmente divididas em 2 passos. Um indo até o primeiro XOR e outro indo até o segundo XOR. Mas por esse passo se repetir optou-se por deixar todas as etapas em um único passo.
 
@@ -212,70 +276,77 @@ Nesse passo estão concentradas todas as etapas da execução da função \(f_K\
 \begin{figure}[H]
     \centering
     \caption{Etapa E/P - Permutação de Expansão}
+    \label{fig:uiep}
     \includegraphics[width=1\linewidth]{UI/UIEP.png}
 \end{figure}
 
-A interface da etapa E/P contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação E/P (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação E/P. O parâmetro de entrada da permutação E/P é o parâmetro de entrada R da função \(f_K\) (4 bits do lado direito dos 8 bits recebidos de entrada).
+A interface da etapa E/P (figura \ref{fig:uiep}), na região de explicação, contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação E/P (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação E/P. O parâmetro de entrada da permutação E/P é o parâmetro de entrada R da função \(f_K\) (4 bits do lado direito dos 8 bits recebidos de entrada).
 
 \subsubsection{Etapa XOR - OU exclusivo com \(K_1\)}
 
 \begin{figure}[H]
     \centering
     \caption{Etapa XOR - OU exclusivo com \(K_1\)}
+    \label{fig:uixork1}
     \includegraphics[width=1\linewidth]{UI/UIXORK1.png}
 \end{figure}
 
-A interface da primeira etapa XOR descreve o que ocorre nessa etapa e exibe um componente capaz de executar bit a bit a operação XOR (OU exclusivo) para obtenção do resultado dessa etapa. Os parâmetros de entrada dessa etapa são: 1. O resultado da permutação de expansão E/P e 2. Ou a chave \(K_1\) ou a chave \(K_2\). Caso a execução escolhida seja a criptografia, a primeira vez que essa etapa é executada a chave utilizada será a \(K_1\) e na segunda vez será a \(K_2\). Caso a execução escolhida seja a descriptografia, a ordem de utilização das chaves será inversa. A interface reflete essas particularidades em cada fluxo de execução.
+A interface da primeira etapa XOR (figura \ref{fig:uixork1}), na região de explicação, descreve o que ocorre nessa etapa e exibe um componente capaz de executar bit a bit a operação XOR (OU exclusivo) para obtenção do resultado dessa etapa. Os parâmetros de entrada dessa etapa são: 1. O resultado da permutação de expansão E/P e 2. Ou a chave \(K_1\) ou a chave \(K_2\). Caso a execução escolhida seja a criptografia, a primeira vez que essa etapa é executada a chave utilizada será a \(K_1\) e na segunda vez será a \(K_2\). Caso a execução escolhida seja a descriptografia, a ordem de utilização das chaves será inversa. A interface reflete essas particularidades em cada fluxo de execução.
 
 \subsubsection{Etapa S0 \& S1 - Substituições S0 e S1}
 
 \begin{figure}[H]
     \centering
     \caption{Etapa S0 \& S1 - Substituições S0 e S1}
+    \label{fig:uis0s1}
     \includegraphics[width=1\linewidth]{UI/UIS0S1.png}
 \end{figure}
 
-A interface da etapa das substituições S0 e S1 contextualiza o objetivo pelo qual essa etapa existe, explica a definição de um substituição, apresenta a obtenção dos parâmetros de entrada para cada substituição e explica como uma substituição deve ser interpretada. Após tal contextualização se exibe, para cada substituição, um componente capaz de executar passo a passo a substituição. Os parâmetros de entrada das substituições S0 e S1 são, respectivamente, as metades esquerda e direita do resultado obtido na etapa anterior (XOR com \(K_1\)). O resultado desta etapa é então a junção das metades após suas substituições individuais.
+A interface da etapa das substituições S0 e S1 (figura \ref{fig:uis0s1}), na região de explicação, contextualiza o objetivo pelo qual essa etapa existe, explica a definição de um substituição, apresenta a obtenção dos parâmetros de entrada para cada substituição e explica como uma substituição deve ser interpretada. Após tal contextualização se exibe, para cada substituição, um componente capaz de executar passo a passo a substituição. Os parâmetros de entrada das substituições S0 e S1 são, respectivamente, as metades esquerda e direita do resultado obtido na etapa anterior (XOR com \(K_1\)). O resultado desta etapa é então a junção das metades após suas substituições individuais.
 
 \subsubsection{Etapa P4 - Permutação de 4 bits}
 
 \begin{figure}[H]
     \centering
     \caption{Etapa P4 - Permutação de 4 bits}
+    \label{fig:uip4}
     \includegraphics[width=1\linewidth]{UI/UIP4.png}
 \end{figure}
 
-A interface da etapa P4 contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação P4 (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação P4. O parâmetro de entrada da permutação P4 é o resultado obtido na etapa anterior (Substituições S0 e S1). O resultado dessa execução será o parâmetro de entrada para a próxima etapa, XOR com L.
+A interface da etapa P4 (figura \ref{fig:uip4}), na região de explicação, contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação P4 (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação P4. O parâmetro de entrada da permutação P4 é o resultado obtido na etapa anterior (Substituições S0 e S1). O resultado dessa execução será o parâmetro de entrada para a próxima etapa, XOR com L.
 
 \subsubsection{Etapa XOR - OU exclusivo com L}
 
 \begin{figure}[H]
     \centering
     \caption{Etapa XOR - OU exclusivo com L}
+    \label{fig:uixorl}
     \includegraphics[width=1\linewidth]{UI/UIXORL.png}
 \end{figure}
 
-A interface da segunda etapa XOR descreve o que ocorre nessa etapa e exibe um componente capaz de executar bit a abit a operação XOR (OU exclusivo) para obtenção do resultado dessa etapa. Os parâmetros de entrada dessa etapa são: 1. O resultado da permutação P4 e 2. L (metade esquerda do parâmetro de entrada de \(f_K\)). Na primeira vez que \(f_K\) é executada L será a esquerda do resultado da permutação inicial (IP) e na segunda vez L será a esquerda do resulta da Troca (SW).
+A interface da segunda etapa XOR (figura \ref{fig:uixorl}), na região de explicação, descreve o que ocorre nessa etapa e exibe um componente capaz de executar bit a abit a operação XOR (OU exclusivo) para obtenção do resultado dessa etapa. Os parâmetros de entrada dessa etapa são: 1. O resultado da permutação P4; e 2. L (metade esquerda do parâmetro de entrada de \(f_K\)). Na primeira vez que \(f_K\) é executada L será a esquerda do resultado da permutação inicial (IP) e na segunda vez L será a esquerda do resulta da Troca (SW).
 
 \subsubsection{Resultado de \(f_K\)}
 
 \begin{figure}[H]
     \centering
     \caption{Resultado de \(f_K\)}
+    \label{fig:uirfk1}
     \includegraphics[width=1\linewidth]{UI/UIRFK1.png}
 \end{figure}
 
-A interface do resultado de \(f_K\) exibe as metades que compõem o resultado da função e a junção destes. A metade esquerda desse resultado sempre será o resultado da etapa anterior, XOR. A metade direita será a metade direita do parâmetro de entrada da função \(f_K\). Que na primeira vez é a metade direita do resultado da permutação inicial (IP) e na segunda vez é a matade direita da Troca (SW).
+A interface do resultado de \(f_K\) (figura \ref{fig:uirfk1}) exibe as metades que compõem o resultado da função e a junção destes. A metade esquerda desse resultado sempre será o resultado da etapa anterior, XOR. A metade direita será a metade direita do parâmetro de entrada da função \(f_K\). Que na primeira vez é a metade direita do resultado da permutação inicial (IP) e na segunda vez é a matade direita da Troca (SW).
 
 \subsection{Passo SW - Troca}
 
 \begin{figure}[H]
     \centering
     \caption{Passo SW - Troca}
+    \label{fig:uisw}
     \includegraphics[width=1\linewidth]{UI/UISW.png}
 \end{figure}
 
-A interface do passo Troca (SW) explica a definição da troca, apresenta a função de troca (incluindo função matemática) e explica como esta deve ser interpretada. Este é o passo intermediário entre as execuções das funções \(f_K\). Ela recebe por parâmetro o resultado da primeira execução da função \(f_K\) e o resultado deste passo é o parâmetro de entrada para a segunda execução da função \(f_K\) juntamente com a chave que não foi utilizada pela primeira execução.
+A interface do passo Troca (SW) (figura \ref{fig:uisw}), na região de explicação, explica a definição da troca, apresenta a função de troca (incluindo função matemática) e explica como esta deve ser interpretada. Este é o passo intermediário entre as execuções das funções \(f_K\). Ela recebe por parâmetro o resultado da primeira execução da função \(f_K\) e o resultado deste passo é o parâmetro de entrada para a segunda execução da função \(f_K\) juntamente com a chave que não foi utilizada pela primeira execução.
 
 \subsection{Passo \(f_K\) - Função que usa a outra chave}
 
@@ -290,37 +361,31 @@ A segunda execução da função \(f_K\) é sequencialmente idêntica à primeir
 \begin{figure}[H]
     \centering
     \caption{Passo \(IP^{-1}\) - Permutação Inicial Inversa}
+    \label{fig:uiiip}
     \includegraphics[width=1\linewidth]{UI/UIIP-1.png}
 \end{figure}
 
-A interface da etapa \(IP^{-1}\) contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação \(IP^{-1}\) (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação \(IP^{-1}\). O parâmetro de entrada da permutação \(IP^{-1}\) é o resultado obtido no passo anterior (\(f_K\)).
+A interface da etapa \(IP^{-1}\) (figura \ref{fig:uiiip}), na região de explicação, contextualiza o objetivo pelo qual essa etapa existe, explica a definição de uma função de permutação, apresenta a função de permutação \(IP^{-1}\) (incluindo função matemática) e explica como esta deve ser interpretada. Após tal contextualização se exibe um componente capaz de executar passo a passo a função de permutação \(IP^{-1}\). O parâmetro de entrada da permutação \(IP^{-1}\) é o resultado obtido no passo anterior (\(f_K\)).
 
 \subsection{Tela final - Resultado}
 
 \begin{figure}[H]
     \centering
     \caption{Resultado}
+    \label{fig:uiresult}
     \includegraphics[width=1\linewidth]{UI/UIResult.png}
 \end{figure}
 
-A interface do último passo exibe os dois parâmetros de entrada da execução, a Mensagem e a Chave, e o resultado da execução da criptografia ou descriptografia.
+A interface do último passo (figura \ref{fig:uiresult}) exibe os dois parâmetros de entrada da execução, a Mensagem e a Chave, e o resultado da execução da criptografia ou descriptografia.
 
 \begin{figure}[H]
     \centering
     \caption{\textit{Feedback request}}
+    \label{fig:uifeedback}
     \includegraphics[width=1\linewidth]{UI/UIFeedback.png}
 \end{figure}
 
-O último ponto na interface é uma solicitação do preenchimento do questionário de utilização do simulador. É exibido também um link para o repositório \textit{GitHub} onde se encontra o simulador. No \textit{GitHub} também é possível baixar a última versão publicada deste \acrshort{tcc}.
-
-\section{Limites da solução}
-A ferramenta foi desenvolvida prevendo uma fácil extensão das suas atuais funcionalidades. Mas, visto que o escopo do projeto pode, facilmente, se exceder além do limite possível de execução de um trabalho de conclusão de curso, alguns limites foram impostos para viabilizar o desenvolvimento da ferramenta em tempo hábil. São eles:
-\begin{itemize}
-    \item Somente 1 algoritmo será disponibilizado. Sendo este, o \acrfull{sdes}.
-    \item Só estará disponibilizado no tema \textbf{claro}.
-    \item Só estará disponibilizado em \textbf{Português-BR}.
-    \item A interface terá foco para dispositivos \textit{desktop}.
-\end{itemize}
+O último ponto na interface (figura \ref{fig:uifeedback}) é uma solicitação do preenchimento do questionário de utilização do simulador. É exibido também um link para o repositório \textit{GitHub} onde se encontra o simulador. No \textit{GitHub} também é possível baixar a última versão publicada deste \acrshort{tcc}.
 
 \section{Comparação com outros simuladores criptográficos}
 Os simuladores foram comparados em alguns pontos: \textbf{Idioma}; \textbf{Algoritmos}, quais algoritmos o simulador é capaz de simular; \textbf{Educativo}, se o simulador é voltado ao ensino ou não; \textbf{I/O}, nível de detalhamento das entradas e saídas, em que, \textbf{algoritmo} exibe somente as entradas e saídas do algoritmo, \textbf{passo} exibe também as entradas e saídas de cada passo do algoritmo e \textbf{etapa} exibe também as entradas e saídas de cada etapa dentro de cada passo; \textbf{\textit{Open Source}}, se o simulador possui código aberto e permite ou não que colaboradores extendam suas funcionalidades; \textbf{Plataforma}; e \textbf{Responsivo}, que indica o nível de responsividade da interface do simulador.
@@ -345,7 +410,7 @@ Comparando o simulador desenvolvido com os outros simuladores criptográficos en
 \end{tabular}}
 \end{table}
 
-Foram marcados de verde, na tabela, os pontos dos simuladores que se sobressaem quando analisados em um contexto de acessibilidade e ensino-aprendizagem.
+Foram marcados de verde, na tabela, os pontos dos simuladores que se sobressaem positivamente quando analisados em um contexto de acessibilidade e ensino-aprendizagem.
 
 %\begin{itemize}
     %\item É mais acessível. Somente 2 dos outros simuladores estão \textit{online}, nenhum deles é utilizável em \textit{mobile}, destes somente 1 é voltado para o ensino e este está em Koreano. 
