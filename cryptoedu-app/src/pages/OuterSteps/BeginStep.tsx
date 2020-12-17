@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   Box,
   FormControlLabel,
@@ -30,6 +31,17 @@ interface BeginStepProps {
   explanationsInitiallyOpen: boolean;
   setExplanationsInitiallyOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    inputField: {
+      "& .MuiFormHelperText-root.Mui-focused": {
+        color: theme.palette.secondary.main,
+        fontWeight: "bold",
+      },
+    },
+  })
+);
 
 function BeginStep(props: BeginStepProps) {
   const {
@@ -74,6 +86,7 @@ function BeginStep(props: BeginStepProps) {
     }
   };
 
+  const classes = useStyles();
   return (
     <>
       <StepContentAccordion title="S-DES - Simplified Data Encryption Standard">
@@ -138,6 +151,7 @@ function BeginStep(props: BeginStepProps) {
                 value={message}
                 helperText="1 char ou 8 bits"
                 size="medium"
+                className={classes.inputField}
                 style={{ width: "146px" }}
                 onChange={handleMessageChange}
               />
@@ -177,6 +191,7 @@ function BeginStep(props: BeginStepProps) {
                 value={secretKey}
                 helperText="10 bits"
                 size="medium"
+                className={classes.inputField}
                 style={{ width: "160px" }}
                 onChange={handleKeyChange}
               />

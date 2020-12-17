@@ -82,7 +82,7 @@ function SDESStepper(props: SDESStepperProps) {
 
   // Inputs
   const [mode, setMode] = useState<"encrypt" | "decrypt">("encrypt");
-  const [message, setMessage] = useState("01110010");
+  const [message, setMessage] = useState("r");
   const [messageBits, setMessageBits] = useState([0, 1, 1, 1, 0, 0, 1, 0]);
   const [key, setKey] = useState("1010000010");
   const [keyBits, setKeyBits] = useState([1, 0, 1, 0, 0, 0, 0, 0, 1, 0]);
