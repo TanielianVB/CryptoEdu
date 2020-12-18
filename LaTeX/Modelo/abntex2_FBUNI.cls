@@ -996,10 +996,10 @@
 % Comando \assinatura for signature
    % width of the line and text under the line
 \newlength{\ABNTEXsignwidth}
-\setlength{\ABNTEXsignwidth}{8cm}
+\setlength{\ABNTEXsignwidth}{11cm}
    % thickness of the line
 \newlength{\ABNTEXsignthickness}
-\setlength{\ABNTEXsignthickness}{1pt}
+\setlength{\ABNTEXsignthickness}{0.5pt}
    % ammount of space left between previous text and th signature line
 \newlength{\ABNTEXsignskip}
 \setlength{\ABNTEXsignskip}{0.7cm}

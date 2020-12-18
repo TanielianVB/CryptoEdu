@@ -24,6 +24,7 @@
 % ---
 % Pacotes básicos 
 \usepackage[table]{xcolor} % Utilizado para poder colocar cor em uma tabela
+\usepackage[export]{adjustbox}
 \usepackage{stackengine}
 \newcommand\xrowht[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
 \usepackage{todonotes}
@@ -85,6 +86,9 @@
 \local{Fortaleza-CE, Brasil}
 \data{2020}
 \orientador{Me. Sérgio Araújo Yunes}
+%Informações para folha de aprovação
+\newcommand{\primeiroexaminador}{Me. José Helano Matos Nogueira}
+\newcommand{\segundoexaminador}{Me. Maikol Magalhães Rodrigues}
 \instituicao{
   Centro Universitário Farias Brito
   \par
@@ -153,7 +157,11 @@
 % ----------------------------------------------------------
 
 \imprimircapa
+
 \imprimirfolhaderosto*
+
+% Folha de Aprovação
+\imprimirfolhadeaprovacao
 
 % Comando para colocar a fixa catalográfica
 %\includepdf{catalografica.pdf}
