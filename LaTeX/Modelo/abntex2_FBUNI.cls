@@ -150,8 +150,10 @@
 \newcommand{\anexosname}{Anexos}
 \newcommand{\apendicename}{AP\^ENDICE}
 \newcommand{\apendicesname}{Ap\^endices}
-\newcommand{\orientadorname}{Orientador(a):}
-\newcommand{\coorientadorname}{Coorientador(a):}
+\newcommand{\orientadorname}{Orientador:} % Comentar caso seja do sexo feminino
+%\newcommand{\orientadorname}{Orientadora:} % Descomentar caso seja do sexo feminino
+\newcommand{\coorientadorname}{Coorientador:} % Comentar caso seja do sexo feminino
+%\newcommand{\coorientadorname}{Coorientadora:} % Descomentar caso seja do sexo feminino
 \newcommand{\folhadeaprovacaoname}{Folha de aprova\c{c}\~ao}
 \newcommand{\resumoname}{Resumo} 
 \newcommand{\listadesiglasname}{Lista de abreviaturas e siglas}
@@ -1035,27 +1037,34 @@
 %---------Figura
     \begin{figure}[htp]
         \centering
-        \includegraphics[width=0.4\linewidth]{Modelo/FBUNI.png}
+        \includegraphics[width=0.30\linewidth]{Modelo/FBUNI.png}
     \end{figure}
     \par
     \center
-    \ABNTEXchapterfont\bfseries\LARGE\imprimirinstituicao
+    \ABNTEXchapterfont\bfseries\imprimirinstituicao
 %---------Fim Figura
+
+    \vfill
+    \center
+    \ABNTEXchapterfont\large\imprimirautor
+
     \vfill
     \begin{center}
     %\ABNTEXchapterfont\bfseries\LARGE{PROJETO:\par} % Tani: Não é mais um projeto
-    \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+    \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
     \end{center}
     \vfill
     
-    \center
-    \ABNTEXchapterfont\large\imprimirautor
-    \center
-    \ABNTEXchapterfont\large\imprimirorientador
+    \vfill
     
-    %\large\imprimirlocal
-
-    %\large\imprimirdata
+    \vfill
+    
+    %\center
+    %\ABNTEXchapterfont\large\imprimirorientador
+    
+    \large\imprimirlocal
+    
+    \large\imprimirdata
     
     \vspace*{1cm}
   \end{capa}
@@ -1078,13 +1087,24 @@
 \newcommand{\folhaderostocontent}{
   \begin{center}
 
-    %\vspace*{1cm}
-    {\ABNTEXchapterfont\large\imprimirautor}
+%---------Figura
+    \begin{figure}[htp]
+        \centering
+        \includegraphics[width=0.30\linewidth]{Modelo/FBUNI.png}
+    \end{figure}
+%---------Fim Figura
+
+    \vspace*{1cm}
+    
+    \textbf{\ABNTEXchapterfont\large\imprimirautor}
+    %{\ABNTEXchapterfont\large\imprimirautor}
 	
-    \vspace*{\fill}\vspace*{\fill}
+    \vspace*{\fill}
+    
     \begin{center}
       \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
     \end{center}
+    
     \vspace*{\fill}
 	
     \abntex@ifnotempty{\imprimirpreambulo}{%
@@ -1092,16 +1112,18 @@
       \begin{minipage}{.5\textwidth}
       	\SingleSpacing
          \imprimirpreambulo
+         
+        {\textbf{\imprimirorientadorRotulo~\imprimirorientador\par}}
+        \abntex@ifnotempty{\imprimircoorientador}{%
+           {\textbf{\imprimircoorientadorRotulo~\imprimircoorientador}}%
+        }%
+    
        \end{minipage}%
-       \vspace*{\fill}
+       %\vspace*{\fill}
     }%
 
-    {\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
+    %{\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
 
-    {\large\imprimirorientadorRotulo~\imprimirorientador\par}
-    \abntex@ifnotempty{\imprimircoorientador}{%
-       {\large\imprimircoorientadorRotulo~\imprimircoorientador}%
-    }%
     \vspace*{\fill}
 
     {\large\imprimirlocal}
